@@ -50,7 +50,6 @@ class MultiHeadedAttention(nn.Module):
         """
         batch_size = k.size(0)
         num_heads = self.num_heads
-
         # project the queries (q), keys (k), and values (v)
         k = self.k_layer(k)
         v = self.v_layer(v)
@@ -158,6 +157,54 @@ class PositionalEncoding(nn.Module):
         # Add position encodings
         return emb + self.pe[:, :emb.size(1)]
 
+class TransformerEncoderCombinationLayer(nn.Module):
+    """
+    One Transformer encoder combination layer has two Multi-head attention layers plus
+    a position-wise feed-forward layer.
+    """
+    def __init__(self,
+                 size: int = 0,
+                 ff_size: int = 0,
+                 num_heads: int = 0,
+                 dropout: float = 0.1):
+        """
+        A single Transformer layer.
+        :param size:
+        :param ff_size:
+        :param num_heads:
+        :param dropout:
+        """
+        super(TransformerEncoderCombinationLayer, self).__init__()
+        self.layer_norm = nn.LayerNorm(size, eps=1e-6)
+        self.src_src_att = MultiHeadedAttention(num_heads, size,
+                                                dropout=dropout)
+        # TODO: implement gated_sum as proper function combining the two attention outputs
+        self.gated_sum = lambda x, y: x  # combination algorithm
+        self.feed_forward = PositionwiseFeedForward(size, ff_size=ff_size,
+                                                    dropout=dropout)
+        self.dropout = nn.Dropout(dropout)
+        self.size = size
+
+    # pylint: disable=arguments-differ
+    def forward(self, x: Tensor, mask: Tensor, x_p: Tensor, p_mask: Tensor) -> Tensor:
+        """
+        Forward pass for a single transformer encoder layer.
+        First applies layer norm, then self attention,
+        then dropout with residual connection (adding the input to the result),
+        and then a position-wise feed-forward layer.
+
+        :param x: layer input
+        :param mask: input mask
+        :return: output tensor
+        """
+        x_norm = self.layer_norm(x)
+        x_p_norm = self.layer_norm(x_p)
+        h = self.src_src_att(x_norm, x_norm, x_norm, mask)
+        h2 = self.src_src_att(x_p_norm, x_p_norm, x_p_norm, p_mask)
+        h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
+        o = self.feed_forward(h)
+        return o
+
 
 class TransformerEncoderLayer(nn.Module):
     """
@@ -186,6 +233,7 @@ class TransformerEncoderLayer(nn.Module):
                                                     dropout=dropout)
         self.dropout = nn.Dropout(dropout)
         self.size = size
+
 
     # pylint: disable=arguments-differ
     def forward(self, x: Tensor, mask: Tensor) -> Tensor:
