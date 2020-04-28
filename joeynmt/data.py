@@ -4,7 +4,7 @@ Data module
 """
 import sys
 import random
-import os
+import os, io
 import os.path
 from typing import Optional
 
@@ -12,7 +12,7 @@ from torchtext.datasets import TranslationDataset
 from torchtext import data
 from torchtext.data import Dataset, Iterator, Field
 
-from joeynmt.constants import UNK_TOKEN, EOS_TOKEN, BOS_TOKEN, PAD_TOKEN
+from joeynmt.constants import UNK_TOKEN, EOS_TOKEN, BOS_TOKEN, PAD_TOKEN, CONTEXT_TOKEN, CONTEXT_EOS_TOKEN
 from joeynmt.vocabulary import build_vocab, Vocabulary
 
 
@@ -63,14 +63,70 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
                            batch_first=True, lower=lowercase,
                            include_lengths=True)
 
-    train_data = TranslationDataset(path=train_path,
-                                    exts=("." + src_lang, "." + trg_lang),
-                                    fields=(src_field, trg_field),
-                                    filter_pred=
-                                    lambda x: len(vars(x)['src'])
-                                    <= max_sent_length
-                                    and len(vars(x)['trg'])
-                                    <= max_sent_length)
+    prev_src_field = data.Field(init_token=CONTEXT_TOKEN, eos_token=CONTEXT_EOS_TOKEN,
+                           pad_token=PAD_TOKEN, tokenize=tok_fun,
+                           batch_first=True, lower=lowercase,
+                           unk_token=UNK_TOKEN,
+                           include_lengths=True)
+
+    prev_trg_field = data.Field(init_token=CONTEXT_TOKEN, eos_token=CONTEXT_EOS_TOKEN,
+                           pad_token=PAD_TOKEN, tokenize=tok_fun,
+                           unk_token=UNK_TOKEN,
+                           batch_first=True, lower=lowercase,
+                           include_lengths=True)
+    train_data = None
+    class ContextTranslationDataset(Dataset):
+        """ Defines a dataset for nmt context translation."""
+        @staticmethod
+        def sort_key(ex):
+            return len(ex.src)
+
+        def __init__(self, path: str, exts, fields, **kwargs) -> None:
+            """
+            Create a dataset given path and field.
+
+            :param path: Prefix of path to the data file
+            :param ext: Containing the extension to path for this language.
+            :param fields: Containing the fields that will be used for data.
+            :param kwargs: Passed to the constructor of data.Dataset.
+            """
+            if not isinstance(fields[0], (tuple, list)):
+                fields = [('src_prev', fields[0]), ('trg_prev', fields[1]), ('src', fields[2]), ('trg', fields[3])]
+            # fields = [('src', field)]
+            src_path, trg_path = tuple(os.path.expanduser(path + x) for x in exts)
+            examples = []
+
+            with io.open(src_path, mode='r', encoding='utf-8') as src_file, \
+                    io.open(trg_path, mode='r', encoding='utf-8') as trg_file:
+                prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+                for src_line, trg_line in zip(src_file, trg_file):
+                    src_line, trg_line = src_line.strip(), trg_line.strip()
+                    if src_line != '' and trg_line != '':
+                        examples.append(data.Example.fromlist(
+                            [prev_src_line, prev_trg_line, src_line, trg_line], fields))
+                        prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
+                        prev_trg_line = trg_line
+            super(ContextTranslationDataset, self).__init__(examples, fields, **kwargs)
+
+    if data_cfg.get('multi_encoder', True):
+
+        train_data = ContextTranslationDataset(path=train_path,
+                                               exts=("." + src_lang, "." + trg_lang),
+                                               fields=(prev_src_field, prev_trg_field, src_field, trg_field),
+                                               filter_pred=
+                                               lambda x: len(vars(x)['src'])
+                                                <= max_sent_length
+                                                    and len(vars(x)['trg'])
+                                                <= max_sent_length)
+    else:
+        train_data = TranslationDataset(path=train_path,
+                                        exts=("." + src_lang, "." + trg_lang),
+                                        fields=(src_field, trg_field),
+                                        filter_pred=
+                                        lambda x: len(vars(x)['src'])
+                                        <= max_sent_length
+                                        and len(vars(x)['trg'])
+                                        <= max_sent_length)
 
     src_max_size = data_cfg.get("src_voc_limit", sys.maxsize)
     src_min_freq = data_cfg.get("src_voc_min_freq", 1)
@@ -86,7 +142,17 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
     trg_vocab = build_vocab(field="trg", min_freq=trg_min_freq,
                             max_size=trg_max_size,
                             dataset=train_data, vocab_file=trg_vocab_file)
+    prev_src_vocab = None
+    prev_trg_vocab = None
+    if data_cfg.get('multi_encoder', True):
 
+        prev_src_vocab = build_vocab(field="src_prev", min_freq=src_min_freq,
+                                        max_size=src_max_size,
+                                        dataset=train_data, vocab_file=src_vocab_file)
+
+        prev_trg_vocab = build_vocab(field="trg_prev", min_freq=trg_min_freq,
+                                max_size=trg_max_size,
+                                dataset=train_data, vocab_file=trg_vocab_file)
     random_train_subset = data_cfg.get("random_train_subset", -1)
     if random_train_subset > -1:
         # select this many training examples randomly and discard the rest
@@ -95,23 +161,46 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
             split_ratio=[keep_ratio, 1 - keep_ratio],
             random_state=random.getstate())
         train_data = keep
-
-    dev_data = TranslationDataset(path=dev_path,
-                                  exts=("." + src_lang, "." + trg_lang),
-                                  fields=(src_field, trg_field))
+    dev_data = None
+    if data_cfg.get('multi_encoder', True):
+        dev_data = ContextTranslationDataset(path=dev_path,
+                                               exts=("." + src_lang, "." + trg_lang),
+                                               fields=(prev_src_field, prev_trg_field, src_field, trg_field),
+                                               filter_pred=
+                                               lambda x: len(vars(x)['src'])
+                                                <= max_sent_length
+                                                    and len(vars(x)['trg'])
+                                                <= max_sent_length)
+    else:
+        dev_data = TranslationDataset(path=dev_path,
+                                      exts=("." + src_lang, "." + trg_lang),
+                                      fields=(src_field, trg_field))
     test_data = None
     if test_path is not None:
         # check if target exists
         if os.path.isfile(test_path + "." + trg_lang):
-            test_data = TranslationDataset(
-                path=test_path, exts=("." + src_lang, "." + trg_lang),
-                fields=(src_field, trg_field))
+            if data_cfg.get('multi_encoder', True):
+                test_data = ContextTranslationDataset(path=test_path,
+                                                       exts=("." + src_lang, "." + trg_lang),
+                                                       fields=(prev_src_field, prev_trg_field, src_field, trg_field),
+                                                       filter_pred=
+                                                       lambda x: len(vars(x)['src'])
+                                                        <= max_sent_length
+                                                            and len(vars(x)['trg'])
+                                                        <= max_sent_length)
+            else:
+                test_data = TranslationDataset(
+                    path=test_path, exts=("." + src_lang, "." + trg_lang),
+                    fields=(src_field, trg_field))
         else:
             # no target is given -> create dataset from src only
             test_data = MonoDataset(path=test_path, ext="." + src_lang,
                                     field=src_field)
     src_field.vocab = src_vocab
     trg_field.vocab = trg_vocab
+
+    prev_src_field.vocab = prev_src_vocab
+    prev_trg_field.vocab = prev_trg_vocab
     return train_data, dev_data, test_data, src_vocab, trg_vocab
 
 
@@ -126,6 +215,7 @@ def token_batch_size_fn(new, count, sofar):
     if count == 1:
         max_src_in_batch = 0
         max_tgt_in_batch = 0
+
     max_src_in_batch = max(max_src_in_batch, len(new.src))
     src_elements = count * max_src_in_batch
     if hasattr(new, 'trg'):  # for monolingual data sets ("translate" mode)

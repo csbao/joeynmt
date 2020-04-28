@@ -23,6 +23,13 @@ class Batch:
         """
         self.src, self.src_lengths = torch_batch.src
         self.src_mask = (self.src != pad_index).unsqueeze(1)
+        self.src_prev, self.src_prev_lengths, self.src_prev_mask, self.trg_prev, self.trg_prev_mask = None, None, None, None, None
+        if hasattr(torch_batch, "src_prev"):
+            self.src_prev, self.src_prev_lengths = torch_batch.src_prev
+            self.src_prev_mask = (self.src_prev != pad_index).unsqueeze(1)
+            self.trg_prev = None
+            self.trg_prev_mask = None
+
         self.nseqs = self.src.size(0)
         self.trg_input = None
         self.trg = None
@@ -42,6 +49,14 @@ class Batch:
             self.trg_mask = (self.trg_input != pad_index).unsqueeze(1)
             self.ntokens = (self.trg != pad_index).data.sum().item()
 
+        if hasattr(torch_batch, "trg_prev"):
+            prev_trg, prev_trg_lengths = torch_batch.trg_prev
+            self.trg_prev_input = prev_trg[:, :-1]
+            self.trg_prev_lengths = prev_trg_lengths
+            self.trg_prev = prev_trg[:, 1:]
+            self.trg_prev_mask = (self.trg_prev_input != pad_index).unsqueeze(1)
+            self.ntokens_prev = (self.trg_prev != pad_index).data.sum().item()
+
         if use_cuda:
             self._make_cuda()
 
@@ -53,11 +68,14 @@ class Batch:
         """
         self.src = self.src.cuda()
         self.src_mask = self.src_mask.cuda()
-
         if self.trg_input is not None:
             self.trg_input = self.trg_input.cuda()
             self.trg = self.trg.cuda()
             self.trg_mask = self.trg_mask.cuda()
+        if self.trg_prev_input is not None:
+            self.trg_prev_input = self.trg_prev_input.cuda()
+            self.trg_prev = self.trg_prev.cuda()
+            self.trg_prev_mask = self.trg_prev_mask.cuda()
 
     def sort_by_src_lengths(self):
         """

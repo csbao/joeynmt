@@ -160,6 +160,7 @@ class TransformerEncoder(Encoder):
                  dropout: float = 0.1,
                  emb_dropout: float = 0.1,
                  freeze: bool = False,
+                 dont_minus_one: bool = True,
                  **kwargs):
         """
         Initializes the Transformer.
@@ -179,8 +180,8 @@ class TransformerEncoder(Encoder):
         self.layers = nn.ModuleList([
             TransformerEncoderLayer(size=hidden_size, ff_size=ff_size,
                                     num_heads=num_heads, dropout=dropout)
-            for _ in range(num_layers)])
-
+            for _ in range(num_layers if dont_minus_one else num_layers-1)])
+        self.top_off = False if dont_minus_one else True
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
         self.pe = PositionalEncoding(hidden_size)
         self.emb_dropout = nn.Dropout(p=emb_dropout)
@@ -218,7 +219,10 @@ class TransformerEncoder(Encoder):
 
         for layer in self.layers:
             x = layer(x, mask)
-        return self.layer_norm(x), None
+        if self.top_off:
+            return x, None
+        else:
+            return self.layer_norm(x), None
 
     def __repr__(self):
         return "%s(num_layers=%r, num_heads=%r)" % (

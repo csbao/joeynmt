@@ -19,7 +19,7 @@ from torch import Tensor
 from torch.utils.tensorboard import SummaryWriter
 
 from torchtext.data import Dataset
-
+import torchtext
 from joeynmt.model import build_model
 from joeynmt.batch import Batch
 from joeynmt.helpers import log_data_info, load_config, log_cfg, \
@@ -275,6 +275,7 @@ class TrainManager:
         :param train_data: training data
         :param valid_data: validation data
         """
+
         train_iter = make_data_iter(train_data,
                                     batch_size=self.batch_size,
                                     batch_type=self.batch_type,
@@ -306,6 +307,7 @@ class TrainManager:
                 # reactivate training
                 self.model.train()
                 # create a Batch object from torchtext batch
+                # print("batch is {}")
                 batch = Batch(batch, self.pad_index, use_cuda=self.use_cuda)
 
                 # only update every batch_multiplier batches
@@ -650,6 +652,8 @@ def train(cfg_file: str) -> None:
     trg_vocab.to_file(trg_vocab_file)
 
     # train the model
+    # Modify train_data here..
+
     trainer.train_and_validate(train_data=train_data, valid_data=dev_data)
 
     # predict with the best model on validation and test
