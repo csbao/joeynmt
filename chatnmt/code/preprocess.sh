@@ -15,14 +15,17 @@ merge_ops=10000
 src=de
 tgt=en
 lang=de-en
-prep="../prep"
+prep="../concat"
 # tmp=${prep}/tmp
 orig="../data"
 # prep = "../prep"
+train=train_concat_prev
+test=test_concat_prev
+dev=dev_concat_prev
 
 echo "pre-processing train data..."
 for l in ${src} ${tgt}; do
-    for p in train dev test; do
+    for p in ${train} ${dev} ${test}; do
         f=${p}.$l
         tok=${p}.tok.$l
         cat ${orig}/${f} | \
@@ -30,24 +33,24 @@ for l in ${src} ${tgt}; do
         echo ""
     done
 done
-for p in train dev test; do
+for p in ${train} ${dev} ${test}; do
     perl ${CLEAN} -ratio 1.5 ${prep}/${p}.tok ${src} ${tgt} ${prep}/${p}.clean 1 80
 done
 for l in ${src} ${tgt}; do
-    for p in train dev test; do
+    for p in ${train} ${dev} ${test}; do
         perl ${LC} < ${prep}/${p}.clean.${l} > ${prep}/${p}.tags.${l}
     done
 done
 
 echo "learning * joint * BPE..."
 codes_file="${prep}/bpe.${merge_ops}"
-cat "${prep}/train.tags.${src}" "${prep}/train.tags.${tgt}" > ${prep}/train.tmp
-python3 -m subword_nmt.learn_bpe -s "${merge_ops}" -i "${prep}/train.tmp" -o "${codes_file}"
+cat "${prep}/${train}.tags.${src}" "${prep}/${train}.tags.${tgt}" > ${prep}/${train}.tmp
+python3 -m subword_nmt.learn_bpe -s "${merge_ops}" -i "${prep}/${train}.tmp" -o "${codes_file}"
 # rm "${prep}/train.tmp"
 
 echo "applying BPE..."
 for l in ${src} ${tgt}; do
-    for p in train dev test; do
+    for p in ${train} ${dev} ${test}; do
         python3 -m subword_nmt.apply_bpe -c "${codes_file}" -i "${prep}/${p}.tags.${l}" -o "${prep}/${p}.tags.bpe.${merge_ops}.${l}"
     done
 done
