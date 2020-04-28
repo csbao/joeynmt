@@ -21,10 +21,12 @@ class Batch:
         :param pad_index:
         :param use_cuda:
         """
+        self.use_context = False
         self.src, self.src_lengths = torch_batch.src
         self.src_mask = (self.src != pad_index).unsqueeze(1)
         self.src_prev, self.src_prev_lengths, self.src_prev_mask, self.trg_prev, self.trg_prev_mask = None, None, None, None, None
         if hasattr(torch_batch, "src_prev"):
+            self.use_context = True
             self.src_prev, self.src_prev_lengths = torch_batch.src_prev
             self.src_prev_mask = (self.src_prev != pad_index).unsqueeze(1)
             self.trg_prev = None
@@ -72,7 +74,7 @@ class Batch:
             self.trg_input = self.trg_input.cuda()
             self.trg = self.trg.cuda()
             self.trg_mask = self.trg_mask.cuda()
-        if self.trg_prev_input is not None:
+        if self.use_context and self.trg_prev_input is not None:
             self.trg_prev_input = self.trg_prev_input.cuda()
             self.trg_prev = self.trg_prev.cuda()
             self.trg_prev_mask = self.trg_prev_mask.cuda()
