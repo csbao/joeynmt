@@ -15,38 +15,7 @@ from torchtext.data import Dataset, Iterator, Field
 from joeynmt.constants import UNK_TOKEN, EOS_TOKEN, BOS_TOKEN, PAD_TOKEN, CONTEXT_TOKEN, CONTEXT_EOS_TOKEN
 from joeynmt.vocabulary import build_vocab, Vocabulary
 
-class ContextTranslationDataset(Dataset):
-    """ Defines a dataset for nmt context translation."""
-    @staticmethod
-    def sort_key(ex):
-        return len(ex.src)
 
-    def __init__(self, path: str, exts, fields, **kwargs) -> None:
-        """
-        Create a dataset given path and field.
-
-        :param path: Prefix of path to the data file
-        :param ext: Containing the extension to path for this language.
-        :param fields: Containing the fields that will be used for data.
-        :param kwargs: Passed to the constructor of data.Dataset.
-        """
-        if not isinstance(fields[0], (tuple, list)):
-            fields = [('src_prev', fields[0]), ('trg_prev', fields[1]), ('src', fields[2]), ('trg', fields[3])]
-        # fields = [('src', field)]
-        src_path, trg_path = tuple(os.path.expanduser(path + x) for x in exts)
-        examples = []
-
-        with io.open(src_path, mode='r', encoding='utf-8') as src_file, \
-                io.open(trg_path, mode='r', encoding='utf-8') as trg_file:
-            prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
-            for src_line, trg_line in zip(src_file, trg_file):
-                src_line, trg_line = src_line.strip(), trg_line.strip()
-                if src_line != '' and trg_line != '':
-                    examples.append(data.Example.fromlist(
-                        [prev_src_line, prev_trg_line, src_line, trg_line], fields))
-                    prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
-                    prev_trg_line = trg_line
-        super(ContextTranslationDataset, self).__init__(examples, fields, **kwargs)
 
 def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
                                   Vocabulary, Vocabulary):
@@ -299,3 +268,36 @@ class MonoDataset(Dataset):
         src_file.close()
 
         super(MonoDataset, self).__init__(examples, fields, **kwargs)
+
+class ContextTranslationDataset(Dataset):
+    """ Defines a dataset for nmt context translation."""
+    @staticmethod
+    def sort_key(ex):
+        return len(ex.src)
+
+    def __init__(self, path: str, exts, fields, **kwargs) -> None:
+        """
+        Create a dataset given path and field.
+
+        :param path: Prefix of path to the data file
+        :param ext: Containing the extension to path for this language.
+        :param fields: Containing the fields that will be used for data.
+        :param kwargs: Passed to the constructor of data.Dataset.
+        """
+        if not isinstance(fields[0], (tuple, list)):
+            fields = [('src_prev', fields[0]), ('trg_prev', fields[1]), ('src', fields[2]), ('trg', fields[3])]
+        # fields = [('src', field)]
+        src_path, trg_path = tuple(os.path.expanduser(path + x) for x in exts)
+        examples = []
+
+        with io.open(src_path, mode='r', encoding='utf-8') as src_file, \
+                io.open(trg_path, mode='r', encoding='utf-8') as trg_file:
+            prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+            for src_line, trg_line in zip(src_file, trg_file):
+                src_line, trg_line = src_line.strip(), trg_line.strip()
+                if src_line != '' and trg_line != '':
+                    examples.append(data.Example.fromlist(
+                        [prev_src_line, prev_trg_line, src_line, trg_line], fields))
+                    prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
+                    prev_trg_line = trg_line
+        super(ContextTranslationDataset, self).__init__(examples, fields, **kwargs)
