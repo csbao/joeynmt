@@ -18,6 +18,7 @@ from joeynmt.search import beam_search, greedy
 from joeynmt.vocabulary import Vocabulary
 from joeynmt.batch import Batch
 from joeynmt.helpers import ConfigurationError
+from joeynmt.transformer_layers import TransformerEncoderCombinationLayer
 
 
 class Model(nn.Module):
@@ -31,11 +32,13 @@ class Model(nn.Module):
                  src_embed: Embeddings,
                  trg_embed: Embeddings,
                  src_vocab: Vocabulary,
-                 trg_vocab: Vocabulary) -> None:
+                 trg_vocab: Vocabulary,
+                 encoder_2: Encoder = None) -> None:
         """
         Create a new encoder-decoder model
 
         :param encoder: encoder
+        :param encoder_2: encoder for context
         :param decoder: decoder
         :param src_embed: source embedding
         :param trg_embed: target embedding
@@ -47,16 +50,18 @@ class Model(nn.Module):
         self.src_embed = src_embed
         self.trg_embed = trg_embed
         self.encoder = encoder
+        self.encoder_2 = encoder_2
         self.decoder = decoder
         self.src_vocab = src_vocab
         self.trg_vocab = trg_vocab
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-
+        self.last_layer_norm = None
     # pylint: disable=arguments-differ
     def forward(self, src: Tensor, trg_input: Tensor, src_mask: Tensor,
-                src_lengths: Tensor, trg_mask: Tensor = None) -> (
+                src_lengths: Tensor, trg_mask: Tensor, prev_src: Tensor ,
+                prev_trg_input: Tensor, prev_src_lengths: Tensor, prev_src_mask: Tensor) -> (
         Tensor, Tensor, Tensor, Tensor):
         """
         First encodes the source sentence.
@@ -71,7 +76,30 @@ class Model(nn.Module):
         """
         encoder_output, encoder_hidden = self.encode(src=src,
                                                      src_length=src_lengths,
-                                                     src_mask=src_mask)
+                                                     src_mask=src_mask,
+                                                     encoder=self.encoder)
+
+        if self.encoder_2:
+            encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
+                                                         src_length=prev_src_lengths,
+                                                         src_mask=prev_src_mask,
+                                                         encoder=self.encoder_2)
+
+            assert self.encoder_config
+            if not self.last_layer_norm:
+                layer_norm = nn.LayerNorm(self.encoder_config["hidden_size"], eps=1e-6)
+                self.last_layer_norm = layer_norm
+            last_layer = TransformerEncoderCombinationLayer(size=self.encoder_config["hidden_size"],
+                                                            ff_size=self.encoder_config["ff_size"],
+                                                            num_heads=self.encoder_config["num_heads"],
+                                                            dropout=self.encoder_config["dropout"])
+
+            x = last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
+
+            encoder_output, encoder_hidden = self.last_layer_norm(x), None
+
+        # Add combination function here, gate sum the two outputs
+
         unroll_steps = trg_input.size(1)
         return self.decode(encoder_output=encoder_output,
                            encoder_hidden=encoder_hidden,
@@ -79,7 +107,7 @@ class Model(nn.Module):
                            unroll_steps=unroll_steps,
                            trg_mask=trg_mask)
 
-    def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor) \
+    def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor, encoder: Encoder) \
         -> (Tensor, Tensor):
         """
         Encodes the source sentence.
@@ -89,7 +117,7 @@ class Model(nn.Module):
         :param src_mask:
         :return: encoder outputs (output, hidden_concat)
         """
-        return self.encoder(self.src_embed(src), src_length, src_mask)
+        return encoder(self.src_embed(src), src_length, src_mask)
 
     def decode(self, encoder_output: Tensor, encoder_hidden: Tensor,
                src_mask: Tensor, trg_input: Tensor,
@@ -127,10 +155,12 @@ class Model(nn.Module):
         :return: batch_loss: sum of losses over non-pad elements in the batch
         """
         # pylint: disable=unused-variable
+
         out, hidden, att_probs, _ = self.forward(
             src=batch.src, trg_input=batch.trg_input,
             src_mask=batch.src_mask, src_lengths=batch.src_lengths,
-            trg_mask=batch.trg_mask)
+            trg_mask=batch.trg_mask, prev_src=batch.src_prev, prev_trg_input=batch.trg_prev_input,
+            prev_src_lengths=batch.src_prev_lengths, prev_src_mask=batch.src_prev_mask) # Share the prev_src_mask here......
 
         # compute log probs
         log_probs = F.log_softmax(out, dim=-1)
@@ -154,7 +184,16 @@ class Model(nn.Module):
         """
         encoder_output, encoder_hidden = self.encode(
             batch.src, batch.src_lengths,
-            batch.src_mask)
+            batch.src_mask, self.encoder)
+
+        # RUN ENCODER OUTPUT HERE WITH BATCH SRC_PREV!!!!!!!!!
+        # MAJOR TODO
+        # print("we're ready to encoder the seoncd")
+        # n = "\n"
+        # print (batch.src_prev, n, batch.src_prev_lengths, batch.src_prev_mask, self.encoder_2)
+        encoder_output_2, encoder_hidden_2 = self.encode(
+            batch.src_prev, batch.src_prev_lengths,
+            batch.src_prev_mask, self.encoder_2)
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
@@ -210,7 +249,6 @@ def build_model(cfg: dict = None,
     """
     src_padding_idx = src_vocab.stoi[PAD_TOKEN]
     trg_padding_idx = trg_vocab.stoi[PAD_TOKEN]
-
     src_embed = Embeddings(
         **cfg["encoder"]["embeddings"], vocab_size=len(src_vocab),
         padding_idx=src_padding_idx)
@@ -232,6 +270,8 @@ def build_model(cfg: dict = None,
     # build encoder
     enc_dropout = cfg["encoder"].get("dropout", 0.)
     enc_emb_dropout = cfg["encoder"]["embeddings"].get("dropout", enc_dropout)
+    encoder = None
+    encoder_2 = None
     if cfg["encoder"].get("type", "recurrent") == "transformer":
         assert cfg["encoder"]["embeddings"]["embedding_dim"] == \
                cfg["encoder"]["hidden_size"], \
@@ -240,6 +280,11 @@ def build_model(cfg: dict = None,
         encoder = TransformerEncoder(**cfg["encoder"],
                                      emb_size=src_embed.embedding_dim,
                                      emb_dropout=enc_emb_dropout)
+        if cfg["encoder"].get("multi_encoder", False):
+            encoder = TransformerEncoder(**cfg["encoder"],
+                                         emb_size=src_embed.embedding_dim,
+                                         emb_dropout=enc_emb_dropout , dont_minus_one=False)
+            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
@@ -259,7 +304,8 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab)
+                  src_vocab=src_vocab, trg_vocab=trg_vocab, encoder_2=encoder_2)
+    model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
     # tie softmax layer with trg embeddings
     if cfg.get("tied_softmax", False):
