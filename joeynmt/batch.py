@@ -50,7 +50,11 @@ class Batch:
             # we exclude the padded areas from the loss computation
             self.trg_mask = (self.trg_input != pad_index).unsqueeze(1)
             self.ntokens = (self.trg != pad_index).data.sum().item()
-
+        
+        self.trg_prev_input = None
+        self.trg_prev = None
+        self.trg_prev_mask = None
+        self.trg_prev_lengths = None
         if hasattr(torch_batch, "trg_prev"):
             prev_trg, prev_trg_lengths = torch_batch.trg_prev
             self.trg_prev_input = prev_trg[:, :-1]
