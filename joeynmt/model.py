@@ -191,9 +191,10 @@ class Model(nn.Module):
         # print("we're ready to encoder the seoncd")
         # n = "\n"
         # print (batch.src_prev, n, batch.src_prev_lengths, batch.src_prev_mask, self.encoder_2)
-        encoder_output_2, encoder_hidden_2 = self.encode(
-            batch.src_prev, batch.src_prev_lengths,
-            batch.src_prev_mask, self.encoder_2)
+        if self.encoder_2:
+            encoder_output_2, encoder_hidden_2 = self.encode(
+                batch.src_prev, batch.src_prev_lengths,
+                batch.src_prev_mask, self.encoder_2)
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
