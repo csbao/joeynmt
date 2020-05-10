@@ -306,7 +306,6 @@ class TrainManager:
                 # reactivate training
                 self.model.train()
                 # create a Batch object from torchtext batch
-                # print("batch is {}")
                 batch = Batch(batch, self.pad_index, use_cuda=self.use_cuda)
 
                 # only update every batch_multiplier batches
@@ -622,7 +621,8 @@ def train(cfg_file: str) -> None:
 
     # load the data
     train_data, dev_data, test_data, src_vocab, trg_vocab = load_data(
-        data_cfg=cfg["data"])
+        data_cfg=cfg["data"],
+        multi_encoder=cfg["model"]["encoder"].get("multi_encoder", False))
 
     # build an encoder-decoder model
     model = build_model(cfg["model"], src_vocab=src_vocab, trg_vocab=trg_vocab)

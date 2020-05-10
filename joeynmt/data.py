@@ -17,8 +17,8 @@ from joeynmt.vocabulary import build_vocab, Vocabulary
 
 
 
-def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
-                                  Vocabulary, Vocabulary):
+def load_data(data_cfg: dict, multi_encoder: bool = False) -> (Dataset, Dataset, Optional[Dataset],
+                                                          Vocabulary, Vocabulary):
     """
     Load train, dev and optionally test data as specified in configuration.
     Vocabularies are created from the training set with a limit of `voc_limit`
@@ -78,8 +78,7 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
     train_data = None
 
 
-    if data_cfg.get('multi_encoder', False):
-
+    if multi_encoder:
         train_data = ContextTranslationDataset(path=train_path,
                                                exts=("." + src_lang, "." + trg_lang),
                                                fields=(prev_src_field, prev_trg_field, src_field, trg_field),
@@ -114,8 +113,7 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
                             dataset=train_data, vocab_file=trg_vocab_file)
     prev_src_vocab = None
     prev_trg_vocab = None
-    if data_cfg.get('multi_encoder', False):
-
+    if multi_encoder:
         prev_src_vocab = build_vocab(field="src_prev", min_freq=src_min_freq,
                                         max_size=src_max_size,
                                         dataset=train_data, vocab_file=src_vocab_file)
@@ -132,7 +130,7 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
             random_state=random.getstate())
         train_data = keep
     dev_data = None
-    if data_cfg.get('multi_encoder', False):
+    if multi_encoder:
         dev_data = ContextTranslationDataset(path=dev_path,
                                                exts=("." + src_lang, "." + trg_lang),
                                                fields=(prev_src_field, prev_trg_field, src_field, trg_field),
@@ -149,7 +147,7 @@ def load_data(data_cfg: dict) -> (Dataset, Dataset, Optional[Dataset],
     if test_path is not None:
         # check if target exists
         if os.path.isfile(test_path + "." + trg_lang):
-            if data_cfg.get('multi_encoder', False):
+            if multi_encoder:
                 test_data = ContextTranslationDataset(path=test_path,
                                                        exts=("." + src_lang, "." + trg_lang),
                                                        fields=(prev_src_field, prev_trg_field, src_field, trg_field),

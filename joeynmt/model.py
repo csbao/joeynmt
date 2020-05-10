@@ -186,11 +186,6 @@ class Model(nn.Module):
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
 
-        # RUN ENCODER OUTPUT HERE WITH BATCH SRC_PREV!!!!!!!!!
-        # MAJOR TODO
-        # print("we're ready to encoder the seoncd")
-        # n = "\n"
-        # print (batch.src_prev, n, batch.src_prev_lengths, batch.src_prev_mask, self.encoder_2)
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
                 batch.src_prev, batch.src_prev_lengths,
