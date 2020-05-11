@@ -179,7 +179,12 @@ class TransformerEncoderCombinationLayer(nn.Module):
         self.src_src_att = MultiHeadedAttention(num_heads, size,
                                                 dropout=dropout)
         # TODO: implement gated_sum as proper function combining the two attention outputs
-        self.gated_sum = lambda x, y: x  # combination algorithm
+        #self.gated_sum = lambda x, y: x  # combination algorithm
+        #print(size) #64
+        self.src2_src_att = MultiHeadedAttention(num_heads, size, dropout=dropout)#TODO can have different num_heads
+        self.W_g = nn.Linear(size+size, 1, bias=False)
+        self.b_g = nn.Parameter(torch.rand(1)) # trainable scalar
+
         self.feed_forward = PositionwiseFeedForward(size, ff_size=ff_size,
                                                     dropout=dropout)
         self.dropout = nn.Dropout(dropout)
@@ -200,8 +205,13 @@ class TransformerEncoderCombinationLayer(nn.Module):
         x_norm = self.layer_norm(x)
         x_p_norm = self.layer_norm(x_p)
         h = self.src_src_att(x_norm, x_norm, x_norm, mask)
-        h2 = self.src_src_att(x_p_norm, x_p_norm, x_p_norm, p_mask)
-        h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
+        h2 = self.src2_src_att(x_p_norm, x_p_norm, x_norm, p_mask)
+        #print(x.size(), x_p.size()) #torch.Size([13, 15, 64]) torch.Size([13, 34, 64])
+        #print(h.size(), h2.size()) #torch.Size([13, 15, 64]) torch.Size([13, 15, 64])
+        #h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
+        #print(torch.cat((h, h2), -1).size()) #torch.Size([9, 27, 128])
+        g = torch.sigmoid(self.W_g( torch.cat((h, h2), -1) ) + self.b_g)
+        h = g * (self.dropout(h) + x) + (1-g) * (self.dropout(h2) + x)
         o = self.feed_forward(h)
         return o
 
