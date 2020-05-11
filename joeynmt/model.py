@@ -33,6 +33,7 @@ class Model(nn.Module):
                  trg_embed: Embeddings,
                  src_vocab: Vocabulary,
                  trg_vocab: Vocabulary,
+                 encoder_config,
                  encoder_2: Encoder = None) -> None:
         """
         Create a new encoder-decoder model
@@ -57,7 +58,19 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None
+        self.last_layer_norm = None 
+        
+        assert encoder_config
+        if self.encoder_2:
+            if not self.last_layer_norm:
+                layer_norm = nn.LayerNorm(encoder_config["hidden_size"], eps=1e-6)
+                self.last_layer_norm = layer_norm
+            self.last_layer = TransformerEncoderCombinationLayer(size=encoder_config["hidden_size"],
+                                                            ff_size=encoder_config["ff_size"],
+                                                            num_heads=encoder_config["num_heads"],
+                                                            dropout=encoder_config["dropout"])
+
+
     # pylint: disable=arguments-differ
     def forward(self, src: Tensor, trg_input: Tensor, src_mask: Tensor,
                 src_lengths: Tensor, trg_mask: Tensor, prev_src: Tensor ,
@@ -85,16 +98,7 @@ class Model(nn.Module):
                                                          src_mask=prev_src_mask,
                                                          encoder=self.encoder_2)
 
-            assert self.encoder_config
-            if not self.last_layer_norm:
-                layer_norm = nn.LayerNorm(self.encoder_config["hidden_size"], eps=1e-6)
-                self.last_layer_norm = layer_norm
-            last_layer = TransformerEncoderCombinationLayer(size=self.encoder_config["hidden_size"],
-                                                            ff_size=self.encoder_config["ff_size"],
-                                                            num_heads=self.encoder_config["num_heads"],
-                                                            dropout=self.encoder_config["dropout"])
-
-            x = last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
+            x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
@@ -300,7 +304,8 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, encoder_2=encoder_2)
+                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
     # tie softmax layer with trg embeddings

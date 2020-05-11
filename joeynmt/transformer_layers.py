@@ -211,7 +211,7 @@ class TransformerEncoderCombinationLayer(nn.Module):
         #h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
         #print(torch.cat((h, h2), -1).size()) #torch.Size([9, 27, 128])
         g = torch.sigmoid(self.W_g( torch.cat((h, h2), -1) ) + self.b_g)
-        h = g * (self.dropout(h) + x) + (1-g) * (self.dropout(h2) + x)
+        h = g * self.layer_norm(self.dropout(h) + x) + (1-g) * self.layer_norm(self.dropout(h2) + x)
         o = self.feed_forward(h)
         return o
 
