@@ -161,7 +161,7 @@ def transformer_greedy(
 
         # check if previous symbol was <eos>
         is_eos = torch.eq(next_word, eos_index)
-        finished += is_eos
+        finished += is_eos.byte()
         # stop predicting if <eos> reached for all elements in batch
         if (finished >= 1).sum() == batch_size:
             break
