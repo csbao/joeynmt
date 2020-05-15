@@ -3,14 +3,14 @@ name: "transformer_baseline"
 data:
     src: "de"
     trg: "en"
-    train: "chatnmt/prep/train.tags.bpe.10000"
-    dev: "chatnmt/prep/dev.tags.bpe.10000"
-    test: "chatnmt/prep/test.tags.bpe.10000"
+    train: "chatnmt/prep/train.tags.bpe.1500"
+    dev: "chatnmt/prep/dev.tags.bpe.1500"
+    test: "chatnmt/prep/test.tags.bpe.1500"
     level: "bpe"
     lowercase: True
     max_sent_length: 62
-    src_vocab: "test/data/iwslt14/vocab.txt"
-    trg_vocab: "test/data/iwslt14/vocab.txt"
+    src_vocab: "chatnmt/prep/vocab.txt"
+    trg_vocab: "chatnmt/prep/vocab.txt"
 
 testing:
     beam_size: 5
