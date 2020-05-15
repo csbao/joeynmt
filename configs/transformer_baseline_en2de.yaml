@@ -1,8 +1,8 @@
-name: "transformer_baseline"
+name: "transformer_baseline_en2de"
 
 data:
-    src: "de"
-    trg: "en"
+    src: "en"
+    trg: "de"
     train: "chatnmt/prep/train.tags.bpe.1500"
     dev: "chatnmt/prep/dev.tags.bpe.1500"
     test: "chatnmt/prep/test.tags.bpe.1500"
@@ -36,10 +36,10 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_baseline"
+    model_dir: "models/transformer_baseline_en2de"
     overwrite: False
     shuffle: True
-    use_cuda: True
+    use_cuda: False
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3, 4]
     keep_last_ckpts: 5
