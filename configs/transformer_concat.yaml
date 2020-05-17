@@ -1,16 +1,16 @@
-name: "transformer_baseline"
+name: "transformer_concat"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/prep/train.tags.bpe.10000"
-    dev: "chatnmt/prep/dev.tags.bpe.10000"
-    test: "chatnmt/prep/test.tags.bpe.10000"
+    train: "chatnmt/concat/train_concat_prev.tags.bpe.10000"
+    dev: "chatnmt/concat/dev_concat_prev.tags.bpe.10000"
+    test: "chatnmt/concat/test_concat_prev.tags.bpe.10000"
     level: "bpe"
     lowercase: True
     max_sent_length: 62
-    src_vocab: "chatnmt/prep/vocab.txt"
-    trg_vocab: "chatnmt/prep/vocab.txt"
+    src_vocab: "chatnmt/concat/vocab.txt"
+    trg_vocab: "chatnmt/concat/vocab.txt"
 
 testing:
     beam_size: 5
@@ -36,7 +36,7 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_baseline"
+    model_dir: "models/transformer_concat"
     overwrite: False
     shuffle: True
     use_cuda: False
