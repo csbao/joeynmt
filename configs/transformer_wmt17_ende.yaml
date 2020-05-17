@@ -9,8 +9,8 @@ data:
     level: "bpe"
     lowercase: False
     max_sent_length: 100
-    src_vocab: "data/wmt17_ende/vocab.txt"
-    trg_vocab: "data/wmt17_ende/vocab.txt"
+    src_vocab: "models/wmt_ende_transformer/src_vocab.txt"
+    trg_vocab: "models/wmt_ende_transformer/trg_vocab.txt"
 
 testing:
     beam_size: 5
@@ -39,10 +39,11 @@ training:
     validation_freq: 4000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt17_ende_transformer"
+    model_dir: "models/wmt_ende_transformer"
+    load_model: "models/wmt_ende_transformer/best.ckpt"
     overwrite: False
     shuffle: True
-    use_cuda: True
+    use_cuda: False
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3]
     keep_last_ckpts: 3

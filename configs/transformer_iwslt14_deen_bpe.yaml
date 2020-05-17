@@ -9,8 +9,8 @@ data:
     level: "bpe"
     lowercase: True
     max_sent_length: 62
-    src_vocab: "test/data/iwslt14/vocab.txt"
-    trg_vocab: "test/data/iwslt14/vocab.txt"
+    src_vocab: "models/transformer_iwslt14_deen_bpe/src_vocab.txt"
+    trg_vocab: "models/transformer_iwslt14_deen_bpe/trg_vocab.txt"
 
 testing:
     beam_size: 5
@@ -36,10 +36,10 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/iwslt14_deen_bpe_transformer"
+    model_dir: "models/transformer_iwslt14_deen_bpe"
     overwrite: False
     shuffle: True
-    use_cuda: True
+    use_cuda: False
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3, 4]
     keep_last_ckpts: 5
