@@ -1,16 +1,16 @@
-name: "iwslt14-deen-bpe-transformer"
+name: "transformer_baseline_en2de"
 
 data:
-    src: "de"
-    trg: "en"
-    train: "test/data/iwslt14/train.bpe.32000"
-    dev: "test/data/iwslt14/valid.bpe.32000"
-    test: "test/data/iwslt14/test.bpe.32000"
+    src: "en"
+    trg: "de"
+    train: "chatnmt/prep/train.tags.bpe.1500"
+    dev: "chatnmt/prep/dev.tags.bpe.1500"
+    test: "chatnmt/prep/test.tags.bpe.1500"
     level: "bpe"
     lowercase: True
     max_sent_length: 62
-    src_vocab: "models/transformer_iwslt14_deen_bpe/src_vocab.txt"
-    trg_vocab: "models/transformer_iwslt14_deen_bpe/trg_vocab.txt"
+    src_vocab: "chatnmt/prep/vocab.txt"
+    trg_vocab: "chatnmt/prep/vocab.txt"
 
 testing:
     beam_size: 5
@@ -36,13 +36,14 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_iwslt14_deen_bpe"
+    model_dir: "models/transformer_baseline_en2de"
     overwrite: False
     shuffle: True
     use_cuda: False
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3, 4]
     keep_last_ckpts: 5
+    # multi-encoder: False
 
 model:
     initializer: "xavier"
