@@ -219,7 +219,7 @@ class TransformerEncoder(Encoder):
 
         for layer in self.layers:
             x = layer(x, mask)
-        if self.top_off:
+        if not self.top_off:
             return x, None
         else:
             return self.layer_norm(x), None
