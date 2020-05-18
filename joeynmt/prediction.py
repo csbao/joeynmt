@@ -212,7 +212,7 @@ def test(cfg_file,
 
     # load the data
     _, dev_data, test_data, src_vocab, trg_vocab = load_data(
-        data_cfg=cfg["data"])
+        data_cfg=cfg["data"], multi_encoder=cfg["model"]["encoder"].get("multi_encoder", False))
 
     data_to_predict = {"dev": dev_data, "test": test_data}
 
