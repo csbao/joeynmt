@@ -40,7 +40,7 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_multi_enc_ende"
+    model_dir: "models/transformer_multi_enc_shared_ende"
     #load_model: "models/wmt_ende_transformer/best.ckpt"
     overwrite: True
     shuffle: True
@@ -59,7 +59,7 @@ model:
     tied_softmax: True
     encoder:
         type: "transformer"
-        num_layers: 3 #3+3=6 to make # params comparable with single-encoder transformer
+        num_layers: 6
         num_heads: 8
         embeddings:
             embedding_dim: 512
@@ -71,6 +71,7 @@ model:
         dropout: 0.1
         freeze: False
         multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
+        share_encoder: True         # if True, share the first N-1 layers of `encoder` and `encoder_2`
     decoder:
         type: "transformer"
         num_layers: 6
