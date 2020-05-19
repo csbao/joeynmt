@@ -1,16 +1,17 @@
+# modified from: transformer_wmt17_ende.yaml
 name: "transformer"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/prep/train.tags.bpe.10000"    # training data
-    dev: "chatnmt/prep/dev.tags.bpe.10000"        # development data for validation
-    test:  "chatnmt/prep/test.tags.bpe.10000"
+    train: "chatnmt/prep/train_concat_prev.tags.bpe.10000"    # training data
+    dev: "chatnmt/prep/dev_concat_prev.tags.bpe.10000"        # development data for validation
+    test:  "chatnmt/prep/test_concat_prev.tags.bpe.10000"
     level: "bpe"
-    lowercase: False
+    lowercase: True ###changed, check
     max_sent_length: 100
-    src_vocab: "models/wmt_ende_transformer/src_vocab.txt"
-    trg_vocab: "models/wmt_ende_transformer/trg_vocab.txt"
+    #src_vocab: "models/wmt_ende_transformer/src_vocab.txt"
+    #trg_vocab: "models/wmt_ende_transformer/trg_vocab.txt"
 
 testing:
     beam_size: 5
@@ -36,14 +37,14 @@ training:
     batch_multiplier: 1
     early_stopping_metric: "ppl"
     epochs: 100
-    validation_freq: 4000
+    validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt_ende_transformer"
-    load_model: "models/wmt_ende_transformer/best.ckpt"
-    overwrite: False
+    model_dir: "models/transformer_ende"
+    #load_model: "models/wmt_ende_transformer/best.ckpt"
+    overwrite: True
     shuffle: True
-    use_cuda: False
+    use_cuda: True
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3]
     keep_last_ckpts: 3
@@ -54,7 +55,7 @@ model:
     init_gain: 1.0
     embed_initializer: "xavier"
     embed_init_gain: 1.0
-    tied_embeddings: True
+    tied_embeddings: False #changed
     tied_softmax: True
     encoder:
         type: "transformer"
@@ -67,6 +68,7 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
+        freeze: False
         dropout: 0.1
     decoder:
         type: "transformer"
@@ -79,4 +81,5 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
+        freeze: False
         dropout: 0.1

@@ -8,13 +8,13 @@ data: # specify your data here
     test: "chatnmt/prep/test.tags.bpe.10000"      # test data for testing final model; optional
     level: "bpe"                   # segmentation level: either "word", "bpe" or "char"
     lowercase: True                 # lowercase the data, also for validation
-    max_sent_length: 30             # filter out longer sentences from training (src+trg)
-    src_voc_min_freq: 1             # src minimum frequency for a token to become part of the vocabulary
-    src_voc_limit: 101              # src vocabulary only includes this many most frequent tokens, default: unlimited
-    trg_voc_min_freq: 1             # trg minimum frequency for a token to become part of the vocabulary
-    trg_voc_limit: 102              # trg vocabulary only includes this many most frequent tokens, default: unlimited
-    src_vocab: "chatnmt/prep/vocab.txt"
-    trg_vocab: "chatnmt/prep/vocab.txt"
+    max_sent_length: 62             # filter out longer sentences from training (src+trg)
+    #src_voc_min_freq: 1             # src minimum frequency for a token to become part of the vocabulary
+    #src_voc_limit: 101              # src vocabulary only includes this many most frequent tokens, default: unlimited
+    #trg_voc_min_freq: 1             # trg minimum frequency for a token to become part of the vocabulary
+    #trg_voc_limit: 102              # trg vocabulary only includes this many most frequent tokens, default: unlimited
+    src_vocab: "chatnmt/prep/en_vocab.txt"
+    trg_vocab: "chatnmt/prep/de_vocab.txt"
     #src_vocab: "my_model/src_vocab.txt"  # if specified, load a vocabulary from this file
     #trg_vocab: "my_model/trg_vocab.txt"  # one token per line, line number is index
 
@@ -42,9 +42,9 @@ training:                           # specify training details here
     batch_multiplier: 1             # increase the effective batch size with values >1 to batch_multiplier*batch_size without increasing memory consumption by making updates only every batch_multiplier batches
     normalization: "batch"          # loss normalization of a mini-batch, default: "batch" (by number of sequences in batch), other options: "tokens" (by number of tokens in batch), "none" (don't normalize, sum up loss)
     scheduling: "noam"              # learning rate scheduling, optional, if not specified stays constant, options: "plateau", "exponential", "decaying", "noam" (for Transformer), "warmupexponentialdecay"
-    epochs: 10                      # train for this many epochs
-    validation_freq: 100            # validate after this many updates (number of mini-batches), default: 1000
-    logging_freq: 10                # log the training progress after this many updates, default: 100
+    epochs: 100                     # train for this many epochs
+    validation_freq: 1000           # validate after this many updates (number of mini-batches), default: 1000
+    logging_freq: 100               # log the training progress after this many updates, default: 100
     eval_metric: "bleu"             # validation metric, default: "bleu", other options: "chrf", "token_accuracy", "sequence_accuracy"
     early_stopping_metric: "loss"   # when a new high score on this metric is achieved, a checkpoint is written, when "eval_metric" (default) is maximized, when "loss" or "ppl" is minimized
     model_dir: "models/transformer" # directory where models and validation results are stored, required
