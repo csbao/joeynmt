@@ -7,6 +7,73 @@ import numpy as np
 from joeynmt.decoders import Decoder, TransformerDecoder
 from joeynmt.embeddings import Embeddings
 from joeynmt.helpers import tile
+from whoosh import index
+
+
+from whoosh.qparser import QueryParser, MultifieldParser
+from whoosh.query import spans, Term, FuzzyTerm, Or
+
+class MyFuzzyTerm(FuzzyTerm):
+     def __init__(self, fieldname, text, boost=1.0, maxdist=2, prefixlength=1, constantscore=True):
+         super(MyFuzzyTerm, self).__init__(fieldname, text, boost, maxdist, prefixlength, constantscore)
+
+# Instantiate ix from indexdir built from alignment
+# ix = {'schema': 0}
+alignment_indices = None
+ix = index.open_dir(alignment_indices or '/Users/calvinbao/Documents/src/spring2020/cmsc828b/indexdir')
+parser = QueryParser("src", schema=ix.schema)
+def compute_unedited_words(gold, retrieved):
+    import difflib
+    s = difflib.SequenceMatcher(None, gold, retrieved)
+    unedited_words = []
+    dist = 0
+    for tag, i1, i2, j1, j2 in s.get_opcodes():
+        if tag == 'equal':
+            for i in range(j1, j2):
+                unedited_words.append(str(i))
+        else:
+            dist+= max(i2-i1, j2-j1)
+    return unedited_words, dist
+
+def collect_translation_pieces(X, m=10):
+    def tokenize_sent(x): return x.split(' ') #should  be sufficient with our processed data
+    translation_pieces = set() # GxM
+    with ix.searcher() as s:
+        # q = parser.parse(X)
+        x_tokens = X # X doesn't need to be tokenized, it already is.
+        t = []
+        for i in x_tokens:
+            t.append(FuzzyTerm("src", i))
+        q = spans.SpanNear2(t, slop=4, ordered=True)
+        results = s.search(Or(t), limit=m)
+        def simi(X, Xm, edit_distance):
+            return 1-(edit_distance/max(len(X), len(Xm)))
+        for res in results:
+            alt = dict()
+            for elt in res['alignment'].split(' '):
+                s, t = elt.split('-')
+                if t not in alt:
+                    alt[t] = [s]
+                else:
+                    alt[t].append(s)
+            src_words = tokenize_sent(res['src'])
+            target_words = tokenize_sent(res['trg'])
+            unedited_words, dist = compute_unedited_words(x_tokens, src_words)
+            score = simi(src_words, x_tokens, dist)
+            for i in range(len(target_words)):
+                for j in range(i, len(target_words)):
+                    if j - i == 4:
+                        break
+                    e = alt.get(str(j), [])
+                    if len(e) == 0:
+                        continue
+                    for src_align in e:
+                        if src_align not in unedited_words:
+                            break
+                        else:
+                            if len(target_words[i:j]) > 0:
+                                translation_pieces.add((' '.join(target_words[i:j]), score))
+    return translation_pieces
 
 
 __all__ = ["greedy", "transformer_greedy", "beam_search"]
@@ -85,7 +152,6 @@ def recurrent_greedy(
             prev_att_vector=prev_att_vector,
             unroll_steps=1)
         # logits: batch x time=1 x vocab (logits)
-
         # greedy decoding: choose arg max over vocabulary in each step
         next_word = torch.argmax(logits, dim=-1)  # batch x time=1
         output.append(next_word.squeeze(1).detach().cpu().numpy())
@@ -177,7 +243,7 @@ def beam_search(
         bos_index: int, eos_index: int, pad_index: int,
         encoder_output: Tensor, encoder_hidden: Tensor,
         src_mask: Tensor, max_output_length: int, alpha: float,
-        embed: Embeddings, n_best: int = 1) -> (np.array, np.array):
+        embed: Embeddings, n_best: int = 1, batched=None, src_vocab=None) -> (np.array, np.array):
     """
     Beam search with size k.
     Inspired by OpenNMT-py, adapted for Transformer.
@@ -264,7 +330,7 @@ def beam_search(
     }
 
     for step in range(max_output_length):
-
+        print("STEP IS {}".format(step))
         # This decides which part of the predicted sentence we feed to the
         # decoder to make the next prediction.
         # For Transformer, we feed the complete predicted sentence so far.
@@ -290,6 +356,7 @@ def beam_search(
             trg_mask=trg_mask  # subsequent mask for Transformer only
         )
 
+
         # For the Transformer we made predictions for all time steps up to
         # this point, so we only want to know about the last time step.
         if transformer:
@@ -297,10 +364,34 @@ def beam_search(
             hidden = None           # we don't need to keep it for transformer
 
         # batch*k x trg_vocab
+        # print("what is logits ?")
+        # print(logits)
+        # print(logits.shape)
         log_probs = F.log_softmax(logits, dim=-1).squeeze(1)
+        # print(batched.src) # decode src back to symbols:
+        # Rettrieve Translation pieces
+        src_sentences = src_vocab.arrays_to_sentences(arrays=batched.src,cut_at_eos=True)
+        translation_pieces_per_sent = map(collect_translation_pieces, src_sentences)
+        # print(list(translation_pieces_per_sent))
 
+        # For each token, pass X into collect_translation pieces.
+        # update log_probs here probably...
         # multiply probs by the beam probability (=add logprobs)
+        for idx, translation_pieces in translation_pieces_per_sent:
+            # create_unigrams(translation_pieces)
+            for (translation_piece, score) in translation_pieces:
+                for unigram in translation_piece:
+                    # print("SCORE IS {}".format(score))
+                    log_probs[idx][src_vocab.stoi[unigram]] += 0.001 * score
+                # TODO: implement n-gram scoring in the actual score itself
+                # for i in range(1,3):
+                #     for
+
+
+        # print(log_probs[5].shape, log_probs[2].shape)
         log_probs += topk_log_probs.view(-1).unsqueeze(1)
+        # for idx in collect
+        # trg_vocab.stoi[word]
         curr_scores = log_probs.clone()
 
         # compute length penalty
@@ -310,10 +401,10 @@ def beam_search(
 
         # flatten log_probs into a list of possibilities
         curr_scores = curr_scores.reshape(-1, size * decoder.output_size)
-
+        # print(curr_scores.shape)
         # pick currently best top k hypotheses (flattened order)
         topk_scores, topk_ids = curr_scores.topk(size, dim=-1)
-
+        # print(topk_scores, topk_ids)
         if alpha > -1:
             # recover original log probs
             topk_log_probs = topk_scores * length_penalty
@@ -323,7 +414,7 @@ def beam_search(
         # reconstruct beam origin and true word ids from flattened order
         topk_beam_index = topk_ids.div(decoder.output_size)
         topk_ids = topk_ids.fmod(decoder.output_size)
-
+        print("topk ids is {}".format(topk_ids))
         # map beam_index to batch_index in the flat representation
         batch_index = (
             topk_beam_index

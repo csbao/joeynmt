@@ -222,6 +222,9 @@ def test(cfg_file,
     # build model and load parameters into it
     model = build_model(cfg["model"], src_vocab=src_vocab, trg_vocab=trg_vocab)
     model.load_state_dict(model_checkpoint["model_state"])
+    # print("model is {}".format(model.parameters()))
+    trainable_params = [n for (n, p) in model.named_parameters()
+                        if p.requires_grad]
 
     if use_cuda:
         model.cuda()
@@ -369,7 +372,6 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
     # build model and load parameters into it
     model = build_model(cfg["model"], src_vocab=src_vocab, trg_vocab=trg_vocab)
     model.load_state_dict(model_checkpoint["model_state"])
-
     if use_cuda:
         model.cuda()
 

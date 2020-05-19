@@ -58,8 +58,8 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None 
-        
+        self.last_layer_norm = None
+
         assert encoder_config
         if self.encoder_2:
             if not self.last_layer_norm:
@@ -218,7 +218,8 @@ class Model(nn.Module):
                         alpha=beam_alpha, eos_index=self.eos_index,
                         pad_index=self.pad_index,
                         bos_index=self.bos_index,
-                        decoder=self.decoder)
+                        decoder=self.decoder,
+                        batched=batch, src_vocab=self.src_vocab)
 
         return stacked_output, stacked_attention_scores
 
@@ -307,7 +308,7 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  src_vocab=src_vocab, trg_vocab=trg_vocab,
                   encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
