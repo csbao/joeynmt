@@ -294,6 +294,9 @@ class ContextTranslationDataset(Dataset):
             for src_line, trg_line in zip(src_file, trg_file):
                 src_line, trg_line = src_line.strip(), trg_line.strip()
                 if src_line != '' and trg_line != '':
+                    if src_line == 'removemeimaboundary' or trg_line == 'removemeimaboundary':
+                        prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+                        continue
                     examples.append(data.Example.fromlist(
                         [prev_src_line, prev_trg_line, src_line, trg_line], fields))
                     prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
