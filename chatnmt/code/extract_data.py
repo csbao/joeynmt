@@ -46,8 +46,8 @@ for chat in chats.values():
     # print end of convo, for boundaries
 
     if wrote:
-        f_en.write('\n')
-        f_de.write('\n')
+        f_en.write('REMOVEMEIMABOUNDARY\n')
+        f_de.write('REMOVEMEIMABOUNDARY\n')
 f.close()
 f_en.close()
 f_de.close()
