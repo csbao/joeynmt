@@ -1,11 +1,12 @@
-name: "wmt_ende_best"
+# modified from: wmt_ende_best.yaml
+name: "lstm_ende"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/prep/train.tags.bpe.wmt_ende_best"
-    dev: "chatnmt/prep/dev.tags.bpe.wmt_ende_best"
-    test:  "chatnmt/prep/test.tags.bpe.wmt_ende_best"
+    train: "chatnmt/prep/train.tags.bpe.10000"
+    dev: "chatnmt/prep/dev.tags.bpe.10000"
+    test: "chatnmt/prep/test.tags.bpe.10000"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -13,8 +14,8 @@ data:
     src_voc_limit: 100000
     trg_voc_min_freq: 0
     trg_voc_limit: 100000
-    src_vocab: "models/wmt_ende_best/src_vocab.txt"
-    trg_vocab: "models/wmt_ende_best/trg_vocab.txt"
+    #src_vocab: "test/data/en-de/vocab.txt"
+    #trg_vocab: "test/data/en-de/vocab.txt"
 
 testing:
     beam_size: 5
@@ -33,11 +34,11 @@ training:
     patience: 4
     decrease_factor: 0.7
     early_stopping_metric: "ppl"
-    epochs: 20
-    validation_freq: 8000
-    logging_freq: 1000
+    epochs: 100
+    validation_freq: 1000
+    logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt_ende_best"
+    model_dir: "models/lstm_ende"
     overwrite: False
     shuffle: True
     use_cuda: True
@@ -45,7 +46,7 @@ training:
     print_valid_sents: [0, 1, 2]
 
 model:
-    tied_embeddings: True
+    tied_embeddings: False #changed, check
     encoder:
         rnn_type: "lstm"
         embeddings:

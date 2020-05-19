@@ -1,12 +1,12 @@
-#modified from: transformer_wmt17_ende.yaml
-name: "transformer_multi_enc_ende"
+# modified from: transformer_wmt17_ende.yaml
+name: "transformer"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/prep/train.tags.bpe.10000"
-    dev:   "chatnmt/prep/dev.tags.bpe.10000"
-    test:  "chatnmt/prep/test.tags.bpe.10000"
+    train: "chatnmt/prep/train_concat_prev.tags.bpe.10000"    # training data
+    dev: "chatnmt/prep/dev_concat_prev.tags.bpe.10000"        # development data for validation
+    test:  "chatnmt/prep/test_concat_prev.tags.bpe.10000"
     level: "bpe"
     lowercase: True ###changed, check
     max_sent_length: 100
@@ -40,7 +40,7 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_multi_enc_ende"
+    model_dir: "models/transformer_ende"
     #load_model: "models/wmt_ende_transformer/best.ckpt"
     overwrite: True
     shuffle: True
@@ -55,11 +55,11 @@ model:
     init_gain: 1.0
     embed_initializer: "xavier"
     embed_init_gain: 1.0
-    tied_embeddings: False #changed, check
+    tied_embeddings: False #changed
     tied_softmax: True
     encoder:
         type: "transformer"
-        num_layers: 3 #3+3=6 to make # params comparable with single-encoder transformer
+        num_layers: 6
         num_heads: 8
         embeddings:
             embedding_dim: 512
@@ -68,9 +68,8 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
         freeze: False
-        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
+        dropout: 0.1
     decoder:
         type: "transformer"
         num_layers: 6
@@ -82,5 +81,5 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
         freeze: False
+        dropout: 0.1
