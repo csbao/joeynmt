@@ -22,16 +22,16 @@ merge_ops=10000
 src=de
 tgt=en
 lang=de-en
-prep="../prep"
+prep="../multi_encoder"
 # tmp=${prep}/tmp
 orig="../data"
 # prep = "../prep"
-train=train_concat_prev
-test=test_concat_prev
-dev=dev_concat_prev
-# train=train
-# test=test
-# dev=dev
+# train=train_concat_prev
+# test=test_concat_prev
+# dev=dev_concat_prev
+train=train
+test=test
+dev=dev
 
 echo "pre-processing train data..."
 for l in ${src} ${tgt}; do
