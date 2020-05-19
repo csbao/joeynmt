@@ -284,7 +284,10 @@ def build_model(cfg: dict = None,
             encoder = TransformerEncoder(**cfg["encoder"],
                                          emb_size=src_embed.embedding_dim,
                                          emb_dropout=enc_emb_dropout , dont_minus_one=False)
-            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True)
+            shared_layers = None
+            if cfg["encoder"].get("share_encoder", False):
+                shared_layers = encoder.layers
+            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,

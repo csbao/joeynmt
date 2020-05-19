@@ -161,6 +161,7 @@ class TransformerEncoder(Encoder):
                  emb_dropout: float = 0.1,
                  freeze: bool = False,
                  dont_minus_one: bool = True,
+                 shared_layers = None,
                  **kwargs):
         """
         Initializes the Transformer.
@@ -177,10 +178,14 @@ class TransformerEncoder(Encoder):
         super(TransformerEncoder, self).__init__()
 
         # build all (num_layers) layers
-        self.layers = nn.ModuleList([
-            TransformerEncoderLayer(size=hidden_size, ff_size=ff_size,
-                                    num_heads=num_heads, dropout=dropout)
-            for _ in range(num_layers if dont_minus_one else num_layers-1)])
+        if shared_layers is not None:
+            self.layers = shared_layers
+            self.layers.append(TransformerEncoderLayer(size=hidden_size, ff_size=ff_size, num_heads=num_heads, dropout=dropout))
+        else:
+            self.layers = nn.ModuleList([
+                TransformerEncoderLayer(size=hidden_size, ff_size=ff_size,
+                                        num_heads=num_heads, dropout=dropout)
+                for _ in range(num_layers if dont_minus_one else num_layers-1)])
         self.top_off = False if dont_minus_one else True
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
         self.pe = PositionalEncoding(hidden_size)
