@@ -2,7 +2,14 @@
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
 # Adapted from https://github.com/pytorch/fairseq/blob/master/examples/translation/prepare-iwslt14.sh
 
-# git clone https://github.com/moses-smt/mosesdecoder.git
+################################################################
+# This file will preprocess the files orig/train, orig/test, orig/valid and the output would be placed
+# under prep. You may change the corresponding folders and files.
+################################################################
+
+
+
+git clone https://github.com/moses-smt/mosesdecoder.git
 
 MOSES=`pwd`/../../mosesdecoder
 
@@ -15,13 +22,16 @@ merge_ops=10000
 src=de
 tgt=en
 lang=de-en
-prep="../concat"
+prep="../prep"
 # tmp=${prep}/tmp
 orig="../data"
 # prep = "../prep"
 train=train_concat_prev
 test=test_concat_prev
 dev=dev_concat_prev
+# train=train
+# test=test
+# dev=dev
 
 echo "pre-processing train data..."
 for l in ${src} ${tgt}; do
@@ -34,7 +44,7 @@ for l in ${src} ${tgt}; do
     done
 done
 for p in ${train} ${dev} ${test}; do
-    perl ${CLEAN} -ratio 1.5 ${prep}/${p}.tok ${src} ${tgt} ${prep}/${p}.clean 1 80
+    perl ${CLEAN} -ratio 9 ${prep}/${p}.tok ${src} ${tgt} ${prep}/${p}.clean 1 80
 done
 for l in ${src} ${tgt}; do
     for p in ${train} ${dev} ${test}; do
