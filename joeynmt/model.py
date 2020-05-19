@@ -58,13 +58,9 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None 
-        
+
         assert encoder_config
         if self.encoder_2:
-            if not self.last_layer_norm:
-                layer_norm = nn.LayerNorm(encoder_config["hidden_size"], eps=1e-6)
-                self.last_layer_norm = layer_norm
             self.last_layer = TransformerEncoderCombinationLayer(size=encoder_config["hidden_size"],
                                                             ff_size=encoder_config["ff_size"],
                                                             num_heads=encoder_config["num_heads"],
@@ -100,8 +96,9 @@ class Model(nn.Module):
 
             x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
 
-            encoder_output, encoder_hidden = self.last_layer_norm(x), None
-
+            encoder_output, encoder_hidden = self.encoder.get_layer_norm()(x), None
+        else:
+            encoder_output, encoder_hidden = self.encoder.get_layer_norm()(encoder_output), None
         # Add combination function here, gate sum the two outputs
 
         unroll_steps = trg_input.size(1)
@@ -307,7 +304,7 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  src_vocab=src_vocab, trg_vocab=trg_vocab,
                   encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 

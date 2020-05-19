@@ -186,7 +186,6 @@ class TransformerEncoder(Encoder):
                 TransformerEncoderLayer(size=hidden_size, ff_size=ff_size,
                                         num_heads=num_heads, dropout=dropout)
                 for _ in range(num_layers if dont_minus_one else num_layers-1)])
-        self.top_off = False if dont_minus_one else True
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
         self.pe = PositionalEncoding(hidden_size)
         self.emb_dropout = nn.Dropout(p=emb_dropout)
@@ -196,6 +195,7 @@ class TransformerEncoder(Encoder):
         if freeze:
             freeze_params(self)
 
+    def get_layer_norm(self): return self.layer_norm
     #pylint: disable=arguments-differ
     def forward(self,
                 embed_src: Tensor,
@@ -224,11 +224,13 @@ class TransformerEncoder(Encoder):
 
         for layer in self.layers:
             x = layer(x, mask)
-        if not self.top_off:
-            return x, None
-        else:
-            return self.layer_norm(x), None
-
+        # if self.dont_minus_one:
+            # return x, None
+        # if not self.top_off:
+            # return x, None
+        # else:
+            # return self.layer_norm(x), None
+        return x, None
     def __repr__(self):
         return "%s(num_layers=%r, num_heads=%r)" % (
             self.__class__.__name__, len(self.layers),
