@@ -179,7 +179,8 @@ class TransformerEncoder(Encoder):
 
         # build all (num_layers) layers
         if shared_layers is not None:
-            self.layers = shared_layers
+            #self.layers = shared_layers
+            self.layers = nn.ModuleList([ layer for layer in shared_layers ])
             self.layers.append(TransformerEncoderLayer(size=hidden_size, ff_size=ff_size, num_heads=num_heads, dropout=dropout))
         else:
             self.layers = nn.ModuleList([
