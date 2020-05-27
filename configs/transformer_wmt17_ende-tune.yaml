@@ -3,7 +3,7 @@ name: "transformer"
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/prep/train.tags.bpe.10000"    # training data
+    train: "chatnmt/prep/train.tags.bpe.wmt17"    # training data
     dev: "chatnmt/prep/dev.tags.bpe.wmt17"        # development data for validation
     test:  "chatnmt/prep/test.tags.bpe.wmt17"
     level: "bpe"
@@ -36,11 +36,14 @@ training:
     batch_multiplier: 1
     early_stopping_metric: "ppl"
     epochs: 100
-    validation_freq: 4000
+    validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt_ende_transformer"
+    model_dir: "models/wmt_ende_transformer-tune"
     load_model: "models/wmt_ende_transformer/best.ckpt"
+    reset_best_ckpt: True
+    reset_scheduler: True
+    reset_optimizer: True
     overwrite: False
     shuffle: True
     use_cuda: True
