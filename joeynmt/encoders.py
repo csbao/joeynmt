@@ -160,7 +160,7 @@ class TransformerEncoder(Encoder):
                  dropout: float = 0.1,
                  emb_dropout: float = 0.1,
                  freeze: bool = False,
-                 dont_minus_one: bool = True,
+                 dont_minus_one = True,
                  shared_layers = None,
                  **kwargs):
         """
@@ -187,7 +187,7 @@ class TransformerEncoder(Encoder):
                 TransformerEncoderLayer(size=hidden_size, ff_size=ff_size,
                                         num_heads=num_heads, dropout=dropout)
                 for _ in range(num_layers if dont_minus_one else num_layers-1)])
-        self.top_off = False if dont_minus_one else True
+        self.top_off = False if (dont_minus_one and 'multi_encoder' in locals() and multi_encoder) else True
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
         self.pe = PositionalEncoding(hidden_size)
         self.emb_dropout = nn.Dropout(p=emb_dropout)
