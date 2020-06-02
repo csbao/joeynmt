@@ -58,17 +58,18 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None 
-        
+        self.last_layer_norm = None
+
         assert encoder_config
         if self.encoder_2:
             if not self.last_layer_norm:
-                layer_norm = nn.LayerNorm(encoder_config["hidden_size"], eps=1e-6)
+                layer_norm = nn.LayerNorm(encoder_config["hidden_size"], eps=1e-6) #] *len(self.encoder_2)
                 self.last_layer_norm = layer_norm
             self.last_layer = TransformerEncoderCombinationLayer(size=encoder_config["hidden_size"],
-                                                            ff_size=encoder_config["ff_size"],
-                                                            num_heads=encoder_config["num_heads"],
-                                                            dropout=encoder_config["dropout"])
+                                                                ff_size=encoder_config["ff_size"],
+                                                                num_heads=encoder_config["num_heads"],
+                                                                dropout=encoder_config["dropout"],
+                                                                num_prev_encoders=len(self.encoder_2))
 
 
     # pylint: disable=arguments-differ
@@ -93,13 +94,19 @@ class Model(nn.Module):
                                                      encoder=self.encoder)
 
         if self.encoder_2:
-            encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
-                                                         src_length=prev_src_lengths,
-                                                         src_mask=prev_src_mask,
-                                                         encoder=self.encoder_2)
+            prev_encoder_outputs = []
+            for idx, encoder in enumerate(self.encoder_2):
+                # encoder_output_2, encoder_hidden_2 = self.encoder
+                # print("encode issss {}".format(prev_src[idx]))
+                # print(prev_src)
+                encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
+                                                                 src_length=prev_src_lengths,
+                                                                 src_mask=prev_src_mask,
+                                                                 encoder=encoder)
+                prev_encoder_outputs.append(encoder_output_2)
 
-            x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
-
+            # x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
+            x = self.last_layer(encoder_output, src_mask, prev_encoder_outputs, prev_src_mask)
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
         # Add combination function here, gate sum the two outputs
@@ -121,6 +128,10 @@ class Model(nn.Module):
         :param src_mask:
         :return: encoder outputs (output, hidden_concat)
         """
+        # print("src is {}".format(src))
+        # if isinstance(self.src_embed, list):
+        #     print("is list ", self.src_embed)
+        # print("Encoder is {}".format(encoder))
         return encoder(self.src_embed(src), src_length, src_mask)
 
     def decode(self, encoder_output: Tensor, encoder_hidden: Tensor,
@@ -190,10 +201,12 @@ class Model(nn.Module):
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
 
-        if self.encoder_2:
-            encoder_output_2, encoder_hidden_2 = self.encode(
-                batch.src_prev, batch.src_prev_lengths,
-                batch.src_prev_mask, self.encoder_2)
+        # TODO: Implement encoder_2 here.... you need to combine the two outputs and run W_g
+        # if self.encoder_2:
+        #
+        #     encoder_output_2, encoder_hidden_2 = self.encode(
+        #         batch.src_prev, batch.src_prev_lengths,
+        #         batch.src_prev_mask, self.encoder_2)
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
@@ -287,7 +300,7 @@ def build_model(cfg: dict = None,
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
+            encoder_2 = [TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers, pe=True)] * cfg["encoder"].get("num_prev_encoders", 0)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
@@ -307,7 +320,7 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  src_vocab=src_vocab, trg_vocab=trg_vocab,
                   encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 

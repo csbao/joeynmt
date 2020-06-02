@@ -166,7 +166,8 @@ class TransformerEncoderCombinationLayer(nn.Module):
                  size: int = 0,
                  ff_size: int = 0,
                  num_heads: int = 0,
-                 dropout: float = 0.1):
+                 dropout: float = 0.1,
+                 num_prev_encoders: int = 0):
         """
         A single Transformer layer.
         :param size:
@@ -181,8 +182,8 @@ class TransformerEncoderCombinationLayer(nn.Module):
         # TODO: implement gated_sum as proper function combining the two attention outputs
         #self.gated_sum = lambda x, y: x  # combination algorithm
         #print(size) #64
-        self.src2_src_att = MultiHeadedAttention(num_heads, size, dropout=dropout)#TODO can have different num_heads
-        self.W_g = nn.Linear(size+size, 1, bias=False)
+        self.src2_src_att = [MultiHeadedAttention(num_heads, size, dropout=dropout)]*num_prev_encoders#TODO can have different num_heads
+        self.W_g = nn.Linear(size*(num_prev_encoders+1), 1, bias=False) # I think length of num_prev_encoders ?
         self.b_g = nn.Parameter(torch.rand(1)) # trainable scalar
 
         self.feed_forward = PositionwiseFeedForward(size, ff_size=ff_size,
@@ -191,6 +192,7 @@ class TransformerEncoderCombinationLayer(nn.Module):
         self.size = size
 
     # pylint: disable=arguments-differ
+    # TODO: x_p should be a list of Tensors
     def forward(self, x: Tensor, mask: Tensor, x_p: Tensor, p_mask: Tensor) -> Tensor:
         """
         Forward pass for a single transformer encoder layer.
@@ -203,15 +205,24 @@ class TransformerEncoderCombinationLayer(nn.Module):
         :return: output tensor
         """
         x_norm = self.layer_norm(x)
-        x_p_norm = self.layer_norm(x_p)
+        # print("x_p is {}")
+        # x_p_norm = self.layer_norm(x_p)
         h = self.src_src_att(x_norm, x_norm, x_norm, mask)
-        h2 = self.src2_src_att(x_p_norm, x_p_norm, x_norm, p_mask)
+        # h2 = self.src2_src_att(x_p_norm, x_p_norm, x_norm, p_mask)
+        prev_hidden = []
+        for idx, prev_context in enumerate(x_p):
+            x_p_norm = self.layer_norm(prev_context)
+            h2 = self.src2_src_att[len(self.src2_src_att) - 1 - idx](x_p_norm, x_p_norm, x_norm, p_mask)
+            prev_hidden.append(h2)
+            # prev_hidden.append(attention())
+        # print("prev_hidden {}".format(prev_hidden))
         #print(x.size(), x_p.size()) #torch.Size([13, 15, 64]) torch.Size([13, 34, 64])
         #print(h.size(), h2.size()) #torch.Size([13, 15, 64]) torch.Size([13, 15, 64])
         #h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
         #print(torch.cat((h, h2), -1).size()) #torch.Size([9, 27, 128])
-        g = torch.sigmoid(self.W_g( torch.cat((h, h2), -1) ) + self.b_g)
-        h = g * self.layer_norm(self.dropout(h) + x) + (1-g) * self.layer_norm(self.dropout(h2) + x)
+        g = torch.sigmoid(self.W_g( torch.cat((h, *prev_hidden), -1) ) + self.b_g)
+        h = g * self.layer_norm(self.dropout(h) + x) + (1-g) * self.layer_norm(self.dropout(prev_hidden[-1]) + x) # For now, get only the latest context... this is an update.
+        # TODO: test with + (1-g) * self.layer_norm(self.dropout(prev_hidden[0]) + x) instead of ... + x_p[0]
         o = self.feed_forward(h)
         return o
 

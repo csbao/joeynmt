@@ -162,6 +162,7 @@ class TransformerEncoder(Encoder):
                  freeze: bool = False,
                  dont_minus_one = True,
                  shared_layers = None,
+                 pe=False,
                  **kwargs):
         """
         Initializes the Transformer.
@@ -176,7 +177,7 @@ class TransformerEncoder(Encoder):
         :param kwargs:
         """
         super(TransformerEncoder, self).__init__()
-
+        self.pe = pe
         # build all (num_layers) layers
         if shared_layers is not None:
             #self.layers = shared_layers
@@ -220,6 +221,7 @@ class TransformerEncoder(Encoder):
             - hidden_concat: last hidden state with
                 shape (batch_size, directions*hidden)
         """
+        # print("embed shape is {}".format(embed_src.shape))
         x = self.pe(embed_src)  # add position encoding to word embeddings
         x = self.emb_dropout(x)
 
