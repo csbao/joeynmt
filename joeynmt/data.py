@@ -87,13 +87,27 @@ def load_data(data_cfg: dict, multi_encoder: bool = False) -> (Dataset, Dataset,
                            unk_token=UNK_TOKEN,
                            batch_first=True, lower=lowercase,
                            include_lengths=True)
+
+    prev_prev_prev_src_field = data.Field(init_token=CONTEXT_TOKEN, eos_token=CONTEXT_EOS_TOKEN,
+                           pad_token=PAD_TOKEN, tokenize=tok_fun,
+                           batch_first=True, lower=lowercase,
+                           unk_token=UNK_TOKEN,
+                           include_lengths=True)
+
+    prev_prev_prev_trg_field = data.Field(init_token=CONTEXT_TOKEN, eos_token=CONTEXT_EOS_TOKEN,
+                           pad_token=PAD_TOKEN, tokenize=tok_fun,
+                           unk_token=UNK_TOKEN,
+                           batch_first=True, lower=lowercase,
+                           include_lengths=True)
+
+
     train_data = None
 
 
     if multi_encoder:
         train_data = ContextTranslationDataset(path=train_path,
                                                exts=("." + src_lang, "." + trg_lang),
-                                               fields=(prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
+                                               fields=(prev_prev_prev_src_field, prev_prev_prev_trg_field, prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
                                                filter_pred=
                                                lambda x: len(vars(x)['src'])
                                                 <= max_sent_length
@@ -154,7 +168,7 @@ def load_data(data_cfg: dict, multi_encoder: bool = False) -> (Dataset, Dataset,
     if multi_encoder:
         dev_data = ContextTranslationDataset(path=dev_path,
                                                exts=("." + src_lang, "." + trg_lang),
-                                               fields=(prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
+                                               fields=(prev_prev_prev_src_field, prev_prev_prev_trg_field, prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
                                                filter_pred=
                                                lambda x: len(vars(x)['src'])
                                                 <= max_sent_length
@@ -171,7 +185,7 @@ def load_data(data_cfg: dict, multi_encoder: bool = False) -> (Dataset, Dataset,
             if multi_encoder:
                 test_data = ContextTranslationDataset(path=test_path,
                                                        exts=("." + src_lang, "." + trg_lang),
-                                                       fields=(prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
+                                                       fields=(prev_prev_prev_src_field, prev_prev_prev_trg_field, prev_prev_src_field, prev_prev_trg_field, prev_src_field, prev_trg_field, src_field, trg_field),
                                                        filter_pred=
                                                        lambda x: len(vars(x)['src'])
                                                         <= max_sent_length
@@ -192,6 +206,9 @@ def load_data(data_cfg: dict, multi_encoder: bool = False) -> (Dataset, Dataset,
     prev_trg_field.vocab = trg_vocab
     prev_prev_src_field.vocab = src_vocab
     prev_prev_trg_field.vocab = trg_vocab
+
+    prev_prev_prev_src_field.vocab = src_vocab
+    prev_prev_prev_trg_field.vocab = trg_vocab
     return train_data, dev_data, test_data, src_vocab, trg_vocab
 
 
@@ -306,24 +323,26 @@ class ContextTranslationDataset(Dataset):
         :param kwargs: Passed to the constructor of data.Dataset.
         """
         if not isinstance(fields[0], (tuple, list)):
-            fields = [('src_prev_prev', fields[0]), ('trg_prev_prev', fields[1]), ('src_prev', fields[2]), ('trg_prev', fields[3]), ('src', fields[4]), ('trg', fields[5])]
+            fields = [('src_prev_prev_prev', fields[0]), ('trg_prev_prev_prev', fields[1]), ('src_prev_prev', fields[2]), ('trg_prev_prev', fields[3]), ('src_prev', fields[4]), ('trg_prev', fields[5]), ('src', fields[6]), ('trg', fields[7])]
         # fields = [('src', field)]
         src_path, trg_path = tuple(os.path.expanduser(path + x) for x in exts)
         examples = []
 
         with io.open(src_path, mode='r', encoding='utf-8') as src_file, \
                 io.open(trg_path, mode='r', encoding='utf-8') as trg_file:
-            prev_src_line, prev_trg_line, prev_prev_src_line, prev_prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+            prev_src_line, prev_trg_line, prev_prev_src_line, prev_prev_trg_line, prev_prev_prev_src_line, prev_prev_prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
             for src_line, trg_line in zip(src_file, trg_file):
                 src_line, trg_line = src_line.strip(), trg_line.strip()
                 if src_line != '' and trg_line != '':
                     if src_line == 'removemeimaboundary' or trg_line == 'removemeimaboundary':
-                        prev_src_line, prev_trg_line, prev_prev_src_line, prev_prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+                        prev_src_line, prev_trg_line, prev_prev_src_line, prev_prev_trg_line, prev_prev_prev_src_line, prev_prev_prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                         continue
                     examples.append(data.Example.fromlist(
-                        [prev_prev_src_line, prev_prev_trg_line, prev_src_line, prev_trg_line, src_line, trg_line], fields))
+                        [prev_prev_prev_src_line, prev_prev_prev_trg_line, prev_prev_src_line, prev_prev_trg_line, prev_src_line, prev_trg_line, src_line, trg_line], fields))
+                    prev_prev_prev_src_line = prev_prev_src_line
+                    prev_prev_prev_trg_line = prev_prev_trg_line
                     prev_prev_src_line = prev_src_line
                     prev_prev_trg_line = prev_trg_line
-                    prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
+                    prev_src_line = src_line
                     prev_trg_line = trg_line
         super(ContextTranslationDataset, self).__init__(examples, fields, **kwargs)

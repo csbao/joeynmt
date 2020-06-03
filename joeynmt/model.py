@@ -172,8 +172,8 @@ class Model(nn.Module):
         out, hidden, att_probs, _ = self.forward(
             src=batch.src, trg_input=batch.trg_input,
             src_mask=batch.src_mask, src_lengths=batch.src_lengths,
-            trg_mask=batch.trg_mask, prev_srcs=[batch.src_prev, batch.src_prev_prev], prev_trg_inputs=[batch.trg_prev_input, batch.trg_prev_prev_input],
-            prev_src_lengths=[batch.src_prev_lengths, batch.src_prev_prev_lengths], prev_src_masks=[batch.src_prev_mask, batch.src_prev_prev_mask]) # Share the prev_src_mask here......
+            trg_mask=batch.trg_mask, prev_srcs=[batch.src_prev, batch.src_prev_prev, batch.src_prev_prev_prev], prev_trg_inputs=[batch.trg_prev_input, batch.trg_prev_prev_input, batch.trg_prev_prev_prev_input],
+            prev_src_lengths=[batch.src_prev_lengths, batch.src_prev_prev_lengths, batch.src_prev_prev_prev_lengths], prev_src_masks=[batch.src_prev_mask, batch.src_prev_prev_mask, batch.src_prev_prev_prev_mask]) # Share the prev_src_mask here......
 
         # compute log probs
         log_probs = F.log_softmax(out, dim=-1)
@@ -296,7 +296,7 @@ def build_model(cfg: dict = None,
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = [TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*2
+            encoder_2 = [TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*3
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
