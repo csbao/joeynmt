@@ -84,6 +84,7 @@ class Batch:
             self.trg_prev_prev_prev = prev_prev_trg[:, 1:]
             self.trg_prev_prev_prev_mask = (self.trg_prev_prev_prev_input != pad_index).unsqueeze(1)
             self.ntokens_prev_prev_prev = (self.trg_prev_prev_prev != pad_index).data.sum().item()
+
         if use_cuda:
             self._make_cuda()
 
@@ -93,35 +94,44 @@ class Batch:
 
         :return:
         """
-        self.src = self.src.cuda()
-        self.src_mask = self.src_mask.cuda()
-        if self.trg_input is not None:
-            self.trg_input = self.trg_input.cuda()
-            self.trg = self.trg.cuda()
-            self.trg_mask = self.trg_mask.cuda()
-        if self.use_context:
-            self.src_prev = self.src_prev.cuda()
-            self.src_prev_mask = self.src_prev_mask.cuda()
-            if self.trg_prev_input is not None:
-                self.trg_prev_input = self.trg_prev_input.cuda()
-                self.trg_prev = self.trg_prev.cuda()
-                self.trg_prev_mask = self.trg_prev_mask.cuda()
+        # self.src = self.src.cuda()
+        # self.src_mask = self.src_mask.cuda()
+        # if self.trg_input is not None:
+        #     self.trg_input = self.trg_input.cuda()
+        #     self.trg = self.trg.cuda()
+        #     self.trg_mask = self.trg_mask.cuda()
+        # if self.use_context:
+        #
+        #     self.src_prev = self.src_prev.cuda()
+        #     self.src_prev_mask = self.src_prev_mask.cuda()
+        #     if self.trg_prev_input is not None:
+        #         self.trg_prev_input = self.trg_prev_input.cuda()
+        #         self.trg_prev = self.trg_prev.cuda()
+        #         self.trg_prev_mask = self.trg_prev_mask.cuda()
+        #
+        #     # Add src_prev_prev
+        #     self.src_prev_prev = self.src_prev_prev.cuda()
+        #     self.src_prev_prev_mask = self.src_prev_prev_mask.cuda()
+        #     if self.trg_prev_prev_input is not None:
+        #         self.trg_prev_prev_input = self.trg_prev_prev_input.cuda()
+        #         self.trg_prev_prev = self.trg_prev_prev.cuda()
+        #         self.trg_prev_prev_mask = self.trg_prev_prev_mask.cuda()
+        #
+        #     # Add src_prev_prev_prev
+        #     self.src_prev_prev_prev = self.src_prev_prev_prev.cuda()
+        #     self.src_prev_prev_prev_mask = self.src_prev_prev_prev_mask.cuda()
+        #     if self.trg_prev_prev_prev_input is not None:
+        #         self.trg_prev_prev_prev_input = self.trg_prev_prev_prev_input.cuda()
+        #         self.trg_prev_prev_prev = self.trg_prev_prev_prev.cuda()
+        #         self.trg_prev_prev_prev_mask = self.trg_prev_prev_prev_mask.cuda()
 
-            # Add src_prev_prev
-            self.src_prev_prev = self.src_prev_prev.cuda()
-            self.src_prev_prev_mask = self.src_prev_prev_mask.cuda()
-            if self.trg_prev_prev_input is not None:
-                self.trg_prev_prev_input = self.trg_prev_prev_input.cuda()
-                self.trg_prev_prev = self.trg_prev_prev.cuda()
-                self.trg_prev_prev_mask = self.trg_prev_prev_mask.cuda()
 
-            # Add src_prev_prev_prev
-            self.src_prev_prev_prev = self.src_prev_prev_prev.cuda()
-            self.src_prev_prev_prev_mask = self.src_prev_prev_prev_mask.cuda()
-            if self.trg_prev_prev_prev_input is not None:
-                self.trg_prev_prev_prev_input = self.trg_prev_prev_prev_input.cuda()
-                self.trg_prev_prev_prev = self.trg_prev_prev_prev.cuda()
-                self.trg_prev_prev_prev_mask = self.trg_prev_prev_prev_mask.cuda()
+        #  SANITY CHECK.. Every Tensor object in batch should be cudafied here.
+        for member in ['src', 'src_lengths', 'src_mask', 'src_prev', 'src_prev_lengths', 'src_prev_mask', 'src_prev_prev', 'src_prev_prev_lengths', 'src_prev_prev_mask', 'src_prev_prev_prev', 'src_prev_prev_prev_lengths', 'src_prev_prev_prev_mask', 'trg', 'trg_input', 'trg_lengths', 'trg_mask', 'trg_prev', 'trg_prev_input', 'trg_prev_lengths', 'trg_prev_mask', 'trg_prev_prev', 'trg_prev_prev_input', 'trg_prev_prev_lengths', 'trg_prev_prev_mask', 'trg_prev_prev_prev', 'trg_prev_prev_prev_input', 'trg_prev_prev_prev_lengths', 'trg_prev_prev_prev_mask']:
+
+          if getattr(self, member) is not None:
+              setattr(self, member, getattr(self, member).cuda())
+
 
     def sort_by_src_lengths(self):
         """
