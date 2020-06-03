@@ -58,8 +58,8 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None 
-        
+        self.last_layer_norm = None
+
         assert encoder_config
         if self.encoder_2:
             if not self.last_layer_norm:
@@ -73,8 +73,8 @@ class Model(nn.Module):
 
     # pylint: disable=arguments-differ
     def forward(self, src: Tensor, trg_input: Tensor, src_mask: Tensor,
-                src_lengths: Tensor, trg_mask: Tensor, prev_src: Tensor ,
-                prev_trg_input: Tensor, prev_src_lengths: Tensor, prev_src_mask: Tensor) -> (
+                src_lengths: Tensor, trg_mask: Tensor, prev_srcs: Tensor ,
+                prev_trg_inputs: Tensor, prev_src_lengths: Tensor, prev_src_masks: Tensor) -> (
         Tensor, Tensor, Tensor, Tensor):
         """
         First encodes the source sentence.
@@ -87,18 +87,27 @@ class Model(nn.Module):
         :param trg_mask: target mask
         :return: decoder outputs
         """
+
+
+        # trg_mask=batch.trg_mask, prev_srcs=[batch.src_prev, batch.src_prev_prev], prev_trg_inputs=[batch.trg_prev_input, batch.trg_prev_prev_input],
+        # prev_src_lengths=[batch.src_prev_lengths, batch.src_prev_prev_lengths], prev_src_masks=[batch.src_prev_mask, batch.src_prev_prev_mask]
+
+
         encoder_output, encoder_hidden = self.encode(src=src,
                                                      src_length=src_lengths,
                                                      src_mask=src_mask,
                                                      encoder=self.encoder)
 
         if self.encoder_2:
-            encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
-                                                         src_length=prev_src_lengths,
-                                                         src_mask=prev_src_mask,
-                                                         encoder=self.encoder_2)
+            encoder_output_2s = []
+            for idx, p_s in enumerate(prev_srcs):
+                encoder_output_2, encoder_hidden_2 = self.encode(src=p_s,
+                                                             src_length=prev_src_lengths[idx],
+                                                             src_mask=prev_src_masks[idx],
+                                                             encoder=self.encoder_2[idx])
+                encoder_output_2s.append(encoder_output_2)
 
-            x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
+            x = self.last_layer(encoder_output, src_mask, encoder_output_2s, prev_src_masks)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
@@ -163,8 +172,8 @@ class Model(nn.Module):
         out, hidden, att_probs, _ = self.forward(
             src=batch.src, trg_input=batch.trg_input,
             src_mask=batch.src_mask, src_lengths=batch.src_lengths,
-            trg_mask=batch.trg_mask, prev_src=batch.src_prev, prev_trg_input=batch.trg_prev_input,
-            prev_src_lengths=batch.src_prev_lengths, prev_src_mask=batch.src_prev_mask) # Share the prev_src_mask here......
+            trg_mask=batch.trg_mask, prev_srcs=[batch.src_prev, batch.src_prev_prev], prev_trg_inputs=[batch.trg_prev_input, batch.trg_prev_prev_input],
+            prev_src_lengths=[batch.src_prev_lengths, batch.src_prev_prev_lengths], prev_src_masks=[batch.src_prev_mask, batch.src_prev_prev_mask]) # Share the prev_src_mask here......
 
         # compute log probs
         log_probs = F.log_softmax(out, dim=-1)
@@ -190,10 +199,10 @@ class Model(nn.Module):
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
 
-        if self.encoder_2:
-            encoder_output_2, encoder_hidden_2 = self.encode(
-                batch.src_prev, batch.src_prev_lengths,
-                batch.src_prev_mask, self.encoder_2)
+        # if self.encoder_2:
+        #     encoder_output_2, encoder_hidden_2 = self.encode(
+        #         batch.src_prev, batch.src_prev_lengths,
+        #         batch.src_prev_mask, self.encoder_2)
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
@@ -287,7 +296,7 @@ def build_model(cfg: dict = None,
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
+            encoder_2 = [TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*2
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
@@ -307,7 +316,7 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  src_vocab=src_vocab, trg_vocab=trg_vocab,
                   encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
