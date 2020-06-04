@@ -625,7 +625,7 @@ def train(cfg_file: str) -> None:
         multi_encoder=cfg["model"]["encoder"].get("multi_encoder", False))
 
     # build an encoder-decoder model
-    model = build_model(cfg["model"], src_vocab=src_vocab, trg_vocab=trg_vocab)
+    model = build_model(cfg["model"], src_vocab=src_vocab, trg_vocab=trg_vocab, use_cuda=cfg["training"].get("use_cuda", False))
 
     # for training management, e.g. early stopping and model selection
     trainer = TrainManager(model=model, config=cfg)

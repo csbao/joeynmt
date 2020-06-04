@@ -449,6 +449,7 @@ class TransformerDecoder(Decoder):
                  emb_dropout: float = 0.1,
                  vocab_size: int = 1,
                  freeze: bool = False,
+                 use_cuda=False,
                  **kwargs):
         """
         Initialize a Transformer decoder.
@@ -473,7 +474,7 @@ class TransformerDecoder(Decoder):
                 size=hidden_size, ff_size=ff_size, num_heads=num_heads,
                 dropout=dropout) for _ in range(num_layers)])
 
-        self.pe = PositionalEncoding(hidden_size)
+        self.pe = PositionalEncoding(hidden_size, use_cuda=use_cuda)
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
 
         self.emb_dropout = nn.Dropout(p=emb_dropout)

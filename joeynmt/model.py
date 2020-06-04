@@ -247,7 +247,8 @@ class Model(nn.Module):
 
 def build_model(cfg: dict = None,
                 src_vocab: Vocabulary = None,
-                trg_vocab: Vocabulary = None) -> Model:
+                trg_vocab: Vocabulary = None,
+                use_cuda = False) -> Model:
     """
     Build and initialize the model according to the configuration.
 
@@ -288,15 +289,16 @@ def build_model(cfg: dict = None,
 
         encoder = TransformerEncoder(**cfg["encoder"],
                                      emb_size=src_embed.embedding_dim,
-                                     emb_dropout=enc_emb_dropout)
+                                     emb_dropout=enc_emb_dropout,
+                                     use_cuda=use_cuda)
         if cfg["encoder"].get("multi_encoder", False):
             encoder = TransformerEncoder(**cfg["encoder"],
                                          emb_size=src_embed.embedding_dim,
-                                         emb_dropout=enc_emb_dropout , dont_minus_one=False)
+                                         emb_dropout=enc_emb_dropout , use_cuda=use_cuda, dont_minus_one=False)
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = [TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*3
+            encoder_2 = [TransformerEncoder(**cfg["encoder"], use_cuda=use_cuda, emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*3
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
@@ -307,7 +309,7 @@ def build_model(cfg: dict = None,
     dec_emb_dropout = cfg["decoder"]["embeddings"].get("dropout", dec_dropout)
     if cfg["decoder"].get("type", "recurrent") == "transformer":
         decoder = TransformerDecoder(
-            **cfg["decoder"], encoder=encoder, vocab_size=len(trg_vocab),
+            **cfg["decoder"], encoder=encoder, vocab_size=len(trg_vocab), use_cuda=use_cuda,
             emb_size=trg_embed.embedding_dim, emb_dropout=dec_emb_dropout)
     else:
         decoder = RecurrentDecoder(

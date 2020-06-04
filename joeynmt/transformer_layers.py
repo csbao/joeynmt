@@ -127,7 +127,8 @@ class PositionalEncoding(nn.Module):
     """
     def __init__(self,
                  size: int = 0,
-                 max_len: int = 5000):
+                 max_len: int = 5000,
+                 use_cuda = False):
         """
         Positional Encoding with maximum length max_len
         :param size:
@@ -144,9 +145,13 @@ class PositionalEncoding(nn.Module):
         pe[:, 0::2] = torch.sin(position.float() * div_term)
         pe[:, 1::2] = torch.cos(position.float() * div_term)
         pe = pe.unsqueeze(0)  # shape: [1, size, max_len]
+        if use_cuda:
+            pe = pe.cuda()
         super(PositionalEncoding, self).__init__()
+
         self.register_buffer('pe', pe)
         self.dim = size
+
 
     def forward(self, emb):
         """Embed inputs.

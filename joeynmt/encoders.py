@@ -162,6 +162,7 @@ class TransformerEncoder(Encoder):
                  freeze: bool = False,
                  dont_minus_one = True,
                  shared_layers = None,
+                 use_cuda=False,
                  **kwargs):
         """
         Initializes the Transformer.
@@ -189,7 +190,7 @@ class TransformerEncoder(Encoder):
                 for _ in range(num_layers if dont_minus_one else num_layers-1)])
         self.top_off = False if (dont_minus_one and 'multi_encoder' in locals() and multi_encoder) else True
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
-        self.pe = PositionalEncoding(hidden_size)
+        self.pe = PositionalEncoding(hidden_size, use_cuda=use_cuda)
         self.emb_dropout = nn.Dropout(p=emb_dropout)
 
         self._output_size = hidden_size
