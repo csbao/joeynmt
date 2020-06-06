@@ -58,8 +58,8 @@ class Model(nn.Module):
         self.bos_index = self.trg_vocab.stoi[BOS_TOKEN]
         self.pad_index = self.trg_vocab.stoi[PAD_TOKEN]
         self.eos_index = self.trg_vocab.stoi[EOS_TOKEN]
-        self.last_layer_norm = None 
-        
+        self.last_layer_norm = None
+
         assert encoder_config
         if self.encoder_2:
             if not self.last_layer_norm:
@@ -192,8 +192,13 @@ class Model(nn.Module):
 
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
-                batch.src_prev, batch.src_prev_lengths,
-                batch.src_prev_mask, self.encoder_2)
+                src=batch.src_prev, src_length=batch.src_prev_lengths,
+                src_mask=batch.src_prev_mask, encoder=self.encoder_2)
+
+            x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
+
+            encoder_output, encoder_hidden = self.last_layer_norm(x), None
+
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
@@ -307,7 +312,7 @@ def build_model(cfg: dict = None,
 
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
-                  src_vocab=src_vocab, trg_vocab=trg_vocab, 
+                  src_vocab=src_vocab, trg_vocab=trg_vocab,
                   encoder_config=cfg["encoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
