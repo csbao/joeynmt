@@ -202,9 +202,13 @@ class Model(nn.Module):
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
                 src=batch.src_prev, src_length=batch.src_prev_lengths,
-                src_mask=batch.src_prev_mask, encoder=self.encoder_2)
+                src_mask=batch.src_prev_mask, encoder=self.encoder_2[0])
 
-            x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
+            encoder_output_3, encoder_hidden_3 = self.encode(
+                src=batch.src_prev_prev, src_length=batch.src_prev_prev_lengths,
+                src_mask=batch.src_prev_prev_mask, encoder=self.encoder_2[1])
+
+            x = self.last_layer(encoder_output, batch.src_mask, [encoder_output_2, encoder_output_3], [batch.src_prev_mask, batch.srv_prev_prev_mask])
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
