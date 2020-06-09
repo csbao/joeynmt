@@ -304,7 +304,12 @@ def build_model(cfg: dict = None,
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = nn.ModuleList([TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*2)
+            if cfg["encoder"].get("share_ctx_encoder", False):
+                #print("share_ctx_encoder")
+                shared_ctx_enc = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
+                encoder_2 = nn.ModuleList([shared_ctx_enc, shared_ctx_enc])
+            else:
+                encoder_2 = nn.ModuleList([TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)]*2)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
