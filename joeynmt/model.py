@@ -202,6 +202,7 @@ class Model(nn.Module):
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
 
+        encoder_output_2, encoder_hidden_2 = None, None
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
                 src=batch.src_prev, src_length=batch.src_prev_lengths,
@@ -235,7 +236,9 @@ class Model(nn.Module):
                         alpha=beam_alpha, eos_index=self.eos_index,
                         pad_index=self.pad_index,
                         bos_index=self.bos_index,
-                        decoder=self.decoder)
+                        decoder=self.decoder,
+                        encoder_hidden_2=encoder_hidden_2,
+                        encoder_output_2=encoder_output_2)
 
         return stacked_output, stacked_attention_scores
 
