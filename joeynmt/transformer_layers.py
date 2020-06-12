@@ -346,7 +346,7 @@ class TransformerDecoderLayer(nn.Module):
         else:
             h3 = self.src_prev_trg_att(memory2, memory2, h1_norm, mask=None)
             g = torch.sigmoid(self.W_g( torch.cat((h2, h3), -1) ) + self.b_g)
-            h4 = g * (self.dropout(h2) + h1) + (( 1-g) * self.dropout(h3) + h1)
+            h4 = g * (self.dropout(h2) + h1) + (1-g) * (self.dropout(h3) + h1)
         # o = self.feed_forward(h)
 
         # final position-wise feed-forward layer
