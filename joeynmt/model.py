@@ -92,6 +92,7 @@ class Model(nn.Module):
                                                      src_mask=src_mask,
                                                      encoder=self.encoder)
 
+        encoder_output_2, encoder_hidden_2 = None, None
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
                                                          src_length=prev_src_lengths,
@@ -107,9 +108,13 @@ class Model(nn.Module):
         unroll_steps = trg_input.size(1)
         return self.decode(encoder_output=encoder_output,
                            encoder_hidden=encoder_hidden,
+                           encoder_output_2=encoder_output_2, #circumvent gated representation, give directly to decoder.
+                           encoder_hidden_2=encoder_hidden_2,
                            src_mask=src_mask, trg_input=trg_input,
                            unroll_steps=unroll_steps,
-                           trg_mask=trg_mask)
+                           trg_mask=trg_mask,
+                           prev_src_mask=prev_src_mask,
+                           p_src=prev_src)
 
     def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor, encoder: Encoder) \
         -> (Tensor, Tensor):
@@ -125,9 +130,12 @@ class Model(nn.Module):
 
     def decode(self, encoder_output: Tensor, encoder_hidden: Tensor,
                src_mask: Tensor, trg_input: Tensor,
-               unroll_steps: int, decoder_hidden: Tensor = None,
-               trg_mask: Tensor = None) \
+               unroll_steps: int, encoder_output_2: Tensor = None, encoder_hidden_2: Tensor = None,
+               decoder_hidden: Tensor = None,
+               trg_mask: Tensor = None,
+               prev_src_mask: Tensor = None, p_src: Tensor=None) \
         -> (Tensor, Tensor, Tensor, Tensor):
+
         """
         Decode, given an encoded source sentence.
 
@@ -145,8 +153,12 @@ class Model(nn.Module):
                             encoder_hidden=encoder_hidden,
                             src_mask=src_mask,
                             unroll_steps=unroll_steps,
+                            encoder_output_2=encoder_output_2,
+                            encoder_hidden_2=encoder_hidden_2,
                             hidden=decoder_hidden,
-                            trg_mask=trg_mask)
+                            trg_mask=trg_mask,
+                            prev_src_mask=prev_src_mask,
+                            p_src=p_src)
 
     def get_loss_for_batch(self, batch: Batch, loss_function: nn.Module) \
             -> Tensor:

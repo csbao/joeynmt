@@ -294,8 +294,13 @@ class TransformerDecoderLayer(nn.Module):
         self.src_trg_att = MultiHeadedAttention(num_heads, size,
                                                 dropout=dropout)
 
+        self.src_prev_trg_att = MultiHeadedAttention(num_heads, size, dropout=dropout)
+        self.W_g = nn.Linear(size+size, 1, bias=False)
+        self.b_g = nn.Parameter(torch.rand(1)) # trainable scalar
         self.feed_forward = PositionwiseFeedForward(size, ff_size=ff_size,
                                                     dropout=dropout)
+
+
 
         self.x_layer_norm = nn.LayerNorm(size, eps=1e-6)
         self.dec_layer_norm = nn.LayerNorm(size, eps=1e-6)
@@ -307,7 +312,11 @@ class TransformerDecoderLayer(nn.Module):
                 x: Tensor = None,
                 memory: Tensor = None,
                 src_mask: Tensor = None,
-                trg_mask: Tensor = None) -> Tensor:
+                trg_mask: Tensor = None,
+                memory2: Tensor = None,
+                prev_src_mask: Tensor = None,
+                p_src: Tensor = None
+                ) -> Tensor:
         """
         Forward pass of a single Transformer decoder layer.
 
@@ -326,7 +335,22 @@ class TransformerDecoderLayer(nn.Module):
         h1_norm = self.dec_layer_norm(h1)
         h2 = self.src_trg_att(memory, memory, h1_norm, mask=src_mask)
 
+
+        # def forward(self, k: Tensor, v: Tensor, q: Tensor, mask: Tensor = None):
+        # dont mask, dont need to hide context from decoder
+        # Strange, sometimes memory2 comes in as None. Investigate how many None's there are  here...
+        # Otherwise, pass in the full current-target attention
+        h3, h4 = None, None
+        if memory2 is None:
+            h4 = self.dropout(h2) + h1
+        else:
+            h3 = self.src_prev_trg_att(memory2, memory2, h1_norm, mask=None)
+            g = torch.sigmoid(self.W_g( torch.cat((h2, h3), -1) ) + self.b_g)
+            h4 = g * (self.dropout(h2) + h1) + (( 1-g) * self.dropout(h3) + h1)
+        # o = self.feed_forward(h)
+
         # final position-wise feed-forward layer
-        o = self.feed_forward(self.dropout(h2) + h1)
+        # o = self.feed_forward(self.dropout(h2) + h1)
+        o = self.feed_forward(h4)
 
         return o

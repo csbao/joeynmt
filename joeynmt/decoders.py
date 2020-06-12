@@ -488,8 +488,13 @@ class TransformerDecoder(Decoder):
                 encoder_hidden: Tensor = None,
                 src_mask: Tensor = None,
                 unroll_steps: int = None,
+                # src_prev_mask: Tensor = None,
+                encoder_output_2: Tensor=None,
+                encoder_hidden_2: Tensor=None,
                 hidden: Tensor = None,
                 trg_mask: Tensor = None,
+                prev_src_mask: Tensor = None,
+                p_src: Tensor=None,
                 **kwargs):
         """
         Transformer decoder forward pass.
@@ -514,8 +519,8 @@ class TransformerDecoder(Decoder):
             trg_embed.size(1)).type_as(trg_mask)
 
         for layer in self.layers:
-            x = layer(x=x, memory=encoder_output,
-                      src_mask=src_mask, trg_mask=trg_mask)
+            x = layer(x=x, memory=encoder_output, memory2=encoder_output_2,
+                      src_mask=src_mask, trg_mask=trg_mask, p_src=p_src, prev_src_mask=prev_src_mask)
 
         x = self.layer_norm(x)
         output = self.output_layer(x)
