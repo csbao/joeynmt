@@ -58,7 +58,10 @@ class MultiHeadedAttention(nn.Module):
         # reshape q, k, v for our computation to [batch_size, num_heads, ..]
         k = k.view(batch_size, -1, num_heads, self.head_size).transpose(1, 2)
         v = v.view(batch_size, -1, num_heads, self.head_size).transpose(1, 2)
-        q = q.view(batch_size, -1, num_heads, self.head_size).transpose(1, 2)
+        try:
+            q = q.view(batch_size, -1, num_heads, self.head_size).transpose(1, 2)
+        except:
+            return False
 
         # compute scores
         q = q / math.sqrt(self.head_size)
@@ -336,7 +339,6 @@ class TransformerDecoderLayer(nn.Module):
         h2 = self.src_trg_att(memory, memory, h1_norm, mask=src_mask)
 
 
-        # def forward(self, k: Tensor, v: Tensor, q: Tensor, mask: Tensor = None):
         # dont mask, dont need to hide context from decoder
         # Strange, sometimes memory2 comes in as None. Investigate how many None's there are  here...
         # Otherwise, pass in the full current-target attention
@@ -344,13 +346,17 @@ class TransformerDecoderLayer(nn.Module):
         if memory2 is None:
             h4 = self.dropout(h2) + h1
         else:
+            # context-source-target attention
             h3 = self.src_prev_trg_att(memory2, memory2, h1_norm, mask=None)
-            g = torch.sigmoid(self.W_g( torch.cat((h2, h3), -1) ) + self.b_g)
-            h4 = g * (self.dropout(h2) + h1) + (1-g) * (self.dropout(h3) + h1)
-        # o = self.feed_forward(h)
+            if h3 is False or h2.shape[0] is not h3.shape[0]:
+                h4 = self.dropout(h2) + h1
+            else:
+                # print(h3.shape)
+                # print(h2.shape)
+                g = torch.sigmoid(self.W_g( torch.cat((h2, h3), -1) ) + self.b_g)
+                h4 = g * (self.dropout(h2) + h1) + (1-g) * (self.dropout(h3) + h1)
 
         # final position-wise feed-forward layer
-        # o = self.feed_forward(self.dropout(h2) + h1)
         o = self.feed_forward(h4)
 
         return o

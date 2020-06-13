@@ -102,7 +102,7 @@ class Model(nn.Module):
             x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
-
+            encoder_output_2, encoder_hidden_2 = self.last_layer_norm(encoder_output_2), None
         # Add combination function here, gate sum the two outputs
 
         unroll_steps = trg_input.size(1)
@@ -212,7 +212,7 @@ class Model(nn.Module):
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
-
+            encoder_output_2, encoder_hidden_2 = self.last_layer_norm(encoder_output_2), None
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
             max_output_length = int(max(batch.src_lengths.cpu().numpy()) * 1.5)
