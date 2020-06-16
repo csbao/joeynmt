@@ -3,9 +3,9 @@ name: "transformer"
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/multi_encoder/train.tags.bpe.10000"    # training data
-    dev: "chatnmt/multi_encoder/dev.tags.bpe.10000"        # development data for validation
-    test: "chatnmt/multi_encoder/test.tags.bpe.10000"        # development data for validation
+    ###TO BE CORRECTED###train: "chatnmt/multi_encoder/train.tags.bpe.10000"    # training data
+    ###TO BE CORRECTED###dev: "chatnmt/multi_encoder/dev.tags.bpe.10000"        # development data for validation
+    ###TO BE CORRECTED###test: "chatnmt/multi_encoder/test.tags.bpe.10000"        # development data for validation
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -46,7 +46,7 @@ training:
     reset_optimizer: True
     overwrite: False
     shuffle: True
-    use_cuda: True
+    use_cuda: False
     max_output_length: 100
     print_valid_sents: [0, 1, 2, 3]
     keep_last_ckpts: 3
