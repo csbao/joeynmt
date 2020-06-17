@@ -9,7 +9,7 @@
 
 
 
-git clone https://github.com/moses-smt/mosesdecoder.git
+# git clone https://github.com/moses-smt/mosesdecoder.git
 
 MOSES=`pwd`/../../mosesdecoder
 
@@ -18,7 +18,7 @@ TOKENIZER=${SCRIPTS}/tokenizer/tokenizer.perl
 LC=${SCRIPTS}/tokenizer/lowercase.perl
 CLEAN=${SCRIPTS}/training/clean-corpus-n.perl
 
-merge_ops=10000
+merge_ops=iwslt14-deen-bpe
 src=de
 tgt=en
 lang=de-en
@@ -32,6 +32,9 @@ orig="../data"
 train=train
 test=test
 dev=dev
+
+# codes_file="../bpe/iwslt14-deen-bpe.32000"
+codes_file="${prep}/bpe.${merge_ops}"
 
 echo "pre-processing train data..."
 for l in ${src} ${tgt}; do

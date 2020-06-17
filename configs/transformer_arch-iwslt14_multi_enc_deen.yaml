@@ -1,0 +1,86 @@
+# modified from: transformer_arch-iwslt14_deen.yaml
+name: "transformer_arch-iwslt14_multi_enc_deen"
+
+data:
+    src: "de"
+    trg: "en"
+    train: "chatnmt/multi_encoder/train.tags.bpe.10000"    # training data
+    dev: "chatnmt/multi_encoder/dev.tags.bpe.10000"        # development data for validation
+    test: "chatnmt/multi_encoder/test.tags.bpe.10000"      # test data for testing final model; optional
+    level: "bpe"
+    lowercase: True ###changed, check
+    max_sent_length: 100
+    #src_vocab: "models/wmt_ende_transformer/src_vocab.txt"
+    #trg_vocab: "models/wmt_ende_transformer/trg_vocab.txt"
+
+testing:
+    beam_size: 5
+    alpha: 1.0
+
+training:
+    random_seed: 42
+    optimizer: "adam"
+    normalization: "tokens"
+    adam_betas: [0.9, 0.999]
+    scheduling: "plateau"
+    patience: 5
+    decrease_factor: 0.7
+    loss: "crossentropy"
+    learning_rate: 0.0003
+    learning_rate_min: 0.00000001
+    weight_decay: 0.0
+    label_smoothing: 0.1
+    batch_size: 4096
+    batch_type: "token"
+    eval_batch_size: 3600
+    eval_batch_type: "token"
+    batch_multiplier: 1
+    early_stopping_metric: "eval_metric"
+    epochs: 100
+    validation_freq: 1000
+    logging_freq: 100
+    eval_metric: "bleu"
+    model_dir: "models/transformer_arch-iwslt14_multi_enc_deen"
+    #load_model: "models/wmt_ende_transformer/best.ckpt"
+    overwrite: True
+    shuffle: True
+    use_cuda: True
+    max_output_length: 100
+    print_valid_sents: [0, 1, 2, 3, 4]
+    keep_last_ckpts: 5
+
+model:
+    initializer: "xavier"
+    bias_initializer: "zeros"
+    init_gain: 1.0
+    embed_initializer: "xavier"
+    embed_init_gain: 1.0
+    tied_embeddings: False #changed
+    tied_softmax: True
+    encoder:
+        type: "transformer"
+        num_layers: 3 #3+3=6 to make # params comparable with single-encoder transformer
+        num_heads: 4
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0.
+        # typically ff_size = 4 x hidden_size
+        hidden_size: 256
+        ff_size: 1024
+        freeze: False
+        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
+        dropout: 0.3
+    decoder:
+        type: "transformer"
+        num_layers: 6
+        num_heads: 4
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0.
+        # typically ff_size = 4 x hidden_size
+        hidden_size: 256
+        ff_size: 1024
+        freeze: False
+        dropout: 0.3
