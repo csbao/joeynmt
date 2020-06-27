@@ -292,7 +292,8 @@ def build_model(cfg: dict = None,
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
-            encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, freeze=False, dont_minus_one=True, shared_layers=shared_layers)
+            enc = dict(cfg["encoder"],emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, freeze=False, dont_minus_one=True, shared_layers=shared_layers)
+            encoder_2 = TransformerEncoder(**enc)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
