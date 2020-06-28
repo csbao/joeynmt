@@ -286,9 +286,8 @@ def build_model(cfg: dict = None,
                                      emb_size=src_embed.embedding_dim,
                                      emb_dropout=enc_emb_dropout)
         if cfg["encoder"].get("multi_encoder", False):
-            encoder = TransformerEncoder(**cfg["encoder"],
-                                         emb_size=src_embed.embedding_dim,
-                                         emb_dropout=enc_emb_dropout , dont_minus_one=False)
+            enc = dict(cfg["encoder"],emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, freeze=False, dont_minus_one=False)
+            encoder = TransformerEncoder(**enc)
             shared_layers = None
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
