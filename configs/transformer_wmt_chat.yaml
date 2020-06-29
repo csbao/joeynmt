@@ -13,8 +13,8 @@ data: # specify your data here
     #src_voc_limit: 101              # src vocabulary only includes this many most frequent tokens, default: unlimited
     #trg_voc_min_freq: 1             # trg minimum frequency for a token to become part of the vocabulary
     #trg_voc_limit: 102              # trg vocabulary only includes this many most frequent tokens, default: unlimited
-    # src_vocab: "chatnmt/multi_encoder/en_vocab.txt"
-    # trg_vocab: "chatnmt/multi_encoder/de_vocab.txt"
+    src_vocab: "models/news_initial/src_vocab.txt"
+    trg_vocab: "models/news_initial/trg_vocab.txt"
     #src_vocab: "my_model/src_vocab.txt"  # if specified, load a vocabulary from this file
     #trg_vocab: "my_model/trg_vocab.txt"  # one token per line, line number is index
 
@@ -71,7 +71,7 @@ model:                              # specify your model architecture here
         embeddings:
             embedding_dim: 64       # size of embeddings (for Transformer set equal to hidden_size)
             scale: True             # scale the embeddings by sqrt of their size, default: False
-            freeze: True           # if True, embeddings are not updated during training
+            freeze: False           # if True, embeddings are not updated during training
         hidden_size: 64             # size of hidden layer; must be divisible by number of heads
         ff_size: 128                # size of position-wise feed-forward layer
         dropout: 0.1                # apply dropout to the inputs to the RNN, default: 0.0
