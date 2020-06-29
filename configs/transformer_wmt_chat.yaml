@@ -13,8 +13,8 @@ data: # specify your data here
     #src_voc_limit: 101              # src vocabulary only includes this many most frequent tokens, default: unlimited
     #trg_voc_min_freq: 1             # trg minimum frequency for a token to become part of the vocabulary
     #trg_voc_limit: 102              # trg vocabulary only includes this many most frequent tokens, default: unlimited
-    src_vocab: "models/news_initial/src_vocab.txt"
-    trg_vocab: "models/news_initial/trg_vocab.txt"
+    src_vocab: "chatnmt/multi_encoder/en_vocab.txt"
+    trg_vocab: "chatnmt/multi_encoder/de_vocab.txt"
     #src_vocab: "my_model/src_vocab.txt"  # if specified, load a vocabulary from this file
     #trg_vocab: "my_model/trg_vocab.txt"  # one token per line, line number is index
 
@@ -23,10 +23,10 @@ testing:                            # specify which inference algorithm to use f
     alpha: 1.0                      # length penalty for beam search
 
 training:                           # specify training details here
-    load_model: "models/news_initial/best.ckpt" # if given, load a pre-trained model from this checkpoint
-    reset_best_ckpt: True          # if True, reset the tracking of the best checkpoint and scores. Use for domain adaptation or fine-tuning with new metrics or dev data.
-    reset_scheduler: True          # if True, overwrite scheduler in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
-    reset_optimizer: True          # if True, overwrite optimizer in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
+    #load_model: "models/transformer/60.ckpt" # if given, load a pre-trained model from this checkpoint
+    reset_best_ckpt: False          # if True, reset the tracking of the best checkpoint and scores. Use for domain adaptation or fine-tuning with new metrics or dev data.
+    reset_scheduler: False          # if True, overwrite scheduler in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
+    reset_optimizer: False          # if True, overwrite optimizer in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
     random_seed: 42                 # set this seed to make training deterministic
     optimizer: "adam"               # choices: "sgd", "adam", "adadelta", "adagrad", "rmsprop", default is SGD
     adam_betas: [0.9, 0.98]         # beta parameters for Adam. These are the defaults. Typically these are different for Transformer models.
@@ -47,7 +47,7 @@ training:                           # specify training details here
     logging_freq: 100               # log the training progress after this many updates, default: 100
     eval_metric: "bleu"             # validation metric, default: "bleu", other options: "chrf", "token_accuracy", "sequence_accuracy"
     early_stopping_metric: "loss"   # when a new high score on this metric is achieved, a checkpoint is written, when "eval_metric" (default) is maximized, when "loss" or "ppl" is minimized
-    model_dir: "models/chat_loaded_weights" # directory where models and validation results are stored, required
+    model_dir: "models/transformer" # directory where models and validation results are stored, required
     overwrite: True                 # overwrite existing model directory, default: False. Do not set to True unless for debugging!
     shuffle: True                   # shuffle the training data, default: True
     use_cuda: True                 # use CUDA for acceleration on GPU, required. Set to False when working on CPU.
