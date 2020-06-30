@@ -31,17 +31,17 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 1024
+    batch_size: 2048
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
     batch_multiplier: 1
     early_stopping_metric: "ppl"
-    epochs: 120
+    epochs: 100
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_multi_enc_ende-tune-dropout"
+    model_dir: "models/transformer_multi_enc_ende-tune-freeze-enc"
     load_model: "models/wmt_ende_transformer/best.ckpt"
     reset_best_ckpt: True
     reset_scheduler: True
@@ -72,7 +72,8 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.2
+        dropout: 0.1
+        freeze: True
         multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
     decoder:
         type: "transformer"
