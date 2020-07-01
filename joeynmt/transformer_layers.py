@@ -182,8 +182,14 @@ class TransformerEncoderCombinationLayer(nn.Module):
         #self.gated_sum = lambda x, y: x  # combination algorithm
         #print(size) #64
         self.src2_src_att = MultiHeadedAttention(num_heads, size, dropout=dropout)#TODO can have different num_heads
-        self.W_g = nn.Linear(size+size, 1, bias=False)
-        self.b_g = nn.Parameter(torch.rand(1)) # trainable scalar
+        self.src3_src_att = MultiHeadedAttention(num_heads, size, dropout=dropout)#TODO can have different num_heads
+
+        # self.W_g = nn.Linear(size+size, 1, bias=False)
+        # self.b_g = nn.Parameter(torch.rand(1)) # trainable scalar
+
+        self.W_g = nn.Linear(size + size + size, 2, bias=False)
+        self.b_g = nn.Parameter(torch.rand(2)) # trainable scalar
+
 
         self.feed_forward = PositionwiseFeedForward(size, ff_size=ff_size,
                                                     dropout=dropout)
@@ -191,7 +197,7 @@ class TransformerEncoderCombinationLayer(nn.Module):
         self.size = size
 
     # pylint: disable=arguments-differ
-    def forward(self, x: Tensor, mask: Tensor, x_p: Tensor, p_mask: Tensor) -> Tensor:
+    def forward(self, x: Tensor, mask: Tensor, x_p: Tensor, p_mask: Tensor, x_p_p: Tensor, p_p_mask: Tensor) -> Tensor:
         """
         Forward pass for a single transformer encoder layer.
         First applies layer norm, then self attention,
@@ -204,14 +210,30 @@ class TransformerEncoderCombinationLayer(nn.Module):
         """
         x_norm = self.layer_norm(x)
         x_p_norm = self.layer_norm(x_p)
+        x_p_p_norm = self.layer_norm(x_p_p)
         h = self.src_src_att(x_norm, x_norm, x_norm, mask)
         h2 = self.src2_src_att(x_p_norm, x_p_norm, x_norm, p_mask)
         #print(x.size(), x_p.size()) #torch.Size([13, 15, 64]) torch.Size([13, 34, 64])
         #print(h.size(), h2.size()) #torch.Size([13, 15, 64]) torch.Size([13, 15, 64])
         #h = self.gated_sum(self.dropout(h) + x, self.dropout(h2) + x_p)
         #print(torch.cat((h, h2), -1).size()) #torch.Size([9, 27, 128])
-        g = torch.sigmoid(self.W_g( torch.cat((h, h2), -1) ) + self.b_g)
-        h = g * self.layer_norm(self.dropout(h) + x) + (1-g) * self.layer_norm(self.dropout(h2) + x)
+        h3 = self.src3_src_att(x_p_p_norm, x_p_p_norm, x_norm, p_p_mask)
+        g = torch.sigmoid(self.W_g( torch.cat((h, h2, h3), -1) ) + self.b_g)
+
+
+
+        prev_encoder_hidden_g = g[:,:,0].reshape(g[:,:,0].shape[0], g[:,:,0].shape[1], 1)
+        prev_prev_encoder_hidden_g = g[:,:,1].reshape(g[:,:,1].shape[0], g[:,:,1].shape[1], 1)
+        # Trying to incorporate directly the h3 layer
+        # print(g.shape)
+        # print(prev_encoder_hidden_g.shape)
+        # print(prev_prev_encoder_hidden_g.shape)
+        # h = g*self.layer_norm(self.dropout(h) + x) + (1-g)*self.layer_norm(self.dropout(h2) + x)
+        h = (prev_encoder_hidden_g * self.layer_norm(self.dropout(h) + x)) + ((1-prev_encoder_hidden_g) * self.layer_norm(self.dropout(h2) + x)) + (prev_prev_encoder_hidden_g * self.layer_norm(self.dropout(h) + x)) + ((1-prev_prev_encoder_hidden_g) * self.layer_norm(self.dropout(h3) + x))
+
+
+
+        # h = g * self.layer_norm(self.dropout(h) + x) + (1-g) * self.layer_norm(self.dropout(h2) + x)
         o = self.feed_forward(h)
         return o
 

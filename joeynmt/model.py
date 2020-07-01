@@ -34,7 +34,8 @@ class Model(nn.Module):
                  src_vocab: Vocabulary,
                  trg_vocab: Vocabulary,
                  encoder_config,
-                 encoder_2: Encoder = None) -> None:
+                 encoder_2: Encoder = None,
+                 encoder_3: Encoder = None) -> None:
         """
         Create a new encoder-decoder model
 
@@ -52,6 +53,7 @@ class Model(nn.Module):
         self.trg_embed = trg_embed
         self.encoder = encoder
         self.encoder_2 = encoder_2
+        self.encoder_3 = encoder_3
         self.decoder = decoder
         self.src_vocab = src_vocab
         self.trg_vocab = trg_vocab
@@ -74,7 +76,8 @@ class Model(nn.Module):
     # pylint: disable=arguments-differ
     def forward(self, src: Tensor, trg_input: Tensor, src_mask: Tensor,
                 src_lengths: Tensor, trg_mask: Tensor, prev_src: Tensor ,
-                prev_trg_input: Tensor, prev_src_lengths: Tensor, prev_src_mask: Tensor) -> (
+                prev_trg_input: Tensor, prev_src_lengths: Tensor, prev_src_mask: Tensor,
+                prev_prev_src: Tensor, prev_prev_src_lengths: Tensor, prev_prev_src_mask: Tensor) -> (
         Tensor, Tensor, Tensor, Tensor):
         """
         First encodes the source sentence.
@@ -98,7 +101,9 @@ class Model(nn.Module):
                                                          src_mask=prev_src_mask,
                                                          encoder=self.encoder_2)
 
-            x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
+            encoder_output_3, encoder_hidden_3 = self.encode(src=prev_prev_src, src_length=prev_prev_src_lengths, src_mask=prev_prev_src_mask, encoder=self.encoder_3)
+            x = self.last_layer(encoder_output, src_mask, encoder_output_2,
+                                prev_src_mask, encoder_output_3, prev_prev_src_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
 
@@ -164,7 +169,9 @@ class Model(nn.Module):
             src=batch.src, trg_input=batch.trg_input,
             src_mask=batch.src_mask, src_lengths=batch.src_lengths,
             trg_mask=batch.trg_mask, prev_src=batch.src_prev, prev_trg_input=batch.trg_prev_input,
-            prev_src_lengths=batch.src_prev_lengths, prev_src_mask=batch.src_prev_mask) # Share the prev_src_mask here......
+            prev_src_lengths=batch.src_prev_lengths, prev_src_mask=batch.src_prev_mask,
+            prev_prev_src=batch.src_prev_prev, prev_prev_src_lengths=batch.src_prev_prev_lengths,
+            prev_prev_src_mask=batch.src_prev_prev_mask) # Share the prev_src_mask here......
 
         # compute log probs
         log_probs = F.log_softmax(out, dim=-1)
@@ -195,11 +202,15 @@ class Model(nn.Module):
                 src=batch.src_prev, src_length=batch.src_prev_lengths,
                 src_mask=batch.src_prev_mask, encoder=self.encoder_2)
 
-            x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
+            if not self.encoder_3:
+                assert False
+            encoder_output_3, encoder_hidden_3 = self.encode(
+                src=batch.src_prev_prev, src_length=batch.src_prev_prev_lengths,
+                src_mask=batch.src_prev_prev_mask, encoder=self.encoder_3)
+
+            x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask, encoder_output_3, batch.src_prev_prev_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
-
-
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
             max_output_length = int(max(batch.src_lengths.cpu().numpy()) * 1.5)
@@ -277,6 +288,7 @@ def build_model(cfg: dict = None,
     enc_emb_dropout = cfg["encoder"]["embeddings"].get("dropout", enc_dropout)
     encoder = None
     encoder_2 = None
+    encoder_3 = None
     if cfg["encoder"].get("type", "recurrent") == "transformer":
         assert cfg["encoder"]["embeddings"]["embedding_dim"] == \
                cfg["encoder"]["hidden_size"], \
@@ -293,6 +305,7 @@ def build_model(cfg: dict = None,
             if cfg["encoder"].get("share_encoder", False):
                 shared_layers = encoder.layers
             encoder_2 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
+            encoder_3 = TransformerEncoder(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout, dont_minus_one=True, shared_layers=shared_layers)
     else:
         encoder = RecurrentEncoder(**cfg["encoder"],
                                    emb_size=src_embed.embedding_dim,
@@ -313,7 +326,8 @@ def build_model(cfg: dict = None,
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
                   src_vocab=src_vocab, trg_vocab=trg_vocab,
-                  encoder_config=cfg["encoder"], encoder_2=encoder_2)
+                  encoder_config=cfg["encoder"], encoder_2=encoder_2,
+                  encoder_3=encoder_3)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
     # tie softmax layer with trg embeddings
