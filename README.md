@@ -21,7 +21,7 @@ However, Joey NMT re-implements baselines from major publications.
 Check out the detailed [documentation](https://joeynmt.readthedocs.io) and our [paper](https://arxiv.org/abs/1907.12484).
 
 ## Contributors
-Joey NMT is developed by [Joost Bastings](https://bastings.github.io) (University of Amsterdam) and [Julia Kreutzer](http://www.cl.uni-heidelberg.de/~kreutzer/) (Heidelberg University).
+Joey NMT is developed by [Jasmijn Bastings](https://github.com/bastings) (University of Amsterdam) and [Julia Kreutzer](http://www.cl.uni-heidelberg.de/~kreutzer/) (Heidelberg University).
 
 ## Features
 Joey NMT implements the following features (aka the minimalist toolkit of NMT):
@@ -46,13 +46,17 @@ Travis CI runs the tests and pylint on every push to ensure the repository stays
 ## Installation
 Joey NMT is built on [PyTorch](https://pytorch.org/) and [torchtext](https://github.com/pytorch/text) for Python >= 3.5.
 
-1. Clone this repository:
-`git clone https://github.com/joeynmt/joeynmt.git`
-2. Install joeynmt and it's requirements:
-`cd joeynmt`
-`pip3 install .` (you might want to add `--user` for a local installation).
-3. Run the unit tests:
-`python3 -m unittest`
+A. [*Now also directly with pip!*](https://pypi.org/project/joeynmt/)
+  `pip install joeynmt`
+  
+B. From source
+  1. Clone this repository:
+  `git clone https://github.com/joeynmt/joeynmt.git`
+  2. Install joeynmt and it's requirements:
+  `cd joeynmt`
+  `pip3 install .` (you might want to add `--user` for a local installation).
+  3. Run the unit tests:
+  `python3 -m unittest`
 
 **Warning!** When running on *GPU* you need to manually install the suitable PyTorch version for your [CUDA](https://developer.nvidia.com/cuda-zone) version. This is described in the [PyTorch installation instructions](https://pytorch.org/get-started/locally/).
 
@@ -202,7 +206,7 @@ Code extending the functionalities beyond the basics will most likely not end up
 Here we'll collect projects and repositories that are based on Joey, so you can find inspiration and examples on how to modify and extend the code.
 
 - **Joey Toy Models**. [@bricksdont](https://github.com/bricksdont) built a [collection of scripts] (https://github.com/bricksdont/joeynmt-toy-models) showing how to install JoeyNMT, preprocess data, train and evaluate models. This is a great starting point for anyone who wants to run systematic experiments, tends to forget python calls, or doesn't like to run notebook cells! 
-- **African NMT**. [@jaderabbit](https://github.com/jaderabbit) started an initiative at the Indaba Deep Learning School 2019 to ["put African NMT on the map"](https://twitter.com/alienelf/status/1168159616167010305). The goal is to build and collect NMT models for low-resource African languages. The [Masakhane repository](https://github.com/jaderabbit/masakhane) contains and explains all the code you need to train JoeyNMT and points to data sources. It also contains benchmark models and configurations that members of Masakhane have built for various African languages.
+- **African NMT**. [@jaderabbit](https://github.com/jaderabbit) started an initiative at the Indaba Deep Learning School 2019 to ["put African NMT on the map"](https://twitter.com/alienelf/status/1168159616167010305). The goal is to build and collect NMT models for low-resource African languages. The [Masakhane repository](https://github.com/masakhane-io/masakhane-mt) contains and explains all the code you need to train JoeyNMT and points to data sources. It also contains benchmark models and configurations that members of Masakhane have built for various African languages. Furthermore, you might be interested in joining the [Masakhane community](https://github.com/masakhane-io/masakhane-community) if you're generally interested in low-resource NLP/NMT.
 - **Slack Joey**. [Code](https://github.com/juliakreutzer/slack-joey) to locally deploy a Joey NMT model as chat bot in a Slack workspace. It's a convenient way to probe your model without having to implement an API. And bad translations for chat messages can be very entertaining, too ;)
 - **Flask Joey**. [@kevindegila](https://github.com/kevindegila) built a [flask interface to Joey](https://github.com/kevindegila/flask-joey), so you can deploy your trained model in a web app and query it in the browser. 
 - **User Study**. We evaluated the code quality of this repository by testing the understanding of novices through quiz questions. Find the details in Section 3 of the [Joey NMT paper](https://arxiv.org/abs/1907.12484).
@@ -222,14 +226,19 @@ For general questions, email us at `joeynmt <at> gmail.com`.
 If you use Joey NMT in a publication or thesis, please cite the following [paper](https://arxiv.org/abs/1907.12484):
 
 ```
-@ARTICLE{JoeyNMT,
-author = {{Kreutzer}, Julia and {Bastings}, Joost and {Riezler}, Stefan},
-title = {Joey {NMT}: A Minimalist {NMT} Toolkit for Novices},
-journal = {To Appear in EMNLP-IJCNLP 2019: System Demonstrations},
-year = {2019},
-month = {Nov},
-address = {Hong Kong}
-url = {https://arxiv.org/abs/1907.12484}
+@inproceedings{kreutzer-etal-2019-joey,
+    title = "Joey {NMT}: A Minimalist {NMT} Toolkit for Novices",
+    author = "Kreutzer, Julia  and
+      Bastings, Jasmijn  and
+      Riezler, Stefan",
+    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP): System Demonstrations",
+    month = nov,
+    year = "2019",
+    address = "Hong Kong, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/D19-3019",
+    doi = "10.18653/v1/D19-3019",
+    pages = "109--114",
 }
 ```
 

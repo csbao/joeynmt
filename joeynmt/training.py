@@ -235,7 +235,7 @@ class TrainManager:
         model_checkpoint = load_checkpoint(path=path, use_cuda=self.use_cuda)
 
         # restore model and optimizer parameters
-        self.model.load_state_dict(model_checkpoint["model_state"])
+        self.model.load_state_dict(model_checkpoint["model_state"], strict=False)
 
         if not reset_optimizer:
             self.optimizer.load_state_dict(model_checkpoint["optimizer_state"])
@@ -299,6 +299,7 @@ class TrainManager:
             total_valid_duration = 0
             start_tokens = self.total_tokens
             self.current_batch_multiplier = self.batch_multiplier
+            self.optimizer.zero_grad()
             count = self.current_batch_multiplier - 1
             epoch_loss = 0
 
@@ -315,11 +316,13 @@ class TrainManager:
 
                 # Set current_batch_mutliplier to fit
                 # number of leftover examples for last batch in epoch
-                if self.batch_multiplier > 1 and i == len(train_iter) - \
-                        math.ceil(leftover_batch_size / self.batch_size):
-                    self.current_batch_multiplier = math.ceil(
-                        leftover_batch_size / self.batch_size)
-                    count = self.current_batch_multiplier - 1
+                # Only works if batch_type == sentence
+                if self.batch_type == "sentence":
+                    if self.batch_multiplier > 1 and i == len(train_iter) - \
+                            math.ceil(leftover_batch_size / self.batch_size):
+                        self.current_batch_multiplier = math.ceil(
+                            leftover_batch_size / self.batch_size)
+                        count = self.current_batch_multiplier - 1
 
                 update = count == 0
                 # print(count, update, self.steps)
