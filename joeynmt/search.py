@@ -263,6 +263,7 @@ def beam_search(
         "gold_score": [0] * batch_size,
     }
 
+    attention_scores = []
     for step in range(max_output_length):
 
         # This decides which part of the predicted sentence we feed to the
@@ -279,7 +280,7 @@ def beam_search(
         # logits: logits for final softmax
         # pylint: disable=unused-variable
         trg_embed = embed(decoder_input)
-        logits, hidden, att_scores, att_vectors = decoder(
+        logits, hidden, att_probs, att_vectors = decoder(
             encoder_output=encoder_output,
             encoder_hidden=encoder_hidden,
             src_mask=src_mask,
@@ -289,6 +290,7 @@ def beam_search(
             unroll_steps=1,
             trg_mask=trg_mask  # subsequent mask for Transformer only
         )
+        attention_scores.append(att_probs)
 
         # For the Transformer we made predictions for all time steps up to
         # this point, so we only want to know about the last time step.
@@ -409,6 +411,14 @@ def beam_search(
                 filled[j, k] = i
         return filled
 
+    def pad_and_stack_attention(vals, pad_value):
+        filled = np.ones((len(vals)+10, max([h.shape[0] for h in vals]), max([h.shape[1] for h in vals])),
+                        dtype=int) * (pad_value)
+        for j, h in enumerate(vals):
+            for k,i in enumerate(h):
+                for l, m in enumerate(i):
+                    filled[j, k, l] = m
+        return filled
     # from results to stacked outputs
     assert n_best == 1
     # only works for n_best=1 for now
@@ -416,4 +426,10 @@ def beam_search(
                                         results["predictions"]],
                                        pad_value=pad_index)
 
-    return final_outputs, None
+    stacked_attention_scores = pad_and_stack_attention([r[0].cpu().numpy() for r in attention_scores],
+                                                pad_value=pad_index)
+    # print(stacked_attention_scores)
+    # print(len(attention_scores))
+    # stacked_attention_scores = np.stack(att_probs, axis=1)
+    # print(stacked_attention_scores)
+    return final_outputs, stacked_attention_scores

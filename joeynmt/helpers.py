@@ -194,6 +194,7 @@ def store_attention_plots(attentions: np.array, targets: List[List[str]],
     :param dpi: resolution for images
     """
     for i in indices:
+        sources = list(sources)
         if i >= len(sources):
             continue
         plot_file = "{}.{}.pdf".format(output_prefix, i)
