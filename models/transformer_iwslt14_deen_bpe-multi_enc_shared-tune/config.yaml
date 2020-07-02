@@ -1,0 +1,84 @@
+# modified from: transformer_iwslt14_deen_bpe.yaml
+name: "iwslt14-deen-bpe-transformer-multi_enc_shared-tune"
+
+data:
+    src: "de"
+    trg: "en"
+    train: "chatnmt/multi_encoder/train.tags.bpe.iwslt14-deen-bpe"
+    dev: "chatnmt/multi_encoder/dev.tags.bpe.iwslt14-deen-bpe"
+    test: "chatnmt/multi_encoder/test.tags.bpe.iwslt14-deen-bpe"
+    level: "bpe"
+    lowercase: True
+    max_sent_length: 62
+    src_vocab: "models/transformer_iwslt14_deen_bpe/src_vocab.txt"
+    trg_vocab: "models/transformer_iwslt14_deen_bpe/trg_vocab.txt"
+
+testing:
+    beam_size: 5
+    alpha: 1.0
+
+training:
+    random_seed: 42
+    optimizer: "adam"
+    normalization: "tokens"
+    adam_betas: [0.9, 0.999]
+    scheduling: "plateau"
+    patience: 5
+    decrease_factor: 0.7
+    loss: "crossentropy"
+    learning_rate: 0.0003
+    learning_rate_min: 0.00000001
+    weight_decay: 0.0
+    label_smoothing: 0.1
+    batch_size: 4096
+    batch_type: "token"
+    early_stopping_metric: "eval_metric"
+    epochs: 100
+    validation_freq: 1000
+    logging_freq: 100
+    eval_metric: "bleu"
+    model_dir: "models/transformer_iwslt14_deen_bpe-multi_enc_shared-tune"
+    load_model: "models/transformer_iwslt14_deen_bpe/best.ckpt"
+    reset_best_ckpt: True
+    reset_scheduler: True
+    reset_optimizer: True
+    overwrite: False
+    shuffle: True
+    use_cuda: True
+
+    keep_last_ckpts: 5
+
+model:
+    initializer: "xavier"
+    embed_initializer: "xavier"
+    embed_init_gain: 1.0
+    init_gain: 1.0
+    bias_initializer: "zeros"
+    tied_embeddings: True
+    tied_softmax: True
+    encoder:
+        type: "transformer"
+        num_layers: 6
+        num_heads: 4
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0.
+        # typically ff_size = 4 x hidden_size
+        hidden_size: 256
+        ff_size: 1024
+        dropout: 0.3
+        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
+        share_encoder: True         # if True, share the first N-1 layers of `encoder` and `encoder_2`
+    decoder:
+        type: "transformer"
+        num_layers: 6
+        num_heads: 4
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0.
+        # typically ff_size = 4 x hidden_size
+        hidden_size: 256
+        ff_size: 1024
+        dropout: 0.3
