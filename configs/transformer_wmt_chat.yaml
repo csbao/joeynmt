@@ -24,9 +24,9 @@ testing:                            # specify which inference algorithm to use f
 
 training:                           # specify training details here
     load_model: "models/wmt_ende_transformer2/best.ckpt" # if given, load a pre-trained model from this checkpoint
-    reset_best_ckpt: False          # if True, reset the tracking of the best checkpoint and scores. Use for domain adaptation or fine-tuning with new metrics or dev data.
-    reset_scheduler: False          # if True, overwrite scheduler in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
-    reset_optimizer: False          # if True, overwrite optimizer in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
+    reset_best_ckpt: True          # if True, reset the tracking of the best checkpoint and scores. Use for domain adaptation or fine-tuning with new metrics or dev data.
+    reset_scheduler: True          # if True, overwrite scheduler in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
+    reset_optimizer: True          # if True, overwrite optimizer in loaded checkpoint with parameters specified in this config. Use for domain adaptation or fine-tuning.
     random_seed: 42                 # set this seed to make training deterministic
     optimizer: "adam"               # choices: "sgd", "adam", "adadelta", "adagrad", "rmsprop", default is SGD
     adam_betas: [0.9, 0.98]         # beta parameters for Adam. These are the defaults. Typically these are different for Transformer models.
