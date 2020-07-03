@@ -29,7 +29,7 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 512
+    batch_size: 440
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
@@ -57,7 +57,7 @@ model:
     init_gain: 1.0
     embed_initializer: "xavier"
     embed_init_gain: 1.0
-    tied_embeddings: True
+    tied_embeddings: False
     tied_softmax: True
     encoder:
         type: "transformer"
