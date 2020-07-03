@@ -4,21 +4,24 @@ import json
 def extract_data(json_file_path,extracted_file_path, split_training=True, add_remove_boundry=True):
     # PATH = "../origdata/train.json"
     f = open(json_file_path,)
-    en_file_path = extracted_file_path + 'en'
-    de_file_path = extracted_file_path + 'de'
+    en_file_path = extracted_file_path + '.en'
+    de_file_path = extracted_file_path + '.de'
     f_en = open(en_file_path,'w')
     f_de = open(de_file_path,'w')
 
     # returns JSON object as
     # a dictionary
+    # opened = False
     chats = json.load(f)
     i = 0
     for chat in chats.values():
         i = i + 1
         if split_training:
-            if i>495:
-                f_en = open(en_file_path[:-5] +'test' + 'en','w')
-                f_de = open(en_file_path[:-5] +'test' + 'de','w')
+            if i==495 :
+                f_en.close()
+                f_de.close()
+                f_en = open(en_file_path[:-8] +'test' + '.en','w+')
+                f_de = open(en_file_path[:-8] +'test' + '.de','w+')
         wrote = False
         prev_speaker = chat[0]['speaker']
         en_tmp = ""
@@ -49,6 +52,8 @@ def extract_data(json_file_path,extracted_file_path, split_training=True, add_re
         if wrote and add_remove_boundry:
             f_en.write('REMOVEMEIMABOUNDARY\n')
             f_de.write('REMOVEMEIMABOUNDARY\n')
+            # pass
+    # print(i)
     f.close()
     f_en.close()
     f_de.close()
@@ -67,4 +72,4 @@ def main():
     extract_data(json_file_path, extracted_file_path,split_training = False)
 
 
-
+main()
