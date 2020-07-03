@@ -22,10 +22,10 @@ CLEAN=${SCRIPTS}/training/clean-corpus-n.perl
 
 
 merge_ops=wmt-ende-best
-src=en
-tgt=de
-# lang=de-en
-prep="../prep"
+src=de
+tgt=en
+lang=de-en
+prep="../prep-wmt_ende_best_boundaries"
 # tmp=${prep}/tmp
 orig="../data"
 # prep = "../prep"
@@ -36,40 +36,45 @@ train=train
 test=test
 dev=dev
 
-# codes_file="../bpe/iwslt14-deen-bpe.model"
 codes_file="../bpe/wmt-ende-best.model"
+# codes_file="../bpe/iwslt14-deen-bpe.model"
+
+# wmt-ende-best
+# codes_file="../bpe/wmt-ende-best.model"
+
 # codes_file="${prep}/bpe.${merge_ops}"
 
-echo "pre-processing train data..."
+# echo "pre-processing train data..."
 
-echo "normalizing data..."
+# echo "normalizing data..."
+# for l in ${src} ${tgt}; do
+#     for p in ${train} ${test} ${dev}; do
+#         f=${p}.$l
+#         norm=${p}.norm.$l
+#         cat ${orig}/${f} | \
+#         perl ${NORMALIZER} -threads 8 -l $l > ${prep}/${norm}
+#         echo ""
+#     done
+# done
+
+# echo "removing non printable chars..."
+# for l in ${src} ${tgt}; do
+#     for p in ${train} ${test} ${dev}; do
+#         f=${p}.$l
+#         rem=${p}.rem.$l
+#         norm=${p}.norm.$l
+#         cat ${prep}/${norm} | \
+#         perl ${REMOVER} -threads 8 -l $l > ${prep}/${rem}
+#         echo ""
+#     done
+# done
+
 for l in ${src} ${tgt}; do
     for p in ${train} ${test} ${dev}; do
-        f=${p}.$l
-        norm=${p}.norm.$l
-        cat ${orig}/${f} | \
-        perl ${NORMALIZER} -threads 8  -l $l > ${prep}/${norm}
-        echo ""
-    done
-done
-
-echo "removing non printable chars..."
-for l in ${src} ${tgt}; do
-    for p in ${train} ${test} ${dev}; do
-        f=${p}.$l
-        rem=${p}.rem.$l
-        norm=${p}.norm.$l
-        cat ${prep}/${norm} | \
-        perl ${REMOVER} -threads 8 -l $l > ${prep}/${rem}
-        echo ""
-    done
-done
-
-for l in ${src} ${tgt}; do
-    for p in ${train} ${test} ${dev}; do
-        rem=${p}.rem.$l
+        # rem=${p}.re/m.$l
         tok=${p}.tok.$l
-        cat ${prep}/${rem} | \
+        f=${p}.$l
+        cat ${orig}/${f} | \
         perl ${TOKENIZER} -threads 8 -no-escape -l $l > ${prep}/${tok}
         echo ""
     done
