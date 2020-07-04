@@ -299,6 +299,7 @@ class ContextTranslationDataset(Dataset):
                         continue
                     examples.append(data.Example.fromlist(
                         [prev_src_line, prev_trg_line, src_line, trg_line], fields))
+                    print(prev_src_line, prev_trg_line, src_line, trg_line)
                     prev_src_line = src_line # Prepend special token, since src and context encoders share parameters
                     prev_trg_line = trg_line
         super(ContextTranslationDataset, self).__init__(examples, fields, **kwargs)
