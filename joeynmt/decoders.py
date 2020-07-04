@@ -493,7 +493,7 @@ class TransformerDecoder(Decoder):
                 hidden: Tensor = None,
                 trg_mask: Tensor = None,
                 prev_src_mask: Tensor = None,
-                p_src: Tensor = None
+                p_src: Tensor = None,
                 **kwargs):
         """
         Transformer decoder forward pass.
