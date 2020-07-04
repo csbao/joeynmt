@@ -92,6 +92,7 @@ class Model(nn.Module):
                                                      src_mask=src_mask,
                                                      encoder=self.encoder)
 
+        encoder_output_2, encoder_hidden_2 = None, None
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
                                                          src_length=prev_src_lengths,
@@ -101,15 +102,19 @@ class Model(nn.Module):
             x = self.last_layer(encoder_output, src_mask, encoder_output_2, prev_src_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
-
+            encoder_output_2, encoder_hidden_2 = self.last_layer_norm(encoder_output_2), None
         # Add combination function here, gate sum the two outputs
 
         unroll_steps = trg_input.size(1)
         return self.decode(encoder_output=encoder_output,
                            encoder_hidden=encoder_hidden,
                            src_mask=src_mask, trg_input=trg_input,
+                           encoder_output_2=encoder_output_2, #circumvent gated rep, give dir to decoder
+                           encoder_hidden_2=encoder_hidden_2,
                            unroll_steps=unroll_steps,
-                           trg_mask=trg_mask)
+                           trg_mask=trg_mask,
+                           prev_src_mask=prev_src_mask,
+                           p_src=prev_src)
 
     def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor, encoder: Encoder) \
         -> (Tensor, Tensor):
@@ -125,8 +130,10 @@ class Model(nn.Module):
 
     def decode(self, encoder_output: Tensor, encoder_hidden: Tensor,
                src_mask: Tensor, trg_input: Tensor,
-               unroll_steps: int, decoder_hidden: Tensor = None,
-               trg_mask: Tensor = None) \
+               unroll_steps: int, encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None,
+               decoder_hidden: Tensor = None,
+               trg_mask: Tensor = None,
+               prev_src_mask:Tensor = None, p_src: Tensor=None) \
         -> (Tensor, Tensor, Tensor, Tensor):
         """
         Decode, given an encoded source sentence.
@@ -145,8 +152,12 @@ class Model(nn.Module):
                             encoder_hidden=encoder_hidden,
                             src_mask=src_mask,
                             unroll_steps=unroll_steps,
+                            encoder_output_2=encoder_output_2,
+                            encoder_hidden_2=encoder_hidden_2,
                             hidden=decoder_hidden,
-                            trg_mask=trg_mask)
+                            trg_mask=trg_mask,
+                            prev_src_mask=prev_src_mask,
+                            p_src=p_src)
 
     def get_loss_for_batch(self, batch: Batch, loss_function: nn.Module) \
             -> Tensor:
@@ -189,6 +200,7 @@ class Model(nn.Module):
         encoder_output, encoder_hidden = self.encode(
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
+        encoder_output_2, encoder_hidden_2 = None, None
 
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
@@ -198,7 +210,7 @@ class Model(nn.Module):
             x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
 
             encoder_output, encoder_hidden = self.last_layer_norm(x), None
-
+            encoder_output_2, encoder_hidden_2 = self.last_layer_norm(encoder_output_2), None
 
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
@@ -223,7 +235,9 @@ class Model(nn.Module):
                         alpha=beam_alpha, eos_index=self.eos_index,
                         pad_index=self.pad_index,
                         bos_index=self.bos_index,
-                        decoder=self.decoder)
+                        decoder=self.decoder,
+                        encoder_hidden_2=encoder_hidden_2,
+                        encoder_output_2=encoder_output_2)
 
         return stacked_output, stacked_attention_scores
 

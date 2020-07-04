@@ -177,7 +177,8 @@ def beam_search(
         bos_index: int, eos_index: int, pad_index: int,
         encoder_output: Tensor, encoder_hidden: Tensor,
         src_mask: Tensor, max_output_length: int, alpha: float,
-        embed: Embeddings, n_best: int = 1) -> (np.array, np.array):
+        embed: Embeddings, n_best: int = 1,
+        encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None) -> (np.array, np.array):
     """
     Beam search with size k.
     Inspired by OpenNMT-py, adapted for Transformer.
@@ -221,6 +222,9 @@ def beam_search(
 
     encoder_output = tile(encoder_output.contiguous(), size,
                           dim=0)  # batch*k x src_len x enc_hidden_size
+
+    if encoder_output_2 is not None:
+        encoder_output_2 = tile(encoder_output_2.contiguous(), size, dim=0)
     src_mask = tile(src_mask, size, dim=0)  # batch*k x 1 x src_len
 
     # Transformer only: create target mask
@@ -287,7 +291,9 @@ def beam_search(
             hidden=hidden,
             prev_att_vector=att_vectors,
             unroll_steps=1,
-            trg_mask=trg_mask  # subsequent mask for Transformer only
+            trg_mask=trg_mask,  # subsequent mask for Transformer only
+            encoder_output_2=encoder_output_2,
+            encoder_hidden_2=encoder_hidden_2
         )
 
         # For the Transformer we made predictions for all time steps up to
