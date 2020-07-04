@@ -252,8 +252,7 @@ class Model(nn.Module):
                         encoder_output_2=encoder_output_2,
                         prev_src=batch.src_prev,
                         prev_src_mask=batch.src_prev_mask,
-                        decoder_layer=self.last_layer_decode,
-                        decode_output=self.decoder.output_layer)
+                        decoder_layer=self.last_layer_decode)
 
         return stacked_output, stacked_attention_scores
 
