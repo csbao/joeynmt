@@ -346,7 +346,7 @@ class TransformerDecoderLayer(nn.Module):
             h4 = self.dropout(h2) + h1
         else:
             # context-source-target attention
-            h3 = self.src_prev_trg_att(memory2, memory2, h1_norm, mask=None)
+            h3 = self.src_prev_trg_att(memory2, memory2, h1_norm, mask=src_mask)
             if h3 is False or h2.shape[0] is not h3.shape[0]:
                 h4 = self.dropout(h2) + h1
             else:
@@ -356,7 +356,7 @@ class TransformerDecoderLayer(nn.Module):
                 h4 = g * (self.dropout(h2) + h1) + (1-g) * (self.dropout(h3) + h1)
 
         # final position-wise feed-forward layer	        # final position-wise feed-forward layer
-        o = self.feed_forward(self.dropout(h2) + h1)
+        # o = self.feed_forward(self.dropout(h2) + h1)
         o = self.feed_forward(h4)
 
 

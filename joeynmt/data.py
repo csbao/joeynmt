@@ -295,7 +295,7 @@ class ContextTranslationDataset(Dataset):
                 src_line, trg_line = src_line.strip(), trg_line.strip()
                 if src_line != '' and trg_line != '':
                     if src_line == 'REMOVEMEIMABOUNDARY':
-                        assert trg_line == 'REMOVEMEIMABOUNDARY', "TRG IS NOT ALIGNED"
+                        assert trg_line == 'REMOVEMEIMABOUNDARY', "TRG IS NOT A LINE"
                         prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                         continue
                     examples.append(data.Example.fromlist(
