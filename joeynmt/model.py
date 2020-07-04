@@ -207,9 +207,9 @@ class Model(nn.Module):
                 src=batch.src_prev, src_length=batch.src_prev_lengths,
                 src_mask=batch.src_prev_mask, encoder=self.encoder_2)
 
-            # x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
+            x = self.last_layer(encoder_output, batch.src_mask, encoder_output_2, batch.src_prev_mask)
 
-            # encoder_output, encoder_hidden = self.last_layer_norm(x), None
+            encoder_output, encoder_hidden = self.last_layer_norm(x), None
             encoder_output_2, encoder_hidden_2 = self.last_layer_norm(encoder_output_2), None
 
         # if maximum output length is not globally specified, adapt to src len
