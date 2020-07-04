@@ -449,6 +449,7 @@ class TransformerDecoder(Decoder):
                  emb_dropout: float = 0.1,
                  vocab_size: int = 1,
                  freeze: bool = False,
+                 dont_minus_one: bool = True,
                  **kwargs):
         """
         Initialize a Transformer decoder.
@@ -472,7 +473,10 @@ class TransformerDecoder(Decoder):
         self.layers = nn.ModuleList([TransformerDecoderLayer(
                 size=hidden_size, ff_size=ff_size, num_heads=num_heads,
                 dropout=dropout) for _ in range(num_layers)])
-
+        self.last_layer = TransformerDecoderLayer(
+                size=hidden_size, ff_size=ff_size, num_heads=num_heads,
+                dropout=dropout)
+        self.top_off = False if (dont_minus_one and 'multi_encoder' in locals() and multi_encoder) else True
         self.pe = PositionalEncoding(hidden_size)
         self.layer_norm = nn.LayerNorm(hidden_size, eps=1e-6)
 
@@ -494,6 +498,7 @@ class TransformerDecoder(Decoder):
                 trg_mask: Tensor = None,
                 prev_src_mask: Tensor = None,
                 p_src: Tensor = None,
+                top_off: bool = True,
                 **kwargs):
         """
         Transformer decoder forward pass.
@@ -518,13 +523,20 @@ class TransformerDecoder(Decoder):
             trg_embed.size(1)).type_as(trg_mask)
 
         for layer in self.layers:
-            x = layer(x=x, memory=encoder_output, memory2=encoder_output_2,
-                      src_mask=src_mask, trg_mask=trg_mask, p_src=p_src, prev_src_mask=prev_src_mask)
+            x = layer(x=x, memory=encoder_output,
+                      src_mask=src_mask, trg_mask=trg_mask)
 
-        x = self.layer_norm(x)
-        output = self.output_layer(x)
+        # if top_off:
+            # return x, x, None, None
 
-        return output, x, None, None
+        o = self.last_layer(x=x, memory=encoder_output, memory2=encoder_output_2, src_mask=src_mask,
+                                    trg_mask=trg_mask, p_src=p_src, prev_src_mask=prev_src_mask)
+        y = self.layer_norm(o)
+        o = self.output_layer(o)
+
+        # output = self.output_layer(x)
+        # y = self.layer_norm(output)
+        return o, y, None, None
 
     def __repr__(self):
         return "%s(num_layers=%r, num_heads=%r)" % (

@@ -18,7 +18,7 @@ from joeynmt.search import beam_search, greedy
 from joeynmt.vocabulary import Vocabulary
 from joeynmt.batch import Batch
 from joeynmt.helpers import ConfigurationError
-from joeynmt.transformer_layers import TransformerEncoderCombinationLayer
+from joeynmt.transformer_layers import TransformerEncoderCombinationLayer, TransformerDecoderLayer
 
 
 class Model(nn.Module):
@@ -34,6 +34,7 @@ class Model(nn.Module):
                  src_vocab: Vocabulary,
                  trg_vocab: Vocabulary,
                  encoder_config,
+                 decoder_config,
                  encoder_2: Encoder = None) -> None:
         """
         Create a new encoder-decoder model
@@ -61,6 +62,7 @@ class Model(nn.Module):
         self.last_layer_norm = None
 
         assert encoder_config
+        assert decoder_config
         if self.encoder_2:
             if not self.last_layer_norm:
                 layer_norm = nn.LayerNorm(encoder_config["hidden_size"], eps=1e-6)
@@ -69,6 +71,10 @@ class Model(nn.Module):
                                                             ff_size=encoder_config["ff_size"],
                                                             num_heads=encoder_config["num_heads"],
                                                             dropout=encoder_config["dropout"])
+            self.last_layer_decode = TransformerDecoderLayer(size=decoder_config["hidden_size"],
+                                                            ff_size=decoder_config["ff_size"],
+                                                            num_heads=decoder_config["num_heads"],
+                                                            dropout=decoder_config["dropout"])
 
 
     # pylint: disable=arguments-differ
@@ -106,7 +112,7 @@ class Model(nn.Module):
         # Add combination function here, gate sum the two outputs
 
         unroll_steps = trg_input.size(1)
-        return self.decode(encoder_output=encoder_output,
+        output = self.decode(encoder_output=encoder_output,
                            encoder_hidden=encoder_hidden,
                            src_mask=src_mask, trg_input=trg_input,
                            encoder_output_2=encoder_output_2, #circumvent gated rep, give dir to decoder
@@ -115,6 +121,8 @@ class Model(nn.Module):
                            trg_mask=trg_mask,
                            prev_src_mask=prev_src_mask,
                            p_src=prev_src)
+        # output = self.last_layer_decode(output, encoder_output, encoder_output_2, src_)
+        return output
 
     def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor, encoder: Encoder) \
         -> (Tensor, Tensor):
@@ -147,17 +155,21 @@ class Model(nn.Module):
         :param trg_mask: mask for target steps
         :return: decoder outputs (outputs, hidden, att_probs, att_vectors)
         """
-        return self.decoder(trg_embed=self.trg_embed(trg_input),
-                            encoder_output=encoder_output,
-                            encoder_hidden=encoder_hidden,
-                            src_mask=src_mask,
-                            unroll_steps=unroll_steps,
-                            encoder_output_2=encoder_output_2,
-                            encoder_hidden_2=encoder_hidden_2,
-                            hidden=decoder_hidden,
-                            trg_mask=trg_mask,
-                            prev_src_mask=prev_src_mask,
-                            p_src=p_src)
+
+        o, x, a, b = self.decoder(trg_embed=self.trg_embed(trg_input),
+                encoder_output=encoder_output,
+                encoder_hidden=encoder_hidden,
+                src_mask=src_mask,
+                unroll_steps=unroll_steps,
+                encoder_output_2=encoder_output_2,
+                encoder_hidden_2=encoder_hidden_2,
+                hidden=decoder_hidden,
+                trg_mask=trg_mask,
+                prev_src_mask=prev_src_mask,
+                p_src=p_src)
+            
+        return o, x, a, b 
+
 
     def get_loss_for_batch(self, batch: Batch, loss_function: nn.Module) \
             -> Tensor:
@@ -237,7 +249,11 @@ class Model(nn.Module):
                         bos_index=self.bos_index,
                         decoder=self.decoder,
                         encoder_hidden_2=encoder_hidden_2,
-                        encoder_output_2=encoder_output_2)
+                        encoder_output_2=encoder_output_2,
+                        prev_src=batch.src_prev,
+                        prev_src_mask=batch.src_prev_mask,
+                        decoder_layer=self.last_layer_decode,
+                        decode_output=self.decoder.output_layer)
 
         return stacked_output, stacked_attention_scores
 
@@ -316,9 +332,12 @@ def build_model(cfg: dict = None,
     dec_dropout = cfg["decoder"].get("dropout", 0.)
     dec_emb_dropout = cfg["decoder"]["embeddings"].get("dropout", dec_dropout)
     if cfg["decoder"].get("type", "recurrent") == "transformer":
+        dont_minus_one = False 
+        if cfg["encoder"].get("multi_encoder", False): 
+            dont_minus_one = True
         decoder = TransformerDecoder(
             **cfg["decoder"], encoder=encoder, vocab_size=len(trg_vocab),
-            emb_size=trg_embed.embedding_dim, emb_dropout=dec_emb_dropout)
+            emb_size=trg_embed.embedding_dim, emb_dropout=dec_emb_dropout, dont_minus_one=dont_minus_one)
     else:
         decoder = RecurrentDecoder(
             **cfg["decoder"], encoder=encoder, vocab_size=len(trg_vocab),
@@ -327,7 +346,7 @@ def build_model(cfg: dict = None,
     model = Model(encoder=encoder, decoder=decoder,
                   src_embed=src_embed, trg_embed=trg_embed,
                   src_vocab=src_vocab, trg_vocab=trg_vocab,
-                  encoder_config=cfg["encoder"], encoder_2=encoder_2)
+                  encoder_config=cfg["encoder"], decoder_config=cfg["decoder"], encoder_2=encoder_2)
     model.encoder_config = dict(**cfg["encoder"], emb_size=src_embed.embedding_dim, emb_dropout=enc_emb_dropout)
 
     # tie softmax layer with trg embeddings

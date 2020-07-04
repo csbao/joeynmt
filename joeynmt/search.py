@@ -178,7 +178,8 @@ def beam_search(
         encoder_output: Tensor, encoder_hidden: Tensor,
         src_mask: Tensor, max_output_length: int, alpha: float,
         embed: Embeddings, n_best: int = 1,
-        encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None) -> (np.array, np.array):
+        encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None,
+        prev_src: Tensor=None, prev_src_mask: Tensor=None, decoder_layer=None, output_layer=None) -> (np.array, np.array):
     """
     Beam search with size k.
     Inspired by OpenNMT-py, adapted for Transformer.
@@ -283,18 +284,22 @@ def beam_search(
         # logits: logits for final softmax
         # pylint: disable=unused-variable
         trg_embed = embed(decoder_input)
+
+        logits, hidden, att_scores, att_vectors = None, None, None, None 
+ 
         logits, hidden, att_scores, att_vectors = decoder(
-            encoder_output=encoder_output,
-            encoder_hidden=encoder_hidden,
-            src_mask=src_mask,
-            trg_embed=trg_embed,
-            hidden=hidden,
-            prev_att_vector=att_vectors,
-            unroll_steps=1,
-            trg_mask=trg_mask,  # subsequent mask for Transformer only
-            encoder_output_2=encoder_output_2,
-            encoder_hidden_2=encoder_hidden_2
+                encoder_output=encoder_output,
+                encoder_hidden=encoder_hidden,
+                src_mask=src_mask,
+                trg_embed=trg_embed,
+                hidden=hidden,
+                prev_att_vector=att_vectors,
+                unroll_steps=1,
+                trg_mask=trg_mask,  # subsequent mask for Transformer only
+                encoder_output_2=encoder_output_2,
+                encoder_hidden_2=encoder_hidden_2
         )
+
 
         # For the Transformer we made predictions for all time steps up to
         # this point, so we only want to know about the last time step.
