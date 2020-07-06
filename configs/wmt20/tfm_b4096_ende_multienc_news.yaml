@@ -30,7 +30,7 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 4096
+    batch_size: 2048
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
@@ -40,9 +40,9 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt20/tfm_b4096_ende_news/"
+    model_dir: "models/wmt20/tfm_b2048_ende_news/"
     #load_model: "models/wmt_ende_transformer/best.ckpt"
-    overwrite: False
+    overwrite: True
     shuffle: True
     use_cuda: True
     max_output_length: 100
