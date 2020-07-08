@@ -1,419 +1,94 @@
-2020-07-05 16:36:52,354 Hello! This is Joey-NMT.
-2020-07-05 16:36:58,179 Total params: 82862081
-2020-07-05 16:36:58,183 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.layers.3.dec_layer_norm.bias', 'decoder.layers.3.dec_layer_norm.weight', 'decoder.layers.3.feed_forward.layer_norm.bias', 'decoder.layers.3.feed_forward.layer_norm.weight', 'decoder.layers.3.feed_forward.pwff_layer.0.bias', 'decoder.layers.3.feed_forward.pwff_layer.0.weight', 'decoder.layers.3.feed_forward.pwff_layer.3.bias', 'decoder.layers.3.feed_forward.pwff_layer.3.weight', 'decoder.layers.3.src_trg_att.k_layer.bias', 'decoder.layers.3.src_trg_att.k_layer.weight', 'decoder.layers.3.src_trg_att.output_layer.bias', 'decoder.layers.3.src_trg_att.output_layer.weight', 'decoder.layers.3.src_trg_att.q_layer.bias', 'decoder.layers.3.src_trg_att.q_layer.weight', 'decoder.layers.3.src_trg_att.v_layer.bias', 'decoder.layers.3.src_trg_att.v_layer.weight', 'decoder.layers.3.trg_trg_att.k_layer.bias', 'decoder.layers.3.trg_trg_att.k_layer.weight', 'decoder.layers.3.trg_trg_att.output_layer.bias', 'decoder.layers.3.trg_trg_att.output_layer.weight', 'decoder.layers.3.trg_trg_att.q_layer.bias', 'decoder.layers.3.trg_trg_att.q_layer.weight', 'decoder.layers.3.trg_trg_att.v_layer.bias', 'decoder.layers.3.trg_trg_att.v_layer.weight', 'decoder.layers.3.x_layer_norm.bias', 'decoder.layers.3.x_layer_norm.weight', 'decoder.layers.4.dec_layer_norm.bias', 'decoder.layers.4.dec_layer_norm.weight', 'decoder.layers.4.feed_forward.layer_norm.bias', 'decoder.layers.4.feed_forward.layer_norm.weight', 'decoder.layers.4.feed_forward.pwff_layer.0.bias', 'decoder.layers.4.feed_forward.pwff_layer.0.weight', 'decoder.layers.4.feed_forward.pwff_layer.3.bias', 'decoder.layers.4.feed_forward.pwff_layer.3.weight', 'decoder.layers.4.src_trg_att.k_layer.bias', 'decoder.layers.4.src_trg_att.k_layer.weight', 'decoder.layers.4.src_trg_att.output_layer.bias', 'decoder.layers.4.src_trg_att.output_layer.weight', 'decoder.layers.4.src_trg_att.q_layer.bias', 'decoder.layers.4.src_trg_att.q_layer.weight', 'decoder.layers.4.src_trg_att.v_layer.bias', 'decoder.layers.4.src_trg_att.v_layer.weight', 'decoder.layers.4.trg_trg_att.k_layer.bias', 'decoder.layers.4.trg_trg_att.k_layer.weight', 'decoder.layers.4.trg_trg_att.output_layer.bias', 'decoder.layers.4.trg_trg_att.output_layer.weight', 'decoder.layers.4.trg_trg_att.q_layer.bias', 'decoder.layers.4.trg_trg_att.q_layer.weight', 'decoder.layers.4.trg_trg_att.v_layer.bias', 'decoder.layers.4.trg_trg_att.v_layer.weight', 'decoder.layers.4.x_layer_norm.bias', 'decoder.layers.4.x_layer_norm.weight', 'decoder.layers.5.dec_layer_norm.bias', 'decoder.layers.5.dec_layer_norm.weight', 'decoder.layers.5.feed_forward.layer_norm.bias', 'decoder.layers.5.feed_forward.layer_norm.weight', 'decoder.layers.5.feed_forward.pwff_layer.0.bias', 'decoder.layers.5.feed_forward.pwff_layer.0.weight', 'decoder.layers.5.feed_forward.pwff_layer.3.bias', 'decoder.layers.5.feed_forward.pwff_layer.3.weight', 'decoder.layers.5.src_trg_att.k_layer.bias', 'decoder.layers.5.src_trg_att.k_layer.weight', 'decoder.layers.5.src_trg_att.output_layer.bias', 'decoder.layers.5.src_trg_att.output_layer.weight', 'decoder.layers.5.src_trg_att.q_layer.bias', 'decoder.layers.5.src_trg_att.q_layer.weight', 'decoder.layers.5.src_trg_att.v_layer.bias', 'decoder.layers.5.src_trg_att.v_layer.weight', 'decoder.layers.5.trg_trg_att.k_layer.bias', 'decoder.layers.5.trg_trg_att.k_layer.weight', 'decoder.layers.5.trg_trg_att.output_layer.bias', 'decoder.layers.5.trg_trg_att.output_layer.weight', 'decoder.layers.5.trg_trg_att.q_layer.bias', 'decoder.layers.5.trg_trg_att.q_layer.weight', 'decoder.layers.5.trg_trg_att.v_layer.bias', 'decoder.layers.5.trg_trg_att.v_layer.weight', 'decoder.layers.5.x_layer_norm.bias', 'decoder.layers.5.x_layer_norm.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'encoder.layers.3.feed_forward.layer_norm.bias', 'encoder.layers.3.feed_forward.layer_norm.weight', 'encoder.layers.3.feed_forward.pwff_layer.0.bias', 'encoder.layers.3.feed_forward.pwff_layer.0.weight', 'encoder.layers.3.feed_forward.pwff_layer.3.bias', 'encoder.layers.3.feed_forward.pwff_layer.3.weight', 'encoder.layers.3.layer_norm.bias', 'encoder.layers.3.layer_norm.weight', 'encoder.layers.3.src_src_att.k_layer.bias', 'encoder.layers.3.src_src_att.k_layer.weight', 'encoder.layers.3.src_src_att.output_layer.bias', 'encoder.layers.3.src_src_att.output_layer.weight', 'encoder.layers.3.src_src_att.q_layer.bias', 'encoder.layers.3.src_src_att.q_layer.weight', 'encoder.layers.3.src_src_att.v_layer.bias', 'encoder.layers.3.src_src_att.v_layer.weight', 'encoder.layers.4.feed_forward.layer_norm.bias', 'encoder.layers.4.feed_forward.layer_norm.weight', 'encoder.layers.4.feed_forward.pwff_layer.0.bias', 'encoder.layers.4.feed_forward.pwff_layer.0.weight', 'encoder.layers.4.feed_forward.pwff_layer.3.bias', 'encoder.layers.4.feed_forward.pwff_layer.3.weight', 'encoder.layers.4.layer_norm.bias', 'encoder.layers.4.layer_norm.weight', 'encoder.layers.4.src_src_att.k_layer.bias', 'encoder.layers.4.src_src_att.k_layer.weight', 'encoder.layers.4.src_src_att.output_layer.bias', 'encoder.layers.4.src_src_att.output_layer.weight', 'encoder.layers.4.src_src_att.q_layer.bias', 'encoder.layers.4.src_src_att.q_layer.weight', 'encoder.layers.4.src_src_att.v_layer.bias', 'encoder.layers.4.src_src_att.v_layer.weight', 'encoder_2.layer_norm.bias', 'encoder_2.layer_norm.weight', 'encoder_2.layers.0.feed_forward.layer_norm.bias', 'encoder_2.layers.0.feed_forward.layer_norm.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.0.layer_norm.bias', 'encoder_2.layers.0.layer_norm.weight', 'encoder_2.layers.0.src_src_att.k_layer.bias', 'encoder_2.layers.0.src_src_att.k_layer.weight', 'encoder_2.layers.0.src_src_att.output_layer.bias', 'encoder_2.layers.0.src_src_att.output_layer.weight', 'encoder_2.layers.0.src_src_att.q_layer.bias', 'encoder_2.layers.0.src_src_att.q_layer.weight', 'encoder_2.layers.0.src_src_att.v_layer.bias', 'encoder_2.layers.0.src_src_att.v_layer.weight', 'encoder_2.layers.1.feed_forward.layer_norm.bias', 'encoder_2.layers.1.feed_forward.layer_norm.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.1.layer_norm.bias', 'encoder_2.layers.1.layer_norm.weight', 'encoder_2.layers.1.src_src_att.k_layer.bias', 'encoder_2.layers.1.src_src_att.k_layer.weight', 'encoder_2.layers.1.src_src_att.output_layer.bias', 'encoder_2.layers.1.src_src_att.output_layer.weight', 'encoder_2.layers.1.src_src_att.q_layer.bias', 'encoder_2.layers.1.src_src_att.q_layer.weight', 'encoder_2.layers.1.src_src_att.v_layer.bias', 'encoder_2.layers.1.src_src_att.v_layer.weight', 'encoder_2.layers.2.feed_forward.layer_norm.bias', 'encoder_2.layers.2.feed_forward.layer_norm.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.2.layer_norm.bias', 'encoder_2.layers.2.layer_norm.weight', 'encoder_2.layers.2.src_src_att.k_layer.bias', 'encoder_2.layers.2.src_src_att.k_layer.weight', 'encoder_2.layers.2.src_src_att.output_layer.bias', 'encoder_2.layers.2.src_src_att.output_layer.weight', 'encoder_2.layers.2.src_src_att.q_layer.bias', 'encoder_2.layers.2.src_src_att.q_layer.weight', 'encoder_2.layers.2.src_src_att.v_layer.bias', 'encoder_2.layers.2.src_src_att.v_layer.weight', 'encoder_2.layers.3.feed_forward.layer_norm.bias', 'encoder_2.layers.3.feed_forward.layer_norm.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.3.layer_norm.bias', 'encoder_2.layers.3.layer_norm.weight', 'encoder_2.layers.3.src_src_att.k_layer.bias', 'encoder_2.layers.3.src_src_att.k_layer.weight', 'encoder_2.layers.3.src_src_att.output_layer.bias', 'encoder_2.layers.3.src_src_att.output_layer.weight', 'encoder_2.layers.3.src_src_att.q_layer.bias', 'encoder_2.layers.3.src_src_att.q_layer.weight', 'encoder_2.layers.3.src_src_att.v_layer.bias', 'encoder_2.layers.3.src_src_att.v_layer.weight', 'encoder_2.layers.4.feed_forward.layer_norm.bias', 'encoder_2.layers.4.feed_forward.layer_norm.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.4.layer_norm.bias', 'encoder_2.layers.4.layer_norm.weight', 'encoder_2.layers.4.src_src_att.k_layer.bias', 'encoder_2.layers.4.src_src_att.k_layer.weight', 'encoder_2.layers.4.src_src_att.output_layer.bias', 'encoder_2.layers.4.src_src_att.output_layer.weight', 'encoder_2.layers.4.src_src_att.q_layer.bias', 'encoder_2.layers.4.src_src_att.q_layer.weight', 'encoder_2.layers.4.src_src_att.v_layer.bias', 'encoder_2.layers.4.src_src_att.v_layer.weight', 'encoder_2.layers.5.feed_forward.layer_norm.bias', 'encoder_2.layers.5.feed_forward.layer_norm.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.5.layer_norm.bias', 'encoder_2.layers.5.layer_norm.weight', 'encoder_2.layers.5.src_src_att.k_layer.bias', 'encoder_2.layers.5.src_src_att.k_layer.weight', 'encoder_2.layers.5.src_src_att.output_layer.bias', 'encoder_2.layers.5.src_src_att.output_layer.weight', 'encoder_2.layers.5.src_src_att.q_layer.bias', 'encoder_2.layers.5.src_src_att.q_layer.weight', 'encoder_2.layers.5.src_src_att.v_layer.bias', 'encoder_2.layers.5.src_src_att.v_layer.weight', 'last_layer.W_g.weight', 'last_layer.b_g', 'last_layer.feed_forward.layer_norm.bias', 'last_layer.feed_forward.layer_norm.weight', 'last_layer.feed_forward.pwff_layer.0.bias', 'last_layer.feed_forward.pwff_layer.0.weight', 'last_layer.feed_forward.pwff_layer.3.bias', 'last_layer.feed_forward.pwff_layer.3.weight', 'last_layer.layer_norm.bias', 'last_layer.layer_norm.weight', 'last_layer.src2_src_att.k_layer.bias', 'last_layer.src2_src_att.k_layer.weight', 'last_layer.src2_src_att.output_layer.bias', 'last_layer.src2_src_att.output_layer.weight', 'last_layer.src2_src_att.q_layer.bias', 'last_layer.src2_src_att.q_layer.weight', 'last_layer.src2_src_att.v_layer.bias', 'last_layer.src2_src_att.v_layer.weight', 'last_layer.src_src_att.k_layer.bias', 'last_layer.src_src_att.k_layer.weight', 'last_layer.src_src_att.output_layer.bias', 'last_layer.src_src_att.output_layer.weight', 'last_layer.src_src_att.q_layer.bias', 'last_layer.src_src_att.q_layer.weight', 'last_layer.src_src_att.v_layer.bias', 'last_layer.src_src_att.v_layer.weight', 'last_layer_norm.bias', 'last_layer_norm.weight', 'src_embed.lut.weight']
-2020-07-05 16:37:00,436 Loading model from models/wmt_ende_transformer/best.ckpt
-2020-07-05 16:37:00,744 Reset optimizer.
-2020-07-05 16:37:00,744 Reset scheduler.
-2020-07-05 16:37:00,744 Reset tracking of the best checkpoint.
-2020-07-05 16:37:00,749 cfg.name                           : transformer
-2020-07-05 16:37:00,749 cfg.data.src                       : en
-2020-07-05 16:37:00,749 cfg.data.trg                       : de
-2020-07-05 16:37:00,749 cfg.data.train                     : chatnmt/official_split/wmt17bpe__boundaries/train.tags.bpe.wmt-ende-best
-2020-07-05 16:37:00,749 cfg.data.dev                       : chatnmt/official_split/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best
-2020-07-05 16:37:00,749 cfg.data.test                      : chatnmt/official_split/wmt17bpe__boundaries/test.tags.bpe.wmt-ende-best
-2020-07-05 16:37:00,749 cfg.data.level                     : bpe
-2020-07-05 16:37:00,749 cfg.data.lowercase                 : False
-2020-07-05 16:37:00,749 cfg.data.max_sent_length           : 100
-2020-07-05 16:37:00,749 cfg.data.src_vocab                 : models/wmt_ende_transformer/src_vocab.txt
-2020-07-05 16:37:00,749 cfg.data.trg_vocab                 : models/wmt_ende_transformer/trg_vocab.txt
-2020-07-05 16:37:00,749 cfg.testing.beam_size              : 5
-2020-07-05 16:37:00,749 cfg.testing.alpha                  : 1.0
-2020-07-05 16:37:00,749 cfg.training.random_seed           : 42
-2020-07-05 16:37:00,749 cfg.training.optimizer             : adam
-2020-07-05 16:37:00,749 cfg.training.normalization         : tokens
-2020-07-05 16:37:00,749 cfg.training.adam_betas            : [0.9, 0.999]
-2020-07-05 16:37:00,749 cfg.training.scheduling            : plateau
-2020-07-05 16:37:00,749 cfg.training.patience              : 8
-2020-07-05 16:37:00,749 cfg.training.decrease_factor       : 0.7
-2020-07-05 16:37:00,749 cfg.training.loss                  : crossentropy
-2020-07-05 16:37:00,749 cfg.training.learning_rate         : 0.0002
-2020-07-05 16:37:00,749 cfg.training.learning_rate_min     : 1e-08
-2020-07-05 16:37:00,749 cfg.training.weight_decay          : 0.0
-2020-07-05 16:37:00,749 cfg.training.label_smoothing       : 0.1
-2020-07-05 16:37:00,749 cfg.training.batch_size            : 2048
-2020-07-05 16:37:00,749 cfg.training.batch_type            : token
-2020-07-05 16:37:00,749 cfg.training.batch_multiplier      : 1
-2020-07-05 16:37:00,749 cfg.training.early_stopping_metric : ppl
-2020-07-05 16:37:00,749 cfg.training.epochs                : 50
-2020-07-05 16:37:00,749 cfg.training.validation_freq       : 1000
-2020-07-05 16:37:00,749 cfg.training.logging_freq          : 100
-2020-07-05 16:37:00,749 cfg.training.eval_metric           : bleu
-2020-07-05 16:37:00,749 cfg.training.model_dir             : models/wmt20/tfm_menc_b2048_ende-tune/
-2020-07-05 16:37:00,750 cfg.training.load_model            : models/wmt_ende_transformer/best.ckpt
-2020-07-05 16:37:00,750 cfg.training.reset_best_ckpt       : True
-2020-07-05 16:37:00,750 cfg.training.reset_scheduler       : True
-2020-07-05 16:37:00,750 cfg.training.reset_optimizer       : True
-2020-07-05 16:37:00,750 cfg.training.overwrite             : False
-2020-07-05 16:37:00,750 cfg.training.shuffle               : True
-2020-07-05 16:37:00,750 cfg.training.use_cuda              : True
-2020-07-05 16:37:00,750 cfg.training.max_output_length     : 100
-2020-07-05 16:37:00,750 cfg.training.print_valid_sents     : [0, 1, 2, 3]
-2020-07-05 16:37:00,750 cfg.training.keep_last_ckpts       : 3
-2020-07-05 16:37:00,750 cfg.model.initializer              : xavier
-2020-07-05 16:37:00,750 cfg.model.bias_initializer         : zeros
-2020-07-05 16:37:00,750 cfg.model.init_gain                : 1.0
-2020-07-05 16:37:00,750 cfg.model.embed_initializer        : xavier
-2020-07-05 16:37:00,750 cfg.model.embed_init_gain          : 1.0
-2020-07-05 16:37:00,750 cfg.model.tied_embeddings          : True
-2020-07-05 16:37:00,750 cfg.model.tied_softmax             : True
-2020-07-05 16:37:00,750 cfg.model.encoder.type             : transformer
-2020-07-05 16:37:00,750 cfg.model.encoder.num_layers       : 6
-2020-07-05 16:37:00,750 cfg.model.encoder.num_heads        : 8
-2020-07-05 16:37:00,750 cfg.model.encoder.embeddings.embedding_dim : 512
-2020-07-05 16:37:00,750 cfg.model.encoder.embeddings.scale : True
-2020-07-05 16:37:00,750 cfg.model.encoder.embeddings.dropout : 0.0
-2020-07-05 16:37:00,750 cfg.model.encoder.hidden_size      : 512
-2020-07-05 16:37:00,750 cfg.model.encoder.ff_size          : 2048
-2020-07-05 16:37:00,750 cfg.model.encoder.dropout          : 0.1
-2020-07-05 16:37:00,750 cfg.model.encoder.multi_encoder    : True
-2020-07-05 16:37:00,750 cfg.model.decoder.type             : transformer
-2020-07-05 16:37:00,750 cfg.model.decoder.num_layers       : 6
-2020-07-05 16:37:00,750 cfg.model.decoder.num_heads        : 8
-2020-07-05 16:37:00,750 cfg.model.decoder.embeddings.embedding_dim : 512
-2020-07-05 16:37:00,750 cfg.model.decoder.embeddings.scale : True
-2020-07-05 16:37:00,750 cfg.model.decoder.embeddings.dropout : 0.0
-2020-07-05 16:37:00,750 cfg.model.decoder.hidden_size      : 512
-2020-07-05 16:37:00,750 cfg.model.decoder.ff_size          : 2048
-2020-07-05 16:37:00,750 cfg.model.decoder.dropout          : 0.1
-2020-07-05 16:37:00,750 Data set sizes: 
-	train 11488,
+2020-07-08 00:03:35,013 Hello! This is Joey-NMT.
+2020-07-08 00:03:47,577 Total params: 82862081
+2020-07-08 00:03:47,578 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.layers.3.dec_layer_norm.bias', 'decoder.layers.3.dec_layer_norm.weight', 'decoder.layers.3.feed_forward.layer_norm.bias', 'decoder.layers.3.feed_forward.layer_norm.weight', 'decoder.layers.3.feed_forward.pwff_layer.0.bias', 'decoder.layers.3.feed_forward.pwff_layer.0.weight', 'decoder.layers.3.feed_forward.pwff_layer.3.bias', 'decoder.layers.3.feed_forward.pwff_layer.3.weight', 'decoder.layers.3.src_trg_att.k_layer.bias', 'decoder.layers.3.src_trg_att.k_layer.weight', 'decoder.layers.3.src_trg_att.output_layer.bias', 'decoder.layers.3.src_trg_att.output_layer.weight', 'decoder.layers.3.src_trg_att.q_layer.bias', 'decoder.layers.3.src_trg_att.q_layer.weight', 'decoder.layers.3.src_trg_att.v_layer.bias', 'decoder.layers.3.src_trg_att.v_layer.weight', 'decoder.layers.3.trg_trg_att.k_layer.bias', 'decoder.layers.3.trg_trg_att.k_layer.weight', 'decoder.layers.3.trg_trg_att.output_layer.bias', 'decoder.layers.3.trg_trg_att.output_layer.weight', 'decoder.layers.3.trg_trg_att.q_layer.bias', 'decoder.layers.3.trg_trg_att.q_layer.weight', 'decoder.layers.3.trg_trg_att.v_layer.bias', 'decoder.layers.3.trg_trg_att.v_layer.weight', 'decoder.layers.3.x_layer_norm.bias', 'decoder.layers.3.x_layer_norm.weight', 'decoder.layers.4.dec_layer_norm.bias', 'decoder.layers.4.dec_layer_norm.weight', 'decoder.layers.4.feed_forward.layer_norm.bias', 'decoder.layers.4.feed_forward.layer_norm.weight', 'decoder.layers.4.feed_forward.pwff_layer.0.bias', 'decoder.layers.4.feed_forward.pwff_layer.0.weight', 'decoder.layers.4.feed_forward.pwff_layer.3.bias', 'decoder.layers.4.feed_forward.pwff_layer.3.weight', 'decoder.layers.4.src_trg_att.k_layer.bias', 'decoder.layers.4.src_trg_att.k_layer.weight', 'decoder.layers.4.src_trg_att.output_layer.bias', 'decoder.layers.4.src_trg_att.output_layer.weight', 'decoder.layers.4.src_trg_att.q_layer.bias', 'decoder.layers.4.src_trg_att.q_layer.weight', 'decoder.layers.4.src_trg_att.v_layer.bias', 'decoder.layers.4.src_trg_att.v_layer.weight', 'decoder.layers.4.trg_trg_att.k_layer.bias', 'decoder.layers.4.trg_trg_att.k_layer.weight', 'decoder.layers.4.trg_trg_att.output_layer.bias', 'decoder.layers.4.trg_trg_att.output_layer.weight', 'decoder.layers.4.trg_trg_att.q_layer.bias', 'decoder.layers.4.trg_trg_att.q_layer.weight', 'decoder.layers.4.trg_trg_att.v_layer.bias', 'decoder.layers.4.trg_trg_att.v_layer.weight', 'decoder.layers.4.x_layer_norm.bias', 'decoder.layers.4.x_layer_norm.weight', 'decoder.layers.5.dec_layer_norm.bias', 'decoder.layers.5.dec_layer_norm.weight', 'decoder.layers.5.feed_forward.layer_norm.bias', 'decoder.layers.5.feed_forward.layer_norm.weight', 'decoder.layers.5.feed_forward.pwff_layer.0.bias', 'decoder.layers.5.feed_forward.pwff_layer.0.weight', 'decoder.layers.5.feed_forward.pwff_layer.3.bias', 'decoder.layers.5.feed_forward.pwff_layer.3.weight', 'decoder.layers.5.src_trg_att.k_layer.bias', 'decoder.layers.5.src_trg_att.k_layer.weight', 'decoder.layers.5.src_trg_att.output_layer.bias', 'decoder.layers.5.src_trg_att.output_layer.weight', 'decoder.layers.5.src_trg_att.q_layer.bias', 'decoder.layers.5.src_trg_att.q_layer.weight', 'decoder.layers.5.src_trg_att.v_layer.bias', 'decoder.layers.5.src_trg_att.v_layer.weight', 'decoder.layers.5.trg_trg_att.k_layer.bias', 'decoder.layers.5.trg_trg_att.k_layer.weight', 'decoder.layers.5.trg_trg_att.output_layer.bias', 'decoder.layers.5.trg_trg_att.output_layer.weight', 'decoder.layers.5.trg_trg_att.q_layer.bias', 'decoder.layers.5.trg_trg_att.q_layer.weight', 'decoder.layers.5.trg_trg_att.v_layer.bias', 'decoder.layers.5.trg_trg_att.v_layer.weight', 'decoder.layers.5.x_layer_norm.bias', 'decoder.layers.5.x_layer_norm.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'encoder.layers.3.feed_forward.layer_norm.bias', 'encoder.layers.3.feed_forward.layer_norm.weight', 'encoder.layers.3.feed_forward.pwff_layer.0.bias', 'encoder.layers.3.feed_forward.pwff_layer.0.weight', 'encoder.layers.3.feed_forward.pwff_layer.3.bias', 'encoder.layers.3.feed_forward.pwff_layer.3.weight', 'encoder.layers.3.layer_norm.bias', 'encoder.layers.3.layer_norm.weight', 'encoder.layers.3.src_src_att.k_layer.bias', 'encoder.layers.3.src_src_att.k_layer.weight', 'encoder.layers.3.src_src_att.output_layer.bias', 'encoder.layers.3.src_src_att.output_layer.weight', 'encoder.layers.3.src_src_att.q_layer.bias', 'encoder.layers.3.src_src_att.q_layer.weight', 'encoder.layers.3.src_src_att.v_layer.bias', 'encoder.layers.3.src_src_att.v_layer.weight', 'encoder.layers.4.feed_forward.layer_norm.bias', 'encoder.layers.4.feed_forward.layer_norm.weight', 'encoder.layers.4.feed_forward.pwff_layer.0.bias', 'encoder.layers.4.feed_forward.pwff_layer.0.weight', 'encoder.layers.4.feed_forward.pwff_layer.3.bias', 'encoder.layers.4.feed_forward.pwff_layer.3.weight', 'encoder.layers.4.layer_norm.bias', 'encoder.layers.4.layer_norm.weight', 'encoder.layers.4.src_src_att.k_layer.bias', 'encoder.layers.4.src_src_att.k_layer.weight', 'encoder.layers.4.src_src_att.output_layer.bias', 'encoder.layers.4.src_src_att.output_layer.weight', 'encoder.layers.4.src_src_att.q_layer.bias', 'encoder.layers.4.src_src_att.q_layer.weight', 'encoder.layers.4.src_src_att.v_layer.bias', 'encoder.layers.4.src_src_att.v_layer.weight', 'encoder_2.layer_norm.bias', 'encoder_2.layer_norm.weight', 'encoder_2.layers.0.feed_forward.layer_norm.bias', 'encoder_2.layers.0.feed_forward.layer_norm.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.0.layer_norm.bias', 'encoder_2.layers.0.layer_norm.weight', 'encoder_2.layers.0.src_src_att.k_layer.bias', 'encoder_2.layers.0.src_src_att.k_layer.weight', 'encoder_2.layers.0.src_src_att.output_layer.bias', 'encoder_2.layers.0.src_src_att.output_layer.weight', 'encoder_2.layers.0.src_src_att.q_layer.bias', 'encoder_2.layers.0.src_src_att.q_layer.weight', 'encoder_2.layers.0.src_src_att.v_layer.bias', 'encoder_2.layers.0.src_src_att.v_layer.weight', 'encoder_2.layers.1.feed_forward.layer_norm.bias', 'encoder_2.layers.1.feed_forward.layer_norm.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.1.layer_norm.bias', 'encoder_2.layers.1.layer_norm.weight', 'encoder_2.layers.1.src_src_att.k_layer.bias', 'encoder_2.layers.1.src_src_att.k_layer.weight', 'encoder_2.layers.1.src_src_att.output_layer.bias', 'encoder_2.layers.1.src_src_att.output_layer.weight', 'encoder_2.layers.1.src_src_att.q_layer.bias', 'encoder_2.layers.1.src_src_att.q_layer.weight', 'encoder_2.layers.1.src_src_att.v_layer.bias', 'encoder_2.layers.1.src_src_att.v_layer.weight', 'encoder_2.layers.2.feed_forward.layer_norm.bias', 'encoder_2.layers.2.feed_forward.layer_norm.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.2.layer_norm.bias', 'encoder_2.layers.2.layer_norm.weight', 'encoder_2.layers.2.src_src_att.k_layer.bias', 'encoder_2.layers.2.src_src_att.k_layer.weight', 'encoder_2.layers.2.src_src_att.output_layer.bias', 'encoder_2.layers.2.src_src_att.output_layer.weight', 'encoder_2.layers.2.src_src_att.q_layer.bias', 'encoder_2.layers.2.src_src_att.q_layer.weight', 'encoder_2.layers.2.src_src_att.v_layer.bias', 'encoder_2.layers.2.src_src_att.v_layer.weight', 'encoder_2.layers.3.feed_forward.layer_norm.bias', 'encoder_2.layers.3.feed_forward.layer_norm.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.3.layer_norm.bias', 'encoder_2.layers.3.layer_norm.weight', 'encoder_2.layers.3.src_src_att.k_layer.bias', 'encoder_2.layers.3.src_src_att.k_layer.weight', 'encoder_2.layers.3.src_src_att.output_layer.bias', 'encoder_2.layers.3.src_src_att.output_layer.weight', 'encoder_2.layers.3.src_src_att.q_layer.bias', 'encoder_2.layers.3.src_src_att.q_layer.weight', 'encoder_2.layers.3.src_src_att.v_layer.bias', 'encoder_2.layers.3.src_src_att.v_layer.weight', 'encoder_2.layers.4.feed_forward.layer_norm.bias', 'encoder_2.layers.4.feed_forward.layer_norm.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.4.layer_norm.bias', 'encoder_2.layers.4.layer_norm.weight', 'encoder_2.layers.4.src_src_att.k_layer.bias', 'encoder_2.layers.4.src_src_att.k_layer.weight', 'encoder_2.layers.4.src_src_att.output_layer.bias', 'encoder_2.layers.4.src_src_att.output_layer.weight', 'encoder_2.layers.4.src_src_att.q_layer.bias', 'encoder_2.layers.4.src_src_att.q_layer.weight', 'encoder_2.layers.4.src_src_att.v_layer.bias', 'encoder_2.layers.4.src_src_att.v_layer.weight', 'encoder_2.layers.5.feed_forward.layer_norm.bias', 'encoder_2.layers.5.feed_forward.layer_norm.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.5.layer_norm.bias', 'encoder_2.layers.5.layer_norm.weight', 'encoder_2.layers.5.src_src_att.k_layer.bias', 'encoder_2.layers.5.src_src_att.k_layer.weight', 'encoder_2.layers.5.src_src_att.output_layer.bias', 'encoder_2.layers.5.src_src_att.output_layer.weight', 'encoder_2.layers.5.src_src_att.q_layer.bias', 'encoder_2.layers.5.src_src_att.q_layer.weight', 'encoder_2.layers.5.src_src_att.v_layer.bias', 'encoder_2.layers.5.src_src_att.v_layer.weight', 'last_layer.W_g.weight', 'last_layer.b_g', 'last_layer.feed_forward.layer_norm.bias', 'last_layer.feed_forward.layer_norm.weight', 'last_layer.feed_forward.pwff_layer.0.bias', 'last_layer.feed_forward.pwff_layer.0.weight', 'last_layer.feed_forward.pwff_layer.3.bias', 'last_layer.feed_forward.pwff_layer.3.weight', 'last_layer.layer_norm.bias', 'last_layer.layer_norm.weight', 'last_layer.src2_src_att.k_layer.bias', 'last_layer.src2_src_att.k_layer.weight', 'last_layer.src2_src_att.output_layer.bias', 'last_layer.src2_src_att.output_layer.weight', 'last_layer.src2_src_att.q_layer.bias', 'last_layer.src2_src_att.q_layer.weight', 'last_layer.src2_src_att.v_layer.bias', 'last_layer.src2_src_att.v_layer.weight', 'last_layer.src_src_att.k_layer.bias', 'last_layer.src_src_att.k_layer.weight', 'last_layer.src_src_att.output_layer.bias', 'last_layer.src_src_att.output_layer.weight', 'last_layer.src_src_att.q_layer.bias', 'last_layer.src_src_att.q_layer.weight', 'last_layer.src_src_att.v_layer.bias', 'last_layer.src_src_att.v_layer.weight', 'last_layer_norm.bias', 'last_layer_norm.weight', 'src_embed.lut.weight']
+2020-07-08 00:03:50,726 Loading model from models/wmt_ende_transformer/best.ckpt
+2020-07-08 00:03:51,170 Reset optimizer.
+2020-07-08 00:03:51,170 Reset scheduler.
+2020-07-08 00:03:51,170 Reset tracking of the best checkpoint.
+2020-07-08 00:03:51,176 cfg.name                           : transformer
+2020-07-08 00:03:51,176 cfg.data.src                       : en
+2020-07-08 00:03:51,176 cfg.data.trg                       : de
+2020-07-08 00:03:51,176 cfg.data.train                     : chatnmt/official_split/wmt17bpe__boundaries/train.tags.bpe.wmt-ende-best
+2020-07-08 00:03:51,176 cfg.data.dev                       : chatnmt/official_split/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best
+2020-07-08 00:03:51,176 cfg.data.test                      : chatnmt/official_split/wmt17bpe__boundaries/test.tags.bpe.wmt-ende-best
+2020-07-08 00:03:51,176 cfg.data.level                     : bpe
+2020-07-08 00:03:51,176 cfg.data.lowercase                 : False
+2020-07-08 00:03:51,176 cfg.data.max_sent_length           : 100
+2020-07-08 00:03:51,176 cfg.data.src_vocab                 : models/wmt_ende_transformer/src_vocab.txt
+2020-07-08 00:03:51,176 cfg.data.trg_vocab                 : models/wmt_ende_transformer/trg_vocab.txt
+2020-07-08 00:03:51,177 cfg.testing.beam_size              : 5
+2020-07-08 00:03:51,177 cfg.testing.alpha                  : 1.0
+2020-07-08 00:03:51,177 cfg.training.random_seed           : 42
+2020-07-08 00:03:51,177 cfg.training.optimizer             : adam
+2020-07-08 00:03:51,177 cfg.training.normalization         : tokens
+2020-07-08 00:03:51,177 cfg.training.adam_betas            : [0.9, 0.999]
+2020-07-08 00:03:51,177 cfg.training.scheduling            : plateau
+2020-07-08 00:03:51,177 cfg.training.patience              : 8
+2020-07-08 00:03:51,177 cfg.training.decrease_factor       : 0.7
+2020-07-08 00:03:51,177 cfg.training.loss                  : crossentropy
+2020-07-08 00:03:51,177 cfg.training.learning_rate         : 0.0002
+2020-07-08 00:03:51,177 cfg.training.learning_rate_min     : 1e-08
+2020-07-08 00:03:51,177 cfg.training.weight_decay          : 0.0
+2020-07-08 00:03:51,178 cfg.training.label_smoothing       : 0.1
+2020-07-08 00:03:51,178 cfg.training.batch_size            : 2048
+2020-07-08 00:03:51,178 cfg.training.batch_type            : token
+2020-07-08 00:03:51,178 cfg.training.batch_multiplier      : 1
+2020-07-08 00:03:51,178 cfg.training.early_stopping_metric : ppl
+2020-07-08 00:03:51,178 cfg.training.epochs                : 50
+2020-07-08 00:03:51,178 cfg.training.validation_freq       : 1000
+2020-07-08 00:03:51,178 cfg.training.logging_freq          : 100
+2020-07-08 00:03:51,178 cfg.training.eval_metric           : bleu
+2020-07-08 00:03:51,178 cfg.training.model_dir             : models/wmt20/tfm_menc_b2048_ende-tune/
+2020-07-08 00:03:51,178 cfg.training.load_model            : models/wmt_ende_transformer/best.ckpt
+2020-07-08 00:03:51,178 cfg.training.reset_best_ckpt       : True
+2020-07-08 00:03:51,178 cfg.training.reset_scheduler       : True
+2020-07-08 00:03:51,179 cfg.training.reset_optimizer       : True
+2020-07-08 00:03:51,179 cfg.training.overwrite             : False
+2020-07-08 00:03:51,179 cfg.training.shuffle               : True
+2020-07-08 00:03:51,179 cfg.training.use_cuda              : True
+2020-07-08 00:03:51,179 cfg.training.max_output_length     : 100
+2020-07-08 00:03:51,179 cfg.training.print_valid_sents     : [0, 1, 2, 3]
+2020-07-08 00:03:51,179 cfg.training.keep_last_ckpts       : 3
+2020-07-08 00:03:51,179 cfg.model.initializer              : xavier
+2020-07-08 00:03:51,179 cfg.model.bias_initializer         : zeros
+2020-07-08 00:03:51,179 cfg.model.init_gain                : 1.0
+2020-07-08 00:03:51,179 cfg.model.embed_initializer        : xavier
+2020-07-08 00:03:51,179 cfg.model.embed_init_gain          : 1.0
+2020-07-08 00:03:51,179 cfg.model.tied_embeddings          : True
+2020-07-08 00:03:51,180 cfg.model.tied_softmax             : True
+2020-07-08 00:03:51,180 cfg.model.encoder.type             : transformer
+2020-07-08 00:03:51,180 cfg.model.encoder.num_layers       : 6
+2020-07-08 00:03:51,180 cfg.model.encoder.num_heads        : 8
+2020-07-08 00:03:51,180 cfg.model.encoder.embeddings.embedding_dim : 512
+2020-07-08 00:03:51,180 cfg.model.encoder.embeddings.scale : True
+2020-07-08 00:03:51,180 cfg.model.encoder.embeddings.dropout : 0.0
+2020-07-08 00:03:51,180 cfg.model.encoder.hidden_size      : 512
+2020-07-08 00:03:51,180 cfg.model.encoder.ff_size          : 2048
+2020-07-08 00:03:51,180 cfg.model.encoder.dropout          : 0.1
+2020-07-08 00:03:51,180 cfg.model.encoder.multi_encoder    : True
+2020-07-08 00:03:51,180 cfg.model.decoder.type             : transformer
+2020-07-08 00:03:51,181 cfg.model.decoder.num_layers       : 6
+2020-07-08 00:03:51,181 cfg.model.decoder.num_heads        : 8
+2020-07-08 00:03:51,181 cfg.model.decoder.embeddings.embedding_dim : 512
+2020-07-08 00:03:51,181 cfg.model.decoder.embeddings.scale : True
+2020-07-08 00:03:51,181 cfg.model.decoder.embeddings.dropout : 0.0
+2020-07-08 00:03:51,181 cfg.model.decoder.hidden_size      : 512
+2020-07-08 00:03:51,181 cfg.model.decoder.ff_size          : 2048
+2020-07-08 00:03:51,181 cfg.model.decoder.dropout          : 0.1
+2020-07-08 00:03:51,181 Data set sizes: 
+	train 11489,
 	valid 850,
 	test 0
-2020-07-05 16:37:00,750 First training example:
+2020-07-08 00:03:51,181 First training example:
 	[SRC] H@@ i there ! How can I help ?
 	[TRG] Hall@@ o ! Wie kann ich helfen ?
-2020-07-05 16:37:00,750 First 10 words (src): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
-2020-07-05 16:37:00,751 First 10 words (trg): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
-2020-07-05 16:37:00,751 Number of Src words (types): 36628
-2020-07-05 16:37:00,751 Number of Trg words (types): 36628
-2020-07-05 16:37:00,751 Model(
+2020-07-08 00:03:51,181 First 10 words (src): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-08 00:03:51,181 First 10 words (trg): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-08 00:03:51,182 Number of Src words (types): 36628
+2020-07-08 00:03:51,182 Number of Trg words (types): 36628
+2020-07-08 00:03:51,182 Model(
 	encoder=TransformerEncoder(num_layers=5, num_heads=8),
 	decoder=TransformerDecoder(num_layers=6, num_heads=8),
 	src_embed=Embeddings(embedding_dim=512, vocab_size=36628),
 	trg_embed=Embeddings(embedding_dim=512, vocab_size=36628))
-2020-07-05 16:37:00,778 EPOCH 1
-2020-07-05 16:37:26,648 Epoch   1 Step:  1360100 Batch Loss:     2.036248 Tokens per Sec:     5026, Lr: 0.000200
-2020-07-05 16:37:34,531 Epoch   1: total training loss 467.13
-2020-07-05 16:37:34,531 EPOCH 2
-2020-07-05 16:37:51,706 Epoch   2 Step:  1360200 Batch Loss:     1.787426 Tokens per Sec:     5066, Lr: 0.000200
-2020-07-05 16:38:08,307 Epoch   2: total training loss 184.28
-2020-07-05 16:38:08,307 EPOCH 3
-2020-07-05 16:38:16,953 Epoch   3 Step:  1360300 Batch Loss:     1.004978 Tokens per Sec:     5321, Lr: 0.000200
-2020-07-05 16:38:41,825 Epoch   3: total training loss 142.95
-2020-07-05 16:38:41,825 EPOCH 4
-2020-07-05 16:38:42,331 Epoch   4 Step:  1360400 Batch Loss:     1.127610 Tokens per Sec:     4349, Lr: 0.000200
-2020-07-05 16:39:07,689 Epoch   4 Step:  1360500 Batch Loss:     0.758467 Tokens per Sec:     5243, Lr: 0.000200
-2020-07-05 16:39:15,366 Epoch   4: total training loss 117.75
-2020-07-05 16:39:15,367 EPOCH 5
-2020-07-05 16:39:32,988 Epoch   5 Step:  1360600 Batch Loss:     0.867941 Tokens per Sec:     5260, Lr: 0.000200
-2020-07-05 16:39:48,431 Epoch   5: total training loss 103.93
-2020-07-05 16:39:48,432 EPOCH 6
-2020-07-05 16:39:58,162 Epoch   6 Step:  1360700 Batch Loss:     0.521168 Tokens per Sec:     5230, Lr: 0.000200
-2020-07-05 16:40:22,070 Epoch   6: total training loss 94.15
-2020-07-05 16:40:22,070 EPOCH 7
-2020-07-05 16:40:24,036 Epoch   7 Step:  1360800 Batch Loss:     0.754636 Tokens per Sec:     4821, Lr: 0.000200
-2020-07-05 16:40:49,205 Epoch   7 Step:  1360900 Batch Loss:     0.620321 Tokens per Sec:     5195, Lr: 0.000200
-2020-07-05 16:40:55,587 Epoch   7: total training loss 86.32
-2020-07-05 16:40:55,588 EPOCH 8
-2020-07-05 16:41:14,613 Epoch   8 Step:  1361000 Batch Loss:     0.476499 Tokens per Sec:     5149, Lr: 0.000200
-2020-07-05 16:41:38,115 Hooray! New best validation result [ppl]!
-2020-07-05 16:41:38,115 Saving new checkpoint.
-2020-07-05 16:41:48,742 Example #0
-2020-07-05 16:41:48,742 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 16:41:48,742 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 16:41:48,742 	Source:     Hi , how can I help you ?
-2020-07-05 16:41:48,743 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:41:48,743 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:41:48,743 Example #1
-2020-07-05 16:41:48,743 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 16:41:48,743 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 16:41:48,743 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 16:41:48,743 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 16:41:48,743 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 16:41:48,743 Example #2
-2020-07-05 16:41:48,743 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 16:41:48,743 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
-2020-07-05 16:41:48,743 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 16:41:48,743 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 16:41:48,743 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich mit ein paar Optionen sein .
-2020-07-05 16:41:48,743 Example #3
-2020-07-05 16:41:48,743 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 16:41:48,744 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'ein', 'ro@@', 'tier@@', 'tes', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'neben', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'fand', 'auch', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Co@@', 'unter@@', 'service', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einer', 'zw@@', 'ang@@', 'losen', ',', 'modernen', 'Umgebung', '.']
-2020-07-05 16:41:48,744 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 16:41:48,744 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 16:41:48,744 	Hypothesis: Ich habe Folgendes gefunden : Seasons 52 , ein rotiertes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich fand auch : Pluto ' s : eine lokale Kette mit Counterservice mit Salaten & Sandwiches in einer zwanglosen , modernen Umgebung .
-2020-07-05 16:41:48,744 Validation result (greedy) at epoch   8, step  1361000: bleu:  54.53, loss: 10812.6250, ppl:   2.1066, duration: 34.1303s
-2020-07-05 16:42:02,769 Epoch   8: total training loss 81.25
-2020-07-05 16:42:02,770 EPOCH 9
-2020-07-05 16:42:13,516 Epoch   9 Step:  1361100 Batch Loss:     0.576772 Tokens per Sec:     4911, Lr: 0.000200
-2020-07-05 16:42:36,291 Epoch   9: total training loss 77.16
-2020-07-05 16:42:36,292 EPOCH 10
-2020-07-05 16:42:38,039 Epoch  10 Step:  1361200 Batch Loss:     0.572834 Tokens per Sec:     5817, Lr: 0.000200
-2020-07-05 16:43:04,499 Epoch  10 Step:  1361300 Batch Loss:     0.501633 Tokens per Sec:     4991, Lr: 0.000200
-2020-07-05 16:43:10,270 Epoch  10: total training loss 69.40
-2020-07-05 16:43:10,270 EPOCH 11
-2020-07-05 16:43:29,264 Epoch  11 Step:  1361400 Batch Loss:     0.591227 Tokens per Sec:     5157, Lr: 0.000200
-2020-07-05 16:43:43,764 Epoch  11: total training loss 66.82
-2020-07-05 16:43:43,765 EPOCH 12
-2020-07-05 16:43:54,623 Epoch  12 Step:  1361500 Batch Loss:     0.433327 Tokens per Sec:     4920, Lr: 0.000200
-2020-07-05 16:44:17,416 Epoch  12: total training loss 62.33
-2020-07-05 16:44:17,416 EPOCH 13
-2020-07-05 16:44:19,691 Epoch  13 Step:  1361600 Batch Loss:     0.137268 Tokens per Sec:     3974, Lr: 0.000200
-2020-07-05 16:44:43,787 Epoch  13 Step:  1361700 Batch Loss:     0.497403 Tokens per Sec:     5397, Lr: 0.000200
-2020-07-05 16:44:50,467 Epoch  13: total training loss 59.22
-2020-07-05 16:44:50,468 EPOCH 14
-2020-07-05 16:45:08,345 Epoch  14 Step:  1361800 Batch Loss:     0.449527 Tokens per Sec:     5462, Lr: 0.000200
-2020-07-05 16:45:22,983 Epoch  14: total training loss 54.93
-2020-07-05 16:45:22,983 EPOCH 15
-2020-07-05 16:45:33,402 Epoch  15 Step:  1361900 Batch Loss:     0.383914 Tokens per Sec:     5262, Lr: 0.000200
-2020-07-05 16:45:55,703 Epoch  15: total training loss 51.66
-2020-07-05 16:45:55,704 EPOCH 16
-2020-07-05 16:45:58,182 Epoch  16 Step:  1362000 Batch Loss:     0.355208 Tokens per Sec:     5352, Lr: 0.000200
-2020-07-05 16:46:21,520 Hooray! New best validation result [ppl]!
-2020-07-05 16:46:21,520 Saving new checkpoint.
-2020-07-05 16:46:32,371 Example #0
-2020-07-05 16:46:32,372 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 16:46:32,372 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 16:46:32,372 	Source:     Hi , how can I help you ?
-2020-07-05 16:46:32,372 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:46:32,372 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:46:32,372 Example #1
-2020-07-05 16:46:32,372 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 16:46:32,372 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 16:46:32,372 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 16:46:32,372 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 16:46:32,372 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 16:46:32,372 Example #2
-2020-07-05 16:46:32,372 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 16:46:32,372 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
-2020-07-05 16:46:32,372 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 16:46:32,373 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 16:46:32,373 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich mit ein paar Optionen sein .
-2020-07-05 16:46:32,373 Example #3
-2020-07-05 16:46:32,373 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 16:46:32,373 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'ein', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'Folgendes', 'gefunden', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Be@@', 'stu@@', 'h@@', 'lung', ',', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einer', 'unge@@', 'zw@@', 'un@@', 'genen', ',', 'modernen', 'Umgebung', '.']
-2020-07-05 16:46:32,373 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 16:46:32,373 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 16:46:32,373 	Hypothesis: Ich habe Folgendes gefunden : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch Folgendes gefunden : Pluto ' s : eine lokale Kette mit Bestuhlung , Salaten & Sandwiches in einer ungezwungenen , modernen Umgebung .
-2020-07-05 16:46:32,373 Validation result (greedy) at epoch  16, step  1362000: bleu:  55.41, loss: 10291.0215, ppl:   2.0322, duration: 34.1901s
-2020-07-05 16:46:57,780 Epoch  16 Step:  1362100 Batch Loss:     0.414233 Tokens per Sec:     5116, Lr: 0.000200
-2020-07-05 16:47:03,196 Epoch  16: total training loss 48.69
-2020-07-05 16:47:03,196 EPOCH 17
-2020-07-05 16:47:23,321 Epoch  17 Step:  1362200 Batch Loss:     0.252362 Tokens per Sec:     5127, Lr: 0.000200
-2020-07-05 16:47:37,160 Epoch  17: total training loss 46.15
-2020-07-05 16:47:37,161 EPOCH 18
-2020-07-05 16:47:49,445 Epoch  18 Step:  1362300 Batch Loss:     0.451089 Tokens per Sec:     4896, Lr: 0.000200
-2020-07-05 16:48:10,978 Epoch  18: total training loss 44.80
-2020-07-05 16:48:10,979 EPOCH 19
-2020-07-05 16:48:13,817 Epoch  19 Step:  1362400 Batch Loss:     0.296899 Tokens per Sec:     5799, Lr: 0.000200
-2020-07-05 16:48:39,567 Epoch  19 Step:  1362500 Batch Loss:     0.322230 Tokens per Sec:     5018, Lr: 0.000200
-2020-07-05 16:48:44,720 Epoch  19: total training loss 42.48
-2020-07-05 16:48:44,721 EPOCH 20
-2020-07-05 16:49:05,342 Epoch  20 Step:  1362600 Batch Loss:     0.235798 Tokens per Sec:     5056, Lr: 0.000200
-2020-07-05 16:49:18,008 Epoch  20: total training loss 39.91
-2020-07-05 16:49:18,009 EPOCH 21
-2020-07-05 16:49:29,892 Epoch  21 Step:  1362700 Batch Loss:     0.282392 Tokens per Sec:     5019, Lr: 0.000200
-2020-07-05 16:49:51,833 Epoch  21: total training loss 38.02
-2020-07-05 16:49:51,833 EPOCH 22
-2020-07-05 16:49:55,132 Epoch  22 Step:  1362800 Batch Loss:     0.307667 Tokens per Sec:     5564, Lr: 0.000200
-2020-07-05 16:50:21,122 Epoch  22 Step:  1362900 Batch Loss:     0.281964 Tokens per Sec:     4975, Lr: 0.000200
-2020-07-05 16:50:25,983 Epoch  22: total training loss 36.20
-2020-07-05 16:50:25,983 EPOCH 23
-2020-07-05 16:50:45,921 Epoch  23 Step:  1363000 Batch Loss:     0.247088 Tokens per Sec:     5270, Lr: 0.000200
-2020-07-05 16:51:09,059 Example #0
-2020-07-05 16:51:09,059 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 16:51:09,059 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 16:51:09,059 	Source:     Hi , how can I help you ?
-2020-07-05 16:51:09,059 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:51:09,060 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:51:09,060 Example #1
-2020-07-05 16:51:09,060 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 16:51:09,060 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 16:51:09,060 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 16:51:09,060 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 16:51:09,060 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 16:51:09,060 Example #2
-2020-07-05 16:51:09,060 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 16:51:09,060 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'einen', 'Moment', ',', 'ich', 'werde', 'gleich', 'ein', 'paar', 'Optionen', 'haben', '.']
-2020-07-05 16:51:09,060 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 16:51:09,060 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 16:51:09,060 	Hypothesis: Klar , geben Sie mir einen Moment , ich werde gleich ein paar Optionen haben .
-2020-07-05 16:51:09,060 Example #3
-2020-07-05 16:51:09,060 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 16:51:09,060 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'ein', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'neben', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ',', 'eine', 'lokale', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'B@@', 'räu@@', 'chten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einem', 'gemütlichen', ',', 'modernen', 'Ambiente', '.']
-2020-07-05 16:51:09,060 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 16:51:09,060 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 16:51:09,061 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " , eine lokale Counter-Serve-Kette mit Bräuchten & Sandwiches in einem gemütlichen , modernen Ambiente .
-2020-07-05 16:51:09,061 Validation result (greedy) at epoch  23, step  1363000: bleu:  55.59, loss: 10552.7959, ppl:   2.0692, duration: 23.1383s
-2020-07-05 16:51:22,712 Epoch  23: total training loss 34.57
-2020-07-05 16:51:22,713 EPOCH 24
-2020-07-05 16:51:35,367 Epoch  24 Step:  1363100 Batch Loss:     0.118271 Tokens per Sec:     4970, Lr: 0.000200
-2020-07-05 16:51:56,609 Epoch  24: total training loss 32.62
-2020-07-05 16:51:56,610 EPOCH 25
-2020-07-05 16:52:00,441 Epoch  25 Step:  1363200 Batch Loss:     0.246136 Tokens per Sec:     5617, Lr: 0.000200
-2020-07-05 16:52:26,075 Epoch  25 Step:  1363300 Batch Loss:     0.237550 Tokens per Sec:     5073, Lr: 0.000200
-2020-07-05 16:52:30,521 Epoch  25: total training loss 31.01
-2020-07-05 16:52:30,521 EPOCH 26
-2020-07-05 16:52:51,341 Epoch  26 Step:  1363400 Batch Loss:     0.278477 Tokens per Sec:     5201, Lr: 0.000200
-2020-07-05 16:53:03,780 Epoch  26: total training loss 29.79
-2020-07-05 16:53:03,781 EPOCH 27
-2020-07-05 16:53:16,892 Epoch  27 Step:  1363500 Batch Loss:     0.080207 Tokens per Sec:     4950, Lr: 0.000200
-2020-07-05 16:53:37,810 Epoch  27: total training loss 29.03
-2020-07-05 16:53:37,811 EPOCH 28
-2020-07-05 16:53:42,924 Epoch  28 Step:  1363600 Batch Loss:     0.208197 Tokens per Sec:     4420, Lr: 0.000200
-2020-07-05 16:54:07,779 Epoch  28 Step:  1363700 Batch Loss:     0.098547 Tokens per Sec:     5314, Lr: 0.000200
-2020-07-05 16:54:11,257 Epoch  28: total training loss 27.51
-2020-07-05 16:54:11,257 EPOCH 29
-2020-07-05 16:54:32,957 Epoch  29 Step:  1363800 Batch Loss:     0.198445 Tokens per Sec:     5200, Lr: 0.000200
-2020-07-05 16:54:44,721 Epoch  29: total training loss 26.35
-2020-07-05 16:54:44,722 EPOCH 30
-2020-07-05 16:54:58,467 Epoch  30 Step:  1363900 Batch Loss:     0.208473 Tokens per Sec:     5121, Lr: 0.000200
-2020-07-05 16:55:18,265 Epoch  30: total training loss 25.73
-2020-07-05 16:55:18,265 EPOCH 31
-2020-07-05 16:55:23,529 Epoch  31 Step:  1364000 Batch Loss:     0.154135 Tokens per Sec:     5047, Lr: 0.000200
-2020-07-05 16:55:46,804 Example #0
-2020-07-05 16:55:46,804 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 16:55:46,804 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 16:55:46,804 	Source:     Hi , how can I help you ?
-2020-07-05 16:55:46,804 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:55:46,804 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 16:55:46,804 Example #1
-2020-07-05 16:55:46,804 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 16:55:46,805 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 16:55:46,805 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 16:55:46,805 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 16:55:46,805 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 16:55:46,805 Example #2
-2020-07-05 16:55:46,805 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 16:55:46,805 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'bitte', 'einen', 'Moment', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
-2020-07-05 16:55:46,805 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 16:55:46,805 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 16:55:46,805 	Hypothesis: Klar , geben Sie mir bitte einen Moment , ich werde gleich mit ein paar Optionen sein .
-2020-07-05 16:55:46,805 Example #3
-2020-07-05 16:55:46,805 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 16:55:46,805 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'ein', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'zusammen', 'mit', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'B@@', 'räu@@', 'chten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einem', 'unge@@', 'zw@@', 'un@@', 'genen', ',', 'modernen', 'Ambiente', '.']
-2020-07-05 16:55:46,805 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 16:55:46,805 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 16:55:46,805 	Hypothesis: Ich habe folgendes gefunden : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten zusammen mit internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : Pluto ' s : eine lokale Counter-Serve-Kette mit Bräuchten & Sandwiches in einem ungezwungenen , modernen Ambiente .
-2020-07-05 16:55:46,805 Validation result (greedy) at epoch  31, step  1364000: bleu:  54.96, loss: 11090.7295, ppl:   2.1474, duration: 23.2754s
-2020-07-05 16:56:12,352 Epoch  31 Step:  1364100 Batch Loss:     0.198523 Tokens per Sec:     5107, Lr: 0.000200
-2020-07-05 16:56:15,228 Epoch  31: total training loss 24.75
-2020-07-05 16:56:15,228 EPOCH 32
-2020-07-05 16:56:37,446 Epoch  32 Step:  1364200 Batch Loss:     0.159001 Tokens per Sec:     5160, Lr: 0.000200
-2020-07-05 16:56:48,549 Epoch  32: total training loss 23.48
-2020-07-05 16:56:48,550 EPOCH 33
-2020-07-05 16:57:02,267 Epoch  33 Step:  1364300 Batch Loss:     0.163652 Tokens per Sec:     5314, Lr: 0.000200
-2020-07-05 16:57:22,209 Epoch  33: total training loss 22.27
-2020-07-05 16:57:22,210 EPOCH 34
-2020-07-05 16:57:29,128 Epoch  34 Step:  1364400 Batch Loss:     0.157944 Tokens per Sec:     4582, Lr: 0.000200
-2020-07-05 16:57:54,169 Epoch  34 Step:  1364500 Batch Loss:     0.171329 Tokens per Sec:     5194, Lr: 0.000200
-2020-07-05 16:57:55,760 Epoch  34: total training loss 21.57
-2020-07-05 16:57:55,760 EPOCH 35
-2020-07-05 16:58:19,753 Epoch  35 Step:  1364600 Batch Loss:     0.172504 Tokens per Sec:     5013, Lr: 0.000200
-2020-07-05 16:58:29,408 Epoch  35: total training loss 20.95
-2020-07-05 16:58:29,408 EPOCH 36
-2020-07-05 16:58:44,160 Epoch  36 Step:  1364700 Batch Loss:     0.157927 Tokens per Sec:     5144, Lr: 0.000200
-2020-07-05 16:59:03,506 Epoch  36: total training loss 20.22
-2020-07-05 16:59:03,507 EPOCH 37
-2020-07-05 16:59:10,265 Epoch  37 Step:  1364800 Batch Loss:     0.151705 Tokens per Sec:     4880, Lr: 0.000200
-2020-07-05 16:59:35,273 Epoch  37 Step:  1364900 Batch Loss:     0.145573 Tokens per Sec:     5161, Lr: 0.000200
-2020-07-05 16:59:37,625 Epoch  37: total training loss 19.79
-2020-07-05 16:59:37,625 EPOCH 38
-2020-07-05 17:00:01,686 Epoch  38 Step:  1365000 Batch Loss:     0.145291 Tokens per Sec:     4972, Lr: 0.000200
-2020-07-05 17:00:24,150 Example #0
-2020-07-05 17:00:24,150 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 17:00:24,151 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 17:00:24,151 	Source:     Hi , how can I help you ?
-2020-07-05 17:00:24,151 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 17:00:24,151 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 17:00:24,151 Example #1
-2020-07-05 17:00:24,151 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 17:00:24,151 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 17:00:24,151 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 17:00:24,151 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 17:00:24,151 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 17:00:24,151 Example #2
-2020-07-05 17:00:24,151 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 17:00:24,151 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'bitte', 'einen', 'Moment', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
-2020-07-05 17:00:24,151 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 17:00:24,151 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 17:00:24,152 	Hypothesis: Klar , geben Sie mir bitte einen Moment , ich werde gleich mit ein paar Optionen sein .
-2020-07-05 17:00:24,152 Example #3
-2020-07-05 17:00:24,152 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 17:00:24,152 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'ein', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'kre@@', 'ativen', ',', 'modernen', 'Gerichten', '.']
-2020-07-05 17:00:24,152 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 17:00:24,152 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 17:00:24,152 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , ein wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Counter-Serve-Kette mit kreativen , modernen Gerichten .
-2020-07-05 17:00:24,152 Validation result (greedy) at epoch  38, step  1365000: bleu:  53.94, loss: 11606.1162, ppl:   2.2250, duration: 22.4644s
-2020-07-05 17:00:34,374 Epoch  38: total training loss 19.05
-2020-07-05 17:00:34,375 EPOCH 39
-2020-07-05 17:00:49,870 Epoch  39 Step:  1365100 Batch Loss:     0.148977 Tokens per Sec:     4903, Lr: 0.000200
-2020-07-05 17:01:08,262 Epoch  39: total training loss 18.21
-2020-07-05 17:01:08,263 EPOCH 40
-2020-07-05 17:01:15,775 Epoch  40 Step:  1365200 Batch Loss:     0.125395 Tokens per Sec:     4599, Lr: 0.000200
-2020-07-05 17:01:40,508 Epoch  40 Step:  1365300 Batch Loss:     0.155043 Tokens per Sec:     5260, Lr: 0.000200
-2020-07-05 17:01:42,346 Epoch  40: total training loss 17.90
-2020-07-05 17:01:42,347 EPOCH 41
-2020-07-05 17:02:06,544 Epoch  41 Step:  1365400 Batch Loss:     0.138075 Tokens per Sec:     5033, Lr: 0.000200
-2020-07-05 17:02:16,147 Epoch  41: total training loss 17.77
-2020-07-05 17:02:16,148 EPOCH 42
-2020-07-05 17:02:31,271 Epoch  42 Step:  1365500 Batch Loss:     0.130569 Tokens per Sec:     5268, Lr: 0.000200
-2020-07-05 17:02:50,422 Epoch  42: total training loss 16.92
-2020-07-05 17:02:50,423 EPOCH 43
-2020-07-05 17:02:57,235 Epoch  43 Step:  1365600 Batch Loss:     0.130679 Tokens per Sec:     5250, Lr: 0.000200
-2020-07-05 17:03:23,208 Epoch  43 Step:  1365700 Batch Loss:     0.125318 Tokens per Sec:     5061, Lr: 0.000200
-2020-07-05 17:03:24,452 Epoch  43: total training loss 16.38
-2020-07-05 17:03:24,453 EPOCH 44
-2020-07-05 17:03:49,236 Epoch  44 Step:  1365800 Batch Loss:     0.136572 Tokens per Sec:     4976, Lr: 0.000200
-2020-07-05 17:03:58,688 Epoch  44: total training loss 15.85
-2020-07-05 17:03:58,689 EPOCH 45
-2020-07-05 17:04:14,539 Epoch  45 Step:  1365900 Batch Loss:     0.099235 Tokens per Sec:     5153, Lr: 0.000200
-2020-07-05 17:04:32,592 Epoch  45: total training loss 15.33
-2020-07-05 17:04:32,593 EPOCH 46
-2020-07-05 17:04:39,884 Epoch  46 Step:  1366000 Batch Loss:     0.111283 Tokens per Sec:     5443, Lr: 0.000200
-2020-07-05 17:05:02,691 Example #0
-2020-07-05 17:05:02,691 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
-2020-07-05 17:05:02,691 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
-2020-07-05 17:05:02,691 	Source:     Hi , how can I help you ?
-2020-07-05 17:05:02,691 	Reference:  Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 17:05:02,691 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
-2020-07-05 17:05:02,691 Example #1
-2020-07-05 17:05:02,691 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
-2020-07-05 17:05:02,691 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
-2020-07-05 17:05:02,691 	Source:     Ok , what type of restaurant are you looking for ?
-2020-07-05 17:05:02,691 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
-2020-07-05 17:05:02,691 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
-2020-07-05 17:05:02,691 Example #2
-2020-07-05 17:05:02,691 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
-2020-07-05 17:05:02,691 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'bitte', 'einen', 'Moment', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
-2020-07-05 17:05:02,691 	Source:     Sure , give me a second , I will be right back with a couple of options .
-2020-07-05 17:05:02,691 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
-2020-07-05 17:05:02,691 	Hypothesis: Klar , geben Sie mir bitte einen Moment , ich werde gleich mit ein paar Optionen sein .
-2020-07-05 17:05:02,691 Example #3
-2020-07-05 17:05:02,691 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
-2020-07-05 17:05:02,691 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'ein', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'neben', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Be@@', 'di@@', 'enth@@', 'e@@', 'ke', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einem', 'gemütlichen', ',', 'modernen', 'Ambiente', '.']
-2020-07-05 17:05:02,691 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
-2020-07-05 17:05:02,691 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
-2020-07-05 17:05:02,692 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Kette mit Bedientheke & Sandwiches in einem gemütlichen , modernen Ambiente .
-2020-07-05 17:05:02,692 Validation result (greedy) at epoch  46, step  1366000: bleu:  54.48, loss: 11978.2363, ppl:   2.2828, duration: 22.8067s
-2020-07-05 17:05:28,488 Epoch  46 Step:  1366100 Batch Loss:     0.109607 Tokens per Sec:     5039, Lr: 0.000200
-2020-07-05 17:05:29,201 Epoch  46: total training loss 14.74
-2020-07-05 17:05:29,202 EPOCH 47
-2020-07-05 17:05:54,581 Epoch  47 Step:  1366200 Batch Loss:     0.110771 Tokens per Sec:     5060, Lr: 0.000200
-2020-07-05 17:06:03,134 Epoch  47: total training loss 14.35
-2020-07-05 17:06:03,134 EPOCH 48
-2020-07-05 17:06:19,933 Epoch  48 Step:  1366300 Batch Loss:     0.145922 Tokens per Sec:     5123, Lr: 0.000200
-2020-07-05 17:06:37,147 Epoch  48: total training loss 14.07
-2020-07-05 17:06:37,148 EPOCH 49
-2020-07-05 17:06:45,692 Epoch  49 Step:  1366400 Batch Loss:     0.100520 Tokens per Sec:     5182, Lr: 0.000200
-2020-07-05 17:07:10,500 Epoch  49: total training loss 13.85
-2020-07-05 17:07:10,500 EPOCH 50
-2020-07-05 17:07:10,687 Epoch  50 Step:  1366500 Batch Loss:     0.092034 Tokens per Sec:     8667, Lr: 0.000200
-2020-07-05 17:07:35,713 Epoch  50 Step:  1366600 Batch Loss:     0.099877 Tokens per Sec:     5202, Lr: 0.000200
-2020-07-05 17:07:43,910 Epoch  50: total training loss 13.45
-2020-07-05 17:07:43,910 Training ended after  50 epochs.
-2020-07-05 17:07:43,910 Best validation result (greedy) at step  1362000:   2.03 ppl.
-2020-07-05 17:08:29,904  dev bleu:  55.98 [Beam search decoding with beam size = 5 and alpha = 1.0]
-2020-07-05 17:08:29,909 Translations saved to: models/wmt20/tfm_menc_b2048_ende-tune/01362000.hyps.dev
-2020-07-05 17:08:29,912 test bleu:  -1.00 [Beam search decoding with beam size = 5 and alpha = 1.0]
-2020-07-05 17:08:29,913 Translations saved to: models/wmt20/tfm_menc_b2048_ende-tune/01362000.hyps.test
+2020-07-08 00:03:51,215 EPOCH 1
