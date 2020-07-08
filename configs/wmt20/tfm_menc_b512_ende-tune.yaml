@@ -1,5 +1,4 @@
-#modified from: transformer_wmt17_ende.yaml
-name: "transformer_multi_enc_ende"
+name: "transformer"
 
 data:
     src: "en"
@@ -30,18 +29,21 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 2048
+    batch_size: 512
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
     batch_multiplier: 1
     early_stopping_metric: "ppl"
-    epochs: 150
+    epochs: 50
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt20/tfm_menc_b2048_ende/"
-    #load_model: "models/wmt_ende_transformer/best.ckpt"
+    model_dir: "models/wmt20/tfm_menc_b512_ende-tune/"
+    load_model: "models/wmt_ende_transformer/best.ckpt"
+    reset_best_ckpt: True
+    reset_scheduler: True
+    reset_optimizer: True
     overwrite: False
     shuffle: True
     use_cuda: True
@@ -59,7 +61,7 @@ model:
     tied_softmax: True
     encoder:
         type: "transformer"
-        num_layers: 3 #3+3=6 to make # params comparable with single-encoder transformer
+        num_layers: 6
         num_heads: 8
         embeddings:
             embedding_dim: 512
@@ -69,7 +71,6 @@ model:
         hidden_size: 512
         ff_size: 2048
         dropout: 0.1
-        freeze: False
         multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
     decoder:
         type: "transformer"
@@ -83,4 +84,3 @@ model:
         hidden_size: 512
         ff_size: 2048
         dropout: 0.1
-        freeze: False

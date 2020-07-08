@@ -298,9 +298,10 @@ class ContextTranslationDataset(Dataset):
                         assert trg_line == 'REMOVEMEIMABOUNDARY', "TRG IS NOT A LINE"
                         prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                         continue
-                    if len(src_line) > 2 and src_line[:3] == CONTEXT_TOKEN:
-                        prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+                    if len(src_line) > 3 and src_line[:4] == (CONTEXT_TOKEN + " "):
+                        prev_src_line, prev_trg_line = src_line[4:], trg_line[4:]
                         continue
+                        # prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                     examples.append(data.Example.fromlist(
                         [prev_src_line, prev_trg_line, src_line, trg_line], fields))
                     prev_src_line = src_line # Prepend special token, since src and context encoders share parameters

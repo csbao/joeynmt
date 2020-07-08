@@ -1,12 +1,12 @@
-#modified from: transformer_wmt17_ende.yaml
-name: "transformer_multi_enc_ende"
+# modified from: transformer_wmt17_ende.yaml
+name: "transformer"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/official_split/wmt17bpe__boundaries/train.tags.bpe.wmt-ende-best"
-    dev: "chatnmt/official_split/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best"        # development data for validation
-    test:  "chatnmt/official_split/wmt17bpe__boundaries/test.tags.bpe.wmt-ende-best"
+    train: "chatnmt/official_split/wmt17bpe__boundaries_news/train.news.tags.bpe.wmt-ende-best"
+    dev: "chatnmt/official_split/wmt17bpe__boundaries_news/dev.tags.bpe.wmt-ende-best"        # development data for validation
+    test:  "chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -37,12 +37,12 @@ training:
     batch_multiplier: 1
     early_stopping_metric: "ppl"
     epochs: 150
-    validation_freq: 1000
+    validation_freq: 750
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt20/tfm_menc_b2048_ende/"
+    model_dir: "models/wmt20/main_tfm_b2048_ende_news/"
     #load_model: "models/wmt_ende_transformer/best.ckpt"
-    overwrite: False
+    overwrite: True
     shuffle: True
     use_cuda: True
     max_output_length: 100
@@ -59,7 +59,7 @@ model:
     tied_softmax: True
     encoder:
         type: "transformer"
-        num_layers: 3 #3+3=6 to make # params comparable with single-encoder transformer
+        num_layers: 6
         num_heads: 8
         embeddings:
             embedding_dim: 512
@@ -68,9 +68,9 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
         freeze: False
-        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
+        dropout: 0.1
+        multi_encoder: True
     decoder:
         type: "transformer"
         num_layers: 6
@@ -82,5 +82,5 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        dropout: 0.1
         freeze: False
+        dropout: 0.1
