@@ -1,12 +1,11 @@
-# modified from: transformer_wmt17_ende.yaml
 name: "transformer"
 
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/official_split/wmt17bpe/train.tags.bpe.wmt-ende-best"
-    dev: "chatnmt/official_split/wmt17bpe/dev.tags.bpe.wmt-ende-best"        # development data for validation
-    test:  "chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best"
+    train: "chatnmt/official_split/wmt17bpe__boundaries/train.tags.bpe.wmt-ende-best"
+    dev: "chatnmt/official_split/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best"        # development data for validation
+    test:  "chatnmt/official_split/wmt17bpe__boundaries/test.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -30,7 +29,7 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 4096
+    batch_size: 512
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
@@ -40,9 +39,12 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt20/tfm_b4096_ende/"
-    #load_model: "models/wmt_ende_transformer/best.ckpt"
-    overwrite: True
+    model_dir: "models/wmt20/tfm_menc_b512_ende-tune/"
+    load_model: "models/wmt_ende_transformer/best.ckpt"
+    reset_best_ckpt: True
+    reset_scheduler: True
+    reset_optimizer: True
+    overwrite: False
     shuffle: True
     use_cuda: True
     max_output_length: 100
@@ -68,8 +70,8 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        freeze: False
         dropout: 0.1
+        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
     decoder:
         type: "transformer"
         num_layers: 6
@@ -81,5 +83,4 @@ model:
         # typically ff_size = 4 x hidden_size
         hidden_size: 512
         ff_size: 2048
-        freeze: False
         dropout: 0.1
