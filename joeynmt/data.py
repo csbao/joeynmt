@@ -267,6 +267,50 @@ class MonoDataset(Dataset):
 
         super(MonoDataset, self).__init__(examples, fields, **kwargs)
 
+
+class MonoCtxDataset(Dataset):
+    """Defines a dataset for machine translation without targets."""
+
+    @staticmethod
+    def sort_key(ex):
+        return len(ex.src)
+
+    def __init__(self, path: str, ext: str, fields: list, **kwargs) -> None:
+        """
+        Create a monolingual dataset (=only sources) given path and field.
+
+        :param path: Prefix of path to the data file
+        :param ext: Containing the extension to path for this language.
+        :param field: Containing the fields that will be used for data.
+        :param kwargs: Passed to the constructor of data.Dataset.
+        """
+
+        fields = [('src_prev', fields[0]), ('src', fields[1]) ]
+
+        if hasattr(path, "readline"):  # special usage: stdin
+            src_file = path
+        else:
+            src_path = os.path.expanduser(path + ext)
+            src_file = open(src_path)
+
+        examples = []
+        for src_line in src_file:
+            src_line = src_line.strip()
+            prev_src_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+            if src_line != '':
+                if len(src_line) > 3 and src_line[:4] == (CONTEXT_TOKEN + " "):
+                    prev_src_line = src_line[4:]
+                    continue
+                if src_line == 'REMOVEMEIMABOUNDARY':
+                    prev_src_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
+                    continue
+                examples.append(data.Example.fromlist(
+                    [prev_src_line, src_line], fields))
+
+        src_file.close()
+        super(MonoCtxDataset, self).__init__(examples, fields, **kwargs)
+
+
 class ContextTranslationDataset(Dataset):
     """ Defines a dataset for nmt context translation."""
     @staticmethod
@@ -298,7 +342,7 @@ class ContextTranslationDataset(Dataset):
                         prev_src_line, prev_trg_line = src_line[4:], trg_line[4:]
                         # prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                         continue
-                    if src_line == 'removemeimaboundary' or trg_line == 'removemeimaboundary':
+                    if src_line == 'REMOVEMEIMABOUNDARY' or trg_line == 'REMOVEMEIMABOUNDARY':
                         prev_src_line, prev_trg_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN, CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
                         continue
                     examples.append(data.Example.fromlist(
