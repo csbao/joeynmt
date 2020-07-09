@@ -16,7 +16,7 @@ from joeynmt.helpers import bpe_postprocess, load_config, make_logger,\
 from joeynmt.metrics import bleu, chrf, token_accuracy, sequence_accuracy
 from joeynmt.model import build_model, Model
 from joeynmt.batch import Batch
-from joeynmt.data import load_data, make_data_iter, MonoDataset
+from joeynmt.data import load_data, make_data_iter, MonoDataset, MonoCtxDataset
 from joeynmt.constants import UNK_TOKEN, PAD_TOKEN, EOS_TOKEN
 from joeynmt.vocabulary import Vocabulary
 
@@ -328,7 +328,6 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
         return hypotheses
 
     cfg = load_config(cfg_file)
-
     # when checkpoint is not specified, take oldest from model dir
     if ckpt is None:
         model_dir = cfg["training"]["model_dir"]
@@ -356,13 +355,19 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
 
     tok_fun = lambda s: list(s) if level == "char" else s.split()
 
+    prev_src_field = Field(init_token=None, eos_token=EOS_TOKEN,
+                      pad_token=PAD_TOKEN, tokenize=tok_fun,
+                      batch_first=True, lower=lowercase,
+                      unk_token=UNK_TOKEN,
+                      include_lengths=True)
     src_field = Field(init_token=None, eos_token=EOS_TOKEN,
                       pad_token=PAD_TOKEN, tokenize=tok_fun,
                       batch_first=True, lower=lowercase,
                       unk_token=UNK_TOKEN,
                       include_lengths=True)
     src_field.vocab = src_vocab
-
+    
+    prev_src_field.vocab = src_vocab
     # load model state from disk
     model_checkpoint = load_checkpoint(ckpt, use_cuda=use_cuda)
 
@@ -383,7 +388,11 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
 
     if not sys.stdin.isatty():
         # input file given
-        test_data = MonoDataset(path=sys.stdin, ext="", field=src_field)
+        test_data = None
+        if cfg['model']['encoder'].get('multi_encoder', False):
+            test_data = MonoCtxDataset(path=sys.stdin, ext="", fields=[prev_src_field, src_field])
+        else:
+            test_data = MonoDataset(path=sys.stdin, ext="", field=src_field)
         hypotheses = _translate_data(test_data)
 
         if output_path is not None:
