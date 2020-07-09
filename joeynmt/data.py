@@ -294,9 +294,9 @@ class MonoCtxDataset(Dataset):
             src_file = open(src_path)
 
         examples = []
+        prev_src_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
         for src_line in src_file:
             src_line = src_line.strip()
-            prev_src_line = CONTEXT_TOKEN + CONTEXT_EOS_TOKEN
             if src_line != '':
                 if len(src_line) > 3 and src_line[:4] == (CONTEXT_TOKEN + " "):
                     prev_src_line = src_line[4:]
