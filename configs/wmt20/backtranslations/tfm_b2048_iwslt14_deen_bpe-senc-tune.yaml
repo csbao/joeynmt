@@ -4,9 +4,9 @@ name: "iwslt14-deen-bpe-transformer-multi_enc-tune"
 data:
     src: "de"
     trg: "en"
-    train: "chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/train.tags.bpe.iwslt14-deen"
-    dev: " chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/dev.tags.bpe.iwslt14-deen"
-    test: " chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/test.tags.bpe.iwslt14-deen"
+    train: "chatnmt/official_split/iwslt14bpe/train.tags.bpe.iwslt14-deen"
+    dev: "chatnmt/official_split/iwslt14bpe/dev.tags.bpe.iwslt14-deen"
+    test: "chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/test.tags.bpe.iwslt14-deen"
     level: "bpe"
     lowercase: True
     max_sent_length: 62
@@ -30,14 +30,14 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 4096
+    batch_size: 2048
     batch_type: "token"
     early_stopping_metric: "eval_metric"
     epochs: 100
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_iwslt14_deen_bpe-multi_enc-tune"
+    model_dir: "models/transformer_iwslt14_deen_bpe-senc-tune"
     load_model: "models/transformer_iwslt14_deen_bpe/best.ckpt"
     reset_best_ckpt: True
     reset_scheduler: True
@@ -68,7 +68,6 @@ model:
         hidden_size: 256
         ff_size: 1024
         dropout: 0.3
-        multi_encoder: True         # if True, add an encoder `encoder_2` to parametrize context sentences
     decoder:
         type: "transformer"
         num_layers: 6
