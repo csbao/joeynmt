@@ -4,9 +4,9 @@ name: "iwslt14-deen-bpe-transformer-multi_enc-tune"
 data:
     src: "de"
     trg: "en"
-    train: "chatnmt/multi_encoder/train.tags.bpe.iwslt14-deen-bpe"
-    dev: "chatnmt/multi_encoder/dev.tags.bpe.iwslt14-deen-bpe"
-    test: "chatnmt/multi_encoder/test.tags.bpe.iwslt14-deen-bpe"
+    train: "chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/train.tags.bpe.iwslt14-deen"
+    dev: "chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/dev.tags.bpe.iwslt14-deen"
+    test: "chatnmt/official_split_line_by_line/iwslt14bpe__boundaries/test.tags.bpe.iwslt14-deen"
     level: "bpe"
     lowercase: True
     max_sent_length: 62
@@ -37,7 +37,7 @@ training:
     validation_freq: 1000
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/transformer_iwslt14_deen_bpe-multi_enc-tune"
+    model_dir: "models/wmt20/backtranslations/transformer_iwslt14_deen_bpe-multi_enc-tune"
     load_model: "models/transformer_iwslt14_deen_bpe/best.ckpt"
     reset_best_ckpt: True
     reset_scheduler: True
