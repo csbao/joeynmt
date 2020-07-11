@@ -1,0 +1,625 @@
+2020-07-11 15:34:33,028 Hello! This is Joey-NMT.
+2020-07-11 15:34:33,034 Total params: 62894080
+2020-07-11 15:34:33,035 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.layers.3.dec_layer_norm.bias', 'decoder.layers.3.dec_layer_norm.weight', 'decoder.layers.3.feed_forward.layer_norm.bias', 'decoder.layers.3.feed_forward.layer_norm.weight', 'decoder.layers.3.feed_forward.pwff_layer.0.bias', 'decoder.layers.3.feed_forward.pwff_layer.0.weight', 'decoder.layers.3.feed_forward.pwff_layer.3.bias', 'decoder.layers.3.feed_forward.pwff_layer.3.weight', 'decoder.layers.3.src_trg_att.k_layer.bias', 'decoder.layers.3.src_trg_att.k_layer.weight', 'decoder.layers.3.src_trg_att.output_layer.bias', 'decoder.layers.3.src_trg_att.output_layer.weight', 'decoder.layers.3.src_trg_att.q_layer.bias', 'decoder.layers.3.src_trg_att.q_layer.weight', 'decoder.layers.3.src_trg_att.v_layer.bias', 'decoder.layers.3.src_trg_att.v_layer.weight', 'decoder.layers.3.trg_trg_att.k_layer.bias', 'decoder.layers.3.trg_trg_att.k_layer.weight', 'decoder.layers.3.trg_trg_att.output_layer.bias', 'decoder.layers.3.trg_trg_att.output_layer.weight', 'decoder.layers.3.trg_trg_att.q_layer.bias', 'decoder.layers.3.trg_trg_att.q_layer.weight', 'decoder.layers.3.trg_trg_att.v_layer.bias', 'decoder.layers.3.trg_trg_att.v_layer.weight', 'decoder.layers.3.x_layer_norm.bias', 'decoder.layers.3.x_layer_norm.weight', 'decoder.layers.4.dec_layer_norm.bias', 'decoder.layers.4.dec_layer_norm.weight', 'decoder.layers.4.feed_forward.layer_norm.bias', 'decoder.layers.4.feed_forward.layer_norm.weight', 'decoder.layers.4.feed_forward.pwff_layer.0.bias', 'decoder.layers.4.feed_forward.pwff_layer.0.weight', 'decoder.layers.4.feed_forward.pwff_layer.3.bias', 'decoder.layers.4.feed_forward.pwff_layer.3.weight', 'decoder.layers.4.src_trg_att.k_layer.bias', 'decoder.layers.4.src_trg_att.k_layer.weight', 'decoder.layers.4.src_trg_att.output_layer.bias', 'decoder.layers.4.src_trg_att.output_layer.weight', 'decoder.layers.4.src_trg_att.q_layer.bias', 'decoder.layers.4.src_trg_att.q_layer.weight', 'decoder.layers.4.src_trg_att.v_layer.bias', 'decoder.layers.4.src_trg_att.v_layer.weight', 'decoder.layers.4.trg_trg_att.k_layer.bias', 'decoder.layers.4.trg_trg_att.k_layer.weight', 'decoder.layers.4.trg_trg_att.output_layer.bias', 'decoder.layers.4.trg_trg_att.output_layer.weight', 'decoder.layers.4.trg_trg_att.q_layer.bias', 'decoder.layers.4.trg_trg_att.q_layer.weight', 'decoder.layers.4.trg_trg_att.v_layer.bias', 'decoder.layers.4.trg_trg_att.v_layer.weight', 'decoder.layers.4.x_layer_norm.bias', 'decoder.layers.4.x_layer_norm.weight', 'decoder.layers.5.dec_layer_norm.bias', 'decoder.layers.5.dec_layer_norm.weight', 'decoder.layers.5.feed_forward.layer_norm.bias', 'decoder.layers.5.feed_forward.layer_norm.weight', 'decoder.layers.5.feed_forward.pwff_layer.0.bias', 'decoder.layers.5.feed_forward.pwff_layer.0.weight', 'decoder.layers.5.feed_forward.pwff_layer.3.bias', 'decoder.layers.5.feed_forward.pwff_layer.3.weight', 'decoder.layers.5.src_trg_att.k_layer.bias', 'decoder.layers.5.src_trg_att.k_layer.weight', 'decoder.layers.5.src_trg_att.output_layer.bias', 'decoder.layers.5.src_trg_att.output_layer.weight', 'decoder.layers.5.src_trg_att.q_layer.bias', 'decoder.layers.5.src_trg_att.q_layer.weight', 'decoder.layers.5.src_trg_att.v_layer.bias', 'decoder.layers.5.src_trg_att.v_layer.weight', 'decoder.layers.5.trg_trg_att.k_layer.bias', 'decoder.layers.5.trg_trg_att.k_layer.weight', 'decoder.layers.5.trg_trg_att.output_layer.bias', 'decoder.layers.5.trg_trg_att.output_layer.weight', 'decoder.layers.5.trg_trg_att.q_layer.bias', 'decoder.layers.5.trg_trg_att.q_layer.weight', 'decoder.layers.5.trg_trg_att.v_layer.bias', 'decoder.layers.5.trg_trg_att.v_layer.weight', 'decoder.layers.5.x_layer_norm.bias', 'decoder.layers.5.x_layer_norm.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'encoder.layers.3.feed_forward.layer_norm.bias', 'encoder.layers.3.feed_forward.layer_norm.weight', 'encoder.layers.3.feed_forward.pwff_layer.0.bias', 'encoder.layers.3.feed_forward.pwff_layer.0.weight', 'encoder.layers.3.feed_forward.pwff_layer.3.bias', 'encoder.layers.3.feed_forward.pwff_layer.3.weight', 'encoder.layers.3.layer_norm.bias', 'encoder.layers.3.layer_norm.weight', 'encoder.layers.3.src_src_att.k_layer.bias', 'encoder.layers.3.src_src_att.k_layer.weight', 'encoder.layers.3.src_src_att.output_layer.bias', 'encoder.layers.3.src_src_att.output_layer.weight', 'encoder.layers.3.src_src_att.q_layer.bias', 'encoder.layers.3.src_src_att.q_layer.weight', 'encoder.layers.3.src_src_att.v_layer.bias', 'encoder.layers.3.src_src_att.v_layer.weight', 'encoder.layers.4.feed_forward.layer_norm.bias', 'encoder.layers.4.feed_forward.layer_norm.weight', 'encoder.layers.4.feed_forward.pwff_layer.0.bias', 'encoder.layers.4.feed_forward.pwff_layer.0.weight', 'encoder.layers.4.feed_forward.pwff_layer.3.bias', 'encoder.layers.4.feed_forward.pwff_layer.3.weight', 'encoder.layers.4.layer_norm.bias', 'encoder.layers.4.layer_norm.weight', 'encoder.layers.4.src_src_att.k_layer.bias', 'encoder.layers.4.src_src_att.k_layer.weight', 'encoder.layers.4.src_src_att.output_layer.bias', 'encoder.layers.4.src_src_att.output_layer.weight', 'encoder.layers.4.src_src_att.q_layer.bias', 'encoder.layers.4.src_src_att.q_layer.weight', 'encoder.layers.4.src_src_att.v_layer.bias', 'encoder.layers.4.src_src_att.v_layer.weight', 'encoder.layers.5.feed_forward.layer_norm.bias', 'encoder.layers.5.feed_forward.layer_norm.weight', 'encoder.layers.5.feed_forward.pwff_layer.0.bias', 'encoder.layers.5.feed_forward.pwff_layer.0.weight', 'encoder.layers.5.feed_forward.pwff_layer.3.bias', 'encoder.layers.5.feed_forward.pwff_layer.3.weight', 'encoder.layers.5.layer_norm.bias', 'encoder.layers.5.layer_norm.weight', 'encoder.layers.5.src_src_att.k_layer.bias', 'encoder.layers.5.src_src_att.k_layer.weight', 'encoder.layers.5.src_src_att.output_layer.bias', 'encoder.layers.5.src_src_att.output_layer.weight', 'encoder.layers.5.src_src_att.q_layer.bias', 'encoder.layers.5.src_src_att.q_layer.weight', 'encoder.layers.5.src_src_att.v_layer.bias', 'encoder.layers.5.src_src_att.v_layer.weight', 'src_embed.lut.weight']
+2020-07-11 15:34:36,456 Loading model from models/wmt_ende_transformer/best.ckpt
+2020-07-11 15:34:43,812 Reset optimizer.
+2020-07-11 15:34:43,812 Reset scheduler.
+2020-07-11 15:34:43,812 Reset tracking of the best checkpoint.
+2020-07-11 15:34:43,815 cfg.name                           : transformer
+2020-07-11 15:34:43,816 cfg.data.src                       : en
+2020-07-11 15:34:43,816 cfg.data.trg                       : de
+2020-07-11 15:34:43,816 cfg.data.train                     : chatnmt/official_split_line_by_line/wmt17bpe/train.news.tags.bpe.wmt-ende-best
+2020-07-11 15:34:43,816 cfg.data.dev                       : chatnmt/official_split_line_by_line/wmt17bpe/dev.tags.bpe.wmt-ende-best
+2020-07-11 15:34:43,816 cfg.data.test                      : chatnmt/official_split_line_by_line/wmt17bpe/test.tags.bpe.wmt-ende-best
+2020-07-11 15:34:43,816 cfg.data.level                     : bpe
+2020-07-11 15:34:43,816 cfg.data.lowercase                 : False
+2020-07-11 15:34:43,816 cfg.data.max_sent_length           : 100
+2020-07-11 15:34:43,816 cfg.data.src_vocab                 : models/wmt_ende_transformer/src_vocab.txt
+2020-07-11 15:34:43,816 cfg.data.trg_vocab                 : models/wmt_ende_transformer/trg_vocab.txt
+2020-07-11 15:34:43,816 cfg.testing.beam_size              : 5
+2020-07-11 15:34:43,816 cfg.testing.alpha                  : 1.0
+2020-07-11 15:34:43,816 cfg.training.random_seed           : 42
+2020-07-11 15:34:43,816 cfg.training.optimizer             : adam
+2020-07-11 15:34:43,817 cfg.training.normalization         : tokens
+2020-07-11 15:34:43,817 cfg.training.adam_betas            : [0.9, 0.999]
+2020-07-11 15:34:43,817 cfg.training.scheduling            : plateau
+2020-07-11 15:34:43,817 cfg.training.patience              : 8
+2020-07-11 15:34:43,817 cfg.training.decrease_factor       : 0.7
+2020-07-11 15:34:43,817 cfg.training.loss                  : crossentropy
+2020-07-11 15:34:43,817 cfg.training.learning_rate         : 0.0002
+2020-07-11 15:34:43,817 cfg.training.learning_rate_min     : 1e-08
+2020-07-11 15:34:43,817 cfg.training.weight_decay          : 0.0
+2020-07-11 15:34:43,817 cfg.training.label_smoothing       : 0.1
+2020-07-11 15:34:43,817 cfg.training.batch_size            : 2048
+2020-07-11 15:34:43,817 cfg.training.batch_type            : token
+2020-07-11 15:34:43,817 cfg.training.batch_multiplier      : 1
+2020-07-11 15:34:43,817 cfg.training.early_stopping_metric : ppl
+2020-07-11 15:34:43,817 cfg.training.epochs                : 50
+2020-07-11 15:34:43,818 cfg.training.validation_freq       : 750
+2020-07-11 15:34:43,818 cfg.training.logging_freq          : 100
+2020-07-11 15:34:43,818 cfg.training.eval_metric           : bleu
+2020-07-11 15:34:43,818 cfg.training.model_dir             : models/wmt20/TURN--single_enc_main_tfm_b2048_ende_news_pretrained/
+2020-07-11 15:34:43,818 cfg.training.load_model            : models/wmt_ende_transformer/best.ckpt
+2020-07-11 15:34:43,818 cfg.training.reset_best_ckpt       : True
+2020-07-11 15:34:43,818 cfg.training.reset_scheduler       : True
+2020-07-11 15:34:43,818 cfg.training.reset_optimizer       : True
+2020-07-11 15:34:43,818 cfg.training.overwrite             : True
+2020-07-11 15:34:43,818 cfg.training.shuffle               : True
+2020-07-11 15:34:43,818 cfg.training.use_cuda              : True
+2020-07-11 15:34:43,818 cfg.training.max_output_length     : 100
+2020-07-11 15:34:43,818 cfg.training.print_valid_sents     : [0, 1, 2, 3]
+2020-07-11 15:34:43,818 cfg.training.keep_last_ckpts       : 3
+2020-07-11 15:34:43,818 cfg.model.initializer              : xavier
+2020-07-11 15:34:43,818 cfg.model.bias_initializer         : zeros
+2020-07-11 15:34:43,819 cfg.model.init_gain                : 1.0
+2020-07-11 15:34:43,819 cfg.model.embed_initializer        : xavier
+2020-07-11 15:34:43,819 cfg.model.embed_init_gain          : 1.0
+2020-07-11 15:34:43,819 cfg.model.tied_embeddings          : True
+2020-07-11 15:34:43,819 cfg.model.tied_softmax             : True
+2020-07-11 15:34:43,819 cfg.model.encoder.type             : transformer
+2020-07-11 15:34:43,819 cfg.model.encoder.num_layers       : 6
+2020-07-11 15:34:43,819 cfg.model.encoder.num_heads        : 8
+2020-07-11 15:34:43,819 cfg.model.encoder.embeddings.embedding_dim : 512
+2020-07-11 15:34:43,819 cfg.model.encoder.embeddings.scale : True
+2020-07-11 15:34:43,819 cfg.model.encoder.embeddings.dropout : 0.0
+2020-07-11 15:34:43,819 cfg.model.encoder.hidden_size      : 512
+2020-07-11 15:34:43,819 cfg.model.encoder.ff_size          : 2048
+2020-07-11 15:34:43,819 cfg.model.encoder.freeze           : False
+2020-07-11 15:34:43,819 cfg.model.encoder.dropout          : 0.1
+2020-07-11 15:34:43,820 cfg.model.decoder.type             : transformer
+2020-07-11 15:34:43,820 cfg.model.decoder.num_layers       : 6
+2020-07-11 15:34:43,820 cfg.model.decoder.num_heads        : 8
+2020-07-11 15:34:43,820 cfg.model.decoder.embeddings.embedding_dim : 512
+2020-07-11 15:34:43,820 cfg.model.decoder.embeddings.scale : True
+2020-07-11 15:34:43,820 cfg.model.decoder.embeddings.dropout : 0.0
+2020-07-11 15:34:43,820 cfg.model.decoder.hidden_size      : 512
+2020-07-11 15:34:43,820 cfg.model.decoder.ff_size          : 2048
+2020-07-11 15:34:43,820 cfg.model.decoder.freeze           : False
+2020-07-11 15:34:43,820 cfg.model.decoder.dropout          : 0.1
+2020-07-11 15:34:43,820 Data set sizes: 
+	train 16838,
+	valid 1040,
+	test 0
+2020-07-11 15:34:43,820 First training example:
+	[SRC] H@@ i there ! How can I help ?
+	[TRG] Hall@@ o ! Wie kann ich helfen ?
+2020-07-11 15:34:43,820 First 10 words (src): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-11 15:34:43,820 First 10 words (trg): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-11 15:34:43,820 Number of Src words (types): 36628
+2020-07-11 15:34:43,821 Number of Trg words (types): 36628
+2020-07-11 15:34:43,821 Model(
+	encoder=TransformerEncoder(num_layers=6, num_heads=8),
+	decoder=TransformerDecoder(num_layers=6, num_heads=8),
+	src_embed=Embeddings(embedding_dim=512, vocab_size=36628),
+	trg_embed=Embeddings(embedding_dim=512, vocab_size=36628))
+2020-07-11 15:34:43,847 EPOCH 1
+2020-07-11 15:34:56,100 Epoch   1 Step:  1360100 Batch Loss:     1.362892 Tokens per Sec:    10623, Lr: 0.000200
+2020-07-11 15:35:06,921 Epoch   1: total training loss 236.52
+2020-07-11 15:35:06,921 EPOCH 2
+2020-07-11 15:35:07,884 Epoch   2 Step:  1360200 Batch Loss:     1.020836 Tokens per Sec:    10748, Lr: 0.000200
+2020-07-11 15:35:19,549 Epoch   2 Step:  1360300 Batch Loss:     0.409303 Tokens per Sec:    10812, Lr: 0.000200
+2020-07-11 15:35:29,740 Epoch   2: total training loss 153.35
+2020-07-11 15:35:29,740 EPOCH 3
+2020-07-11 15:35:31,336 Epoch   3 Step:  1360400 Batch Loss:     0.687229 Tokens per Sec:    11020, Lr: 0.000200
+2020-07-11 15:35:43,242 Epoch   3 Step:  1360500 Batch Loss:     0.382919 Tokens per Sec:    10814, Lr: 0.000200
+2020-07-11 15:36:06,047 Hooray! New best validation result [ppl]!
+2020-07-11 15:36:06,048 Saving new checkpoint.
+2020-07-11 15:36:06,917 Example #0
+2020-07-11 15:36:06,917 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:36:06,917 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:36:06,917 	Source:     Hi , how can I help you ?
+2020-07-11 15:36:06,917 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:36:06,917 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:36:06,917 Example #1
+2020-07-11 15:36:06,917 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:36:06,918 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:36:06,918 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:36:06,918 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:36:06,918 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:36:06,918 Example #2
+2020-07-11 15:36:06,918 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:36:06,918 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'zurück', 'sein', '.']
+2020-07-11 15:36:06,918 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:36:06,918 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:36:06,918 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich mit ein paar Optionen zurück sein .
+2020-07-11 15:36:06,918 Example #3
+2020-07-11 15:36:06,918 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:36:06,918 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'eine', 'wechsel@@', 'nde', 'Speis@@', 'ek@@', 'arte', 'mit', 'sa@@', 'ison@@', 'alen', ',', 'amerikanischen', 'Gerichten', 'neben', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'P@@', 'lu@@', 'to', "'", 's', 'gefunden', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'entspann@@', 'ter', ',', 'moder@@', 'nem', 'Ambiente', '.']
+2020-07-11 15:36:06,918 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:36:06,918 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:36:06,919 	Hypothesis: Ich habe folgendes gefunden : Seasons 52 , eine wechselnde Speisekarte mit saisonalen , amerikanischen Gerichten neben internationalen Weinen in gehobenem Rahmen . Ich habe auch Pluto ' s gefunden : eine lokale Kette mit Salaten & Sandwiches in entspannter , modernem Ambiente .
+2020-07-11 15:36:06,919 Validation result (greedy) at epoch   3, step  1360500: bleu:  56.26, loss: 9629.7881, ppl:   1.8648, duration: 23.6757s
+2020-07-11 15:36:16,338 Epoch   3: total training loss 126.32
+2020-07-11 15:36:16,339 EPOCH 4
+2020-07-11 15:36:18,682 Epoch   4 Step:  1360600 Batch Loss:     0.667496 Tokens per Sec:    10593, Lr: 0.000200
+2020-07-11 15:36:30,629 Epoch   4 Step:  1360700 Batch Loss:     0.580091 Tokens per Sec:    10875, Lr: 0.000200
+2020-07-11 15:36:39,295 Epoch   4: total training loss 108.66
+2020-07-11 15:36:39,295 EPOCH 5
+2020-07-11 15:36:42,737 Epoch   5 Step:  1360800 Batch Loss:     0.413229 Tokens per Sec:    10262, Lr: 0.000200
+2020-07-11 15:36:54,682 Epoch   5 Step:  1360900 Batch Loss:     0.564150 Tokens per Sec:    11073, Lr: 0.000200
+2020-07-11 15:37:02,254 Epoch   5: total training loss 96.22
+2020-07-11 15:37:02,254 EPOCH 6
+2020-07-11 15:37:06,478 Epoch   6 Step:  1361000 Batch Loss:     0.416331 Tokens per Sec:    10649, Lr: 0.000200
+2020-07-11 15:37:18,319 Epoch   6 Step:  1361100 Batch Loss:     0.558731 Tokens per Sec:    10934, Lr: 0.000200
+2020-07-11 15:37:24,938 Epoch   6: total training loss 86.01
+2020-07-11 15:37:24,938 EPOCH 7
+2020-07-11 15:37:30,147 Epoch   7 Step:  1361200 Batch Loss:     0.468584 Tokens per Sec:    10913, Lr: 0.000200
+2020-07-11 15:37:59,568 Hooray! New best validation result [ppl]!
+2020-07-11 15:37:59,568 Saving new checkpoint.
+2020-07-11 15:38:00,438 Example #0
+2020-07-11 15:38:00,438 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:38:00,438 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:38:00,438 	Source:     Hi , how can I help you ?
+2020-07-11 15:38:00,438 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:38:00,438 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:38:00,438 Example #1
+2020-07-11 15:38:00,438 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:38:00,438 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:38:00,438 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:38:00,438 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:38:00,438 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:38:00,438 Example #2
+2020-07-11 15:38:00,439 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:38:00,439 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'wieder', 'ein', 'paar', 'Optionen', 'haben', '.']
+2020-07-11 15:38:00,439 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:38:00,439 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:38:00,439 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich wieder ein paar Optionen haben .
+2020-07-11 15:38:00,439 Example #3
+2020-07-11 15:38:00,439 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:38:00,439 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'eine', 'wechsel@@', 'nde', 'Speis@@', 'ek@@', 'arte', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'zusammen', 'mit', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Gegen@@', 'service', 'mit', 'eigenen', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'zw@@', 'ang@@', 'loser', ',', 'moderner', 'Umgebung', '.']
+2020-07-11 15:38:00,439 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:38:00,439 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:38:00,439 	Hypothesis: Ich habe folgendes gefunden : Seasons 52 , eine wechselnde Speisekarte mit saisonalen amerikanischen Gerichten zusammen mit internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : Pluto ' s : eine lokale Kette mit Gegenservice mit eigenen Salaten & Sandwiches in zwangloser , moderner Umgebung .
+2020-07-11 15:38:00,439 Validation result (greedy) at epoch   7, step  1361250: bleu:  57.63, loss: 9395.0000, ppl:   1.8367, duration: 24.4396s
+2020-07-11 15:38:06,336 Epoch   7 Step:  1361300 Batch Loss:     0.449236 Tokens per Sec:    10947, Lr: 0.000200
+2020-07-11 15:38:11,989 Epoch   7: total training loss 77.78
+2020-07-11 15:38:11,989 EPOCH 8
+2020-07-11 15:38:18,217 Epoch   8 Step:  1361400 Batch Loss:     0.373817 Tokens per Sec:    10876, Lr: 0.000200
+2020-07-11 15:38:30,011 Epoch   8 Step:  1361500 Batch Loss:     0.364929 Tokens per Sec:    10920, Lr: 0.000200
+2020-07-11 15:38:34,791 Epoch   8: total training loss 70.41
+2020-07-11 15:38:34,792 EPOCH 9
+2020-07-11 15:38:41,929 Epoch   9 Step:  1361600 Batch Loss:     0.317753 Tokens per Sec:    11153, Lr: 0.000200
+2020-07-11 15:38:53,753 Epoch   9 Step:  1361700 Batch Loss:     0.385744 Tokens per Sec:    10870, Lr: 0.000200
+2020-07-11 15:38:57,400 Epoch   9: total training loss 63.93
+2020-07-11 15:38:57,400 EPOCH 10
+2020-07-11 15:39:05,583 Epoch  10 Step:  1361800 Batch Loss:     0.132269 Tokens per Sec:    10878, Lr: 0.000200
+2020-07-11 15:39:17,411 Epoch  10 Step:  1361900 Batch Loss:     0.339908 Tokens per Sec:    10893, Lr: 0.000200
+2020-07-11 15:39:20,153 Epoch  10: total training loss 58.78
+2020-07-11 15:39:20,153 EPOCH 11
+2020-07-11 15:39:29,153 Epoch  11 Step:  1362000 Batch Loss:     0.267974 Tokens per Sec:    10924, Lr: 0.000200
+2020-07-11 15:39:51,868 Example #0
+2020-07-11 15:39:51,868 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:39:51,868 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:39:51,868 	Source:     Hi , how can I help you ?
+2020-07-11 15:39:51,868 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:39:51,868 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:39:51,868 Example #1
+2020-07-11 15:39:51,868 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:39:51,868 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:39:51,868 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:39:51,868 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:39:51,868 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:39:51,868 Example #2
+2020-07-11 15:39:51,868 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:39:51,868 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'mit', 'ein', 'paar', 'Optionen', 'zurück', 'sein', '.']
+2020-07-11 15:39:51,869 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:39:51,869 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:39:51,869 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich mit ein paar Optionen zurück sein .
+2020-07-11 15:39:51,869 Example #3
+2020-07-11 15:39:51,869 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:39:51,869 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'eine', 'wechsel@@', 'nde', 'Speis@@', 'ek@@', 'arte', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'zusammen', 'mit', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Gegen@@', 'service', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'aus', 'eigener', 'Hand', 'in', 'einem', 'zw@@', 'ang@@', 'losen', ',', 'modernen', 'Ambiente', '.']
+2020-07-11 15:39:51,869 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:39:51,869 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:39:51,869 	Hypothesis: Ich habe Folgendes gefunden : Seasons 52 , eine wechselnde Speisekarte mit saisonalen amerikanischen Gerichten zusammen mit internationalen Weinen in einer gehobenen Umgebung . Ich habe auch folgendes gefunden : Pluto ' s : eine lokale Kette mit Gegenservice mit Salaten & Sandwiches aus eigener Hand in einem zwanglosen , modernen Ambiente .
+2020-07-11 15:39:51,869 Validation result (greedy) at epoch  11, step  1362000: bleu:  57.83, loss: 9807.5166, ppl:   1.8864, duration: 22.7154s
+2020-07-11 15:40:03,571 Epoch  11 Step:  1362100 Batch Loss:     0.309872 Tokens per Sec:    11044, Lr: 0.000200
+2020-07-11 15:40:05,384 Epoch  11: total training loss 54.96
+2020-07-11 15:40:05,385 EPOCH 12
+2020-07-11 15:40:15,192 Epoch  12 Step:  1362200 Batch Loss:     0.291814 Tokens per Sec:    11055, Lr: 0.000200
+2020-07-11 15:40:26,775 Epoch  12 Step:  1362300 Batch Loss:     0.289447 Tokens per Sec:    11176, Lr: 0.000200
+2020-07-11 15:40:27,778 Epoch  12: total training loss 51.09
+2020-07-11 15:40:27,778 EPOCH 13
+2020-07-11 15:40:38,416 Epoch  13 Step:  1362400 Batch Loss:     0.200754 Tokens per Sec:    11107, Lr: 0.000200
+2020-07-11 15:40:50,076 Epoch  13 Step:  1362500 Batch Loss:     0.281738 Tokens per Sec:    11064, Lr: 0.000200
+2020-07-11 15:40:50,174 Epoch  13: total training loss 47.27
+2020-07-11 15:40:50,175 EPOCH 14
+2020-07-11 15:41:01,627 Epoch  14 Step:  1362600 Batch Loss:     0.222785 Tokens per Sec:    10988, Lr: 0.000200
+2020-07-11 15:41:12,480 Epoch  14: total training loss 44.41
+2020-07-11 15:41:12,480 EPOCH 15
+2020-07-11 15:41:13,355 Epoch  15 Step:  1362700 Batch Loss:     0.257646 Tokens per Sec:    10835, Lr: 0.000200
+2020-07-11 15:41:40,819 Example #0
+2020-07-11 15:41:40,820 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:41:40,820 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:41:40,820 	Source:     Hi , how can I help you ?
+2020-07-11 15:41:40,820 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:41:40,820 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:41:40,820 Example #1
+2020-07-11 15:41:40,820 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:41:40,820 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:41:40,820 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:41:40,820 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:41:40,820 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:41:40,820 Example #2
+2020-07-11 15:41:40,820 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:41:40,820 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'einen', 'Moment', ',', 'ich', 'werde', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', 'sein', '.']
+2020-07-11 15:41:40,820 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:41:40,820 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:41:40,820 	Hypothesis: Klar , geben Sie mir einen Moment , ich werde gleich wieder mit ein paar Optionen sein .
+2020-07-11 15:41:40,820 Example #3
+2020-07-11 15:41:40,821 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:41:40,821 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'zw@@', 'ang@@', 'loser', ',', 'moderner', 'Umgebung', '.']
+2020-07-11 15:41:40,821 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:41:40,821 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:41:40,821 	Hypothesis: Ich habe Folgendes gefunden : Seasons 52 , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in einer gehobenen Umgebung . Ich habe auch folgendes gefunden : Pluto ' s : eine lokale Counter-Serve-Kette mit Salaten & Sandwiches in zwangloser , moderner Umgebung .
+2020-07-11 15:41:40,821 Validation result (greedy) at epoch  15, step  1362750: bleu:  57.30, loss: 10298.9297, ppl:   1.9473, duration: 21.6904s
+2020-07-11 15:41:46,547 Epoch  15 Step:  1362800 Batch Loss:     0.226591 Tokens per Sec:    11233, Lr: 0.000200
+2020-07-11 15:41:56,288 Epoch  15: total training loss 41.45
+2020-07-11 15:41:56,288 EPOCH 16
+2020-07-11 15:41:58,142 Epoch  16 Step:  1362900 Batch Loss:     0.229580 Tokens per Sec:    10906, Lr: 0.000200
+2020-07-11 15:42:09,780 Epoch  16 Step:  1363000 Batch Loss:     0.201235 Tokens per Sec:    11227, Lr: 0.000200
+2020-07-11 15:42:18,530 Epoch  16: total training loss 39.33
+2020-07-11 15:42:18,530 EPOCH 17
+2020-07-11 15:42:21,312 Epoch  17 Step:  1363100 Batch Loss:     0.187405 Tokens per Sec:    10857, Lr: 0.000200
+2020-07-11 15:42:32,906 Epoch  17 Step:  1363200 Batch Loss:     0.186092 Tokens per Sec:    11216, Lr: 0.000200
+2020-07-11 15:42:40,785 Epoch  17: total training loss 36.91
+2020-07-11 15:42:40,786 EPOCH 18
+2020-07-11 15:42:44,541 Epoch  18 Step:  1363300 Batch Loss:     0.197661 Tokens per Sec:    11356, Lr: 0.000200
+2020-07-11 15:42:56,063 Epoch  18 Step:  1363400 Batch Loss:     0.165587 Tokens per Sec:    11050, Lr: 0.000200
+2020-07-11 15:43:03,060 Epoch  18: total training loss 35.17
+2020-07-11 15:43:03,060 EPOCH 19
+2020-07-11 15:43:07,748 Epoch  19 Step:  1363500 Batch Loss:     0.160789 Tokens per Sec:    11307, Lr: 0.000200
+2020-07-11 15:43:29,892 Example #0
+2020-07-11 15:43:29,892 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:43:29,892 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:43:29,892 	Source:     Hi , how can I help you ?
+2020-07-11 15:43:29,892 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:43:29,892 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:43:29,892 Example #1
+2020-07-11 15:43:29,892 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:43:29,892 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:43:29,892 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:43:29,892 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:43:29,893 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:43:29,893 Example #2
+2020-07-11 15:43:29,893 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:43:29,893 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'wieder', 'ein', 'paar', 'Optionen', 'haben', '.']
+2020-07-11 15:43:29,893 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:43:29,893 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:43:29,893 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich wieder ein paar Optionen haben .
+2020-07-11 15:43:29,893 Example #3
+2020-07-11 15:43:29,893 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:43:29,893 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'eine', 'wechsel@@', 'nde', 'Speis@@', 'ek@@', 'arte', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'zusammen', 'mit', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einer', 'lässi@@', 'gen', ',', 'modernen', 'Umgebung', '.']
+2020-07-11 15:43:29,893 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:43:29,893 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:43:29,893 	Hypothesis: Ich habe Folgendes gefunden : Seasons 52 , eine wechselnde Speisekarte mit saisonalen amerikanischen Gerichten zusammen mit internationalen Weinen in einer gehobenen Umgebung . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Kette mit Counter-Serve-Salaten & Sandwiches in einer lässigen , modernen Umgebung .
+2020-07-11 15:43:29,893 Validation result (greedy) at epoch  19, step  1363500: bleu:  55.84, loss: 10821.3223, ppl:   2.0143, duration: 22.1444s
+2020-07-11 15:43:41,550 Epoch  19 Step:  1363600 Batch Loss:     0.150849 Tokens per Sec:    11107, Lr: 0.000200
+2020-07-11 15:43:47,560 Epoch  19: total training loss 33.61
+2020-07-11 15:43:47,560 EPOCH 20
+2020-07-11 15:43:53,134 Epoch  20 Step:  1363700 Batch Loss:     0.153505 Tokens per Sec:    11063, Lr: 0.000200
+2020-07-11 15:44:04,710 Epoch  20 Step:  1363800 Batch Loss:     0.211272 Tokens per Sec:    11193, Lr: 0.000200
+2020-07-11 15:44:09,846 Epoch  20: total training loss 32.09
+2020-07-11 15:44:09,846 EPOCH 21
+2020-07-11 15:44:16,241 Epoch  21 Step:  1363900 Batch Loss:     0.157190 Tokens per Sec:    11084, Lr: 0.000200
+2020-07-11 15:44:27,746 Epoch  21 Step:  1364000 Batch Loss:     0.164943 Tokens per Sec:    11190, Lr: 0.000200
+2020-07-11 15:44:32,129 Epoch  21: total training loss 30.98
+2020-07-11 15:44:32,129 EPOCH 22
+2020-07-11 15:44:39,395 Epoch  22 Step:  1364100 Batch Loss:     0.174184 Tokens per Sec:    11239, Lr: 0.000200
+2020-07-11 15:44:50,994 Epoch  22 Step:  1364200 Batch Loss:     0.185139 Tokens per Sec:    11176, Lr: 0.000200
+2020-07-11 15:44:54,454 Epoch  22: total training loss 29.54
+2020-07-11 15:44:54,454 EPOCH 23
+2020-07-11 15:45:18,973 Example #0
+2020-07-11 15:45:18,973 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:45:18,973 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:45:18,973 	Source:     Hi , how can I help you ?
+2020-07-11 15:45:18,973 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:45:18,973 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:45:18,973 Example #1
+2020-07-11 15:45:18,973 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:45:18,973 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:45:18,973 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:45:18,973 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:45:18,973 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:45:18,973 Example #2
+2020-07-11 15:45:18,973 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:45:18,973 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'wieder', 'ein', 'paar', 'Optionen', 'haben', '.']
+2020-07-11 15:45:18,973 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:45:18,973 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:45:18,973 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich wieder ein paar Optionen haben .
+2020-07-11 15:45:18,973 Example #3
+2020-07-11 15:45:18,973 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:45:18,974 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'K@@', 'ette', ',', 'die', 'sich', 'an', 'der', 'The@@', 'ke', 'befindet', ',', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einem', 'gemütlichen', ',', 'modernen', 'Ambiente', '.']
+2020-07-11 15:45:18,974 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:45:18,974 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:45:18,974 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Kette , die sich an der Theke befindet , mit Salaten & Sandwiches in einem gemütlichen , modernen Ambiente .
+2020-07-11 15:45:18,974 Validation result (greedy) at epoch  23, step  1364250: bleu:  56.76, loss: 11332.4766, ppl:   2.0820, duration: 22.1100s
+2020-07-11 15:45:24,490 Epoch  23 Step:  1364300 Batch Loss:     0.165757 Tokens per Sec:    11343, Lr: 0.000200
+2020-07-11 15:45:35,657 Epoch  23 Step:  1364400 Batch Loss:     0.147139 Tokens per Sec:    11438, Lr: 0.000200
+2020-07-11 15:45:38,358 Epoch  23: total training loss 28.95
+2020-07-11 15:45:38,358 EPOCH 24
+2020-07-11 15:45:47,038 Epoch  24 Step:  1364500 Batch Loss:     0.142809 Tokens per Sec:    11641, Lr: 0.000200
+2020-07-11 15:45:58,320 Epoch  24 Step:  1364600 Batch Loss:     0.120299 Tokens per Sec:    11474, Lr: 0.000200
+2020-07-11 15:45:59,876 Epoch  24: total training loss 27.07
+2020-07-11 15:45:59,876 EPOCH 25
+2020-07-11 15:46:09,555 Epoch  25 Step:  1364700 Batch Loss:     0.110579 Tokens per Sec:    11475, Lr: 0.000200
+2020-07-11 15:46:20,771 Epoch  25 Step:  1364800 Batch Loss:     0.187264 Tokens per Sec:    11423, Lr: 0.000200
+2020-07-11 15:46:21,465 Epoch  25: total training loss 26.32
+2020-07-11 15:46:21,465 EPOCH 26
+2020-07-11 15:46:32,058 Epoch  26 Step:  1364900 Batch Loss:     0.103892 Tokens per Sec:    11600, Lr: 0.000200
+2020-07-11 15:46:43,022 Epoch  26: total training loss 25.08
+2020-07-11 15:46:43,022 EPOCH 27
+2020-07-11 15:46:43,400 Epoch  27 Step:  1365000 Batch Loss:     0.110419 Tokens per Sec:    11784, Lr: 0.000200
+2020-07-11 15:47:04,824 Example #0
+2020-07-11 15:47:04,824 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:47:04,824 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:47:04,824 	Source:     Hi , how can I help you ?
+2020-07-11 15:47:04,825 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:47:04,825 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:47:04,825 Example #1
+2020-07-11 15:47:04,825 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:47:04,825 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:47:04,825 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:47:04,825 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:47:04,825 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:47:04,825 Example #2
+2020-07-11 15:47:04,825 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:47:04,825 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'wieder', 'ein', 'paar', 'Optionen', 'haben', '.']
+2020-07-11 15:47:04,825 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:47:04,825 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:47:04,825 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich wieder ein paar Optionen haben .
+2020-07-11 15:47:04,825 Example #3
+2020-07-11 15:47:04,825 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:47:04,825 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', 'Lok@@', 'ale', 'K@@', 'ette', 'gegen', 'die', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'ruhiger', ',', 'moder@@', 'nem', 'Ambiente', '.']
+2020-07-11 15:47:04,826 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:47:04,826 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:47:04,826 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " Lokale Kette gegen die Serve-Kette mit Salaten & Sandwiches in ruhiger , modernem Ambiente .
+2020-07-11 15:47:04,826 Validation result (greedy) at epoch  27, step  1365000: bleu:  55.55, loss: 11659.0420, ppl:   2.1265, duration: 21.4254s
+2020-07-11 15:47:16,077 Epoch  27 Step:  1365100 Batch Loss:     0.124309 Tokens per Sec:    11537, Lr: 0.000200
+2020-07-11 15:47:25,924 Epoch  27: total training loss 24.15
+2020-07-11 15:47:25,924 EPOCH 28
+2020-07-11 15:47:27,319 Epoch  28 Step:  1365200 Batch Loss:     0.131095 Tokens per Sec:    11691, Lr: 0.000200
+2020-07-11 15:47:38,466 Epoch  28 Step:  1365300 Batch Loss:     0.122584 Tokens per Sec:    11487, Lr: 0.000200
+2020-07-11 15:47:47,523 Epoch  28: total training loss 24.21
+2020-07-11 15:47:47,524 EPOCH 29
+2020-07-11 15:47:49,645 Epoch  29 Step:  1365400 Batch Loss:     0.122688 Tokens per Sec:    11551, Lr: 0.000200
+2020-07-11 15:48:00,833 Epoch  29 Step:  1365500 Batch Loss:     0.107632 Tokens per Sec:    11561, Lr: 0.000200
+2020-07-11 15:48:09,074 Epoch  29: total training loss 23.18
+2020-07-11 15:48:09,074 EPOCH 30
+2020-07-11 15:48:12,037 Epoch  30 Step:  1365600 Batch Loss:     0.140157 Tokens per Sec:    11409, Lr: 0.000200
+2020-07-11 15:48:23,192 Epoch  30 Step:  1365700 Batch Loss:     0.097472 Tokens per Sec:    11431, Lr: 0.000200
+2020-07-11 15:48:49,857 Example #0
+2020-07-11 15:48:49,858 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:48:49,858 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:48:49,858 	Source:     Hi , how can I help you ?
+2020-07-11 15:48:49,858 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:48:49,858 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:48:49,858 Example #1
+2020-07-11 15:48:49,858 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:48:49,858 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:48:49,858 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:48:49,858 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:48:49,858 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:48:49,858 Example #2
+2020-07-11 15:48:49,858 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:48:49,858 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'werde', 'gleich', 'wieder', 'ein', 'paar', 'Optionen', 'haben', '.']
+2020-07-11 15:48:49,858 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:48:49,858 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:48:49,859 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich werde gleich wieder ein paar Optionen haben .
+2020-07-11 15:48:49,859 Example #3
+2020-07-11 15:48:49,859 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:48:49,859 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', ',', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', '<unk>', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'ruhiger', ',', 'moder@@', 'nem', 'Ambiente', '.']
+2020-07-11 15:48:49,859 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:48:49,859 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:48:49,859 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen , amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Kette mit <unk> Salaten & Sandwiches in ruhiger , modernem Ambiente .
+2020-07-11 15:48:49,859 Validation result (greedy) at epoch  30, step  1365750: bleu:  55.51, loss: 12104.7266, ppl:   2.1887, duration: 21.0165s
+2020-07-11 15:48:51,621 Epoch  30: total training loss 22.58
+2020-07-11 15:48:51,621 EPOCH 31
+2020-07-11 15:48:55,496 Epoch  31 Step:  1365800 Batch Loss:     0.129118 Tokens per Sec:    11567, Lr: 0.000200
+2020-07-11 15:49:06,643 Epoch  31 Step:  1365900 Batch Loss:     0.091828 Tokens per Sec:    11332, Lr: 0.000200
+2020-07-11 15:49:13,342 Epoch  31: total training loss 22.28
+2020-07-11 15:49:13,343 EPOCH 32
+2020-07-11 15:49:17,798 Epoch  32 Step:  1366000 Batch Loss:     0.119086 Tokens per Sec:    11444, Lr: 0.000200
+2020-07-11 15:49:29,058 Epoch  32 Step:  1366100 Batch Loss:     0.156631 Tokens per Sec:    11781, Lr: 0.000200
+2020-07-11 15:49:34,650 Epoch  32: total training loss 20.94
+2020-07-11 15:49:34,651 EPOCH 33
+2020-07-11 15:49:40,263 Epoch  33 Step:  1366200 Batch Loss:     0.083968 Tokens per Sec:    11589, Lr: 0.000200
+2020-07-11 15:49:51,437 Epoch  33 Step:  1366300 Batch Loss:     0.129398 Tokens per Sec:    11563, Lr: 0.000200
+2020-07-11 15:49:56,134 Epoch  33: total training loss 20.52
+2020-07-11 15:49:56,134 EPOCH 34
+2020-07-11 15:50:02,651 Epoch  34 Step:  1366400 Batch Loss:     0.094903 Tokens per Sec:    11475, Lr: 0.000200
+2020-07-11 15:50:13,935 Epoch  34 Step:  1366500 Batch Loss:     0.111032 Tokens per Sec:    11539, Lr: 0.000200
+2020-07-11 15:50:35,304 Example #0
+2020-07-11 15:50:35,304 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:50:35,304 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:50:35,304 	Source:     Hi , how can I help you ?
+2020-07-11 15:50:35,304 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:50:35,304 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:50:35,304 Example #1
+2020-07-11 15:50:35,304 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:50:35,304 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:50:35,304 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:50:35,304 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:50:35,305 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:50:35,305 Example #2
+2020-07-11 15:50:35,305 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:50:35,305 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'bin', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', '.']
+2020-07-11 15:50:35,305 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:50:35,305 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:50:35,305 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich bin gleich wieder mit ein paar Optionen .
+2020-07-11 15:50:35,305 Example #3
+2020-07-11 15:50:35,305 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:50:35,305 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'Service', 'mit', 'Zutaten', 'aus', 'eigener', 'Küche', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einer', 'gemütlichen', ',', 'modernen', 'Umgebung', '.']
+2020-07-11 15:50:35,305 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:50:35,305 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:50:35,305 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in einer gehobenen Umgebung . Ich habe auch folgendes gefunden : " Pluto ' s " : eine lokale Kette mit Counter-Serve-Service mit Zutaten aus eigener Küche & Sandwiches in einer gemütlichen , modernen Umgebung .
+2020-07-11 15:50:35,305 Validation result (greedy) at epoch  34, step  1366500: bleu:  55.38, loss: 12519.3574, ppl:   2.2483, duration: 21.3701s
+2020-07-11 15:50:38,971 Epoch  34: total training loss 19.83
+2020-07-11 15:50:38,972 EPOCH 35
+2020-07-11 15:50:46,572 Epoch  35 Step:  1366600 Batch Loss:     0.082225 Tokens per Sec:    11686, Lr: 0.000200
+2020-07-11 15:50:57,751 Epoch  35 Step:  1366700 Batch Loss:     0.150689 Tokens per Sec:    11635, Lr: 0.000200
+2020-07-11 15:51:00,298 Epoch  35: total training loss 19.33
+2020-07-11 15:51:00,299 EPOCH 36
+2020-07-11 15:51:08,954 Epoch  36 Step:  1366800 Batch Loss:     0.102597 Tokens per Sec:    11423, Lr: 0.000200
+2020-07-11 15:51:20,228 Epoch  36 Step:  1366900 Batch Loss:     0.090545 Tokens per Sec:    11627, Lr: 0.000200
+2020-07-11 15:51:21,834 Epoch  36: total training loss 19.00
+2020-07-11 15:51:21,834 EPOCH 37
+2020-07-11 15:51:31,560 Epoch  37 Step:  1367000 Batch Loss:     0.150685 Tokens per Sec:    11619, Lr: 0.000200
+2020-07-11 15:51:42,926 Epoch  37 Step:  1367100 Batch Loss:     0.084441 Tokens per Sec:    11414, Lr: 0.000200
+2020-07-11 15:51:43,394 Epoch  37: total training loss 18.40
+2020-07-11 15:51:43,395 EPOCH 38
+2020-07-11 15:51:54,210 Epoch  38 Step:  1367200 Batch Loss:     0.079762 Tokens per Sec:    11519, Lr: 0.000200
+2020-07-11 15:52:21,594 Example #0
+2020-07-11 15:52:21,594 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:52:21,594 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:52:21,594 	Source:     Hi , how can I help you ?
+2020-07-11 15:52:21,594 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:52:21,594 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:52:21,594 Example #1
+2020-07-11 15:52:21,594 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:52:21,594 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:52:21,594 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:52:21,594 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:52:21,594 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:52:21,594 Example #2
+2020-07-11 15:52:21,594 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:52:21,594 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'bin', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', '.']
+2020-07-11 15:52:21,594 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:52:21,594 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:52:21,594 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich bin gleich wieder mit ein paar Optionen .
+2020-07-11 15:52:21,594 Example #3
+2020-07-11 15:52:21,594 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:52:21,594 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'zusammen', 'mit', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', 'eine', 'lokale', 'K@@', 'ette', ',', 'die', 'neben', 'anderen', 'auch', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'zw@@', 'ang@@', 'loser', ',', 'moder@@', 'nem', 'Ambiente', 'anbietet', '.']
+2020-07-11 15:52:21,595 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:52:21,595 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:52:21,595 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten zusammen mit internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " eine lokale Kette , die neben anderen auch Salaten & Sandwiches in zwangloser , modernem Ambiente anbietet .
+2020-07-11 15:52:21,595 Validation result (greedy) at epoch  38, step  1367250: bleu:  55.06, loss: 12776.5518, ppl:   2.2860, duration: 21.7369s
+2020-07-11 15:52:26,778 Epoch  38: total training loss 18.50
+2020-07-11 15:52:26,778 EPOCH 39
+2020-07-11 15:52:27,257 Epoch  39 Step:  1367300 Batch Loss:     0.075565 Tokens per Sec:    10633, Lr: 0.000200
+2020-07-11 15:52:38,694 Epoch  39 Step:  1367400 Batch Loss:     0.084056 Tokens per Sec:    11140, Lr: 0.000200
+2020-07-11 15:52:48,819 Epoch  39: total training loss 18.28
+2020-07-11 15:52:48,819 EPOCH 40
+2020-07-11 15:52:49,929 Epoch  40 Step:  1367500 Batch Loss:     0.077845 Tokens per Sec:    11322, Lr: 0.000200
+2020-07-11 15:53:01,479 Epoch  40 Step:  1367600 Batch Loss:     0.073373 Tokens per Sec:    11142, Lr: 0.000200
+2020-07-11 15:53:10,922 Epoch  40: total training loss 17.74
+2020-07-11 15:53:10,922 EPOCH 41
+2020-07-11 15:53:13,011 Epoch  41 Step:  1367700 Batch Loss:     0.084688 Tokens per Sec:    11237, Lr: 0.000200
+2020-07-11 15:53:24,505 Epoch  41 Step:  1367800 Batch Loss:     0.148449 Tokens per Sec:    11201, Lr: 0.000200
+2020-07-11 15:53:33,118 Epoch  41: total training loss 17.45
+2020-07-11 15:53:33,118 EPOCH 42
+2020-07-11 15:53:36,160 Epoch  42 Step:  1367900 Batch Loss:     0.131091 Tokens per Sec:    11076, Lr: 0.000200
+2020-07-11 15:53:47,674 Epoch  42 Step:  1368000 Batch Loss:     0.159367 Tokens per Sec:    11228, Lr: 0.000200
+2020-07-11 15:54:10,258 Example #0
+2020-07-11 15:54:10,258 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:54:10,258 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:54:10,258 	Source:     Hi , how can I help you ?
+2020-07-11 15:54:10,258 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:54:10,259 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:54:10,259 Example #1
+2020-07-11 15:54:10,259 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:54:10,259 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:54:10,259 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:54:10,259 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:54:10,259 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:54:10,259 Example #2
+2020-07-11 15:54:10,259 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:54:10,259 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'bin', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', '.']
+2020-07-11 15:54:10,259 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:54:10,259 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:54:10,259 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich bin gleich wieder mit ein paar Optionen .
+2020-07-11 15:54:10,259 Example #3
+2020-07-11 15:54:10,259 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:54:10,260 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'einer', 'geho@@', 'benen', 'Umgebung', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', ':', 'eine', 'lokale', 'K@@', 'ette', 'mit', '<unk>', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'einem', 'gemütlichen', ',', 'modernen', 'Ambiente', '.']
+2020-07-11 15:54:10,260 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:54:10,260 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:54:10,260 	Hypothesis: Ich habe Folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in einer gehobenen Umgebung . Ich habe auch folgendes gefunden : " Pluto ' s : eine lokale Kette mit <unk> Salaten & Sandwiches in einem gemütlichen , modernen Ambiente .
+2020-07-11 15:54:10,260 Validation result (greedy) at epoch  42, step  1368000: bleu:  55.09, loss: 13031.5566, ppl:   2.3240, duration: 22.5855s
+2020-07-11 15:54:17,997 Epoch  42: total training loss 17.03
+2020-07-11 15:54:17,997 EPOCH 43
+2020-07-11 15:54:21,970 Epoch  43 Step:  1368100 Batch Loss:     0.078470 Tokens per Sec:    10560, Lr: 0.000140
+2020-07-11 15:54:33,715 Epoch  43 Step:  1368200 Batch Loss:     0.061842 Tokens per Sec:    11234, Lr: 0.000140
+2020-07-11 15:54:40,413 Epoch  43: total training loss 16.00
+2020-07-11 15:54:40,413 EPOCH 44
+2020-07-11 15:54:45,065 Epoch  44 Step:  1368300 Batch Loss:     0.095048 Tokens per Sec:    11173, Lr: 0.000140
+2020-07-11 15:54:56,592 Epoch  44 Step:  1368400 Batch Loss:     0.075260 Tokens per Sec:    11360, Lr: 0.000140
+2020-07-11 15:55:02,485 Epoch  44: total training loss 15.66
+2020-07-11 15:55:02,485 EPOCH 45
+2020-07-11 15:55:08,001 Epoch  45 Step:  1368500 Batch Loss:     0.092586 Tokens per Sec:    11472, Lr: 0.000140
+2020-07-11 15:55:19,327 Epoch  45 Step:  1368600 Batch Loss:     0.066923 Tokens per Sec:    11206, Lr: 0.000140
+2020-07-11 15:55:24,486 Epoch  45: total training loss 15.23
+2020-07-11 15:55:24,486 EPOCH 46
+2020-07-11 15:55:30,966 Epoch  46 Step:  1368700 Batch Loss:     0.120781 Tokens per Sec:    11080, Lr: 0.000140
+2020-07-11 15:55:58,507 Example #0
+2020-07-11 15:55:58,508 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:55:58,508 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:55:58,508 	Source:     Hi , how can I help you ?
+2020-07-11 15:55:58,508 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:55:58,508 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:55:58,508 Example #1
+2020-07-11 15:55:58,508 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:55:58,508 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:55:58,508 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:55:58,508 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:55:58,508 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:55:58,508 Example #2
+2020-07-11 15:55:58,508 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:55:58,508 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'bin', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', '.']
+2020-07-11 15:55:58,509 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:55:58,509 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:55:58,509 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich bin gleich wieder mit ein paar Optionen .
+2020-07-11 15:55:58,509 Example #3
+2020-07-11 15:55:58,509 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:55:58,509 	Raw hypothesis: ['Ich', 'habe', 'Folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', ',', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'mehreren', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'unge@@', 'zw@@', 'un@@', 'genen', ',', 'modernen', 'Ambiente', '.']
+2020-07-11 15:55:58,509 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:55:58,509 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:55:58,509 	Hypothesis: Ich habe Folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen , amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " eine lokale Kette mit mehreren Salaten & Sandwiches in ungezwungenen , modernen Ambiente .
+2020-07-11 15:55:58,509 Validation result (greedy) at epoch  46, step  1368750: bleu:  55.39, loss: 13107.8467, ppl:   2.3355, duration: 21.8124s
+2020-07-11 15:56:04,180 Epoch  46 Step:  1368800 Batch Loss:     0.065834 Tokens per Sec:    11285, Lr: 0.000140
+2020-07-11 15:56:08,380 Epoch  46: total training loss 15.09
+2020-07-11 15:56:08,380 EPOCH 47
+2020-07-11 15:56:15,506 Epoch  47 Step:  1368900 Batch Loss:     0.098294 Tokens per Sec:    11325, Lr: 0.000140
+2020-07-11 15:56:26,962 Epoch  47 Step:  1369000 Batch Loss:     0.103406 Tokens per Sec:    11203, Lr: 0.000140
+2020-07-11 15:56:30,419 Epoch  47: total training loss 14.76
+2020-07-11 15:56:30,419 EPOCH 48
+2020-07-11 15:56:38,469 Epoch  48 Step:  1369100 Batch Loss:     0.059517 Tokens per Sec:    11147, Lr: 0.000140
+2020-07-11 15:56:50,031 Epoch  48 Step:  1369200 Batch Loss:     0.065913 Tokens per Sec:    11150, Lr: 0.000140
+2020-07-11 15:56:52,671 Epoch  48: total training loss 14.61
+2020-07-11 15:56:52,672 EPOCH 49
+2020-07-11 15:57:01,636 Epoch  49 Step:  1369300 Batch Loss:     0.127347 Tokens per Sec:    11071, Lr: 0.000140
+2020-07-11 15:57:13,325 Epoch  49 Step:  1369400 Batch Loss:     0.069853 Tokens per Sec:    10994, Lr: 0.000140
+2020-07-11 15:57:15,110 Epoch  49: total training loss 14.50
+2020-07-11 15:57:15,110 EPOCH 50
+2020-07-11 15:57:25,146 Epoch  50 Step:  1369500 Batch Loss:     0.062576 Tokens per Sec:    10865, Lr: 0.000140
+2020-07-11 15:57:47,895 Example #0
+2020-07-11 15:57:47,895 	Raw source:     ['H@@', 'i', ',', 'how', 'can', 'I', 'help', 'you', '?']
+2020-07-11 15:57:47,895 	Raw hypothesis: ['Hall@@', 'o', ',', 'wie', 'kann', 'ich', 'Ihnen', 'helfen', '?']
+2020-07-11 15:57:47,896 	Source:     Hi , how can I help you ?
+2020-07-11 15:57:47,896 	Reference:  Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:57:47,896 	Hypothesis: Hallo , wie kann ich Ihnen helfen ?
+2020-07-11 15:57:47,896 Example #1
+2020-07-11 15:57:47,896 	Raw source:     ['O@@', 'k', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-07-11 15:57:47,896 	Raw hypothesis: ['O@@', 'k', ',', 'nach', 'welcher', 'Art', 'von', 'Restaurant', 'suchen', 'Sie', '?']
+2020-07-11 15:57:47,896 	Source:     Ok , what type of restaurant are you looking for ?
+2020-07-11 15:57:47,896 	Reference:  Ok . Welche Art von Restaurant suchen Sie denn genau ?
+2020-07-11 15:57:47,896 	Hypothesis: Ok , nach welcher Art von Restaurant suchen Sie ?
+2020-07-11 15:57:47,896 Example #2
+2020-07-11 15:57:47,896 	Raw source:     ['S@@', 'ure', ',', 'give', 'me', 'a', 'second', ',', 'I', 'will', 'be', 'right', 'back', 'with', 'a', 'couple', 'of', 'options', '.']
+2020-07-11 15:57:47,896 	Raw hypothesis: ['K@@', 'lar', ',', 'geben', 'Sie', 'mir', 'eine', 'Sek@@', 'unde', ',', 'ich', 'bin', 'gleich', 'wieder', 'mit', 'ein', 'paar', 'Optionen', '.']
+2020-07-11 15:57:47,896 	Source:     Sure , give me a second , I will be right back with a couple of options .
+2020-07-11 15:57:47,896 	Reference:  Klar , geben Sie mir eine Sekunde , ich bin gleich zurück mit ein paar Optionen .
+2020-07-11 15:57:47,896 	Hypothesis: Klar , geben Sie mir eine Sekunde , ich bin gleich wieder mit ein paar Optionen .
+2020-07-11 15:57:47,896 Example #3
+2020-07-11 15:57:47,896 	Raw source:     ['I', 'found', ':', 'Se@@', 'as@@', 'ons', '52', ',', 'a', 'Rot@@', 'ating', 'menu', 'of', 'seasonal', 'American', 'dishes', 'alongside', 'International', 'wines', 'in', 'an', 'up@@', 'scale', 'setting', '.', 'I', 'also', 'found', ':', 'P@@', 'lu@@', 'to', "'s", ':', 'a', 'Local', 'counter-@@', 'serve', 'chain', 'featuring', 'buil@@', 'd-@@', 'your@@', '-@@', 'own', 'sal@@', 'ads', '&', 'sand@@', 'wich@@', 'es', 'in', 'a', 'cas@@', 'ual', ',', 'modern', 'setting', '.']
+2020-07-11 15:57:47,896 	Raw hypothesis: ['Ich', 'habe', 'folgendes', 'gefunden', ':', '"', 'Se@@', 'as@@', 'ons', '52', '"', ',', 'eine', 'wechsel@@', 'n@@', 'des', 'Menü', 'mit', 'sa@@', 'ison@@', 'alen', 'amerikanischen', 'Gerichten', 'sowie', 'internationalen', 'W@@', 'einen', 'in', 'geho@@', 'ben@@', 'em', 'Rahmen', '.', 'Ich', 'habe', 'auch', 'folgendes', 'gefunden', ':', '"', 'P@@', 'lu@@', 'to', "'", 's', '"', 'eine', 'lokale', 'K@@', 'ette', 'mit', 'Co@@', 'unter@@', '-@@', 'Ser@@', 've-@@', 'K@@', 'ette', 'mit', 'Sal@@', 'aten', '&', 'Sand@@', 'wich@@', 'es', 'in', 'zw@@', 'ang@@', 'loser', ',', 'moder@@', 'nem', 'Ambiente', '.']
+2020-07-11 15:57:47,896 	Source:     I found : Seasons 52 , a Rotating menu of seasonal American dishes alongside International wines in an upscale setting . I also found : Pluto 's : a Local counter-serve chain featuring build-your-own salads & sandwiches in a casual , modern setting .
+2020-07-11 15:57:47,896 	Reference:  Ich fand : Seasons 52 , ein wechselndes Menü mit saisonalen amerikanischen Gerichten neben internationalen Weinen in einer gehobenen Umgebung . Ich habe auch : Pluto ' s : eine lokale Counter-Service-Kette , die Salate & Sandwiches zum Selbermachen in einem ungezwungenen , modernen Ambiente anbietet , gefunden .
+2020-07-11 15:57:47,896 	Hypothesis: Ich habe folgendes gefunden : " Seasons 52 " , eine wechselndes Menü mit saisonalen amerikanischen Gerichten sowie internationalen Weinen in gehobenem Rahmen . Ich habe auch folgendes gefunden : " Pluto ' s " eine lokale Kette mit Counter-Serve-Kette mit Salaten & Sandwiches in zwangloser , modernem Ambiente .
+2020-07-11 15:57:47,897 Validation result (greedy) at epoch  50, step  1369500: bleu:  54.78, loss: 13463.9062, ppl:   2.3900, duration: 22.7499s
+2020-07-11 15:57:59,686 Epoch  50 Step:  1369600 Batch Loss:     0.060820 Tokens per Sec:    10971, Lr: 0.000140
+2020-07-11 15:58:00,580 Epoch  50: total training loss 14.28
+2020-07-11 15:58:00,581 Training ended after  50 epochs.
+2020-07-11 15:58:00,581 Best validation result (greedy) at step  1361250:   1.84 ppl.
+2020-07-11 15:58:42,672  dev bleu:  58.21 [Beam search decoding with beam size = 5 and alpha = 1.0]
+2020-07-11 15:58:42,673 Translations saved to: models/wmt20/TURN--single_enc_main_tfm_b2048_ende_news_pretrained/01361250.hyps.dev
+2020-07-11 15:58:42,674 test bleu:  -1.00 [Beam search decoding with beam size = 5 and alpha = 1.0]
+2020-07-11 15:58:42,675 Translations saved to: models/wmt20/TURN--single_enc_main_tfm_b2048_ende_news_pretrained/01361250.hyps.test
