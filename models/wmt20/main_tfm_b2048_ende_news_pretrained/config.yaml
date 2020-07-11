@@ -4,9 +4,9 @@ name: "transformer"
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/official_split/wmt17bpe__boundaries_news/train.news.tags.bpe.wmt-ende-best"
-    dev: "chatnmt/official_split/wmt17bpe__boundaries_news/dev.tags.bpe.wmt-ende-best"        # development data for validation
-    test:  "chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best"
+    train: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/train.news_updated.tags.bpe.wmt-ende-best"
+    dev: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best"        # development data for validation
+    test:  "chatnmt/official_split/wmt17bpe__boundaries/test.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -30,7 +30,7 @@ training:
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
-    batch_size: 512
+    batch_size: 2048
     batch_type: "token"
     #eval_batch_size: 3600
     #eval_batch_type: "token"
