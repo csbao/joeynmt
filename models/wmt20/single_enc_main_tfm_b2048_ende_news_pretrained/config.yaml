@@ -4,8 +4,8 @@ name: "transformer"
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/official_split/wmt17bpe/train.news.tags.bpe.wmt-ende-best"
-    dev: "chatnmt/official_split/wmt17bpe/dev.tags.bpe.wmt-ende-best"        # development data for validation
+    train: "chatnmt/official_split_line_by_line/wmt17bpe/train.news.tags.bpe.wmt-ende-best"
+    dev: "chatnmt/official_split_line_by_line/wmt17bpe/dev.tags.bpe.wmt-ende-best"        # development data for validation
     test:  "chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
@@ -36,7 +36,7 @@ training:
     #eval_batch_type: "token"
     batch_multiplier: 1
     early_stopping_metric: "ppl"
-    epochs: 50
+    epochs: 30
     validation_freq: 750
     logging_freq: 100
     eval_metric: "bleu"
