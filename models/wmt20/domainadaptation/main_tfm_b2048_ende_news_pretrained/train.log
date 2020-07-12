@@ -1,0 +1,627 @@
+2020-07-11 21:48:39,474 Hello! This is Joey-NMT.
+2020-07-11 21:48:41,345 Total params: 82862081
+2020-07-11 21:48:41,347 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.layers.3.dec_layer_norm.bias', 'decoder.layers.3.dec_layer_norm.weight', 'decoder.layers.3.feed_forward.layer_norm.bias', 'decoder.layers.3.feed_forward.layer_norm.weight', 'decoder.layers.3.feed_forward.pwff_layer.0.bias', 'decoder.layers.3.feed_forward.pwff_layer.0.weight', 'decoder.layers.3.feed_forward.pwff_layer.3.bias', 'decoder.layers.3.feed_forward.pwff_layer.3.weight', 'decoder.layers.3.src_trg_att.k_layer.bias', 'decoder.layers.3.src_trg_att.k_layer.weight', 'decoder.layers.3.src_trg_att.output_layer.bias', 'decoder.layers.3.src_trg_att.output_layer.weight', 'decoder.layers.3.src_trg_att.q_layer.bias', 'decoder.layers.3.src_trg_att.q_layer.weight', 'decoder.layers.3.src_trg_att.v_layer.bias', 'decoder.layers.3.src_trg_att.v_layer.weight', 'decoder.layers.3.trg_trg_att.k_layer.bias', 'decoder.layers.3.trg_trg_att.k_layer.weight', 'decoder.layers.3.trg_trg_att.output_layer.bias', 'decoder.layers.3.trg_trg_att.output_layer.weight', 'decoder.layers.3.trg_trg_att.q_layer.bias', 'decoder.layers.3.trg_trg_att.q_layer.weight', 'decoder.layers.3.trg_trg_att.v_layer.bias', 'decoder.layers.3.trg_trg_att.v_layer.weight', 'decoder.layers.3.x_layer_norm.bias', 'decoder.layers.3.x_layer_norm.weight', 'decoder.layers.4.dec_layer_norm.bias', 'decoder.layers.4.dec_layer_norm.weight', 'decoder.layers.4.feed_forward.layer_norm.bias', 'decoder.layers.4.feed_forward.layer_norm.weight', 'decoder.layers.4.feed_forward.pwff_layer.0.bias', 'decoder.layers.4.feed_forward.pwff_layer.0.weight', 'decoder.layers.4.feed_forward.pwff_layer.3.bias', 'decoder.layers.4.feed_forward.pwff_layer.3.weight', 'decoder.layers.4.src_trg_att.k_layer.bias', 'decoder.layers.4.src_trg_att.k_layer.weight', 'decoder.layers.4.src_trg_att.output_layer.bias', 'decoder.layers.4.src_trg_att.output_layer.weight', 'decoder.layers.4.src_trg_att.q_layer.bias', 'decoder.layers.4.src_trg_att.q_layer.weight', 'decoder.layers.4.src_trg_att.v_layer.bias', 'decoder.layers.4.src_trg_att.v_layer.weight', 'decoder.layers.4.trg_trg_att.k_layer.bias', 'decoder.layers.4.trg_trg_att.k_layer.weight', 'decoder.layers.4.trg_trg_att.output_layer.bias', 'decoder.layers.4.trg_trg_att.output_layer.weight', 'decoder.layers.4.trg_trg_att.q_layer.bias', 'decoder.layers.4.trg_trg_att.q_layer.weight', 'decoder.layers.4.trg_trg_att.v_layer.bias', 'decoder.layers.4.trg_trg_att.v_layer.weight', 'decoder.layers.4.x_layer_norm.bias', 'decoder.layers.4.x_layer_norm.weight', 'decoder.layers.5.dec_layer_norm.bias', 'decoder.layers.5.dec_layer_norm.weight', 'decoder.layers.5.feed_forward.layer_norm.bias', 'decoder.layers.5.feed_forward.layer_norm.weight', 'decoder.layers.5.feed_forward.pwff_layer.0.bias', 'decoder.layers.5.feed_forward.pwff_layer.0.weight', 'decoder.layers.5.feed_forward.pwff_layer.3.bias', 'decoder.layers.5.feed_forward.pwff_layer.3.weight', 'decoder.layers.5.src_trg_att.k_layer.bias', 'decoder.layers.5.src_trg_att.k_layer.weight', 'decoder.layers.5.src_trg_att.output_layer.bias', 'decoder.layers.5.src_trg_att.output_layer.weight', 'decoder.layers.5.src_trg_att.q_layer.bias', 'decoder.layers.5.src_trg_att.q_layer.weight', 'decoder.layers.5.src_trg_att.v_layer.bias', 'decoder.layers.5.src_trg_att.v_layer.weight', 'decoder.layers.5.trg_trg_att.k_layer.bias', 'decoder.layers.5.trg_trg_att.k_layer.weight', 'decoder.layers.5.trg_trg_att.output_layer.bias', 'decoder.layers.5.trg_trg_att.output_layer.weight', 'decoder.layers.5.trg_trg_att.q_layer.bias', 'decoder.layers.5.trg_trg_att.q_layer.weight', 'decoder.layers.5.trg_trg_att.v_layer.bias', 'decoder.layers.5.trg_trg_att.v_layer.weight', 'decoder.layers.5.x_layer_norm.bias', 'decoder.layers.5.x_layer_norm.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'encoder.layers.3.feed_forward.layer_norm.bias', 'encoder.layers.3.feed_forward.layer_norm.weight', 'encoder.layers.3.feed_forward.pwff_layer.0.bias', 'encoder.layers.3.feed_forward.pwff_layer.0.weight', 'encoder.layers.3.feed_forward.pwff_layer.3.bias', 'encoder.layers.3.feed_forward.pwff_layer.3.weight', 'encoder.layers.3.layer_norm.bias', 'encoder.layers.3.layer_norm.weight', 'encoder.layers.3.src_src_att.k_layer.bias', 'encoder.layers.3.src_src_att.k_layer.weight', 'encoder.layers.3.src_src_att.output_layer.bias', 'encoder.layers.3.src_src_att.output_layer.weight', 'encoder.layers.3.src_src_att.q_layer.bias', 'encoder.layers.3.src_src_att.q_layer.weight', 'encoder.layers.3.src_src_att.v_layer.bias', 'encoder.layers.3.src_src_att.v_layer.weight', 'encoder.layers.4.feed_forward.layer_norm.bias', 'encoder.layers.4.feed_forward.layer_norm.weight', 'encoder.layers.4.feed_forward.pwff_layer.0.bias', 'encoder.layers.4.feed_forward.pwff_layer.0.weight', 'encoder.layers.4.feed_forward.pwff_layer.3.bias', 'encoder.layers.4.feed_forward.pwff_layer.3.weight', 'encoder.layers.4.layer_norm.bias', 'encoder.layers.4.layer_norm.weight', 'encoder.layers.4.src_src_att.k_layer.bias', 'encoder.layers.4.src_src_att.k_layer.weight', 'encoder.layers.4.src_src_att.output_layer.bias', 'encoder.layers.4.src_src_att.output_layer.weight', 'encoder.layers.4.src_src_att.q_layer.bias', 'encoder.layers.4.src_src_att.q_layer.weight', 'encoder.layers.4.src_src_att.v_layer.bias', 'encoder.layers.4.src_src_att.v_layer.weight', 'encoder_2.layer_norm.bias', 'encoder_2.layer_norm.weight', 'encoder_2.layers.0.feed_forward.layer_norm.bias', 'encoder_2.layers.0.feed_forward.layer_norm.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.0.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.0.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.0.layer_norm.bias', 'encoder_2.layers.0.layer_norm.weight', 'encoder_2.layers.0.src_src_att.k_layer.bias', 'encoder_2.layers.0.src_src_att.k_layer.weight', 'encoder_2.layers.0.src_src_att.output_layer.bias', 'encoder_2.layers.0.src_src_att.output_layer.weight', 'encoder_2.layers.0.src_src_att.q_layer.bias', 'encoder_2.layers.0.src_src_att.q_layer.weight', 'encoder_2.layers.0.src_src_att.v_layer.bias', 'encoder_2.layers.0.src_src_att.v_layer.weight', 'encoder_2.layers.1.feed_forward.layer_norm.bias', 'encoder_2.layers.1.feed_forward.layer_norm.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.1.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.1.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.1.layer_norm.bias', 'encoder_2.layers.1.layer_norm.weight', 'encoder_2.layers.1.src_src_att.k_layer.bias', 'encoder_2.layers.1.src_src_att.k_layer.weight', 'encoder_2.layers.1.src_src_att.output_layer.bias', 'encoder_2.layers.1.src_src_att.output_layer.weight', 'encoder_2.layers.1.src_src_att.q_layer.bias', 'encoder_2.layers.1.src_src_att.q_layer.weight', 'encoder_2.layers.1.src_src_att.v_layer.bias', 'encoder_2.layers.1.src_src_att.v_layer.weight', 'encoder_2.layers.2.feed_forward.layer_norm.bias', 'encoder_2.layers.2.feed_forward.layer_norm.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.2.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.2.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.2.layer_norm.bias', 'encoder_2.layers.2.layer_norm.weight', 'encoder_2.layers.2.src_src_att.k_layer.bias', 'encoder_2.layers.2.src_src_att.k_layer.weight', 'encoder_2.layers.2.src_src_att.output_layer.bias', 'encoder_2.layers.2.src_src_att.output_layer.weight', 'encoder_2.layers.2.src_src_att.q_layer.bias', 'encoder_2.layers.2.src_src_att.q_layer.weight', 'encoder_2.layers.2.src_src_att.v_layer.bias', 'encoder_2.layers.2.src_src_att.v_layer.weight', 'encoder_2.layers.3.feed_forward.layer_norm.bias', 'encoder_2.layers.3.feed_forward.layer_norm.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.3.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.3.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.3.layer_norm.bias', 'encoder_2.layers.3.layer_norm.weight', 'encoder_2.layers.3.src_src_att.k_layer.bias', 'encoder_2.layers.3.src_src_att.k_layer.weight', 'encoder_2.layers.3.src_src_att.output_layer.bias', 'encoder_2.layers.3.src_src_att.output_layer.weight', 'encoder_2.layers.3.src_src_att.q_layer.bias', 'encoder_2.layers.3.src_src_att.q_layer.weight', 'encoder_2.layers.3.src_src_att.v_layer.bias', 'encoder_2.layers.3.src_src_att.v_layer.weight', 'encoder_2.layers.4.feed_forward.layer_norm.bias', 'encoder_2.layers.4.feed_forward.layer_norm.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.4.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.4.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.4.layer_norm.bias', 'encoder_2.layers.4.layer_norm.weight', 'encoder_2.layers.4.src_src_att.k_layer.bias', 'encoder_2.layers.4.src_src_att.k_layer.weight', 'encoder_2.layers.4.src_src_att.output_layer.bias', 'encoder_2.layers.4.src_src_att.output_layer.weight', 'encoder_2.layers.4.src_src_att.q_layer.bias', 'encoder_2.layers.4.src_src_att.q_layer.weight', 'encoder_2.layers.4.src_src_att.v_layer.bias', 'encoder_2.layers.4.src_src_att.v_layer.weight', 'encoder_2.layers.5.feed_forward.layer_norm.bias', 'encoder_2.layers.5.feed_forward.layer_norm.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.0.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.0.weight', 'encoder_2.layers.5.feed_forward.pwff_layer.3.bias', 'encoder_2.layers.5.feed_forward.pwff_layer.3.weight', 'encoder_2.layers.5.layer_norm.bias', 'encoder_2.layers.5.layer_norm.weight', 'encoder_2.layers.5.src_src_att.k_layer.bias', 'encoder_2.layers.5.src_src_att.k_layer.weight', 'encoder_2.layers.5.src_src_att.output_layer.bias', 'encoder_2.layers.5.src_src_att.output_layer.weight', 'encoder_2.layers.5.src_src_att.q_layer.bias', 'encoder_2.layers.5.src_src_att.q_layer.weight', 'encoder_2.layers.5.src_src_att.v_layer.bias', 'encoder_2.layers.5.src_src_att.v_layer.weight', 'last_layer.W_g.weight', 'last_layer.b_g', 'last_layer.feed_forward.layer_norm.bias', 'last_layer.feed_forward.layer_norm.weight', 'last_layer.feed_forward.pwff_layer.0.bias', 'last_layer.feed_forward.pwff_layer.0.weight', 'last_layer.feed_forward.pwff_layer.3.bias', 'last_layer.feed_forward.pwff_layer.3.weight', 'last_layer.layer_norm.bias', 'last_layer.layer_norm.weight', 'last_layer.src2_src_att.k_layer.bias', 'last_layer.src2_src_att.k_layer.weight', 'last_layer.src2_src_att.output_layer.bias', 'last_layer.src2_src_att.output_layer.weight', 'last_layer.src2_src_att.q_layer.bias', 'last_layer.src2_src_att.q_layer.weight', 'last_layer.src2_src_att.v_layer.bias', 'last_layer.src2_src_att.v_layer.weight', 'last_layer.src_src_att.k_layer.bias', 'last_layer.src_src_att.k_layer.weight', 'last_layer.src_src_att.output_layer.bias', 'last_layer.src_src_att.output_layer.weight', 'last_layer.src_src_att.q_layer.bias', 'last_layer.src_src_att.q_layer.weight', 'last_layer.src_src_att.v_layer.bias', 'last_layer.src_src_att.v_layer.weight', 'last_layer_norm.bias', 'last_layer_norm.weight', 'src_embed.lut.weight']
+2020-07-11 21:48:45,146 Loading model from models/wmt_ende_transformer/best.ckpt
+2020-07-11 21:48:45,694 Reset optimizer.
+2020-07-11 21:48:45,695 Reset scheduler.
+2020-07-11 21:48:45,695 Reset tracking of the best checkpoint.
+2020-07-11 21:48:45,700 cfg.name                           : transformer
+2020-07-11 21:48:45,700 cfg.data.lowercase                 : False
+2020-07-11 21:48:45,700 cfg.data.trg                       : de
+2020-07-11 21:48:45,700 cfg.data.train                     : chatnmt/official_split_line_by_line/wmt17bpe__boundaries/news_bigrams_line_by_line
+2020-07-11 21:48:45,701 cfg.data.trg_vocab                 : models/wmt_ende_transformer/trg_vocab.txt
+2020-07-11 21:48:45,701 cfg.data.level                     : bpe
+2020-07-11 21:48:45,701 cfg.data.src_vocab                 : models/wmt_ende_transformer/src_vocab.txt
+2020-07-11 21:48:45,701 cfg.data.test                      : chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best
+2020-07-11 21:48:45,701 cfg.data.max_sent_length           : 100
+2020-07-11 21:48:45,701 cfg.data.src                       : en
+2020-07-11 21:48:45,701 cfg.data.dev                       : chatnmt/official_split_line_by_line/wmt17bpe__boundaries/train.1400.tags.bpe.wmt-ende-best
+2020-07-11 21:48:45,701 cfg.testing.alpha                  : 1.0
+2020-07-11 21:48:45,701 cfg.testing.beam_size              : 5
+2020-07-11 21:48:45,701 cfg.model.decoder.freeze           : False
+2020-07-11 21:48:45,701 cfg.model.decoder.type             : transformer
+2020-07-11 21:48:45,701 cfg.model.decoder.num_heads        : 8
+2020-07-11 21:48:45,702 cfg.model.decoder.dropout          : 0.1
+2020-07-11 21:48:45,702 cfg.model.decoder.num_layers       : 6
+2020-07-11 21:48:45,702 cfg.model.decoder.embeddings.scale : True
+2020-07-11 21:48:45,702 cfg.model.decoder.embeddings.dropout : 0.0
+2020-07-11 21:48:45,702 cfg.model.decoder.embeddings.embedding_dim : 512
+2020-07-11 21:48:45,702 cfg.model.decoder.ff_size          : 2048
+2020-07-11 21:48:45,702 cfg.model.decoder.hidden_size      : 512
+2020-07-11 21:48:45,702 cfg.model.initializer              : xavier
+2020-07-11 21:48:45,702 cfg.model.bias_initializer         : zeros
+2020-07-11 21:48:45,702 cfg.model.encoder.multi_encoder    : True
+2020-07-11 21:48:45,702 cfg.model.encoder.freeze           : False
+2020-07-11 21:48:45,703 cfg.model.encoder.type             : transformer
+2020-07-11 21:48:45,703 cfg.model.encoder.num_heads        : 8
+2020-07-11 21:48:45,703 cfg.model.encoder.dropout          : 0.1
+2020-07-11 21:48:45,703 cfg.model.encoder.num_layers       : 6
+2020-07-11 21:48:45,703 cfg.model.encoder.embeddings.scale : True
+2020-07-11 21:48:45,703 cfg.model.encoder.embeddings.dropout : 0.0
+2020-07-11 21:48:45,703 cfg.model.encoder.embeddings.embedding_dim : 512
+2020-07-11 21:48:45,703 cfg.model.encoder.ff_size          : 2048
+2020-07-11 21:48:45,703 cfg.model.encoder.hidden_size      : 512
+2020-07-11 21:48:45,703 cfg.model.embed_init_gain          : 1.0
+2020-07-11 21:48:45,703 cfg.model.tied_softmax             : True
+2020-07-11 21:48:45,703 cfg.model.init_gain                : 1.0
+2020-07-11 21:48:45,704 cfg.model.embed_initializer        : xavier
+2020-07-11 21:48:45,704 cfg.model.tied_embeddings          : True
+2020-07-11 21:48:45,704 cfg.training.logging_freq          : 100
+2020-07-11 21:48:45,704 cfg.training.batch_size            : 2048
+2020-07-11 21:48:45,704 cfg.training.learning_rate         : 0.0002
+2020-07-11 21:48:45,704 cfg.training.learning_rate_min     : 1e-08
+2020-07-11 21:48:45,704 cfg.training.random_seed           : 42
+2020-07-11 21:48:45,704 cfg.training.shuffle               : True
+2020-07-11 21:48:45,704 cfg.training.print_valid_sents     : [0, 1, 2, 3]
+2020-07-11 21:48:45,704 cfg.training.keep_last_ckpts       : 3
+2020-07-11 21:48:45,704 cfg.training.patience              : 8
+2020-07-11 21:48:45,704 cfg.training.overwrite             : True
+2020-07-11 21:48:45,705 cfg.training.eval_metric           : bleu
+2020-07-11 21:48:45,705 cfg.training.model_dir             : models/wmt20/domainadaptation/main_tfm_b2048_ende_news_pretrained/
+2020-07-11 21:48:45,705 cfg.training.reset_scheduler       : True
+2020-07-11 21:48:45,705 cfg.training.loss                  : crossentropy
+2020-07-11 21:48:45,705 cfg.training.load_model            : models/wmt_ende_transformer/best.ckpt
+2020-07-11 21:48:45,705 cfg.training.decrease_factor       : 0.7
+2020-07-11 21:48:45,705 cfg.training.early_stopping_metric : ppl
+2020-07-11 21:48:45,705 cfg.training.max_output_length     : 100
+2020-07-11 21:48:45,705 cfg.training.weight_decay          : 0.0
+2020-07-11 21:48:45,705 cfg.training.batch_multiplier      : 1
+2020-07-11 21:48:45,705 cfg.training.adam_betas            : [0.9, 0.999]
+2020-07-11 21:48:45,705 cfg.training.reset_optimizer       : True
+2020-07-11 21:48:45,706 cfg.training.reset_best_ckpt       : True
+2020-07-11 21:48:45,706 cfg.training.validation_freq       : 750
+2020-07-11 21:48:45,706 cfg.training.optimizer             : adam
+2020-07-11 21:48:45,706 cfg.training.epochs                : 100
+2020-07-11 21:48:45,706 cfg.training.use_cuda              : True
+2020-07-11 21:48:45,706 cfg.training.scheduling            : plateau
+2020-07-11 21:48:45,706 cfg.training.normalization         : tokens
+2020-07-11 21:48:45,706 cfg.training.label_smoothing       : 0.1
+2020-07-11 21:48:45,706 cfg.training.batch_type            : token
+2020-07-11 21:48:45,706 Data set sizes: 
+	train 4779,
+	valid 1347,
+	test 0
+2020-07-11 21:48:45,706 First training example:
+	[SRC] lagos – while at dinner recently at a restaurant in nigeria ’ s capital , abuja , i observed a mis@@ matched couple .
+	[TRG] lagos – bei einem aben@@ dess@@ ens in einem restaurant in nigerias hauptstadt abuja habe ich ein ungleiches paar beobachtet .
+2020-07-11 21:48:45,707 First 10 words (src): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-11 21:48:45,707 First 10 words (trg): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) , (5) . (6) the (7) in (8) of (9) der
+2020-07-11 21:48:45,707 Number of Src words (types): 36628
+2020-07-11 21:48:45,707 Number of Trg words (types): 36628
+2020-07-11 21:48:45,708 Model(
+	encoder=TransformerEncoder(num_layers=5, num_heads=8),
+	decoder=TransformerDecoder(num_layers=6, num_heads=8),
+	src_embed=Embeddings(embedding_dim=512, vocab_size=36628),
+	trg_embed=Embeddings(embedding_dim=512, vocab_size=36628))
+2020-07-11 21:48:45,734 EPOCH 1
+2020-07-11 21:49:25,851 Epoch   1: total training loss 381.54
+2020-07-11 21:49:25,852 EPOCH 2
+2020-07-11 21:49:39,698 Epoch   2 Step:  1360100 Batch Loss:     2.592896 Tokens per Sec:     2804, Lr: 0.000200
+2020-07-11 21:50:05,119 Epoch   2: total training loss 185.09
+2020-07-11 21:50:05,119 EPOCH 3
+2020-07-11 21:50:31,985 Epoch   3 Step:  1360200 Batch Loss:     1.976946 Tokens per Sec:     2800, Lr: 0.000200
+2020-07-11 21:50:44,368 Epoch   3: total training loss 129.07
+2020-07-11 21:50:44,368 EPOCH 4
+2020-07-11 21:51:23,754 Epoch   4: total training loss 104.64
+2020-07-11 21:51:23,755 EPOCH 5
+2020-07-11 21:51:23,891 Epoch   5 Step:  1360300 Batch Loss:     1.563623 Tokens per Sec:      477, Lr: 0.000200
+2020-07-11 21:52:03,423 Epoch   5: total training loss 92.97
+2020-07-11 21:52:03,424 EPOCH 6
+2020-07-11 21:52:17,121 Epoch   6 Step:  1360400 Batch Loss:     0.941946 Tokens per Sec:     2760, Lr: 0.000200
+2020-07-11 21:52:42,920 Epoch   6: total training loss 79.33
+2020-07-11 21:52:42,920 EPOCH 7
+2020-07-11 21:53:09,406 Epoch   7 Step:  1360500 Batch Loss:     1.063481 Tokens per Sec:     2780, Lr: 0.000200
+2020-07-11 21:54:03,930 Hooray! New best validation result [ppl]!
+2020-07-11 21:54:03,930 Saving new checkpoint.
+2020-07-11 21:54:04,981 Example #0
+2020-07-11 21:54:04,981 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 21:54:04,981 	Raw hypothesis: ['wie', 'kann', 'ich', 'helfen', '?']
+2020-07-11 21:54:04,981 	Source:     Hi there ! How can I help ?
+2020-07-11 21:54:04,981 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 21:54:04,981 	Hypothesis: wie kann ich helfen ?
+2020-07-11 21:54:04,981 Example #1
+2020-07-11 21:54:04,982 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 21:54:04,982 	Raw hypothesis: ['ich', 'muss', 'dort', 'mein', 'auto', 'an', '<unk>', 'nehmen', 'und', 'ich', 'würde', 'mich', '<unk>', '<unk>', '.']
+2020-07-11 21:54:04,982 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 21:54:04,982 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 21:54:04,982 	Hypothesis: ich muss dort mein auto an <unk> nehmen und ich würde mich <unk> <unk> .
+2020-07-11 21:54:04,982 Example #2
+2020-07-11 21:54:04,982 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 21:54:04,982 	Raw hypothesis: ['natürlich', 'ist', 'es', '<unk>', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 21:54:04,982 	Source:     Sure ! what type of car is it ?
+2020-07-11 21:54:04,982 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 21:54:04,982 	Hypothesis: natürlich ist es <unk> , welche art von auto ist es ?
+2020-07-11 21:54:04,982 Example #3
+2020-07-11 21:54:04,983 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 21:54:04,983 	Raw hypothesis: ['über', '2011', '<unk>', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 21:54:04,983 	Source:     about 2011 Neason Road .
+2020-07-11 21:54:04,983 	Reference:  2011 Neason Road .
+2020-07-11 21:54:04,983 	Hypothesis: über 2011 <unk> Neason Road .
+2020-07-11 21:54:04,983 Validation result (greedy) at epoch   7, step  1360500: bleu:  11.09, loss: 48526.1328, ppl:  16.0511, duration: 55.5757s
+2020-07-11 21:54:18,077 Epoch   7: total training loss 71.02
+2020-07-11 21:54:18,077 EPOCH 8
+2020-07-11 21:54:57,750 Epoch   8 Step:  1360600 Batch Loss:     0.852190 Tokens per Sec:     2763, Lr: 0.000200
+2020-07-11 21:54:57,752 Epoch   8: total training loss 63.29
+2020-07-11 21:54:57,752 EPOCH 9
+2020-07-11 21:55:37,448 Epoch   9: total training loss 60.66
+2020-07-11 21:55:37,448 EPOCH 10
+2020-07-11 21:55:51,645 Epoch  10 Step:  1360700 Batch Loss:     0.738410 Tokens per Sec:     2717, Lr: 0.000200
+2020-07-11 21:56:17,177 Epoch  10: total training loss 54.11
+2020-07-11 21:56:17,178 EPOCH 11
+2020-07-11 21:56:44,098 Epoch  11 Step:  1360800 Batch Loss:     0.981477 Tokens per Sec:     2768, Lr: 0.000200
+2020-07-11 21:56:56,869 Epoch  11: total training loss 48.61
+2020-07-11 21:56:56,870 EPOCH 12
+2020-07-11 21:57:36,696 Epoch  12: total training loss 44.89
+2020-07-11 21:57:36,697 EPOCH 13
+2020-07-11 21:57:37,318 Epoch  13 Step:  1360900 Batch Loss:     0.565679 Tokens per Sec:     2451, Lr: 0.000200
+2020-07-11 21:58:16,338 Epoch  13: total training loss 41.86
+2020-07-11 21:58:16,339 EPOCH 14
+2020-07-11 21:58:30,421 Epoch  14 Step:  1361000 Batch Loss:     0.614027 Tokens per Sec:     2781, Lr: 0.000200
+2020-07-11 21:58:56,139 Epoch  14: total training loss 38.71
+2020-07-11 21:58:56,140 EPOCH 15
+2020-07-11 21:59:23,580 Epoch  15 Step:  1361100 Batch Loss:     0.442427 Tokens per Sec:     2735, Lr: 0.000200
+2020-07-11 21:59:36,042 Epoch  15: total training loss 35.45
+2020-07-11 21:59:36,043 EPOCH 16
+2020-07-11 22:00:16,028 Epoch  16: total training loss 33.23
+2020-07-11 22:00:16,029 EPOCH 17
+2020-07-11 22:00:16,685 Epoch  17 Step:  1361200 Batch Loss:     0.289400 Tokens per Sec:     2348, Lr: 0.000200
+2020-07-11 22:01:26,504 Example #0
+2020-07-11 22:01:26,505 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:01:26,505 	Raw hypothesis: ['ja', 'ja', '!', 'wie', 'kann', 'ich', 'helfen', '?']
+2020-07-11 22:01:26,505 	Source:     Hi there ! How can I help ?
+2020-07-11 22:01:26,505 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:01:26,505 	Hypothesis: ja ja ! wie kann ich helfen ?
+2020-07-11 22:01:26,505 Example #1
+2020-07-11 22:01:26,505 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:01:26,505 	Raw hypothesis: ['ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'fahren', ',', 'und', 'ich', 'würde', 'mich', '<unk>', '<unk>', 'sehen', '.']
+2020-07-11 22:01:26,505 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:01:26,505 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:01:26,505 	Hypothesis: ich muss mein auto nach <unk> fahren , und ich würde mich <unk> <unk> sehen .
+2020-07-11 22:01:26,505 Example #2
+2020-07-11 22:01:26,505 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:01:26,506 	Raw hypothesis: ['ja', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:01:26,506 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:01:26,506 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:01:26,506 	Hypothesis: ja , welche art von auto ist es ?
+2020-07-11 22:01:26,506 Example #3
+2020-07-11 22:01:26,506 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:01:26,506 	Raw hypothesis: ['nach', '2011', 'ging', 'es', 'in', '<unk>', '.']
+2020-07-11 22:01:26,506 	Source:     about 2011 Neason Road .
+2020-07-11 22:01:26,506 	Reference:  2011 Neason Road .
+2020-07-11 22:01:26,506 	Hypothesis: nach 2011 ging es in <unk> .
+2020-07-11 22:01:26,506 Validation result (greedy) at epoch  17, step  1361250: bleu:  10.74, loss: 54473.1758, ppl:  22.5550, duration: 43.1104s
+2020-07-11 22:01:39,023 Epoch  17: total training loss 30.45
+2020-07-11 22:01:39,024 EPOCH 18
+2020-07-11 22:01:52,894 Epoch  18 Step:  1361300 Batch Loss:     0.373360 Tokens per Sec:     2792, Lr: 0.000200
+2020-07-11 22:02:18,851 Epoch  18: total training loss 28.71
+2020-07-11 22:02:18,852 EPOCH 19
+2020-07-11 22:02:46,419 Epoch  19 Step:  1361400 Batch Loss:     0.421090 Tokens per Sec:     2733, Lr: 0.000200
+2020-07-11 22:02:58,636 Epoch  19: total training loss 26.83
+2020-07-11 22:02:58,637 EPOCH 20
+2020-07-11 22:03:38,358 Epoch  20: total training loss 24.73
+2020-07-11 22:03:38,359 EPOCH 21
+2020-07-11 22:03:39,417 Epoch  21 Step:  1361500 Batch Loss:     0.331029 Tokens per Sec:     2888, Lr: 0.000200
+2020-07-11 22:04:18,313 Epoch  21: total training loss 23.53
+2020-07-11 22:04:18,314 EPOCH 22
+2020-07-11 22:04:32,770 Epoch  22 Step:  1361600 Batch Loss:     0.282923 Tokens per Sec:     2790, Lr: 0.000200
+2020-07-11 22:04:57,972 Epoch  22: total training loss 22.21
+2020-07-11 22:04:57,973 EPOCH 23
+2020-07-11 22:05:25,545 Epoch  23 Step:  1361700 Batch Loss:     0.264080 Tokens per Sec:     2749, Lr: 0.000200
+2020-07-11 22:05:37,877 Epoch  23: total training loss 21.43
+2020-07-11 22:05:37,878 EPOCH 24
+2020-07-11 22:06:17,951 Epoch  24: total training loss 19.87
+2020-07-11 22:06:17,952 EPOCH 25
+2020-07-11 22:06:19,138 Epoch  25 Step:  1361800 Batch Loss:     0.276395 Tokens per Sec:     2440, Lr: 0.000200
+2020-07-11 22:06:57,996 Epoch  25: total training loss 18.42
+2020-07-11 22:06:57,996 EPOCH 26
+2020-07-11 22:07:12,258 Epoch  26 Step:  1361900 Batch Loss:     0.292878 Tokens per Sec:     2815, Lr: 0.000200
+2020-07-11 22:07:37,523 Epoch  26: total training loss 17.37
+2020-07-11 22:07:37,524 EPOCH 27
+2020-07-11 22:08:05,267 Epoch  27 Step:  1362000 Batch Loss:     0.180905 Tokens per Sec:     2785, Lr: 0.000200
+2020-07-11 22:08:47,867 Example #0
+2020-07-11 22:08:47,867 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:08:47,867 	Raw hypothesis: ['ich', 'habe', 'da', '<unk>', '!', 'wie', 'kann', 'ich', 'helfen', '?']
+2020-07-11 22:08:47,867 	Source:     Hi there ! How can I help ?
+2020-07-11 22:08:47,868 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:08:47,868 	Hypothesis: ich habe da <unk> ! wie kann ich helfen ?
+2020-07-11 22:08:47,868 Example #1
+2020-07-11 22:08:47,868 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:08:47,868 	Raw hypothesis: ['ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'nehmen', ',', 'und', 'ich', 'würde', '<unk>', '<unk>', '<unk>', 'sehen', '.']
+2020-07-11 22:08:47,868 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:08:47,868 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:08:47,868 	Hypothesis: ich muss mein auto nach <unk> nehmen , und ich würde <unk> <unk> <unk> sehen .
+2020-07-11 22:08:47,868 Example #2
+2020-07-11 22:08:47,868 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:08:47,868 	Raw hypothesis: ['ja', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:08:47,868 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:08:47,868 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:08:47,869 	Hypothesis: ja , welche art von auto ist es ?
+2020-07-11 22:08:47,869 Example #3
+2020-07-11 22:08:47,869 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:08:47,869 	Raw hypothesis: ['nach', '2011', 'ging', 'es', 'in', 'der', '<unk>', '<unk>', 'in', '<unk>', '.']
+2020-07-11 22:08:47,869 	Source:     about 2011 Neason Road .
+2020-07-11 22:08:47,869 	Reference:  2011 Neason Road .
+2020-07-11 22:08:47,869 	Hypothesis: nach 2011 ging es in der <unk> <unk> in <unk> .
+2020-07-11 22:08:47,869 Validation result (greedy) at epoch  27, step  1362000: bleu:   9.24, loss: 62647.3984, ppl:  36.0007, duration: 42.6016s
+2020-07-11 22:08:59,743 Epoch  27: total training loss 16.25
+2020-07-11 22:08:59,746 EPOCH 28
+2020-07-11 22:09:39,408 Epoch  28: total training loss 15.22
+2020-07-11 22:09:39,408 EPOCH 29
+2020-07-11 22:09:41,461 Epoch  29 Step:  1362100 Batch Loss:     0.202920 Tokens per Sec:     2848, Lr: 0.000200
+2020-07-11 22:10:19,392 Epoch  29: total training loss 14.80
+2020-07-11 22:10:19,392 EPOCH 30
+2020-07-11 22:10:35,107 Epoch  30 Step:  1362200 Batch Loss:     0.195209 Tokens per Sec:     2727, Lr: 0.000200
+2020-07-11 22:10:59,219 Epoch  30: total training loss 14.06
+2020-07-11 22:10:59,220 EPOCH 31
+2020-07-11 22:11:28,005 Epoch  31 Step:  1362300 Batch Loss:     0.152233 Tokens per Sec:     2730, Lr: 0.000200
+2020-07-11 22:11:39,315 Epoch  31: total training loss 13.66
+2020-07-11 22:11:39,315 EPOCH 32
+2020-07-11 22:12:19,304 Epoch  32: total training loss 12.99
+2020-07-11 22:12:19,305 EPOCH 33
+2020-07-11 22:12:21,300 Epoch  33 Step:  1362400 Batch Loss:     0.119308 Tokens per Sec:     2827, Lr: 0.000200
+2020-07-11 22:12:59,178 Epoch  33: total training loss 12.19
+2020-07-11 22:12:59,179 EPOCH 34
+2020-07-11 22:13:14,828 Epoch  34 Step:  1362500 Batch Loss:     0.191224 Tokens per Sec:     2793, Lr: 0.000200
+2020-07-11 22:13:38,971 Epoch  34: total training loss 11.82
+2020-07-11 22:13:38,971 EPOCH 35
+2020-07-11 22:14:07,838 Epoch  35 Step:  1362600 Batch Loss:     0.112365 Tokens per Sec:     2745, Lr: 0.000200
+2020-07-11 22:14:18,863 Epoch  35: total training loss 11.33
+2020-07-11 22:14:18,864 EPOCH 36
+2020-07-11 22:14:58,512 Epoch  36: total training loss 10.77
+2020-07-11 22:14:58,513 EPOCH 37
+2020-07-11 22:15:01,297 Epoch  37 Step:  1362700 Batch Loss:     0.117248 Tokens per Sec:     2617, Lr: 0.000200
+2020-07-11 22:16:09,157 Example #0
+2020-07-11 22:16:09,157 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:16:09,158 	Raw hypothesis: ['ja', ',', 'wie', 'kann', 'ich', 'da', 'helfen', '?']
+2020-07-11 22:16:09,158 	Source:     Hi there ! How can I help ?
+2020-07-11 22:16:09,158 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:16:09,158 	Hypothesis: ja , wie kann ich da helfen ?
+2020-07-11 22:16:09,158 Example #1
+2020-07-11 22:16:09,158 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:16:09,158 	Raw hypothesis: ['ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'nehmen', ',', 'und', 'ich', 'würde', '<unk>', '<unk>', 'sehen', '.']
+2020-07-11 22:16:09,158 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:16:09,158 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:16:09,158 	Hypothesis: ich muss mein auto nach <unk> nehmen , und ich würde <unk> <unk> sehen .
+2020-07-11 22:16:09,158 Example #2
+2020-07-11 22:16:09,159 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:16:09,159 	Raw hypothesis: ['realistisch', 'betrachtet', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:16:09,159 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:16:09,159 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:16:09,159 	Hypothesis: realistisch betrachtet , welche art von auto ist es ?
+2020-07-11 22:16:09,159 Example #3
+2020-07-11 22:16:09,159 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:16:09,159 	Raw hypothesis: ['über', '2011', 'in', 'der', '<unk>', '<unk>', 'im', '<unk>', '2011', '.']
+2020-07-11 22:16:09,159 	Source:     about 2011 Neason Road .
+2020-07-11 22:16:09,159 	Reference:  2011 Neason Road .
+2020-07-11 22:16:09,159 	Hypothesis: über 2011 in der <unk> <unk> im <unk> 2011 .
+2020-07-11 22:16:09,160 Validation result (greedy) at epoch  37, step  1362750: bleu:   9.25, loss: 68833.5469, ppl:  51.2849, duration: 40.9345s
+2020-07-11 22:16:19,278 Epoch  37: total training loss 10.56
+2020-07-11 22:16:19,279 EPOCH 38
+2020-07-11 22:16:35,377 Epoch  38 Step:  1362800 Batch Loss:     0.071695 Tokens per Sec:     2700, Lr: 0.000200
+2020-07-11 22:16:59,163 Epoch  38: total training loss 10.39
+2020-07-11 22:16:59,163 EPOCH 39
+2020-07-11 22:17:28,643 Epoch  39 Step:  1362900 Batch Loss:     0.119303 Tokens per Sec:     2743, Lr: 0.000200
+2020-07-11 22:17:38,941 Epoch  39: total training loss 10.48
+2020-07-11 22:17:38,942 EPOCH 40
+2020-07-11 22:18:18,792 Epoch  40: total training loss 9.69
+2020-07-11 22:18:18,795 EPOCH 41
+2020-07-11 22:18:21,976 Epoch  41 Step:  1363000 Batch Loss:     0.119680 Tokens per Sec:     2698, Lr: 0.000200
+2020-07-11 22:18:58,661 Epoch  41: total training loss 8.94
+2020-07-11 22:18:58,662 EPOCH 42
+2020-07-11 22:19:14,796 Epoch  42 Step:  1363100 Batch Loss:     0.116625 Tokens per Sec:     2840, Lr: 0.000200
+2020-07-11 22:19:38,398 Epoch  42: total training loss 8.65
+2020-07-11 22:19:38,399 EPOCH 43
+2020-07-11 22:20:07,887 Epoch  43 Step:  1363200 Batch Loss:     0.164379 Tokens per Sec:     2733, Lr: 0.000200
+2020-07-11 22:20:18,340 Epoch  43: total training loss 8.72
+2020-07-11 22:20:18,341 EPOCH 44
+2020-07-11 22:20:58,364 Epoch  44: total training loss 8.67
+2020-07-11 22:20:58,365 EPOCH 45
+2020-07-11 22:21:00,976 Epoch  45 Step:  1363300 Batch Loss:     0.111340 Tokens per Sec:     2757, Lr: 0.000200
+2020-07-11 22:21:38,299 Epoch  45: total training loss 8.33
+2020-07-11 22:21:38,299 EPOCH 46
+2020-07-11 22:21:54,322 Epoch  46 Step:  1363400 Batch Loss:     0.103552 Tokens per Sec:     2774, Lr: 0.000200
+2020-07-11 22:22:18,211 Epoch  46: total training loss 8.01
+2020-07-11 22:22:18,212 EPOCH 47
+2020-07-11 22:22:47,786 Epoch  47 Step:  1363500 Batch Loss:     0.103400 Tokens per Sec:     2740, Lr: 0.000200
+2020-07-11 22:23:30,801 Example #0
+2020-07-11 22:23:30,802 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:23:30,802 	Raw hypothesis: ['ich', 'habe', 'dort', '<unk>', '!', 'wie', 'kann', 'ich', 'helfen', '?']
+2020-07-11 22:23:30,802 	Source:     Hi there ! How can I help ?
+2020-07-11 22:23:30,802 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:23:30,802 	Hypothesis: ich habe dort <unk> ! wie kann ich helfen ?
+2020-07-11 22:23:30,802 Example #1
+2020-07-11 22:23:30,802 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:23:30,802 	Raw hypothesis: ['ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'nehmen', ',', 'und', 'ich', 'würde', '<unk>', '<unk>', 'sehen', '.']
+2020-07-11 22:23:30,802 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:23:30,802 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:23:30,802 	Hypothesis: ich muss mein auto nach <unk> nehmen , und ich würde <unk> <unk> sehen .
+2020-07-11 22:23:30,802 Example #2
+2020-07-11 22:23:30,803 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:23:30,803 	Raw hypothesis: ['realistisch', 'betrachtet', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:23:30,803 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:23:30,803 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:23:30,803 	Hypothesis: realistisch betrachtet , welche art von auto ist es ?
+2020-07-11 22:23:30,803 Example #3
+2020-07-11 22:23:30,803 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:23:30,803 	Raw hypothesis: ['über', '2011', 'in', 'der', '<unk>', '<unk>', 'im', '<unk>', '.']
+2020-07-11 22:23:30,803 	Source:     about 2011 Neason Road .
+2020-07-11 22:23:30,803 	Reference:  2011 Neason Road .
+2020-07-11 22:23:30,803 	Hypothesis: über 2011 in der <unk> <unk> im <unk> .
+2020-07-11 22:23:30,803 Validation result (greedy) at epoch  47, step  1363500: bleu:   8.47, loss: 76818.9531, ppl:  80.9777, duration: 43.0162s
+2020-07-11 22:23:41,144 Epoch  47: total training loss 7.78
+2020-07-11 22:23:41,145 EPOCH 48
+2020-07-11 22:24:20,971 Epoch  48: total training loss 7.57
+2020-07-11 22:24:20,972 EPOCH 49
+2020-07-11 22:24:23,555 Epoch  49 Step:  1363600 Batch Loss:     0.091119 Tokens per Sec:     2750, Lr: 0.000200
+2020-07-11 22:25:01,119 Epoch  49: total training loss 7.42
+2020-07-11 22:25:01,120 EPOCH 50
+2020-07-11 22:25:16,521 Epoch  50 Step:  1363700 Batch Loss:     0.092815 Tokens per Sec:     2788, Lr: 0.000200
+2020-07-11 22:25:41,077 Epoch  50: total training loss 7.02
+2020-07-11 22:25:41,078 EPOCH 51
+2020-07-11 22:26:10,758 Epoch  51 Step:  1363800 Batch Loss:     0.082262 Tokens per Sec:     2729, Lr: 0.000200
+2020-07-11 22:26:21,077 Epoch  51: total training loss 6.91
+2020-07-11 22:26:21,078 EPOCH 52
+2020-07-11 22:27:01,011 Epoch  52: total training loss 6.91
+2020-07-11 22:27:01,011 EPOCH 53
+2020-07-11 22:27:04,145 Epoch  53 Step:  1363900 Batch Loss:     0.089575 Tokens per Sec:     2778, Lr: 0.000200
+2020-07-11 22:27:41,023 Epoch  53: total training loss 6.45
+2020-07-11 22:27:41,023 EPOCH 54
+2020-07-11 22:27:57,564 Epoch  54 Step:  1364000 Batch Loss:     0.068121 Tokens per Sec:     2765, Lr: 0.000200
+2020-07-11 22:28:20,970 Epoch  54: total training loss 6.25
+2020-07-11 22:28:20,971 EPOCH 55
+2020-07-11 22:28:50,644 Epoch  55 Step:  1364100 Batch Loss:     0.083197 Tokens per Sec:     2761, Lr: 0.000200
+2020-07-11 22:29:01,046 Epoch  55: total training loss 6.05
+2020-07-11 22:29:01,046 EPOCH 56
+2020-07-11 22:29:41,066 Epoch  56: total training loss 6.05
+2020-07-11 22:29:41,067 EPOCH 57
+2020-07-11 22:29:44,228 Epoch  57 Step:  1364200 Batch Loss:     0.084366 Tokens per Sec:     2851, Lr: 0.000200
+2020-07-11 22:30:57,606 Example #0
+2020-07-11 22:30:57,606 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:30:57,606 	Raw hypothesis: ['ich', '<unk>', 'da', ',', 'aber', '<unk>', 'kann', 'ich', 'helfen', '?']
+2020-07-11 22:30:57,606 	Source:     Hi there ! How can I help ?
+2020-07-11 22:30:57,606 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:30:57,606 	Hypothesis: ich <unk> da , aber <unk> kann ich helfen ?
+2020-07-11 22:30:57,606 Example #1
+2020-07-11 22:30:57,606 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:30:57,606 	Raw hypothesis: ['ich', 'bin', '<unk>', ',', 'und', 'ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'fahren', ',', 'und', 'ich', 'würde', 'es', 'gerne', '<unk>', '<unk>', '.']
+2020-07-11 22:30:57,606 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:30:57,607 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:30:57,607 	Hypothesis: ich bin <unk> , und ich muss mein auto nach <unk> fahren , und ich würde es gerne <unk> <unk> .
+2020-07-11 22:30:57,607 Example #2
+2020-07-11 22:30:57,607 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:30:57,607 	Raw hypothesis: ['<unk>', '!', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:30:57,607 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:30:57,607 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:30:57,607 	Hypothesis: <unk> ! welche art von auto ist es ?
+2020-07-11 22:30:57,607 Example #3
+2020-07-11 22:30:57,607 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:30:57,607 	Raw hypothesis: ['über', '2011', '<unk>', '<unk>', 'im', '<unk>', '<unk>', '.']
+2020-07-11 22:30:57,607 	Source:     about 2011 Neason Road .
+2020-07-11 22:30:57,607 	Reference:  2011 Neason Road .
+2020-07-11 22:30:57,608 	Hypothesis: über 2011 <unk> <unk> im <unk> <unk> .
+2020-07-11 22:30:57,608 Validation result (greedy) at epoch  57, step  1364250: bleu:   7.54, loss: 83698.3828, ppl: 120.0237, duration: 46.2606s
+2020-07-11 22:31:07,438 Epoch  57: total training loss 6.13
+2020-07-11 22:31:07,439 EPOCH 58
+2020-07-11 22:31:23,707 Epoch  58 Step:  1364300 Batch Loss:     0.064323 Tokens per Sec:     2809, Lr: 0.000200
+2020-07-11 22:31:47,411 Epoch  58: total training loss 5.90
+2020-07-11 22:31:47,411 EPOCH 59
+2020-07-11 22:32:17,111 Epoch  59 Step:  1364400 Batch Loss:     0.028578 Tokens per Sec:     2741, Lr: 0.000200
+2020-07-11 22:32:27,262 Epoch  59: total training loss 5.70
+2020-07-11 22:32:27,263 EPOCH 60
+2020-07-11 22:33:07,165 Epoch  60: total training loss 5.67
+2020-07-11 22:33:07,166 EPOCH 61
+2020-07-11 22:33:10,839 Epoch  61 Step:  1364500 Batch Loss:     0.043870 Tokens per Sec:     2811, Lr: 0.000200
+2020-07-11 22:33:47,010 Epoch  61: total training loss 5.38
+2020-07-11 22:33:47,010 EPOCH 62
+2020-07-11 22:34:04,118 Epoch  62 Step:  1364600 Batch Loss:     0.071803 Tokens per Sec:     2771, Lr: 0.000200
+2020-07-11 22:34:27,004 Epoch  62: total training loss 5.30
+2020-07-11 22:34:27,005 EPOCH 63
+2020-07-11 22:34:57,508 Epoch  63 Step:  1364700 Batch Loss:     0.065577 Tokens per Sec:     2743, Lr: 0.000200
+2020-07-11 22:35:06,921 Epoch  63: total training loss 5.34
+2020-07-11 22:35:06,922 EPOCH 64
+2020-07-11 22:35:47,065 Epoch  64: total training loss 5.37
+2020-07-11 22:35:47,065 EPOCH 65
+2020-07-11 22:35:51,193 Epoch  65 Step:  1364800 Batch Loss:     0.103207 Tokens per Sec:     2599, Lr: 0.000200
+2020-07-11 22:36:27,286 Epoch  65: total training loss 5.48
+2020-07-11 22:36:27,287 EPOCH 66
+2020-07-11 22:36:44,432 Epoch  66 Step:  1364900 Batch Loss:     0.099239 Tokens per Sec:     2735, Lr: 0.000200
+2020-07-11 22:37:07,253 Epoch  66: total training loss 5.45
+2020-07-11 22:37:07,253 EPOCH 67
+2020-07-11 22:37:38,521 Epoch  67 Step:  1365000 Batch Loss:     0.072955 Tokens per Sec:     2722, Lr: 0.000200
+2020-07-11 22:38:22,942 Example #0
+2020-07-11 22:38:22,942 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:38:22,942 	Raw hypothesis: ['<unk>', 'i', 'there', '!', '<unk>', 'kann', '<unk>', 'helfen', '?']
+2020-07-11 22:38:22,942 	Source:     Hi there ! How can I help ?
+2020-07-11 22:38:22,942 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:38:22,943 	Hypothesis: <unk> i there ! <unk> kann <unk> helfen ?
+2020-07-11 22:38:22,943 Example #1
+2020-07-11 22:38:22,943 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:38:22,943 	Raw hypothesis: ['ich', 'bin', 'dort', '<unk>', ',', 'aber', 'ich', 'muss', 'mein', 'auto', 'nach', '<unk>', 'fahren', ',', 'und', 'ich', 'würde', '<unk>', '<unk>', 'sehen', '.']
+2020-07-11 22:38:22,943 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:38:22,943 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:38:22,943 	Hypothesis: ich bin dort <unk> , aber ich muss mein auto nach <unk> fahren , und ich würde <unk> <unk> sehen .
+2020-07-11 22:38:22,943 Example #2
+2020-07-11 22:38:22,943 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:38:22,943 	Raw hypothesis: ['realistisch', 'betrachtet', '!', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:38:22,943 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:38:22,943 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:38:22,943 	Hypothesis: realistisch betrachtet ! welche art von auto ist es ?
+2020-07-11 22:38:22,944 Example #3
+2020-07-11 22:38:22,944 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:38:22,944 	Raw hypothesis: ['über', '2011', '<unk>', 'im', '<unk>', 'nach', '<unk>', '.']
+2020-07-11 22:38:22,944 	Source:     about 2011 Neason Road .
+2020-07-11 22:38:22,944 	Reference:  2011 Neason Road .
+2020-07-11 22:38:22,944 	Hypothesis: über 2011 <unk> im <unk> nach <unk> .
+2020-07-11 22:38:22,944 Validation result (greedy) at epoch  67, step  1365000: bleu:   7.69, loss: 88240.8828, ppl: 155.6372, duration: 44.4219s
+2020-07-11 22:38:31,736 Epoch  67: total training loss 5.34
+2020-07-11 22:38:31,737 EPOCH 68
+2020-07-11 22:39:11,662 Epoch  68: total training loss 5.40
+2020-07-11 22:39:11,663 EPOCH 69
+2020-07-11 22:39:16,045 Epoch  69 Step:  1365100 Batch Loss:     0.090820 Tokens per Sec:     2787, Lr: 0.000200
+2020-07-11 22:39:51,803 Epoch  69: total training loss 5.05
+2020-07-11 22:39:51,803 EPOCH 70
+2020-07-11 22:40:09,105 Epoch  70 Step:  1365200 Batch Loss:     0.060939 Tokens per Sec:     2805, Lr: 0.000200
+2020-07-11 22:40:31,663 Epoch  70: total training loss 6.09
+2020-07-11 22:40:31,663 EPOCH 71
+2020-07-11 22:41:02,592 Epoch  71 Step:  1365300 Batch Loss:     0.053187 Tokens per Sec:     2759, Lr: 0.000200
+2020-07-11 22:41:11,364 Epoch  71: total training loss 6.15
+2020-07-11 22:41:11,366 EPOCH 72
+2020-07-11 22:41:51,359 Epoch  72: total training loss 5.62
+2020-07-11 22:41:51,359 EPOCH 73
+2020-07-11 22:41:55,639 Epoch  73 Step:  1365400 Batch Loss:     0.065360 Tokens per Sec:     2802, Lr: 0.000200
+2020-07-11 22:42:31,137 Epoch  73: total training loss 5.52
+2020-07-11 22:42:31,137 EPOCH 74
+2020-07-11 22:42:49,002 Epoch  74 Step:  1365500 Batch Loss:     0.054744 Tokens per Sec:     2722, Lr: 0.000200
+2020-07-11 22:43:10,983 Epoch  74: total training loss 4.77
+2020-07-11 22:43:10,984 EPOCH 75
+2020-07-11 22:43:41,916 Epoch  75 Step:  1365600 Batch Loss:     0.058921 Tokens per Sec:     2739, Lr: 0.000200
+2020-07-11 22:43:50,801 Epoch  75: total training loss 4.43
+2020-07-11 22:43:50,801 EPOCH 76
+2020-07-11 22:44:30,778 Epoch  76: total training loss 4.14
+2020-07-11 22:44:30,779 EPOCH 77
+2020-07-11 22:44:35,298 Epoch  77 Step:  1365700 Batch Loss:     0.064704 Tokens per Sec:     2630, Lr: 0.000200
+2020-07-11 22:45:49,688 Example #0
+2020-07-11 22:45:49,688 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:45:49,688 	Raw hypothesis: ['<unk>', 'ich', 'bin', 'da', '!', '<unk>', 'kann', '<unk>', 'helfen', '?']
+2020-07-11 22:45:49,688 	Source:     Hi there ! How can I help ?
+2020-07-11 22:45:49,688 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:45:49,688 	Hypothesis: <unk> ich bin da ! <unk> kann <unk> helfen ?
+2020-07-11 22:45:49,688 Example #1
+2020-07-11 22:45:49,689 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:45:49,689 	Raw hypothesis: ['da', '<unk>', ',', 'muss', 'man', 'mein', 'auto', 'nach', '<unk>', 'nehmen', ',', 'und', '<unk>', 'würde', 'es', 'gerne', '<unk>', ',', '<unk>', '<unk>', 'zu', 'sehen', '.']
+2020-07-11 22:45:49,689 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:45:49,689 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:45:49,689 	Hypothesis: da <unk> , muss man mein auto nach <unk> nehmen , und <unk> würde es gerne <unk> , <unk> <unk> zu sehen .
+2020-07-11 22:45:49,689 Example #2
+2020-07-11 22:45:49,689 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:45:49,689 	Raw hypothesis: ['<unk>', 'ist', 'es', 'möglich', ',', 'welche', 'art', 'von', 'auto', 'es', 'ist', '?']
+2020-07-11 22:45:49,689 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:45:49,689 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:45:49,689 	Hypothesis: <unk> ist es möglich , welche art von auto es ist ?
+2020-07-11 22:45:49,689 Example #3
+2020-07-11 22:45:49,689 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:45:49,689 	Raw hypothesis: ['über', '2011', '<unk>', '<unk>', 'im', '<unk>', '<unk>', '.']
+2020-07-11 22:45:49,689 	Source:     about 2011 Neason Road .
+2020-07-11 22:45:49,690 	Reference:  2011 Neason Road .
+2020-07-11 22:45:49,690 	Hypothesis: über 2011 <unk> <unk> im <unk> <unk> .
+2020-07-11 22:45:49,690 Validation result (greedy) at epoch  77, step  1365750: bleu:   6.95, loss: 95136.1406, ppl: 230.8916, duration: 47.6899s
+2020-07-11 22:45:58,206 Epoch  77: total training loss 4.01
+2020-07-11 22:45:58,207 EPOCH 78
+2020-07-11 22:46:16,673 Epoch  78 Step:  1365800 Batch Loss:     0.051890 Tokens per Sec:     2712, Lr: 0.000200
+2020-07-11 22:46:38,262 Epoch  78: total training loss 3.92
+2020-07-11 22:46:38,262 EPOCH 79
+2020-07-11 22:47:09,998 Epoch  79 Step:  1365900 Batch Loss:     0.044017 Tokens per Sec:     2734, Lr: 0.000200
+2020-07-11 22:47:18,304 Epoch  79: total training loss 3.84
+2020-07-11 22:47:18,304 EPOCH 80
+2020-07-11 22:47:58,252 Epoch  80: total training loss 3.85
+2020-07-11 22:47:58,253 EPOCH 81
+2020-07-11 22:48:02,798 Epoch  81 Step:  1366000 Batch Loss:     0.034278 Tokens per Sec:     2708, Lr: 0.000200
+2020-07-11 22:48:38,351 Epoch  81: total training loss 3.77
+2020-07-11 22:48:38,352 EPOCH 82
+2020-07-11 22:48:56,702 Epoch  82 Step:  1366100 Batch Loss:     0.048158 Tokens per Sec:     2728, Lr: 0.000200
+2020-07-11 22:49:18,401 Epoch  82: total training loss 3.65
+2020-07-11 22:49:18,401 EPOCH 83
+2020-07-11 22:49:49,833 Epoch  83 Step:  1366200 Batch Loss:     0.042954 Tokens per Sec:     2757, Lr: 0.000200
+2020-07-11 22:49:58,245 Epoch  83: total training loss 3.62
+2020-07-11 22:49:58,246 EPOCH 84
+2020-07-11 22:50:38,064 Epoch  84: total training loss 3.63
+2020-07-11 22:50:38,064 EPOCH 85
+2020-07-11 22:50:42,893 Epoch  85 Step:  1366300 Batch Loss:     0.051466 Tokens per Sec:     2811, Lr: 0.000200
+2020-07-11 22:51:17,908 Epoch  85: total training loss 4.06
+2020-07-11 22:51:17,909 EPOCH 86
+2020-07-11 22:51:36,196 Epoch  86 Step:  1366400 Batch Loss:     0.048125 Tokens per Sec:     2747, Lr: 0.000200
+2020-07-11 22:51:58,001 Epoch  86: total training loss 3.71
+2020-07-11 22:51:58,002 EPOCH 87
+2020-07-11 22:52:29,307 Epoch  87 Step:  1366500 Batch Loss:     0.053283 Tokens per Sec:     2756, Lr: 0.000200
+2020-07-11 22:53:15,847 Example #0
+2020-07-11 22:53:15,847 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 22:53:15,847 	Raw hypothesis: ['<unk>', 'ich', 'da', '<unk>', '!', '<unk>', 'kann', '<unk>', 'helfen', '?']
+2020-07-11 22:53:15,847 	Source:     Hi there ! How can I help ?
+2020-07-11 22:53:15,847 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 22:53:15,847 	Hypothesis: <unk> ich da <unk> ! <unk> kann <unk> helfen ?
+2020-07-11 22:53:15,847 Example #1
+2020-07-11 22:53:15,847 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 22:53:15,848 	Raw hypothesis: ['<unk>', ',', '<unk>', 'muss', 'mein', 'auto', 'nach', '<unk>', 'fahren', ',', 'und', '<unk>', '<unk>', 'würde', 'es', 'gerne', '<unk>', ',', '<unk>', '<unk>', 'zu', 'sehen', '.']
+2020-07-11 22:53:15,848 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 22:53:15,848 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 22:53:15,848 	Hypothesis: <unk> , <unk> muss mein auto nach <unk> fahren , und <unk> <unk> würde es gerne <unk> , <unk> <unk> zu sehen .
+2020-07-11 22:53:15,848 Example #2
+2020-07-11 22:53:15,848 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 22:53:15,848 	Raw hypothesis: ['<unk>', '!', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 22:53:15,848 	Source:     Sure ! what type of car is it ?
+2020-07-11 22:53:15,848 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 22:53:15,848 	Hypothesis: <unk> ! welche art von auto ist es ?
+2020-07-11 22:53:15,848 Example #3
+2020-07-11 22:53:15,849 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 22:53:15,849 	Raw hypothesis: ['über', '2011', '<unk>', '<unk>', 'im', '<unk>', '<unk>', '.']
+2020-07-11 22:53:15,849 	Source:     about 2011 Neason Road .
+2020-07-11 22:53:15,849 	Reference:  2011 Neason Road .
+2020-07-11 22:53:15,849 	Hypothesis: über 2011 <unk> <unk> im <unk> <unk> .
+2020-07-11 22:53:15,849 Validation result (greedy) at epoch  87, step  1366500: bleu:   6.44, loss: 100457.1406, ppl: 313.0362, duration: 46.5414s
+2020-07-11 22:53:24,593 Epoch  87: total training loss 3.77
+2020-07-11 22:53:24,593 EPOCH 88
+2020-07-11 22:54:04,351 Epoch  88: total training loss 3.56
+2020-07-11 22:54:04,352 EPOCH 89
+2020-07-11 22:54:09,775 Epoch  89 Step:  1366600 Batch Loss:     0.040883 Tokens per Sec:     2861, Lr: 0.000200
+2020-07-11 22:54:44,541 Epoch  89: total training loss 3.61
+2020-07-11 22:54:44,542 EPOCH 90
+2020-07-11 22:55:03,551 Epoch  90 Step:  1366700 Batch Loss:     0.042911 Tokens per Sec:     2705, Lr: 0.000200
+2020-07-11 22:55:24,459 Epoch  90: total training loss 3.32
+2020-07-11 22:55:24,460 EPOCH 91
+2020-07-11 22:55:56,490 Epoch  91 Step:  1366800 Batch Loss:     0.042418 Tokens per Sec:     2728, Lr: 0.000200
+2020-07-11 22:56:04,456 Epoch  91: total training loss 3.55
+2020-07-11 22:56:04,457 EPOCH 92
+2020-07-11 22:56:44,474 Epoch  92: total training loss 3.53
+2020-07-11 22:56:44,475 EPOCH 93
+2020-07-11 22:56:49,850 Epoch  93 Step:  1366900 Batch Loss:     0.051841 Tokens per Sec:     2810, Lr: 0.000200
+2020-07-11 22:57:24,551 Epoch  93: total training loss 3.27
+2020-07-11 22:57:24,552 EPOCH 94
+2020-07-11 22:57:43,322 Epoch  94 Step:  1367000 Batch Loss:     0.038733 Tokens per Sec:     2629, Lr: 0.000200
+2020-07-11 22:58:04,699 Epoch  94: total training loss 4.25
+2020-07-11 22:58:04,699 EPOCH 95
+2020-07-11 22:58:36,265 Epoch  95 Step:  1367100 Batch Loss:     0.051370 Tokens per Sec:     2762, Lr: 0.000200
+2020-07-11 22:58:44,565 Epoch  95: total training loss 4.52
+2020-07-11 22:58:44,566 EPOCH 96
+2020-07-11 22:59:24,490 Epoch  96: total training loss 4.32
+2020-07-11 22:59:24,491 EPOCH 97
+2020-07-11 22:59:29,539 Epoch  97 Step:  1367200 Batch Loss:     0.048349 Tokens per Sec:     2703, Lr: 0.000200
+2020-07-11 23:00:41,200 Example #0
+2020-07-11 23:00:41,200 	Raw source:     ['H@@', 'i', 'there', '!', 'How', 'can', 'I', 'help', '?']
+2020-07-11 23:00:41,200 	Raw hypothesis: ['<unk>', ',', 'wo', 'ich', '<unk>', 'kann', ',', 'kann', '<unk>', 'helfen', '?']
+2020-07-11 23:00:41,200 	Source:     Hi there ! How can I help ?
+2020-07-11 23:00:41,200 	Reference:  Hallo ! Wie kann ich helfen ?
+2020-07-11 23:00:41,200 	Hypothesis: <unk> , wo ich <unk> kann , kann <unk> helfen ?
+2020-07-11 23:00:41,200 Example #1
+2020-07-11 23:00:41,200 	Raw source:     ['H@@', 'ey', 'there', ',', 'I', 'need', 'to', 'take', 'my', 'car', 'to', 'mechan@@', 'ic', 'and', 'I', 'would', 'like', 'to', 'see', 'Intelli@@', 'gent', 'Auto', 'imports', '.']
+2020-07-11 23:00:41,200 	Raw hypothesis: ['<unk>', 'da', ',', 'müssen', '<unk>', 'mein', 'auto', 'nach', '<unk>', 'nehmen', ',', 'und', '<unk>', 'würde', 'es', 'gerne', 'sehen', ',', '<unk>', '<unk>', 'zu', 'sehen', '.']
+2020-07-11 23:00:41,200 	Source:     Hey there , I need to take my car to mechanic and I would like to see Intelligent Auto imports .
+2020-07-11 23:00:41,200 	Reference:  Hey , ich muss mein Auto zum Mechaniker bringen und ich würde gerne Intelligent Auto Imports besuchen .
+2020-07-11 23:00:41,201 	Hypothesis: <unk> da , müssen <unk> mein auto nach <unk> nehmen , und <unk> würde es gerne sehen , <unk> <unk> zu sehen .
+2020-07-11 23:00:41,201 Example #2
+2020-07-11 23:00:41,201 	Raw source:     ['S@@', 'ure', '!', 'what', 'type', 'of', 'car', 'is', 'it', '?']
+2020-07-11 23:00:41,201 	Raw hypothesis: ['<unk>', 'ist', 'es', ',', 'welche', 'art', 'von', 'auto', 'ist', 'es', '?']
+2020-07-11 23:00:41,201 	Source:     Sure ! what type of car is it ?
+2020-07-11 23:00:41,201 	Reference:  Sicher ! Was für ein Auto ist das ?
+2020-07-11 23:00:41,201 	Hypothesis: <unk> ist es , welche art von auto ist es ?
+2020-07-11 23:00:41,201 Example #3
+2020-07-11 23:00:41,201 	Raw source:     ['about', '2011', 'Ne@@', 'as@@', 'on', 'Road', '.']
+2020-07-11 23:00:41,201 	Raw hypothesis: ['über', '2011', '<unk>', 'im', '<unk>', '<unk>', '.']
+2020-07-11 23:00:41,201 	Source:     about 2011 Neason Road .
+2020-07-11 23:00:41,201 	Reference:  2011 Neason Road .
+2020-07-11 23:00:41,202 	Hypothesis: über 2011 <unk> im <unk> <unk> .
+2020-07-11 23:00:41,202 Validation result (greedy) at epoch  97, step  1367250: bleu:   6.46, loss: 101616.9531, ppl: 334.5085, duration: 45.4079s
+2020-07-11 23:00:49,965 Epoch  97: total training loss 3.54
+2020-07-11 23:00:49,965 EPOCH 98
+2020-07-11 23:01:07,585 Epoch  98 Step:  1367300 Batch Loss:     0.040694 Tokens per Sec:     2770, Lr: 0.000140
+2020-07-11 23:01:29,962 Epoch  98: total training loss 3.20
+2020-07-11 23:01:29,963 EPOCH 99
+2020-07-11 23:02:01,410 Epoch  99 Step:  1367400 Batch Loss:     0.040089 Tokens per Sec:     2713, Lr: 0.000140
+2020-07-11 23:02:10,030 Epoch  99: total training loss 2.96
+2020-07-11 23:02:10,031 EPOCH 100
+2020-07-11 23:02:50,071 Epoch 100: total training loss 2.82
+2020-07-11 23:02:50,072 Training ended after 100 epochs.
+2020-07-11 23:02:50,072 Best validation result (greedy) at step  1360500:  16.05 ppl.
+2020-07-11 23:03:32,156 test bleu:  -1.00 [Beam search decoding with beam size = 5 and alpha = 1.0]
+2020-07-11 23:03:32,156 Translations saved to: models/wmt20/domainadaptation/main_tfm_b2048_ende_news_pretrained/01360500.hyps.test
+2020-07-11 23:04:09,430  dev bleu:  12.82 [Beam search decoding with beam size = 5 and alpha = 1.0]
+2020-07-11 23:04:09,431 Translations saved to: models/wmt20/domainadaptation/main_tfm_b2048_ende_news_pretrained/01360500.hyps.dev
