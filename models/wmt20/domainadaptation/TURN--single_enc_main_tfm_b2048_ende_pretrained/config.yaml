@@ -26,7 +26,7 @@ training:
     patience: 8
     decrease_factor: 0.7
     loss: "crossentropy"
-    learning_rate: 0.0001
+    learning_rate: 0.0002
     learning_rate_min: 0.00000001
     weight_decay: 0.0
     label_smoothing: 0.1
@@ -37,7 +37,7 @@ training:
     batch_multiplier: 1
     early_stopping_metric: "ppl"
     epochs: 50
-    validation_freq: 750
+    validation_freq: 200
     logging_freq: 100
     eval_metric: "bleu"
     model_dir: "models/wmt20/domainadaptation/TURN--single_enc_main_tfm_b2048_ende_pretrained/"
