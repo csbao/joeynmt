@@ -4,9 +4,9 @@ name: "transformer"
 data:
     src: "en"
     trg: "de"
-    train: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/train.tags.bpe.wmt-ende-best"
-    dev: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/dev.tags.bpe.wmt-ende-best"        # development data for validation
-    test:  "chatnmt/official_split_line_by_line/wmt17bpe/test.tags.bpe.wmt-ende-best"
+    train: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/news_bigrams_line_by_line"
+    dev: "chatnmt/official_split_line_by_line/wmt17bpe__boundaries/train.1400.tags.bpe.wmt-ende-best"        # development data for validation
+    test:  "chatnmt/official_split/wmt17bpe/test.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -36,12 +36,12 @@ training:
     #eval_batch_type: "token"
     batch_multiplier: 1
     early_stopping_metric: "ppl"
-    epochs: 50
-    validation_freq: 750
-    logging_freq: 100
+    epochs: 80
+    validation_freq: 100
+    logging_freq: 50
     eval_metric: "bleu"
-    model_dir: "models/wmt20/domainadaptation/main_tfm_b2048_ende_chat_finetuned_1/"
-    load_model: "models/wmt20/domainadaptation/main_tfm_b2048_ende_news_pretrained/best.ckpt"
+    model_dir: "models/wmt20/domainadaptation/main_tfm_b2048_ende_news_pretrained_senc/"
+    load_model: "models/wmt_ende_transformer/best.ckpt"
     reset_best_ckpt: True
     reset_scheduler: True
     reset_optimizer: True
@@ -73,7 +73,7 @@ model:
         ff_size: 2048
         freeze: False
         dropout: 0.1
-        multi_encoder: True
+        # multi_encoder: True
     decoder:
         type: "transformer"
         num_layers: 6
