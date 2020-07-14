@@ -177,13 +177,13 @@ def beam_search(
         bos_index: int, eos_index: int, pad_index: int,
         encoder_output: Tensor, encoder_hidden: Tensor,
         src_mask: Tensor, max_output_length: int, alpha: float,
-        embed: Embeddings, n_best: int = 1) -> (np.array, np.array):
+        embed: Embeddings, n_best: int = 1,
+        encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None,
+        prev_src: Tensor=None, prev_src_mask: Tensor=None, decoder_layer=None, output_layer=None) -> (np.array, np.array):
     """
     Beam search with size k.
     Inspired by OpenNMT-py, adapted for Transformer.
-
     In each decoding step, find the k most likely partial hypotheses.
-
     :param decoder:
     :param size: size of the beam
     :param bos_index:
@@ -221,6 +221,9 @@ def beam_search(
 
     encoder_output = tile(encoder_output.contiguous(), size,
                           dim=0)  # batch*k x src_len x enc_hidden_size
+
+    if encoder_output_2 is not None:
+        encoder_output_2 = tile(encoder_output_2.contiguous(), size, dim=0)
     src_mask = tile(src_mask, size, dim=0)  # batch*k x 1 x src_len
 
     # Transformer only: create target mask
@@ -279,16 +282,22 @@ def beam_search(
         # logits: logits for final softmax
         # pylint: disable=unused-variable
         trg_embed = embed(decoder_input)
+
+        # logits, hidden, att_scores, att_vectors = None, None, None, None 
+ 
         logits, hidden, att_scores, att_vectors = decoder(
-            encoder_output=encoder_output,
-            encoder_hidden=encoder_hidden,
-            src_mask=src_mask,
-            trg_embed=trg_embed,
-            hidden=hidden,
-            prev_att_vector=att_vectors,
-            unroll_steps=1,
-            trg_mask=trg_mask  # subsequent mask for Transformer only
+                encoder_output=encoder_output,
+                encoder_hidden=encoder_hidden,
+                src_mask=src_mask,
+                trg_embed=trg_embed,
+                hidden=hidden,
+                prev_att_vector=att_vectors,
+                unroll_steps=1,
+                trg_mask=trg_mask,  # subsequent mask for Transformer only
+                encoder_output_2=encoder_output_2,
+                encoder_hidden_2=encoder_hidden_2
         )
+
 
         # For the Transformer we made predictions for all time steps up to
         # this point, so we only want to know about the last time step.

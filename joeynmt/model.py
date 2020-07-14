@@ -92,6 +92,8 @@ class Model(nn.Module):
                                                      src_mask=src_mask,
                                                      encoder=self.encoder)
 
+        encoder_output_2 = None
+        encoder_hidden_2 = None
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(src=prev_src,
                                                          src_length=prev_src_lengths,
@@ -105,11 +107,16 @@ class Model(nn.Module):
         # Add combination function here, gate sum the two outputs
 
         unroll_steps = trg_input.size(1)
-        return self.decode(encoder_output=encoder_output,
+        output = self.decode(encoder_output=encoder_output,
                            encoder_hidden=encoder_hidden,
                            src_mask=src_mask, trg_input=trg_input,
+                           encoder_output_2=encoder_output_2, #circumvent gated rep, give dir to decoder
+                           encoder_hidden_2=encoder_hidden_2,
                            unroll_steps=unroll_steps,
-                           trg_mask=trg_mask)
+                           trg_mask=trg_mask,
+                           prev_src_mask=prev_src_mask,
+                           p_src=prev_src)
+        return output
 
     def encode(self, src: Tensor, src_length: Tensor, src_mask: Tensor, encoder: Encoder) \
         -> (Tensor, Tensor):
@@ -125,12 +132,13 @@ class Model(nn.Module):
 
     def decode(self, encoder_output: Tensor, encoder_hidden: Tensor,
                src_mask: Tensor, trg_input: Tensor,
-               unroll_steps: int, decoder_hidden: Tensor = None,
-               trg_mask: Tensor = None) \
+               unroll_steps: int, encoder_output_2: Tensor=None, encoder_hidden_2: Tensor=None,
+               decoder_hidden: Tensor = None,
+               trg_mask: Tensor = None,
+               prev_src_mask:Tensor = None, p_src: Tensor=None) \
         -> (Tensor, Tensor, Tensor, Tensor):
         """
         Decode, given an encoded source sentence.
-
         :param encoder_output: encoder states for attention computation
         :param encoder_hidden: last encoder state for decoder initialization
         :param src_mask: source mask, 1 at valid tokens
@@ -140,13 +148,21 @@ class Model(nn.Module):
         :param trg_mask: mask for target steps
         :return: decoder outputs (outputs, hidden, att_probs, att_vectors)
         """
-        return self.decoder(trg_embed=self.trg_embed(trg_input),
-                            encoder_output=encoder_output,
-                            encoder_hidden=encoder_hidden,
-                            src_mask=src_mask,
-                            unroll_steps=unroll_steps,
-                            hidden=decoder_hidden,
-                            trg_mask=trg_mask)
+
+        o, x, a, b = self.decoder(trg_embed=self.trg_embed(trg_input),
+                encoder_output=encoder_output,
+                encoder_hidden=encoder_hidden,
+                src_mask=src_mask,
+                unroll_steps=unroll_steps,
+                encoder_output_2=encoder_output_2,
+                encoder_hidden_2=encoder_hidden_2,
+                hidden=decoder_hidden,
+                trg_mask=trg_mask,
+                prev_src_mask=prev_src_mask,
+                p_src=p_src)
+            
+        return o, x, a, b 
+
 
     def get_loss_for_batch(self, batch: Batch, loss_function: nn.Module) \
             -> Tensor:
@@ -189,6 +205,7 @@ class Model(nn.Module):
         encoder_output, encoder_hidden = self.encode(
             batch.src, batch.src_lengths,
             batch.src_mask, self.encoder)
+        encoder_output_2, encoder_hidden_2 = None, None
         if self.encoder_2:
             encoder_output_2, encoder_hidden_2 = self.encode(
                 src=batch.src_prev, src_length=batch.src_prev_lengths,
@@ -221,7 +238,12 @@ class Model(nn.Module):
                         alpha=beam_alpha, eos_index=self.eos_index,
                         pad_index=self.pad_index,
                         bos_index=self.bos_index,
-                        decoder=self.decoder)
+                        decoder=self.decoder,
+                        encoder_hidden_2=encoder_hidden_2,
+                        encoder_output_2=encoder_output_2,
+                        prev_src=batch.src_prev,
+                        prev_src_mask=batch.src_prev_mask,
+                        decoder_layer=self.last_layer_decode)
 
         return stacked_output, stacked_attention_scores
 
