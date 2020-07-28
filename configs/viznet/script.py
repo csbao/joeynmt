@@ -21,7 +21,9 @@ with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/vizne
 
                             doc["model"]["encoder"]["dropout"] = dropout
                             doc["model"]["encoder"]["hidden_size"] = hs_enc
+                            doc["model"]["encoder"]["embeddings"]["embedding_dim"] = hs_enc
                             doc["model"]["decoder"]["hidden_size"] = hs_dec
+                            doc["model"]["decoder"]["embeddings"]["embedding_dim"] = hs_dec
                             doc["training"]["batch_size"] = bs
                             doc["training"]["model_dir"] = f"models/viznet/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}"
                             with open(f"/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/viznet/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}.yml", 'w') as outfile:
