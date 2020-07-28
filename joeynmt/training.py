@@ -545,7 +545,7 @@ class TrainManager:
         }
         with open(self.valid_report_file, 'a') as opened_file:
             opened_file.write(
-                f"num_heads_enc: {self.num_heads_enc}\tnum_heads_dec: {self.num_heads_dec}\tdropout: {self.dropout}\thidden_size_enc: {self.hidden_size_enc}\thidden_size_dec: {self.hidden_size_dec}\tbatch_size: {self.batch_size}")
+                f"num_heads_enc: {self.num_heads_enc}\tnum_heads_dec: {self.num_heads_dec}\tdropout: {self.dropout}\thidden_size_enc: {self.hidden_size_enc}\thidden_size_dec: {self.hidden_size_dec}\tbatch_size: {self.batch_size}\n")
 
     def _add_report(self, valid_score: float, valid_ppl: float,
                     valid_loss: float, eval_metric: str,
