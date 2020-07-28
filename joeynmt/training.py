@@ -81,6 +81,11 @@ class TrainManager:
         self.optimizer = build_optimizer(config=train_config,
                                          parameters=model.parameters())
 
+        self.num_heads_enc = config["model"]["encoder"]["num_heads"]
+        self.num_heads_dec = config["model"]["decoder"]["num_heads"]
+        self.dropout = config["model"]["encoder"]["dropout"]
+        self.hidden_size_enc = config["model"]["encoder"]["hidden_size"]
+        self.hidden_size_dec = config["model"]["decoder"]["hidden_size"]
         # validation & early stopping
         self.validation_freq = train_config.get("validation_freq", 1000)
         self.log_valid_sents = train_config.get("print_valid_sents", [0, 1, 2])
@@ -285,6 +290,9 @@ class TrainManager:
         # to fit the number of leftover training examples
         leftover_batch_size = len(
             train_data) % (self.batch_multiplier * self.batch_size)
+
+        self.add_headers()
+
 
         for epoch_no in range(self.epochs):
             self.logger.info("EPOCH %d", epoch_no + 1)
@@ -524,6 +532,20 @@ class TrainManager:
         self.total_tokens += batch.ntokens
 
         return norm_batch_loss
+
+    def add_headers(self):
+        # epochs should be 40 always
+        features = {
+            'num_heads_enc': [2,4, 8],
+            'num_heads_dec': [2, 4, 8],
+            'dropout': [0.1,0.2], # will be true for both enc and dec
+            'hidden_size_enc': [256,512],
+            'hidden_size_dec': [256,512],
+            'batch_size': [256,512,1024]
+        }
+        with open(self.valid_report_file, 'a') as opened_file:
+            opened_file.write(
+                f"num_heads_enc: {self.num_heads_enc}\tnum_heads_dec: {self.num_heads_dec}\tdropout: {self.dropout}\thidden_size_enc: {self.hidden_size_enc}\thidden_size_dec: {self.hidden_size_dec}\tbatch_size: {self.batch_size}")
 
     def _add_report(self, valid_score: float, valid_ppl: float,
                     valid_loss: float, eval_metric: str,
