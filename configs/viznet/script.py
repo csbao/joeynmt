@@ -6,9 +6,9 @@ with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/vizne
         'num_heads_enc': [2,4, 8],
         'num_heads_dec': [2, 4, 8],
         'dropout': [0.1,0.2], # will be true for both enc and dec
-        'hidden_size_enc': [256,512],
-        'hidden_size_dec': [256,512],
-        'batch_size': [256,512,1024]
+        'hidden_size_enc': [64,128],
+        'hidden_size_dec': [64,128],
+        'batch_size': [64,128,256]
     }
     for num_head_enc in features['num_heads_enc']:
         for num_head_dec in features['num_heads_dec']:
