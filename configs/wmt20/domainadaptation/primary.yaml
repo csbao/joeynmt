@@ -40,7 +40,8 @@ training:
     validation_freq: 750
     logging_freq: 100
     eval_metric: "bleu"
-    model_dir: "models/wmt20/domainadaptation/TURN--single_enc_main_tfm_b2048_ende_pretrained/"
+    #model_dir: "models/wmt20/domainadaptation/TURN--single_enc_main_tfm_b2048_ende_pretrained/"
+    model_dir: "models/wmt20/TURN--single_enc_main_tfm_b2048_ende_pretrained/"
     load_model: "models/wmt20/TURN--single_enc_main_tfm_b2048_ende_pretrained/best.ckpt"
     reset_best_ckpt: True
     reset_scheduler: True
@@ -73,7 +74,6 @@ model:
         ff_size: 2048
         freeze: False
         dropout: 0.1
-        multi_encoder: True
     decoder:
         type: "transformer"
         num_layers: 6

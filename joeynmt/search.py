@@ -412,7 +412,7 @@ def beam_search(
         return filled
 
     def pad_and_stack_attention(vals, pad_value):
-        filled = np.ones((len(vals)+10, max([h.shape[0] for h in vals]), max([h.shape[1] for h in vals])),
+        filled = np.ones((len(vals)+45, max([h.shape[0] for h in vals]), max([h.shape[1] for h in vals])),
                         dtype=int) * (pad_value)
         for j, h in enumerate(vals):
             for k,i in enumerate(h):
