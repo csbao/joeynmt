@@ -325,7 +325,8 @@ class TransformerDecoderLayer(nn.Module):
         # source-target attention
         h1_norm = self.dec_layer_norm(h1)
         h2 = self.src_trg_att(memory, memory, h1_norm, mask=src_mask)
+
         # final position-wise feed-forward layer
         o = self.feed_forward(self.dropout(h2) + h1)
 
-        return o, h2
+        return o

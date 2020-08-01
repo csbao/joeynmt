@@ -107,7 +107,6 @@ def validate_on_data(model: Model, data: Dataset,
 
             # sort outputs back to original order
             all_outputs.extend(output[sort_reverse_index])
-
             valid_attention_scores.extend(
                 attention_scores[sort_reverse_index]
                 if attention_scores is not None else [])
@@ -247,6 +246,7 @@ def test(cfg_file,
             use_cuda=use_cuda, loss_function=None, beam_size=beam_size,
             beam_alpha=beam_alpha, logger=logger)
         #pylint: enable=unused-variable
+
         if "trg" in data_set.fields:
             decoding_description = "Greedy decoding" if beam_size < 2 else \
                 "Beam search decoding with beam size = {} and alpha = {}".\
