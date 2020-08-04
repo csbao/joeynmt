@@ -220,6 +220,7 @@ def transformer_greedy(
 
             if torch.cuda.is_available():
                 prob_next_word = prob_next_word.cuda()
+                next_word = next_word.cuda()
             curr_hyp_probs = torch.cat([curr_hyp_probs, prob_next_word.unsqueeze(-1)], dim=1)
 
             # ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
