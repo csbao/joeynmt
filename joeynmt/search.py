@@ -177,6 +177,8 @@ def transformer_greedy(
             # print(probs)
             # print(logits)
             ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
+            if torch.cuda.is_available():
+                probs = probs.cuda()
             ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
            
             # check if previous symbol was <eos>
