@@ -81,7 +81,9 @@ def validate_on_data(model: Model, data: Dataset,
     # don't track gradients during validation
     with torch.no_grad():
         all_outputs = []
+        all_target_output_scores = []
         valid_attention_scores = []
+        all_hyp_output_scores = []
         total_loss = 0
         total_ntokens = 0
         total_nseqs = 0
@@ -101,12 +103,14 @@ def validate_on_data(model: Model, data: Dataset,
                 total_nseqs += batch.nseqs
 
             # run as during inference to produce translations
-            output, attention_scores = model.run_batch(
+            output, attention_scores, generated_scores, target_scores = model.run_batch(
                 batch=batch, beam_size=beam_size, beam_alpha=beam_alpha,
                 max_output_length=max_output_length)
 
             # sort outputs back to original order
             all_outputs.extend(output[sort_reverse_index])
+            all_target_output_scores.extend(target_scores[sort_reverse_index])
+            all_hyp_output_scores.extend(generated_scores[sort_reverse_index])
             valid_attention_scores.extend(
                 attention_scores[sort_reverse_index]
                 if attention_scores is not None else [])
@@ -125,13 +129,11 @@ def validate_on_data(model: Model, data: Dataset,
         # decode back to symbols
         decoded_valid = model.trg_vocab.arrays_to_sentences(arrays=all_outputs,
                                                             cut_at_eos=True)
-
         # evaluate with metric on full dataset
         join_char = " " if level in ["word", "bpe"] else ""
         valid_sources = [join_char.join(s) for s in data.src]
         valid_references = [join_char.join(t) for t in data.trg]
         valid_hypotheses = [join_char.join(t) for t in decoded_valid]
-
         # post-process
         if level == "bpe":
             valid_sources = [bpe_postprocess(s) for s in valid_sources]
@@ -161,7 +163,7 @@ def validate_on_data(model: Model, data: Dataset,
 
     return current_valid_score, valid_loss, valid_ppl, valid_sources, \
         valid_sources_raw, valid_references, valid_hypotheses, \
-        decoded_valid, valid_attention_scores
+        decoded_valid, valid_attention_scores, all_hyp_output_scores, all_target_output_scores
 
 
 # pylint: disable-msg=logging-too-many-args
@@ -239,7 +241,7 @@ def test(cfg_file,
 
         #pylint: disable=unused-variable
         score, loss, ppl, sources, sources_raw, references, hypotheses, \
-        hypotheses_raw, attention_scores = validate_on_data(
+        hypotheses_raw, attention_scores, gen_scores, trg_scores = validate_on_data(
             model, data=data_set, batch_size=batch_size,
             batch_type=batch_type, level=level,
             max_output_length=max_output_length, eval_metric=eval_metric,
@@ -277,8 +279,8 @@ def test(cfg_file,
         if output_path is not None:
             output_path_set = "{}.{}".format(output_path, data_set_name)
             with open(output_path_set, mode="w", encoding="utf-8") as out_file:
-                for hyp in hypotheses:
-                    out_file.write(hyp + "\n")
+                for hyp, gen_score, trg_score, in zip(hypotheses, gen_scores, trg_scores):
+                    out_file.write(hyp + "\t" + "SCORE: " + str(gen_score) + "\t" + "REF SCORE: " + str(trg_score) + "\n")
             logger.info("Translations saved to: %s", output_path_set)
 
 
@@ -320,7 +322,7 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
         """ Translates given dataset, using parameters from outer scope. """
         # pylint: disable=unused-variable
         score, loss, ppl, sources, sources_raw, references, hypotheses, \
-        hypotheses_raw, attention_scores = validate_on_data(
+        hypotheses_raw, attention_scores, _, _ = validate_on_data(
             model, data=test_data, batch_size=batch_size,
             batch_type=batch_type, level=level,
             max_output_length=max_output_length, eval_metric="",
@@ -331,7 +333,6 @@ def translate(cfg_file, ckpt: str, output_path: str = None) -> None:
     cfg = load_config(cfg_file)
     # when checkpoint is not specified, take oldest from model dir
     model_dir = None
-    print(model_dir)
     if ckpt is None:
         model_dir = cfg["training"]["model_dir"]
         ckpt = get_latest_checkpoint(model_dir)

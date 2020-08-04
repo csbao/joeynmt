@@ -201,15 +201,18 @@ class Model(nn.Module):
         # if maximum output length is not globally specified, adapt to src len
         if max_output_length is None:
             max_output_length = int(max(batch.src_lengths.cpu().numpy()) * 1.5)
-
+        target_hypothesis_scores = None
+        generated_hypothesis_scores = None
         # greedy decoding
         if beam_size < 2:
-            stacked_output, stacked_attention_scores = greedy(
+            # WARNING: modified for testing only -- expects current batch to also have a
+            # trg field -- so MonoDatasets wont work.
+            stacked_output, stacked_attention_scores, generated_hypothesis_scores, target_hypothesis_scores = greedy(
                     encoder_hidden=encoder_hidden,
-                    encoder_output=encoder_output, eos_index=self.eos_index,
+                    encoder_output=encoder_output, eos_index=self.eos_index, pad_index=self.pad_index,
                     src_mask=batch.src_mask, embed=self.trg_embed,
                     bos_index=self.bos_index, decoder=self.decoder,
-                    max_output_length=max_output_length)
+                    max_output_length=max_output_length, trg_tensor=batch.trg)
             # batch, time, max_src_length
         else:  # beam size
             stacked_output, stacked_attention_scores = \
@@ -223,7 +226,7 @@ class Model(nn.Module):
                         bos_index=self.bos_index,
                         decoder=self.decoder)
 
-        return stacked_output, stacked_attention_scores
+        return stacked_output, stacked_attention_scores, generated_hypothesis_scores, target_hypothesis_scores
 
     def __repr__(self) -> str:
         """

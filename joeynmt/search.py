@@ -12,9 +12,10 @@ from joeynmt.helpers import tile
 __all__ = ["greedy", "transformer_greedy", "beam_search"]
 
 
-def greedy(src_mask: Tensor, embed: Embeddings, bos_index: int, eos_index: int,
+def greedy(src_mask: Tensor, embed: Embeddings, bos_index: int, eos_index: int, pad_index: int,
            max_output_length: int, decoder: Decoder,
-           encoder_output: Tensor, encoder_hidden: Tensor)\
+           encoder_output: Tensor, encoder_hidden: Tensor,
+           trg_tensor: Tensor = None)\
         -> (np.array, np.array):
     """
     Greedy decoding. Select the token word highest probability at each time
@@ -40,14 +41,14 @@ def greedy(src_mask: Tensor, embed: Embeddings, bos_index: int, eos_index: int,
         greedy_fun = recurrent_greedy
 
     return greedy_fun(
-        src_mask, embed, bos_index, eos_index, max_output_length,
-        decoder, encoder_output, encoder_hidden)
+        src_mask, embed, bos_index, eos_index, pad_index, max_output_length,
+        decoder, encoder_output, encoder_hidden, trg_tensor)
 
 
 def recurrent_greedy(
-        src_mask: Tensor, embed: Embeddings, bos_index: int, eos_index: int,
+        src_mask: Tensor, embed: Embeddings, bos_index: int, eos_index: int, pad_index: int,
         max_output_length: int, decoder: Decoder,
-        encoder_output: Tensor, encoder_hidden: Tensor) -> (np.array, np.array):
+        encoder_output: Tensor, encoder_hidden: Tensor, trg_tensor: Tensor = None) -> (np.array, np.array):
     """
     Greedy decoding: in each step, choose the word that gets highest score.
     Version for recurrent decoder.
@@ -108,9 +109,9 @@ def recurrent_greedy(
 # pylint: disable=unused-argument
 def transformer_greedy(
         src_mask: Tensor, embed: Embeddings,
-        bos_index: int, eos_index: int,
+        bos_index: int, eos_index: int, pad_index: int,
         max_output_length: int, decoder: Decoder,
-        encoder_output: Tensor, encoder_hidden: Tensor) -> (np.array, None):
+        encoder_output: Tensor, encoder_hidden: Tensor, trg_tensor: Tensor = None) -> (np.array, None):
     """
     Special greedy function for transformer, since it works differently.
     The transformer remembers all previous states and attends to them.
@@ -138,6 +139,61 @@ def transformer_greedy(
 
     finished = src_mask.new_zeros((batch_size)).byte()
 
+
+
+    # start with BOS-symbol for each sentence in the batch
+    ys_trg = encoder_output.new_full([batch_size, 1], bos_index, dtype=torch.long)
+    ys_hypotheses_probs = encoder_output.new_full([batch_size, 1], bos_index, dtype=torch.float64)
+
+    # a subsequent mask is intersected with this in decoder forward pass
+    trg_mask_trg = src_mask.new_ones([1, 1, 1])
+
+    finished_trg = src_mask.new_zeros((batch_size)).byte()
+
+
+    # first extract for each word in the current batch, the probability
+    # pylint: disable=unused-variable
+    for curr_idx in range(trg_tensor.shape[1]):
+        trg_embed2 = embed(ys_trg)
+        with torch.no_grad():
+            logits, out, _, _ = decoder(
+                trg_embed = trg_embed2,
+                encoder_output=encoder_output,
+                encoder_hidden=None,
+                src_mask=src_mask,
+                unroll_steps=None,
+                hidden=None,
+                trg_mask=trg_mask
+            )
+            logits = logits[:, -1]
+            indexing = trg_tensor[:, curr_idx]
+            is_pad = torch.eq(indexing, pad_index)
+            # print(indexing)
+            # print(is_pad)
+            # print("ACCKKK")
+            # (~torch.eq(indexing, eos_index)) & (~torch.eq(indexing, pad_index))
+            probs = logits[:,indexing].type('torch.DoubleTensor')
+            probs[is_pad] = 1
+            # print(probs)
+            # print(logits)
+            ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
+            ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
+           
+            # check if previous symbol was <eos>
+        
+            # stop predicting if <eos> reached for all elements in batch
+            # check if previous symbol was <eos>
+
+            # is_eos = torch.eq(next_word, eos_index)
+            # finished += is_eos.byte()
+            # # stop predicting if <eos> reached for all elements in batch
+            # if (finished >= 1).sum() == batch_size:
+            #     break
+    ys_trg = ys_trg[:, 1:]  # remove BOS-symbol
+    ys_hypotheses_probs = ys_hypotheses_probs[:, 1:] # remove BOS-symbol
+    # print(torch.prod(ys_hypotheses_probs, 1))
+    
+    curr_hyp_probs = encoder_output.new_full([batch_size, 1], bos_index, dtype=torch.float64)
     for _ in range(max_output_length):
 
         trg_embed = embed(ys)  # embed the previous tokens
@@ -154,9 +210,17 @@ def transformer_greedy(
                 trg_mask=trg_mask
             )
 
-            logits = logits[:, -1]
-            _, next_word = torch.max(logits, dim=1)
+            logits = logits[:, -1].type('torch.DoubleTensor')
+            prob_next_word, next_word = torch.max(logits, dim=1)
             next_word = next_word.data
+            prob_next_word = prob_next_word.data #.type('torch.DoubleTensor')
+                        # probs = logits[:,indexing].type('torch.DoubleTensor')
+
+            curr_hyp_probs = torch.cat([curr_hyp_probs, prob_next_word.unsqueeze(-1)], dim=1)
+
+            # ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
+            # ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
+
             ys = torch.cat([ys, next_word.unsqueeze(-1)], dim=1)
 
         # check if previous symbol was <eos>
@@ -167,8 +231,9 @@ def transformer_greedy(
             break
 
     ys = ys[:, 1:]  # remove BOS-symbol
-    return ys.detach().cpu().numpy(), None
+    curr_hyp_probs = curr_hyp_probs[:, 1:] # remove BOS-symbol
 
+    return ys.detach().cpu().numpy(), None, torch.prod(curr_hyp_probs, 1).detach().cpu().numpy(), torch.prod(ys_hypotheses_probs, 1).detach().cpu().numpy()
 
 # pylint: disable=too-many-statements,too-many-branches
 def beam_search(
