@@ -166,20 +166,26 @@ def transformer_greedy(
                 trg_mask=trg_mask
             )
             logits = logits[:, -1]
+            print()
+            print(logits.shape)
+
             indexing = trg_tensor[:, curr_idx]
+            print(logits[:,indexing])
+            print()
             is_pad = torch.eq(indexing, pad_index)
             # print(indexing)
             # print(is_pad)
             # print("ACCKKK")
             # (~torch.eq(indexing, eos_index)) & (~torch.eq(indexing, pad_index))
             probs = logits[:,indexing].type('torch.DoubleTensor')
+            
             probs[is_pad] = 1
             # print(probs)
             # print(logits)
             ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
             if torch.cuda.is_available():
                 probs = probs.cuda()
-            ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
+            ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs.unsqueeze(-1)], dim=1)
            
             # check if previous symbol was <eos>
         
