@@ -6,7 +6,7 @@ data:
     trg: "de"
     train: "chatnmt/official_split_line_by_line/wmt17bpe/train.tags.bpe.wmt-ende-best"
     dev: "chatnmt/official_split_line_by_line/wmt17bpe/dev.tags.bpe.wmt-ende-best"        # development data for validation
-    test:  "chatnmt/official_split_line_by_line/wmt17bpe/test.tags.bpe.wmt-ende-best"
+    test: "chatnmt/coher/coherCorrTest.tags.bpe.wmt-ende-best"
     level: "bpe"
     lowercase: False
     max_sent_length: 100
@@ -14,7 +14,7 @@ data:
     trg_vocab: "models/wmt_ende_transformer/trg_vocab.txt"
 
 testing:
-    beam_size: 5
+    beam_size: 1
     alpha: 1.0
 
 training:
