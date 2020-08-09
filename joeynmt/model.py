@@ -225,7 +225,11 @@ class Model(nn.Module):
                         pad_index=self.pad_index,
                         bos_index=self.bos_index,
                         decoder=self.decoder)
-
+        # import torch
+        # torch.set_printoptions(profile="full")
+        # print(target_hypothesis_scores)
+        # print("Scores were.")
+        # torch.set_printoptions(profile="default")
         return stacked_output, stacked_attention_scores, generated_hypothesis_scores, target_hypothesis_scores
 
     def __repr__(self) -> str:

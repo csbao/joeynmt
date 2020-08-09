@@ -150,7 +150,7 @@ def transformer_greedy(
 
     finished_trg = src_mask.new_zeros((batch_size)).byte()
 
-
+    first_pad = encoder_output.new_full([batch_size, 1], False, dtype=torch.bool)
     # first extract for each word in the current batch, the probability
     # pylint: disable=unused-variable
     for curr_idx in range(trg_tensor.shape[1]):
@@ -165,27 +165,19 @@ def transformer_greedy(
                 hidden=None,
                 trg_mask=trg_mask
             )
-            logits = logits[:, -1]
-            print()
-            print(logits.shape)
+            logits = logits[:, -1] # takes logit for last word
 
             indexing = trg_tensor[:, curr_idx]
-            print(logits[:,indexing])
-            print()
             is_pad = torch.eq(indexing, pad_index)
-            # print(indexing)
-            # print(is_pad)
-            # print("ACCKKK")
-            # (~torch.eq(indexing, eos_index)) & (~torch.eq(indexing, pad_index))
+
             probs = logits[:,indexing].type('torch.DoubleTensor')
-            
-            probs[is_pad] = 1
-            # print(probs)
-            # print(logits)
+
+
+            first_pad = torch.cat([first_pad, is_pad.unsqueeze(-1)], dim=1)
             ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
             if torch.cuda.is_available():
                 probs = probs.cuda()
-            ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs.unsqueeze(-1)], dim=1)
+            ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
            
             # check if previous symbol was <eos>
         
@@ -200,9 +192,14 @@ def transformer_greedy(
     ys_trg = ys_trg[:, 1:]  # remove BOS-symbol
     ys_hypotheses_probs = ys_hypotheses_probs[:, 1:] # remove BOS-symbol
     # print(torch.prod(ys_hypotheses_probs, 1))
-    
+    first_pad = first_pad[:, 1:]
+    hello = (first_pad <= 0).sum(dim=1)
+    second_pad = encoder_output.new_full([batch_size, 1], False, dtype=torch.bool)
+
+
     curr_hyp_probs = encoder_output.new_full([batch_size, 1], bos_index, dtype=torch.float64)
-    for _ in range(max_output_length):
+    
+    for curr_step in range(max_output_length):
 
         trg_embed = embed(ys)  # embed the previous tokens
 
@@ -229,6 +226,12 @@ def transformer_greedy(
                 next_word = next_word.cuda()
             curr_hyp_probs = torch.cat([curr_hyp_probs, prob_next_word.unsqueeze(-1)], dim=1)
 
+
+            is_pad = torch.eq(next_word, pad_index)
+            second_pad = torch.cat([second_pad, is_pad.unsqueeze(-1)], dim=1)
+
+
+
             # ys_trg = torch.cat([ys_trg, indexing.unsqueeze(-1)], dim=1)
             # ys_hypotheses_probs = torch.cat([ys_hypotheses_probs, probs], dim=1)
 
@@ -244,7 +247,17 @@ def transformer_greedy(
     ys = ys[:, 1:]  # remove BOS-symbol
     curr_hyp_probs = curr_hyp_probs[:, 1:] # remove BOS-symbol
 
-    return ys.detach().cpu().numpy(), None, torch.prod(curr_hyp_probs, 1).detach().cpu().numpy(), torch.prod(ys_hypotheses_probs, 1).detach().cpu().numpy()
+    second_pad = second_pad[:, 1:]
+    hello2 = (second_pad <= 0).sum(dim=1)
+
+    hello2[hello2==curr_hyp_probs.shape[1]] = curr_hyp_probs.shape[1] - 1
+
+    try:
+        outputs = torch.tensor([ys_hypotheses_probs[i][j] for i,j in enumerate(hello)])
+    except:
+        outputs = torch.tensor([ys_hypotheses_probs[-1][-1]])
+
+    return ys.detach().cpu().numpy(), None, curr_hyp_probs[:,-1].detach().cpu().numpy(), outputs.detach().cpu().numpy()
 
 # pylint: disable=too-many-statements,too-many-branches
 def beam_search(
