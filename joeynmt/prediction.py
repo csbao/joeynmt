@@ -279,7 +279,7 @@ def test(cfg_file,
         if output_path is not None:
             output_path_set = "{}.{}".format(output_path, data_set_name)
             with open(output_path_set, mode="w", encoding="utf-8") as out_file:
-                out_file.write(f"Greedy Translation\tHypothesis Score\tReference Score")
+                out_file.write(f"Greedy Translation\tHypothesis Score\tReference Score\n")
                 for hyp, gen_score, trg_score, in zip(hypotheses, gen_scores, trg_scores):
                     # SCORE, REF SCORE
                     out_file.write(hyp + "\t" + str(gen_score) + "\t" + str(trg_score) + "\n")
