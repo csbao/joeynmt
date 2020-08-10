@@ -1,0 +1,634 @@
+2020-08-10 10:06:29,476 Hello! This is Joey-NMT.
+2020-08-10 10:06:30,846 Total params: 29320704
+2020-08-10 10:06:30,848 Trainable parameters: ['decoder.layer_norm.bias', 'decoder.layer_norm.weight', 'decoder.layers.0.dec_layer_norm.bias', 'decoder.layers.0.dec_layer_norm.weight', 'decoder.layers.0.feed_forward.layer_norm.bias', 'decoder.layers.0.feed_forward.layer_norm.weight', 'decoder.layers.0.feed_forward.pwff_layer.0.bias', 'decoder.layers.0.feed_forward.pwff_layer.0.weight', 'decoder.layers.0.feed_forward.pwff_layer.3.bias', 'decoder.layers.0.feed_forward.pwff_layer.3.weight', 'decoder.layers.0.src_trg_att.k_layer.bias', 'decoder.layers.0.src_trg_att.k_layer.weight', 'decoder.layers.0.src_trg_att.output_layer.bias', 'decoder.layers.0.src_trg_att.output_layer.weight', 'decoder.layers.0.src_trg_att.q_layer.bias', 'decoder.layers.0.src_trg_att.q_layer.weight', 'decoder.layers.0.src_trg_att.v_layer.bias', 'decoder.layers.0.src_trg_att.v_layer.weight', 'decoder.layers.0.trg_trg_att.k_layer.bias', 'decoder.layers.0.trg_trg_att.k_layer.weight', 'decoder.layers.0.trg_trg_att.output_layer.bias', 'decoder.layers.0.trg_trg_att.output_layer.weight', 'decoder.layers.0.trg_trg_att.q_layer.bias', 'decoder.layers.0.trg_trg_att.q_layer.weight', 'decoder.layers.0.trg_trg_att.v_layer.bias', 'decoder.layers.0.trg_trg_att.v_layer.weight', 'decoder.layers.0.x_layer_norm.bias', 'decoder.layers.0.x_layer_norm.weight', 'decoder.layers.1.dec_layer_norm.bias', 'decoder.layers.1.dec_layer_norm.weight', 'decoder.layers.1.feed_forward.layer_norm.bias', 'decoder.layers.1.feed_forward.layer_norm.weight', 'decoder.layers.1.feed_forward.pwff_layer.0.bias', 'decoder.layers.1.feed_forward.pwff_layer.0.weight', 'decoder.layers.1.feed_forward.pwff_layer.3.bias', 'decoder.layers.1.feed_forward.pwff_layer.3.weight', 'decoder.layers.1.src_trg_att.k_layer.bias', 'decoder.layers.1.src_trg_att.k_layer.weight', 'decoder.layers.1.src_trg_att.output_layer.bias', 'decoder.layers.1.src_trg_att.output_layer.weight', 'decoder.layers.1.src_trg_att.q_layer.bias', 'decoder.layers.1.src_trg_att.q_layer.weight', 'decoder.layers.1.src_trg_att.v_layer.bias', 'decoder.layers.1.src_trg_att.v_layer.weight', 'decoder.layers.1.trg_trg_att.k_layer.bias', 'decoder.layers.1.trg_trg_att.k_layer.weight', 'decoder.layers.1.trg_trg_att.output_layer.bias', 'decoder.layers.1.trg_trg_att.output_layer.weight', 'decoder.layers.1.trg_trg_att.q_layer.bias', 'decoder.layers.1.trg_trg_att.q_layer.weight', 'decoder.layers.1.trg_trg_att.v_layer.bias', 'decoder.layers.1.trg_trg_att.v_layer.weight', 'decoder.layers.1.x_layer_norm.bias', 'decoder.layers.1.x_layer_norm.weight', 'decoder.layers.2.dec_layer_norm.bias', 'decoder.layers.2.dec_layer_norm.weight', 'decoder.layers.2.feed_forward.layer_norm.bias', 'decoder.layers.2.feed_forward.layer_norm.weight', 'decoder.layers.2.feed_forward.pwff_layer.0.bias', 'decoder.layers.2.feed_forward.pwff_layer.0.weight', 'decoder.layers.2.feed_forward.pwff_layer.3.bias', 'decoder.layers.2.feed_forward.pwff_layer.3.weight', 'decoder.layers.2.src_trg_att.k_layer.bias', 'decoder.layers.2.src_trg_att.k_layer.weight', 'decoder.layers.2.src_trg_att.output_layer.bias', 'decoder.layers.2.src_trg_att.output_layer.weight', 'decoder.layers.2.src_trg_att.q_layer.bias', 'decoder.layers.2.src_trg_att.q_layer.weight', 'decoder.layers.2.src_trg_att.v_layer.bias', 'decoder.layers.2.src_trg_att.v_layer.weight', 'decoder.layers.2.trg_trg_att.k_layer.bias', 'decoder.layers.2.trg_trg_att.k_layer.weight', 'decoder.layers.2.trg_trg_att.output_layer.bias', 'decoder.layers.2.trg_trg_att.output_layer.weight', 'decoder.layers.2.trg_trg_att.q_layer.bias', 'decoder.layers.2.trg_trg_att.q_layer.weight', 'decoder.layers.2.trg_trg_att.v_layer.bias', 'decoder.layers.2.trg_trg_att.v_layer.weight', 'decoder.layers.2.x_layer_norm.bias', 'decoder.layers.2.x_layer_norm.weight', 'decoder.layers.3.dec_layer_norm.bias', 'decoder.layers.3.dec_layer_norm.weight', 'decoder.layers.3.feed_forward.layer_norm.bias', 'decoder.layers.3.feed_forward.layer_norm.weight', 'decoder.layers.3.feed_forward.pwff_layer.0.bias', 'decoder.layers.3.feed_forward.pwff_layer.0.weight', 'decoder.layers.3.feed_forward.pwff_layer.3.bias', 'decoder.layers.3.feed_forward.pwff_layer.3.weight', 'decoder.layers.3.src_trg_att.k_layer.bias', 'decoder.layers.3.src_trg_att.k_layer.weight', 'decoder.layers.3.src_trg_att.output_layer.bias', 'decoder.layers.3.src_trg_att.output_layer.weight', 'decoder.layers.3.src_trg_att.q_layer.bias', 'decoder.layers.3.src_trg_att.q_layer.weight', 'decoder.layers.3.src_trg_att.v_layer.bias', 'decoder.layers.3.src_trg_att.v_layer.weight', 'decoder.layers.3.trg_trg_att.k_layer.bias', 'decoder.layers.3.trg_trg_att.k_layer.weight', 'decoder.layers.3.trg_trg_att.output_layer.bias', 'decoder.layers.3.trg_trg_att.output_layer.weight', 'decoder.layers.3.trg_trg_att.q_layer.bias', 'decoder.layers.3.trg_trg_att.q_layer.weight', 'decoder.layers.3.trg_trg_att.v_layer.bias', 'decoder.layers.3.trg_trg_att.v_layer.weight', 'decoder.layers.3.x_layer_norm.bias', 'decoder.layers.3.x_layer_norm.weight', 'decoder.layers.4.dec_layer_norm.bias', 'decoder.layers.4.dec_layer_norm.weight', 'decoder.layers.4.feed_forward.layer_norm.bias', 'decoder.layers.4.feed_forward.layer_norm.weight', 'decoder.layers.4.feed_forward.pwff_layer.0.bias', 'decoder.layers.4.feed_forward.pwff_layer.0.weight', 'decoder.layers.4.feed_forward.pwff_layer.3.bias', 'decoder.layers.4.feed_forward.pwff_layer.3.weight', 'decoder.layers.4.src_trg_att.k_layer.bias', 'decoder.layers.4.src_trg_att.k_layer.weight', 'decoder.layers.4.src_trg_att.output_layer.bias', 'decoder.layers.4.src_trg_att.output_layer.weight', 'decoder.layers.4.src_trg_att.q_layer.bias', 'decoder.layers.4.src_trg_att.q_layer.weight', 'decoder.layers.4.src_trg_att.v_layer.bias', 'decoder.layers.4.src_trg_att.v_layer.weight', 'decoder.layers.4.trg_trg_att.k_layer.bias', 'decoder.layers.4.trg_trg_att.k_layer.weight', 'decoder.layers.4.trg_trg_att.output_layer.bias', 'decoder.layers.4.trg_trg_att.output_layer.weight', 'decoder.layers.4.trg_trg_att.q_layer.bias', 'decoder.layers.4.trg_trg_att.q_layer.weight', 'decoder.layers.4.trg_trg_att.v_layer.bias', 'decoder.layers.4.trg_trg_att.v_layer.weight', 'decoder.layers.4.x_layer_norm.bias', 'decoder.layers.4.x_layer_norm.weight', 'decoder.layers.5.dec_layer_norm.bias', 'decoder.layers.5.dec_layer_norm.weight', 'decoder.layers.5.feed_forward.layer_norm.bias', 'decoder.layers.5.feed_forward.layer_norm.weight', 'decoder.layers.5.feed_forward.pwff_layer.0.bias', 'decoder.layers.5.feed_forward.pwff_layer.0.weight', 'decoder.layers.5.feed_forward.pwff_layer.3.bias', 'decoder.layers.5.feed_forward.pwff_layer.3.weight', 'decoder.layers.5.src_trg_att.k_layer.bias', 'decoder.layers.5.src_trg_att.k_layer.weight', 'decoder.layers.5.src_trg_att.output_layer.bias', 'decoder.layers.5.src_trg_att.output_layer.weight', 'decoder.layers.5.src_trg_att.q_layer.bias', 'decoder.layers.5.src_trg_att.q_layer.weight', 'decoder.layers.5.src_trg_att.v_layer.bias', 'decoder.layers.5.src_trg_att.v_layer.weight', 'decoder.layers.5.trg_trg_att.k_layer.bias', 'decoder.layers.5.trg_trg_att.k_layer.weight', 'decoder.layers.5.trg_trg_att.output_layer.bias', 'decoder.layers.5.trg_trg_att.output_layer.weight', 'decoder.layers.5.trg_trg_att.q_layer.bias', 'decoder.layers.5.trg_trg_att.q_layer.weight', 'decoder.layers.5.trg_trg_att.v_layer.bias', 'decoder.layers.5.trg_trg_att.v_layer.weight', 'decoder.layers.5.x_layer_norm.bias', 'decoder.layers.5.x_layer_norm.weight', 'encoder.layer_norm.bias', 'encoder.layer_norm.weight', 'encoder.layers.0.feed_forward.layer_norm.bias', 'encoder.layers.0.feed_forward.layer_norm.weight', 'encoder.layers.0.feed_forward.pwff_layer.0.bias', 'encoder.layers.0.feed_forward.pwff_layer.0.weight', 'encoder.layers.0.feed_forward.pwff_layer.3.bias', 'encoder.layers.0.feed_forward.pwff_layer.3.weight', 'encoder.layers.0.layer_norm.bias', 'encoder.layers.0.layer_norm.weight', 'encoder.layers.0.src_src_att.k_layer.bias', 'encoder.layers.0.src_src_att.k_layer.weight', 'encoder.layers.0.src_src_att.output_layer.bias', 'encoder.layers.0.src_src_att.output_layer.weight', 'encoder.layers.0.src_src_att.q_layer.bias', 'encoder.layers.0.src_src_att.q_layer.weight', 'encoder.layers.0.src_src_att.v_layer.bias', 'encoder.layers.0.src_src_att.v_layer.weight', 'encoder.layers.1.feed_forward.layer_norm.bias', 'encoder.layers.1.feed_forward.layer_norm.weight', 'encoder.layers.1.feed_forward.pwff_layer.0.bias', 'encoder.layers.1.feed_forward.pwff_layer.0.weight', 'encoder.layers.1.feed_forward.pwff_layer.3.bias', 'encoder.layers.1.feed_forward.pwff_layer.3.weight', 'encoder.layers.1.layer_norm.bias', 'encoder.layers.1.layer_norm.weight', 'encoder.layers.1.src_src_att.k_layer.bias', 'encoder.layers.1.src_src_att.k_layer.weight', 'encoder.layers.1.src_src_att.output_layer.bias', 'encoder.layers.1.src_src_att.output_layer.weight', 'encoder.layers.1.src_src_att.q_layer.bias', 'encoder.layers.1.src_src_att.q_layer.weight', 'encoder.layers.1.src_src_att.v_layer.bias', 'encoder.layers.1.src_src_att.v_layer.weight', 'encoder.layers.2.feed_forward.layer_norm.bias', 'encoder.layers.2.feed_forward.layer_norm.weight', 'encoder.layers.2.feed_forward.pwff_layer.0.bias', 'encoder.layers.2.feed_forward.pwff_layer.0.weight', 'encoder.layers.2.feed_forward.pwff_layer.3.bias', 'encoder.layers.2.feed_forward.pwff_layer.3.weight', 'encoder.layers.2.layer_norm.bias', 'encoder.layers.2.layer_norm.weight', 'encoder.layers.2.src_src_att.k_layer.bias', 'encoder.layers.2.src_src_att.k_layer.weight', 'encoder.layers.2.src_src_att.output_layer.bias', 'encoder.layers.2.src_src_att.output_layer.weight', 'encoder.layers.2.src_src_att.q_layer.bias', 'encoder.layers.2.src_src_att.q_layer.weight', 'encoder.layers.2.src_src_att.v_layer.bias', 'encoder.layers.2.src_src_att.v_layer.weight', 'encoder.layers.3.feed_forward.layer_norm.bias', 'encoder.layers.3.feed_forward.layer_norm.weight', 'encoder.layers.3.feed_forward.pwff_layer.0.bias', 'encoder.layers.3.feed_forward.pwff_layer.0.weight', 'encoder.layers.3.feed_forward.pwff_layer.3.bias', 'encoder.layers.3.feed_forward.pwff_layer.3.weight', 'encoder.layers.3.layer_norm.bias', 'encoder.layers.3.layer_norm.weight', 'encoder.layers.3.src_src_att.k_layer.bias', 'encoder.layers.3.src_src_att.k_layer.weight', 'encoder.layers.3.src_src_att.output_layer.bias', 'encoder.layers.3.src_src_att.output_layer.weight', 'encoder.layers.3.src_src_att.q_layer.bias', 'encoder.layers.3.src_src_att.q_layer.weight', 'encoder.layers.3.src_src_att.v_layer.bias', 'encoder.layers.3.src_src_att.v_layer.weight', 'encoder.layers.4.feed_forward.layer_norm.bias', 'encoder.layers.4.feed_forward.layer_norm.weight', 'encoder.layers.4.feed_forward.pwff_layer.0.bias', 'encoder.layers.4.feed_forward.pwff_layer.0.weight', 'encoder.layers.4.feed_forward.pwff_layer.3.bias', 'encoder.layers.4.feed_forward.pwff_layer.3.weight', 'encoder.layers.4.layer_norm.bias', 'encoder.layers.4.layer_norm.weight', 'encoder.layers.4.src_src_att.k_layer.bias', 'encoder.layers.4.src_src_att.k_layer.weight', 'encoder.layers.4.src_src_att.output_layer.bias', 'encoder.layers.4.src_src_att.output_layer.weight', 'encoder.layers.4.src_src_att.q_layer.bias', 'encoder.layers.4.src_src_att.q_layer.weight', 'encoder.layers.4.src_src_att.v_layer.bias', 'encoder.layers.4.src_src_att.v_layer.weight', 'encoder.layers.5.feed_forward.layer_norm.bias', 'encoder.layers.5.feed_forward.layer_norm.weight', 'encoder.layers.5.feed_forward.pwff_layer.0.bias', 'encoder.layers.5.feed_forward.pwff_layer.0.weight', 'encoder.layers.5.feed_forward.pwff_layer.3.bias', 'encoder.layers.5.feed_forward.pwff_layer.3.weight', 'encoder.layers.5.layer_norm.bias', 'encoder.layers.5.layer_norm.weight', 'encoder.layers.5.src_src_att.k_layer.bias', 'encoder.layers.5.src_src_att.k_layer.weight', 'encoder.layers.5.src_src_att.output_layer.bias', 'encoder.layers.5.src_src_att.output_layer.weight', 'encoder.layers.5.src_src_att.q_layer.bias', 'encoder.layers.5.src_src_att.q_layer.weight', 'encoder.layers.5.src_src_att.v_layer.bias', 'encoder.layers.5.src_src_att.v_layer.weight', 'src_embed.lut.weight', 'trg_embed.lut.weight']
+2020-08-10 10:06:34,689 cfg.data.dev                       : chatnmt/multi_encoder/dev_subset.tags.bpe.10000
+2020-08-10 10:06:34,689 cfg.data.level                     : bpe
+2020-08-10 10:06:34,689 cfg.data.lowercase                 : False
+2020-08-10 10:06:34,689 cfg.data.max_sent_length           : 100
+2020-08-10 10:06:34,689 cfg.data.src                       : en
+2020-08-10 10:06:34,689 cfg.data.test                      : chatnmt/multi_encoder/test.tags.bpe.10000
+2020-08-10 10:06:34,689 cfg.data.train                     : chatnmt/multi_encoder/train_subset.tags.bpe.10000
+2020-08-10 10:06:34,689 cfg.data.trg                       : de
+2020-08-10 10:06:34,689 cfg.model.bias_initializer         : zeros
+2020-08-10 10:06:34,689 cfg.model.decoder.dropout          : 0.1
+2020-08-10 10:06:34,689 cfg.model.decoder.embeddings.dropout : 0.0
+2020-08-10 10:06:34,689 cfg.model.decoder.embeddings.embedding_dim : 512
+2020-08-10 10:06:34,690 cfg.model.decoder.embeddings.scale : True
+2020-08-10 10:06:34,690 cfg.model.decoder.ff_size          : 512
+2020-08-10 10:06:34,690 cfg.model.decoder.freeze           : False
+2020-08-10 10:06:34,690 cfg.model.decoder.hidden_size      : 512
+2020-08-10 10:06:34,690 cfg.model.decoder.num_heads        : 8
+2020-08-10 10:06:34,690 cfg.model.decoder.num_layers       : 6
+2020-08-10 10:06:34,690 cfg.model.decoder.type             : transformer
+2020-08-10 10:06:34,690 cfg.model.embed_init_gain          : 1.0
+2020-08-10 10:06:34,690 cfg.model.embed_initializer        : xavier
+2020-08-10 10:06:34,690 cfg.model.encoder.dropout          : 0.3
+2020-08-10 10:06:34,690 cfg.model.encoder.embeddings.dropout : 0.0
+2020-08-10 10:06:34,690 cfg.model.encoder.embeddings.embedding_dim : 512
+2020-08-10 10:06:34,690 cfg.model.encoder.embeddings.scale : True
+2020-08-10 10:06:34,690 cfg.model.encoder.ff_size          : 512
+2020-08-10 10:06:34,690 cfg.model.encoder.freeze           : False
+2020-08-10 10:06:34,690 cfg.model.encoder.hidden_size      : 512
+2020-08-10 10:06:34,690 cfg.model.encoder.multi_encoder    : False
+2020-08-10 10:06:34,690 cfg.model.encoder.num_heads        : 16
+2020-08-10 10:06:34,690 cfg.model.encoder.num_layers       : 6
+2020-08-10 10:06:34,690 cfg.model.encoder.type             : transformer
+2020-08-10 10:06:34,690 cfg.model.init_gain                : 1.0
+2020-08-10 10:06:34,690 cfg.model.initializer              : xavier
+2020-08-10 10:06:34,690 cfg.model.tied_embeddings          : False
+2020-08-10 10:06:34,690 cfg.model.tied_softmax             : True
+2020-08-10 10:06:34,690 cfg.name                           : transformer
+2020-08-10 10:06:34,690 cfg.testing.alpha                  : 1.0
+2020-08-10 10:06:34,690 cfg.testing.beam_size              : 5
+2020-08-10 10:06:34,690 cfg.training.adam_betas            : [0.9, 0.999]
+2020-08-10 10:06:34,691 cfg.training.batch_multiplier      : 1
+2020-08-10 10:06:34,691 cfg.training.batch_size            : 512
+2020-08-10 10:06:34,691 cfg.training.batch_type            : token
+2020-08-10 10:06:34,691 cfg.training.decrease_factor       : 0.7
+2020-08-10 10:06:34,691 cfg.training.early_stopping_metric : ppl
+2020-08-10 10:06:34,691 cfg.training.epochs                : 20
+2020-08-10 10:06:34,691 cfg.training.eval_metric           : bleu
+2020-08-10 10:06:34,691 cfg.training.keep_last_ckpts       : 3
+2020-08-10 10:06:34,691 cfg.training.label_smoothing       : 0.1
+2020-08-10 10:06:34,691 cfg.training.learning_rate         : 0.0002
+2020-08-10 10:06:34,691 cfg.training.learning_rate_min     : 1e-08
+2020-08-10 10:06:34,691 cfg.training.logging_freq          : 100
+2020-08-10 10:06:34,691 cfg.training.loss                  : crossentropy
+2020-08-10 10:06:34,691 cfg.training.max_output_length     : 100
+2020-08-10 10:06:34,691 cfg.training.model_dir             : models/viznet/attempt3/16_8_0.3_512_512_512_8_8
+2020-08-10 10:06:34,691 cfg.training.normalization         : tokens
+2020-08-10 10:06:34,691 cfg.training.optimizer             : adam
+2020-08-10 10:06:34,691 cfg.training.overwrite             : True
+2020-08-10 10:06:34,691 cfg.training.patience              : 8
+2020-08-10 10:06:34,691 cfg.training.print_valid_sents     : [0, 1, 2, 3]
+2020-08-10 10:06:34,691 cfg.training.random_seed           : 42
+2020-08-10 10:06:34,691 cfg.training.scheduling            : plateau
+2020-08-10 10:06:34,691 cfg.training.shuffle               : True
+2020-08-10 10:06:34,691 cfg.training.use_cuda              : True
+2020-08-10 10:06:34,691 cfg.training.validation_freq       : 200
+2020-08-10 10:06:34,691 cfg.training.weight_decay          : 0.0
+2020-08-10 10:06:34,692 Data set sizes: 
+	train 5000,
+	valid 500,
+	test 1220
+2020-08-10 10:06:34,692 First training example:
+	[SRC] hi there ! how can i help ?
+	[TRG] hallo ! wie kann ich helfen ?
+2020-08-10 10:06:34,692 First 10 words (src): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) . (5) , (6) ? (7) you (8) i (9) the
+2020-08-10 10:06:34,692 First 10 words (trg): (0) <unk> (1) <pad> (2) <s> (3) </s> (4) . (5) , (6) ? (7) sie (8) ich (9) das
+2020-08-10 10:06:34,692 Number of Src words (types): 3468
+2020-08-10 10:06:34,693 Number of Trg words (types): 4487
+2020-08-10 10:06:34,693 Model(
+	encoder=TransformerEncoder(num_layers=6, num_heads=16),
+	decoder=TransformerDecoder(num_layers=6, num_heads=8),
+	src_embed=Embeddings(embedding_dim=512, vocab_size=3468),
+	trg_embed=Embeddings(embedding_dim=512, vocab_size=4487))
+2020-08-10 10:06:34,697 EPOCH 1
+2020-08-10 10:06:40,565 Epoch   1 Step:      100 Batch Loss:     4.063242 Tokens per Sec:     5850, Lr: 0.000200
+2020-08-10 10:06:45,572 Epoch   1: total training loss 901.12
+2020-08-10 10:06:45,572 EPOCH 2
+2020-08-10 10:06:46,331 Epoch   2 Step:      200 Batch Loss:     3.326870 Tokens per Sec:     5745, Lr: 0.000200
+2020-08-10 10:07:19,037 Hooray! New best validation result [ppl]!
+2020-08-10 10:07:19,037 Saving new checkpoint.
+2020-08-10 10:07:20,325 Example #0
+2020-08-10 10:07:20,325 	Raw source:     ['hello', '.']
+2020-08-10 10:07:20,325 	Raw hypothesis: ['ja', '.']
+2020-08-10 10:07:20,325 	Source:     hello .
+2020-08-10 10:07:20,325 	Reference:  hallo ,
+2020-08-10 10:07:20,325 	Hypothesis: ja .
+2020-08-10 10:07:20,325 Example #1
+2020-08-10 10:07:20,325 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:07:20,325 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:07:20,325 	Source:     hi , how can i help you ?
+2020-08-10 10:07:20,325 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:07:20,326 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:07:20,326 Example #2
+2020-08-10 10:07:20,326 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:07:20,326 	Raw hypothesis: ['ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich', 'ich']
+2020-08-10 10:07:20,326 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:07:20,326 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:07:20,326 	Hypothesis: ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich ich
+2020-08-10 10:07:20,326 Example #3
+2020-08-10 10:07:20,326 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:07:20,326 	Raw hypothesis: ['ok', ',', 'sie', 'sie', 'sie', 'sie', 'sie', '?']
+2020-08-10 10:07:20,326 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:07:20,326 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:07:20,326 	Hypothesis: ok , sie sie sie sie sie ?
+2020-08-10 10:07:20,326 Validation result (greedy) at epoch   2, step      200: bleu:   1.33, loss: 28374.6836, ppl:  84.2294, duration: 33.9948s
+2020-08-10 10:07:26,182 Epoch   2 Step:      300 Batch Loss:     3.130291 Tokens per Sec:     5850, Lr: 0.000200
+2020-08-10 10:07:30,601 Epoch   2: total training loss 752.23
+2020-08-10 10:07:30,602 EPOCH 3
+2020-08-10 10:07:31,966 Epoch   3 Step:      400 Batch Loss:     4.283017 Tokens per Sec:     5906, Lr: 0.000200
+2020-08-10 10:08:04,154 Hooray! New best validation result [ppl]!
+2020-08-10 10:08:04,155 Saving new checkpoint.
+2020-08-10 10:08:05,358 Example #0
+2020-08-10 10:08:05,359 	Raw source:     ['hello', '.']
+2020-08-10 10:08:05,359 	Raw hypothesis: ['hallo', ',', 'bitte', '.']
+2020-08-10 10:08:05,359 	Source:     hello .
+2020-08-10 10:08:05,359 	Reference:  hallo ,
+2020-08-10 10:08:05,359 	Hypothesis: hallo , bitte .
+2020-08-10 10:08:05,359 Example #1
+2020-08-10 10:08:05,359 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:08:05,359 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:08:05,359 	Source:     hi , how can i help you ?
+2020-08-10 10:08:05,359 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:08:05,359 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:08:05,359 Example #2
+2020-08-10 10:08:05,359 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:08:05,359 	Raw hypothesis: ['hallo', ',', 'ich', 'möchte', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'der', 'der', 'der', 'der', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in']
+2020-08-10 10:08:05,359 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:08:05,359 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:08:05,359 	Hypothesis: hallo , ich möchte in in in in in in in in in in der der der der in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in in
+2020-08-10 10:08:05,359 Example #3
+2020-08-10 10:08:05,359 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:08:05,359 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'art', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', '?']
+2020-08-10 10:08:05,359 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:08:05,359 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:08:05,359 	Hypothesis: ok , welche art art von von von von von von von von ?
+2020-08-10 10:08:05,359 Validation result (greedy) at epoch   3, step      400: bleu:   3.20, loss: 24135.7285, ppl:  43.4325, duration: 33.3930s
+2020-08-10 10:08:11,220 Epoch   3 Step:      500 Batch Loss:     4.908194 Tokens per Sec:     5724, Lr: 0.000200
+2020-08-10 10:08:15,019 Epoch   3: total training loss 628.21
+2020-08-10 10:08:15,019 EPOCH 4
+2020-08-10 10:08:16,981 Epoch   4 Step:      600 Batch Loss:     3.406026 Tokens per Sec:     5997, Lr: 0.000200
+2020-08-10 10:08:37,389 Hooray! New best validation result [ppl]!
+2020-08-10 10:08:37,389 Saving new checkpoint.
+2020-08-10 10:08:38,533 Example #0
+2020-08-10 10:08:38,533 	Raw source:     ['hello', '.']
+2020-08-10 10:08:38,533 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:08:38,533 	Source:     hello .
+2020-08-10 10:08:38,534 	Reference:  hallo ,
+2020-08-10 10:08:38,534 	Hypothesis: hallo .
+2020-08-10 10:08:38,534 Example #1
+2020-08-10 10:08:38,534 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:08:38,534 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:08:38,534 	Source:     hi , how can i help you ?
+2020-08-10 10:08:38,534 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:08:38,534 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:08:38,534 Example #2
+2020-08-10 10:08:38,534 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:08:38,534 	Raw hypothesis: ['hallo', ',', 'ich', 'möchte', 'einen', 'termin', 'in', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'der', 'einem', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', '.']
+2020-08-10 10:08:38,534 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:08:38,534 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:08:38,534 	Hypothesis: hallo , ich möchte einen termin in der der der der der der der der der der der der der der der der der der der der der der der der der der einem restaurant in san francisco , kalifornien .
+2020-08-10 10:08:38,534 Example #3
+2020-08-10 10:08:38,534 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:08:38,535 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', 'von', '?']
+2020-08-10 10:08:38,535 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:08:38,535 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:08:38,535 	Hypothesis: ok , welche art von von von von von von von von von von von von ?
+2020-08-10 10:08:38,535 Validation result (greedy) at epoch   4, step      600: bleu:   9.01, loss: 20867.1855, ppl:  26.0625, duration: 21.5539s
+2020-08-10 10:08:44,434 Epoch   4 Step:      700 Batch Loss:     4.563364 Tokens per Sec:     5798, Lr: 0.000200
+2020-08-10 10:08:47,528 Epoch   4: total training loss 525.61
+2020-08-10 10:08:47,528 EPOCH 5
+2020-08-10 10:08:50,247 Epoch   5 Step:      800 Batch Loss:     3.666579 Tokens per Sec:     5888, Lr: 0.000200
+2020-08-10 10:09:09,139 Hooray! New best validation result [ppl]!
+2020-08-10 10:09:09,139 Saving new checkpoint.
+2020-08-10 10:09:10,353 Example #0
+2020-08-10 10:09:10,353 	Raw source:     ['hello', '.']
+2020-08-10 10:09:10,353 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:09:10,353 	Source:     hello .
+2020-08-10 10:09:10,353 	Reference:  hallo ,
+2020-08-10 10:09:10,353 	Hypothesis: hallo .
+2020-08-10 10:09:10,353 Example #1
+2020-08-10 10:09:10,353 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:09:10,353 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:09:10,353 	Source:     hi , how can i help you ?
+2020-08-10 10:09:10,353 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:09:10,353 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:09:10,353 Example #2
+2020-08-10 10:09:10,353 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:09:10,353 	Raw hypothesis: ['hallo', ',', 'ich', 'möchte', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', 'in', 'san', 'francisco', ',', 'kalifornien', '.']
+2020-08-10 10:09:10,353 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:09:10,353 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:09:10,353 	Hypothesis: hallo , ich möchte ein restaurant in san francisco , kalifornien , kalifornien , kalifornien in san francisco , kalifornien .
+2020-08-10 10:09:10,354 Example #3
+2020-08-10 10:09:10,354 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:09:10,354 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'restaurant', 'haben', '?']
+2020-08-10 10:09:10,354 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:09:10,354 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:09:10,354 	Hypothesis: ok , welche art von restaurant haben ?
+2020-08-10 10:09:10,354 Validation result (greedy) at epoch   5, step      800: bleu:  13.09, loss: 19103.2461, ppl:  19.7842, duration: 20.1060s
+2020-08-10 10:09:16,332 Epoch   5 Step:      900 Batch Loss:     3.369672 Tokens per Sec:     5649, Lr: 0.000200
+2020-08-10 10:09:18,818 Epoch   5: total training loss 463.32
+2020-08-10 10:09:18,819 EPOCH 6
+2020-08-10 10:09:22,198 Epoch   6 Step:     1000 Batch Loss:     2.229429 Tokens per Sec:     5900, Lr: 0.000200
+2020-08-10 10:09:40,828 Hooray! New best validation result [ppl]!
+2020-08-10 10:09:40,828 Saving new checkpoint.
+2020-08-10 10:09:42,010 Example #0
+2020-08-10 10:09:42,010 	Raw source:     ['hello', '.']
+2020-08-10 10:09:42,010 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:09:42,010 	Source:     hello .
+2020-08-10 10:09:42,010 	Reference:  hallo ,
+2020-08-10 10:09:42,010 	Hypothesis: hallo .
+2020-08-10 10:09:42,010 Example #1
+2020-08-10 10:09:42,010 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:09:42,010 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:09:42,010 	Source:     hi , how can i help you ?
+2020-08-10 10:09:42,010 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:09:42,010 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:09:42,010 Example #2
+2020-08-10 10:09:42,010 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:09:42,010 	Raw hypothesis: ['hallo', ',', 'ich', 'bin', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:09:42,010 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:09:42,010 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:09:42,011 	Hypothesis: hallo , ich bin in san francisco , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:09:42,011 Example #3
+2020-08-10 10:09:42,011 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:09:42,011 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'essen', '?']
+2020-08-10 10:09:42,011 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:09:42,011 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:09:42,011 	Hypothesis: ok , welche art von essen ?
+2020-08-10 10:09:42,011 Validation result (greedy) at epoch   6, step     1000: bleu:  16.74, loss: 17604.5840, ppl:  15.6538, duration: 19.8130s
+2020-08-10 10:09:47,824 Epoch   6 Step:     1100 Batch Loss:     4.104326 Tokens per Sec:     5751, Lr: 0.000200
+2020-08-10 10:09:49,593 Epoch   6: total training loss 402.84
+2020-08-10 10:09:49,593 EPOCH 7
+2020-08-10 10:09:53,637 Epoch   7 Step:     1200 Batch Loss:     1.813891 Tokens per Sec:     5800, Lr: 0.000200
+2020-08-10 10:10:08,911 Hooray! New best validation result [ppl]!
+2020-08-10 10:10:08,911 Saving new checkpoint.
+2020-08-10 10:10:10,125 Example #0
+2020-08-10 10:10:10,125 	Raw source:     ['hello', '.']
+2020-08-10 10:10:10,125 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:10:10,125 	Source:     hello .
+2020-08-10 10:10:10,125 	Reference:  hallo ,
+2020-08-10 10:10:10,125 	Hypothesis: hallo .
+2020-08-10 10:10:10,125 Example #1
+2020-08-10 10:10:10,125 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:10:10,125 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:10:10,125 	Source:     hi , how can i help you ?
+2020-08-10 10:10:10,125 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:10:10,125 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:10:10,125 Example #2
+2020-08-10 10:10:10,126 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:10:10,126 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:10:10,126 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:10:10,126 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:10:10,126 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien in san francisco , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:10:10,126 Example #3
+2020-08-10 10:10:10,126 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:10:10,126 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'restaurant', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:10:10,126 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:10:10,126 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:10:10,126 	Hypothesis: ok , welche art von restaurant restaurant suchen sie ?
+2020-08-10 10:10:10,126 Validation result (greedy) at epoch   7, step     1200: bleu:  20.59, loss: 16912.9062, ppl:  14.0503, duration: 16.4886s
+2020-08-10 10:10:16,062 Epoch   7 Step:     1300 Batch Loss:     2.434007 Tokens per Sec:     5719, Lr: 0.000200
+2020-08-10 10:10:17,269 Epoch   7: total training loss 362.18
+2020-08-10 10:10:17,269 EPOCH 8
+2020-08-10 10:10:21,877 Epoch   8 Step:     1400 Batch Loss:     0.940280 Tokens per Sec:     5874, Lr: 0.000200
+2020-08-10 10:10:37,516 Hooray! New best validation result [ppl]!
+2020-08-10 10:10:37,516 Saving new checkpoint.
+2020-08-10 10:10:38,728 Example #0
+2020-08-10 10:10:38,728 	Raw source:     ['hello', '.']
+2020-08-10 10:10:38,728 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:10:38,728 	Source:     hello .
+2020-08-10 10:10:38,728 	Reference:  hallo ,
+2020-08-10 10:10:38,728 	Hypothesis: hallo .
+2020-08-10 10:10:38,728 Example #1
+2020-08-10 10:10:38,728 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:10:38,728 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:10:38,728 	Source:     hi , how can i help you ?
+2020-08-10 10:10:38,728 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:10:38,728 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:10:38,729 Example #2
+2020-08-10 10:10:38,729 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:10:38,729 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:10:38,729 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:10:38,729 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:10:38,729 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:10:38,729 Example #3
+2020-08-10 10:10:38,729 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:10:38,729 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:10:38,729 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:10:38,729 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:10:38,729 	Hypothesis: ok , welche art von restaurant suchen sie ?
+2020-08-10 10:10:38,729 Validation result (greedy) at epoch   8, step     1400: bleu:  22.46, loss: 16296.6484, ppl:  12.7605, duration: 16.8519s
+2020-08-10 10:10:44,591 Epoch   8 Step:     1500 Batch Loss:     2.107248 Tokens per Sec:     5738, Lr: 0.000200
+2020-08-10 10:10:45,173 Epoch   8: total training loss 316.31
+2020-08-10 10:10:45,173 EPOCH 9
+2020-08-10 10:10:50,424 Epoch   9 Step:     1600 Batch Loss:     1.311028 Tokens per Sec:     5876, Lr: 0.000200
+2020-08-10 10:11:07,546 Hooray! New best validation result [ppl]!
+2020-08-10 10:11:07,546 Saving new checkpoint.
+2020-08-10 10:11:08,715 Example #0
+2020-08-10 10:11:08,715 	Raw source:     ['hello', '.']
+2020-08-10 10:11:08,716 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:11:08,716 	Source:     hello .
+2020-08-10 10:11:08,716 	Reference:  hallo ,
+2020-08-10 10:11:08,716 	Hypothesis: hallo .
+2020-08-10 10:11:08,716 Example #1
+2020-08-10 10:11:08,716 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:11:08,716 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:11:08,716 	Source:     hi , how can i help you ?
+2020-08-10 10:11:08,716 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:11:08,716 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:11:08,716 Example #2
+2020-08-10 10:11:08,716 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:11:08,716 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', 'und', 'in', 'san', 'francisco', ',', 'kalifornien', '.']
+2020-08-10 10:11:08,716 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:11:08,716 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:11:08,716 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien und in san francisco , kalifornien .
+2020-08-10 10:11:08,716 Example #3
+2020-08-10 10:11:08,716 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:11:08,716 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:11:08,716 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:11:08,716 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:11:08,716 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:11:08,716 Validation result (greedy) at epoch   9, step     1600: bleu:  22.67, loss: 15884.6455, ppl:  11.9649, duration: 18.2925s
+2020-08-10 10:11:14,410 Epoch   9: total training loss 270.68
+2020-08-10 10:11:14,410 EPOCH 10
+2020-08-10 10:11:14,602 Epoch  10 Step:     1700 Batch Loss:     1.751874 Tokens per Sec:     5940, Lr: 0.000200
+2020-08-10 10:11:20,418 Epoch  10 Step:     1800 Batch Loss:     1.924211 Tokens per Sec:     5827, Lr: 0.000200
+2020-08-10 10:11:39,505 Example #0
+2020-08-10 10:11:39,506 	Raw source:     ['hello', '.']
+2020-08-10 10:11:39,506 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:11:39,506 	Source:     hello .
+2020-08-10 10:11:39,506 	Reference:  hallo ,
+2020-08-10 10:11:39,506 	Hypothesis: hallo .
+2020-08-10 10:11:39,506 Example #1
+2020-08-10 10:11:39,506 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:11:39,506 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:11:39,506 	Source:     hi , how can i help you ?
+2020-08-10 10:11:39,506 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:11:39,506 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:11:39,506 Example #2
+2020-08-10 10:11:39,506 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:11:39,506 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'der', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:11:39,506 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:11:39,506 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:11:39,507 	Hypothesis: hallo , ich suche ein restaurant in der arden fair mall in san francisco , kalifornien , kalifornien , in san francisco , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:11:39,507 Example #3
+2020-08-10 10:11:39,507 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:11:39,507 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:11:39,507 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:11:39,507 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:11:39,507 	Hypothesis: ok , welche art von restaurant suchen sie ?
+2020-08-10 10:11:39,507 Validation result (greedy) at epoch  10, step     1800: bleu:  20.29, loss: 16049.2559, ppl:  12.2766, duration: 19.0888s
+2020-08-10 10:11:44,465 Epoch  10: total training loss 241.74
+2020-08-10 10:11:44,465 EPOCH 11
+2020-08-10 10:11:45,341 Epoch  11 Step:     1900 Batch Loss:     1.346114 Tokens per Sec:     5629, Lr: 0.000200
+2020-08-10 10:11:51,149 Epoch  11 Step:     2000 Batch Loss:     0.626521 Tokens per Sec:     5909, Lr: 0.000200
+2020-08-10 10:12:05,754 Hooray! New best validation result [ppl]!
+2020-08-10 10:12:05,754 Saving new checkpoint.
+2020-08-10 10:12:07,105 Example #0
+2020-08-10 10:12:07,105 	Raw source:     ['hello', '.']
+2020-08-10 10:12:07,105 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:12:07,105 	Source:     hello .
+2020-08-10 10:12:07,105 	Reference:  hallo ,
+2020-08-10 10:12:07,105 	Hypothesis: hallo .
+2020-08-10 10:12:07,105 Example #1
+2020-08-10 10:12:07,105 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:12:07,105 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:12:07,105 	Source:     hi , how can i help you ?
+2020-08-10 10:12:07,105 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:07,105 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:07,105 Example #2
+2020-08-10 10:12:07,106 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:12:07,106 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'zum', 'mittagessen', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:12:07,106 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:12:07,106 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:12:07,106 	Hypothesis: hallo , ich suche ein restaurant zum mittagessen in san francisco , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:12:07,106 Example #3
+2020-08-10 10:12:07,106 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:12:07,106 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:12:07,106 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:12:07,106 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:12:07,106 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:12:07,106 Validation result (greedy) at epoch  11, step     2000: bleu:  25.39, loss: 15679.9102, ppl:  11.5882, duration: 15.9567s
+2020-08-10 10:12:11,406 Epoch  11: total training loss 213.86
+2020-08-10 10:12:11,406 EPOCH 12
+2020-08-10 10:12:13,012 Epoch  12 Step:     2100 Batch Loss:     0.487070 Tokens per Sec:     5864, Lr: 0.000200
+2020-08-10 10:12:18,736 Epoch  12 Step:     2200 Batch Loss:     0.877662 Tokens per Sec:     5887, Lr: 0.000200
+2020-08-10 10:12:31,009 Hooray! New best validation result [ppl]!
+2020-08-10 10:12:31,009 Saving new checkpoint.
+2020-08-10 10:12:32,348 Example #0
+2020-08-10 10:12:32,348 	Raw source:     ['hello', '.']
+2020-08-10 10:12:32,348 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:12:32,348 	Source:     hello .
+2020-08-10 10:12:32,348 	Reference:  hallo ,
+2020-08-10 10:12:32,348 	Hypothesis: hallo .
+2020-08-10 10:12:32,348 Example #1
+2020-08-10 10:12:32,348 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:12:32,348 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:12:32,348 	Source:     hi , how can i help you ?
+2020-08-10 10:12:32,348 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:32,348 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:32,348 Example #2
+2020-08-10 10:12:32,348 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:12:32,348 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:12:32,348 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:12:32,349 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:12:32,349 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:12:32,349 Example #3
+2020-08-10 10:12:32,349 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:12:32,349 	Raw hypothesis: ['ok', ',', 'welche', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:12:32,349 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:12:32,349 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:12:32,349 	Hypothesis: ok , welche art von restaurant suchen sie ?
+2020-08-10 10:12:32,349 Validation result (greedy) at epoch  12, step     2200: bleu:  27.89, loss: 15304.6406, ppl:  10.9282, duration: 13.6129s
+2020-08-10 10:12:36,049 Epoch  12: total training loss 189.71
+2020-08-10 10:12:36,049 EPOCH 13
+2020-08-10 10:12:38,191 Epoch  13 Step:     2300 Batch Loss:     0.440784 Tokens per Sec:     5782, Lr: 0.000200
+2020-08-10 10:12:44,051 Epoch  13 Step:     2400 Batch Loss:     0.219226 Tokens per Sec:     5930, Lr: 0.000200
+2020-08-10 10:12:54,276 Example #0
+2020-08-10 10:12:54,276 	Raw source:     ['hello', '.']
+2020-08-10 10:12:54,276 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:12:54,276 	Source:     hello .
+2020-08-10 10:12:54,276 	Reference:  hallo ,
+2020-08-10 10:12:54,276 	Hypothesis: hallo .
+2020-08-10 10:12:54,277 Example #1
+2020-08-10 10:12:54,277 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:12:54,277 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:12:54,277 	Source:     hi , how can i help you ?
+2020-08-10 10:12:54,277 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:54,277 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:12:54,277 Example #2
+2020-08-10 10:12:54,277 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:12:54,277 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:12:54,277 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:12:54,277 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:12:54,277 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien in san francisco , kalifornien , kalifornien .
+2020-08-10 10:12:54,277 Example #3
+2020-08-10 10:12:54,277 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:12:54,277 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:12:54,277 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:12:54,277 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:12:54,277 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:12:54,277 Validation result (greedy) at epoch  13, step     2400: bleu:  30.41, loss: 15370.8174, ppl:  11.0418, duration: 10.2261s
+2020-08-10 10:12:57,113 Epoch  13: total training loss 162.22
+2020-08-10 10:12:57,114 EPOCH 14
+2020-08-10 10:13:00,082 Epoch  14 Step:     2500 Batch Loss:     0.485339 Tokens per Sec:     5849, Lr: 0.000200
+2020-08-10 10:13:05,877 Epoch  14 Step:     2600 Batch Loss:     1.119854 Tokens per Sec:     5941, Lr: 0.000200
+2020-08-10 10:13:17,192 Example #0
+2020-08-10 10:13:17,193 	Raw source:     ['hello', '.']
+2020-08-10 10:13:17,193 	Raw hypothesis: ['hallo', ',']
+2020-08-10 10:13:17,193 	Source:     hello .
+2020-08-10 10:13:17,193 	Reference:  hallo ,
+2020-08-10 10:13:17,193 	Hypothesis: hallo ,
+2020-08-10 10:13:17,193 Example #1
+2020-08-10 10:13:17,193 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:13:17,193 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:13:17,193 	Source:     hi , how can i help you ?
+2020-08-10 10:13:17,193 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:13:17,193 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:13:17,193 Example #2
+2020-08-10 10:13:17,193 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:13:17,193 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'finden', '.']
+2020-08-10 10:13:17,193 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:13:17,193 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:13:17,193 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , in san francisco , kalifornien , finden .
+2020-08-10 10:13:17,193 Example #3
+2020-08-10 10:13:17,193 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:13:17,193 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:13:17,193 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:13:17,193 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:13:17,193 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:13:17,193 Validation result (greedy) at epoch  14, step     2600: bleu:  31.05, loss: 15425.6699, ppl:  11.1369, duration: 11.3162s
+2020-08-10 10:13:19,378 Epoch  14: total training loss 143.08
+2020-08-10 10:13:19,378 EPOCH 15
+2020-08-10 10:13:22,994 Epoch  15 Step:     2700 Batch Loss:     0.474038 Tokens per Sec:     5820, Lr: 0.000200
+2020-08-10 10:13:28,778 Epoch  15 Step:     2800 Batch Loss:     1.062626 Tokens per Sec:     5842, Lr: 0.000200
+2020-08-10 10:13:40,079 Example #0
+2020-08-10 10:13:40,079 	Raw source:     ['hello', '.']
+2020-08-10 10:13:40,079 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:13:40,079 	Source:     hello .
+2020-08-10 10:13:40,079 	Reference:  hallo ,
+2020-08-10 10:13:40,079 	Hypothesis: hallo .
+2020-08-10 10:13:40,079 Example #1
+2020-08-10 10:13:40,080 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:13:40,080 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:13:40,080 	Source:     hi , how can i help you ?
+2020-08-10 10:13:40,080 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:13:40,080 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:13:40,080 Example #2
+2020-08-10 10:13:40,080 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:13:40,080 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'der', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'finden', '.']
+2020-08-10 10:13:40,080 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:13:40,080 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:13:40,080 	Hypothesis: hallo , ich suche ein restaurant in der arden fair mall in san francisco , kalifornien , finden .
+2020-08-10 10:13:40,080 Example #3
+2020-08-10 10:13:40,080 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:13:40,080 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:13:40,080 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:13:40,080 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:13:40,080 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:13:40,080 Validation result (greedy) at epoch  15, step     2800: bleu:  31.34, loss: 15367.5771, ppl:  11.0362, duration: 11.3022s
+2020-08-10 10:13:41,658 Epoch  15: total training loss 128.43
+2020-08-10 10:13:41,658 EPOCH 16
+2020-08-10 10:13:45,867 Epoch  16 Step:     2900 Batch Loss:     0.725650 Tokens per Sec:     5813, Lr: 0.000200
+2020-08-10 10:13:51,686 Epoch  16 Step:     3000 Batch Loss:     0.896651 Tokens per Sec:     5865, Lr: 0.000200
+2020-08-10 10:14:04,055 Example #0
+2020-08-10 10:14:04,055 	Raw source:     ['hello', '.']
+2020-08-10 10:14:04,055 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:14:04,056 	Source:     hello .
+2020-08-10 10:14:04,056 	Reference:  hallo ,
+2020-08-10 10:14:04,056 	Hypothesis: hallo .
+2020-08-10 10:14:04,056 Example #1
+2020-08-10 10:14:04,056 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:14:04,056 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:14:04,056 	Source:     hi , how can i help you ?
+2020-08-10 10:14:04,056 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:04,056 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:04,056 Example #2
+2020-08-10 10:14:04,056 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:14:04,056 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:14:04,056 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:14:04,056 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:14:04,056 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:14:04,056 Example #3
+2020-08-10 10:14:04,056 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:14:04,056 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:14:04,056 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:14:04,056 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:14:04,056 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:14:04,056 Validation result (greedy) at epoch  16, step     3000: bleu:  29.86, loss: 15467.9971, ppl:  11.2108, duration: 12.3697s
+2020-08-10 10:14:04,992 Epoch  16: total training loss 112.36
+2020-08-10 10:14:04,993 EPOCH 17
+2020-08-10 10:14:09,854 Epoch  17 Step:     3100 Batch Loss:     0.752915 Tokens per Sec:     5915, Lr: 0.000200
+2020-08-10 10:14:15,623 Epoch  17 Step:     3200 Batch Loss:     0.524471 Tokens per Sec:     5776, Lr: 0.000200
+2020-08-10 10:14:26,766 Example #0
+2020-08-10 10:14:26,766 	Raw source:     ['hello', '.']
+2020-08-10 10:14:26,766 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:14:26,766 	Source:     hello .
+2020-08-10 10:14:26,766 	Reference:  hallo ,
+2020-08-10 10:14:26,767 	Hypothesis: hallo .
+2020-08-10 10:14:26,767 Example #1
+2020-08-10 10:14:26,767 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:14:26,767 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:14:26,767 	Source:     hi , how can i help you ?
+2020-08-10 10:14:26,767 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:26,767 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:26,767 Example #2
+2020-08-10 10:14:26,767 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:14:26,767 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'kalifornien', '.']
+2020-08-10 10:14:26,767 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:14:26,767 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:14:26,767 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , kalifornien , kalifornien .
+2020-08-10 10:14:26,767 Example #3
+2020-08-10 10:14:26,767 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:14:26,767 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:14:26,767 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:14:26,767 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:14:26,767 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:14:26,767 Validation result (greedy) at epoch  17, step     3200: bleu:  30.50, loss: 15528.5332, ppl:  11.3173, duration: 11.1444s
+2020-08-10 10:14:27,121 Epoch  17: total training loss 99.96
+2020-08-10 10:14:27,121 EPOCH 18
+2020-08-10 10:14:32,599 Epoch  18 Step:     3300 Batch Loss:     0.365374 Tokens per Sec:     5773, Lr: 0.000200
+2020-08-10 10:14:38,281 Epoch  18: total training loss 93.83
+2020-08-10 10:14:38,281 EPOCH 19
+2020-08-10 10:14:38,470 Epoch  19 Step:     3400 Batch Loss:     0.439144 Tokens per Sec:     6211, Lr: 0.000200
+2020-08-10 10:14:48,237 Example #0
+2020-08-10 10:14:48,237 	Raw source:     ['hello', '.']
+2020-08-10 10:14:48,238 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:14:48,238 	Source:     hello .
+2020-08-10 10:14:48,238 	Reference:  hallo ,
+2020-08-10 10:14:48,238 	Hypothesis: hallo .
+2020-08-10 10:14:48,238 Example #1
+2020-08-10 10:14:48,238 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:14:48,238 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:14:48,238 	Source:     hi , how can i help you ?
+2020-08-10 10:14:48,238 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:48,238 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:14:48,238 Example #2
+2020-08-10 10:14:48,238 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:14:48,238 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'der', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'kalifornien', ',', 'in', 'san', 'francisco', ',', 'kalifornien', '.']
+2020-08-10 10:14:48,238 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:14:48,238 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:14:48,238 	Hypothesis: hallo , ich suche ein restaurant in der arden fair mall in san francisco , kalifornien , kalifornien , in san francisco , kalifornien .
+2020-08-10 10:14:48,238 Example #3
+2020-08-10 10:14:48,238 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:14:48,238 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:14:48,238 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:14:48,238 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:14:48,238 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:14:48,239 Validation result (greedy) at epoch  19, step     3400: bleu:  32.45, loss: 15872.5625, ppl:  11.9423, duration: 9.7685s
+2020-08-10 10:14:54,036 Epoch  19 Step:     3500 Batch Loss:     0.380873 Tokens per Sec:     5743, Lr: 0.000200
+2020-08-10 10:14:59,083 Epoch  19: total training loss 84.47
+2020-08-10 10:14:59,084 EPOCH 20
+2020-08-10 10:14:59,795 Epoch  20 Step:     3600 Batch Loss:     0.435396 Tokens per Sec:     5541, Lr: 0.000200
+2020-08-10 10:15:11,184 Example #0
+2020-08-10 10:15:11,184 	Raw source:     ['hello', '.']
+2020-08-10 10:15:11,184 	Raw hypothesis: ['hallo', '.']
+2020-08-10 10:15:11,184 	Source:     hello .
+2020-08-10 10:15:11,184 	Reference:  hallo ,
+2020-08-10 10:15:11,184 	Hypothesis: hallo .
+2020-08-10 10:15:11,184 Example #1
+2020-08-10 10:15:11,184 	Raw source:     ['hi', ',', 'how', 'can', 'i', 'help', 'you', '?']
+2020-08-10 10:15:11,184 	Raw hypothesis: ['hallo', ',', 'wie', 'kann', 'ich', 'ihnen', 'helfen', '?']
+2020-08-10 10:15:11,184 	Source:     hi , how can i help you ?
+2020-08-10 10:15:11,184 	Reference:  hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:15:11,184 	Hypothesis: hallo , wie kann ich ihnen helfen ?
+2020-08-10 10:15:11,184 Example #2
+2020-08-10 10:15:11,184 	Raw source:     ['hi', ',', 'i', '&apos;m', 'looking', 'for', 'a', 'restaurant', 'inside', 'the', 'arden', 'fair', 'mall', 'in', 'san', 'francisco', ',', 'california', '.']
+2020-08-10 10:15:11,184 	Raw hypothesis: ['hallo', ',', 'ich', 'suche', 'ein', 'restaurant', 'in', 'san', 'francisco', ',', 'kalifornien', ',', 'in', 'san', 'francisco', ',', 'kalifornien', '.']
+2020-08-10 10:15:11,184 	Source:     hi , i &apos;m looking for a restaurant inside the arden fair mall in san francisco , california .
+2020-08-10 10:15:11,184 	Reference:  hallo , ich bin auf der suche nach einem restaurant im arden fair einkaufszentrum in san francisco , kalifornien .
+2020-08-10 10:15:11,184 	Hypothesis: hallo , ich suche ein restaurant in san francisco , kalifornien , in san francisco , kalifornien .
+2020-08-10 10:15:11,184 Example #3
+2020-08-10 10:15:11,184 	Raw source:     ['ok', ',', 'what', 'type', 'of', 'restaurant', 'are', 'you', 'looking', 'for', '?']
+2020-08-10 10:15:11,185 	Raw hypothesis: ['ok', ',', 'nach', 'welcher', 'art', 'von', 'restaurant', 'suchen', 'sie', '?']
+2020-08-10 10:15:11,185 	Source:     ok , what type of restaurant are you looking for ?
+2020-08-10 10:15:11,185 	Reference:  ok . welche art von restaurant suchen sie denn genau ?
+2020-08-10 10:15:11,185 	Hypothesis: ok , nach welcher art von restaurant suchen sie ?
+2020-08-10 10:15:11,185 Validation result (greedy) at epoch  20, step     3600: bleu:  30.11, loss: 15955.5859, ppl:  12.0982, duration: 11.3898s
+2020-08-10 10:15:17,152 Epoch  20 Step:     3700 Batch Loss:     0.306725 Tokens per Sec:     5746, Lr: 0.000200
+2020-08-10 10:15:21,702 Epoch  20: total training loss 75.04
+2020-08-10 10:15:21,702 Training ended after  20 epochs.
+2020-08-10 10:15:21,702 Best validation result (greedy) at step     2200:  10.93 ppl.
