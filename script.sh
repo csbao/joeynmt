@@ -13,7 +13,7 @@ arr+=('configs/viznet/2_2_0.1_64_128_256.yml')
 arr+=('configs/viznet/2_2_0.1_64_64_128.yml')
 arr+=('configs/viznet/2_2_0.1_64_64_64.yml')
 i=$((0))
-for filename in configs/viznet/attempt3/*.yml; do
+for filename in configs/viznet/attempt4/*.yml; do
   i=$(($i + 1));
   echo $i
 
