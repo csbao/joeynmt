@@ -1,0 +1,80 @@
+data:
+  dev: chatnmt/multi_encoder/dev_subset.tags.bpe.10000
+  level: bpe
+  lowercase: false
+  max_sent_length: 100
+  src: en
+  test: chatnmt/multi_encoder/test.tags.bpe.10000
+  train: chatnmt/multi_encoder/train_subset.tags.bpe.10000
+  trg: de
+model:
+  bias_initializer: zeros
+  decoder:
+    dropout: 0.1
+    embeddings:
+      dropout: 0.0
+      embedding_dim: 128
+      scale: true
+    ff_size: 512
+    freeze: false
+    hidden_size: 128
+    num_heads: 8
+    num_layers: 6
+    type: transformer
+  embed_init_gain: 1.0
+  embed_initializer: xavier
+  encoder:
+    dropout: 0.2
+    embeddings:
+      dropout: 0.0
+      embedding_dim: 128
+      scale: true
+    ff_size: 512
+    freeze: false
+    hidden_size: 128
+    multi_encoder: false
+    num_heads: 8
+    num_layers: 6
+    type: transformer
+  init_gain: 1.0
+  initializer: xavier
+  tied_embeddings: false
+  tied_softmax: true
+name: transformer
+testing:
+  alpha: 1.0
+  beam_size: 5
+training:
+  adam_betas:
+  - 0.9
+  - 0.999
+  batch_multiplier: 1
+  batch_size: 1024
+  batch_type: token
+  decrease_factor: 0.7
+  early_stopping_metric: ppl
+  epochs: 20
+  eval_metric: bleu
+  keep_last_ckpts: 3
+  label_smoothing: 0.1
+  learning_rate: 0.0002
+  learning_rate_min: 1.0e-08
+  logging_freq: 100
+  loss: crossentropy
+  max_output_length: 100
+  model_dir: models/viznet/attempt2/8_8_0.2_128_128_1024_8_10
+  normalization: tokens
+  optimizer: adam
+  overwrite: true
+  patience: 8
+  print_valid_sents:
+  - 0
+  - 1
+  - 2
+  - 3
+  random_seed: 42
+  scheduling: plateau
+  shuffle: true
+  use_cuda: true
+  validation_freq: 200
+  weight_decay: 0.0
