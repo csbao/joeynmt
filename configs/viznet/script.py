@@ -2,17 +2,17 @@ import yaml
 #   train: "chatnmt/multi_encoder/train.tags.bpe.10000"    # training data
 #   dev: "chatnmt/multi_encoder/dev.tags.bpe.10000"        # development data for validation
 #   test: "chatnmt/multi_encoder/test.tags.bpe.10000"      # test data for testing final model; optional
-with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/viznet/1.yaml') as file:
+with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/configs/viznet/1.yaml') as file:
     doc = yaml.load(file, Loader=yaml.FullLoader)
     features = {
-        'num_heads_enc': [ 8],
-        'num_heads_dec': [ 8],
+        'num_heads_enc': [ 8, 16],
+        'num_heads_dec': [ 8, 16],
         # 'dropout': [0.1,0.2, 0.3], # will be true for both enc and dec
-        'dropout': [0.1, 0.2],
+        'dropout': [0.3],
         # 'hidden_size_enc': [128,256], TODO: uncomment this after
         # 'hidden_size_dec': [128,256], TODO: uncomment this after
-        'hidden_size_enc': [128],
-        'hidden_size_dec': [128],
+        'hidden_size_enc': [256, 512],
+        'hidden_size_dec': [256, 512],
         'batch_size': [512,1024],
         'enc_layers': [6, 8, 10],
         'dec_layers': [6,8,10]
@@ -37,6 +37,6 @@ with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/vizne
                                     doc["model"]["decoder"]["hidden_size"] = hs_dec
                                     doc["model"]["decoder"]["embeddings"]["embedding_dim"] = hs_dec
                                     doc["training"]["batch_size"] = bs
-                                    doc["training"]["model_dir"] = f"models/viznet/attempt2/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}_{enc_layer}_{dec_layer}"
-                                    with open(f"/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey/configs/viznet/attempt2/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}_{enc_layer}_{dec_layer}.yml", 'w') as outfile:
+                                    doc["training"]["model_dir"] = f"models/viznet/attempt3/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}_{enc_layer}_{dec_layer}"
+                                    with open(f"/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/configs/viznet/attempt3/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_dec}_{bs}_{enc_layer}_{dec_layer}.yml", 'w') as outfile:
                                         yaml.dump(doc, outfile,default_flow_style=False, sort_keys=True)
