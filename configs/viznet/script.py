@@ -5,16 +5,16 @@ import yaml
 with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/configs/viznet/1.yaml') as file:
     doc = yaml.load(file, Loader=yaml.FullLoader)
     features = {
-        'num_heads_enc': [ 8, 16],
-        'num_heads_dec': [ 8, 16],
+        'num_heads_enc': [ 16, 32],
+        'num_heads_dec': [ 16, 32],
         # 'dropout': [0.1,0.2, 0.3], # will be true for both enc and dec
-        'dropout': [0.1, 0.2, 0.4],
+        'dropout': [0.3, 0.5],
         # 'hidden_size_enc': [128,256], TODO: uncomment this after
         # 'hidden_size_dec': [128,256], TODO: uncomment this after
-        'hidden_size_enc': [1024],
-        'batch_size': [1024,2048],
-        'enc_layers': [6, 8],
-        'dec_layers': [6,8]
+        'hidden_size_enc': [1024,2048],
+        'batch_size': [2048],
+        'enc_layers': [6,8,10],
+        'dec_layers': [6,8, 10]
        
     }
     for num_head_enc in features['num_heads_enc']:
@@ -35,6 +35,6 @@ with open('/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/c
                                 doc["model"]["decoder"]["hidden_size"] = hs_enc
                                 doc["model"]["decoder"]["embeddings"]["embedding_dim"] = hs_enc
                                 doc["training"]["batch_size"] = bs
-                                doc["training"]["model_dir"] = f"models/viznet/attempt4/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_enc}_{bs}_{enc_layer}_{dec_layer}"
-                                with open(f"/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/configs/viznet/attempt4/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_enc}_{bs}_{enc_layer}_{dec_layer}.yml", 'w') as outfile:
+                                doc["training"]["model_dir"] = f"models/viznet/attempt5/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_enc}_{bs}_{enc_layer}_{dec_layer}"
+                                with open(f"/Users/calvinbao/Documents/src/spring2020/cmsc828b/joey_calvinbao94/configs/viznet/attempt5/{num_head_enc}_{num_head_dec}_{dropout}_{hs_enc}_{hs_enc}_{bs}_{enc_layer}_{dec_layer}.yml", 'w') as outfile:
                                     yaml.dump(doc, outfile,default_flow_style=False, sort_keys=True)
